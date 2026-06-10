@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referenzen – CUBION Immobilien AG</title>
+<meta name="description" content="Erfolgreiche Flächenvermittlungen im Ruhrgebiet. Kundenstimmen und Referenzen von CUBION – Ihrem Experten für Gewerbeimmobilien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14110F;--charcoal:#1B1714;--steel:#2A2522;--paper:#FFFFFF;--bone:#F4F3F0;
+  --line:#E4E2DD;--orange:#F05A28;--orange-2:#FF6B35;--concrete:#9A938C;--steel-gray:#5E5852;
+  --muted:#8A837C;--muted-light:rgba(255,255,255,.62);
+  --maxw:1280px;--gut:clamp(20px,5vw,72px);--ease:cubic-bezier(.16,1,.3,1);
+  --fs-mega:clamp(3rem,10vw,10rem);--fs-h2:clamp(2.2rem,6vw,5.2rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--orange);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.28em;display:inline-flex;align-items:center;gap:.7em;color:var(--orange)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);display:inline-block}
+
+/* NAV */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);transition:background .45s var(--ease),padding .45s var(--ease),box-shadow .45s var(--ease)}
+header.nav.scrolled{background:rgba(20,17,15,.92);backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.55rem;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:.5ch}
+.brand .dot{width:.42em;height:.42em;background:var(--orange);display:inline-block;margin-bottom:.18em;transform:skewX(-12deg)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);font-size:.86rem;font-weight:500;position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--orange);color:#fff;padding:11px 20px;border-radius:2px;transition:transform .25s var(--ease),background .25s}
+.nav-cta:hover{background:var(--orange-2);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:101}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s var(--ease)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:var(--gut);transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Anton';font-size:clamp(1.8rem,7vw,2.8rem);text-transform:uppercase;color:#fff;line-height:1.15;transition:color .2s,padding-left .3s var(--ease)}
+.mobile-menu a:hover{color:var(--orange);padding-left:14px}
+
+/* HERO */
+.hero{position:relative;min-height:74svh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:150px var(--gut) 64px;overflow:hidden}
+.hero-grid{position:absolute;inset:-20% -10%;z-index:0;opacity:.45;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;transform:perspective(900px) rotateX(62deg) scale(2.2);transform-origin:bottom center;-webkit-mask-image:linear-gradient(to top,#000,transparent 75%);mask-image:linear-gradient(to top,#000,transparent 75%);animation:gridDrift 22s linear infinite}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:0 64px}}
+.hero-glow{position:absolute;z-index:0;width:55vw;height:55vw;right:-15vw;top:-18vw;background:radial-gradient(circle,rgba(240,90,40,.3),transparent 62%);filter:blur(20px);animation:glowPulse 9s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.crumb{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-bottom:22px}
+.crumb a:hover{color:var(--orange)}
+.hero h1{font-size:var(--fs-mega);margin-bottom:.25em}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.12s}
+.hero h1 .accent{color:var(--orange)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-sub{max-width:60ch;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--muted-light);opacity:0;animation:fadeUp .8s var(--ease) .5s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* TRUST STATS */
+.stats{background:var(--orange);color:#fff;position:relative}
+.stats::before{content:"";position:absolute;top:-40px;left:0;width:100%;height:40px;background:var(--orange);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:60px 0}
+.stat{padding:0 24px;border-left:1px solid rgba(255,255,255,.28)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat .num{font-family:'Anton';font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1}
+.stat .num .u{font-size:.4em;margin-left:.12em}
+.stat .lab{margin-top:8px;font-size:.82rem;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.92)}
+
+/* GALLERY */
+.gallery{padding:clamp(70px,10vw,120px) 0;background:var(--paper)}
+.gallery .head{margin-bottom:34px}
+.gallery h2{font-size:var(--fs-h2);margin-top:16px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.filter{font-family:'Inter';font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;padding:11px 18px;border:1px solid var(--line);background:var(--paper);color:var(--steel-gray);border-radius:2px;cursor:pointer;transition:.25s var(--ease)}
+.filter:hover{border-color:var(--ink);color:var(--ink)}
+.filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.deal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.dcard{position:relative;border-radius:5px;overflow:hidden;background:var(--bone);border:1px solid var(--line);display:flex;flex-direction:column;animation:pop .5s var(--ease) both}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.dcard .ph{aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--steel)}
+.dcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.dcard:hover .ph img{transform:scale(1.06)}
+.dcard .badge{position:absolute;top:14px;left:14px;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:2px;color:#fff}
+.dcard .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.dcard .body h3{font-size:1.02rem;font-weight:700;line-height:1.35}
+.dcard .lnk{margin-top:auto;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);display:inline-flex;gap:.5ch;transition:gap .25s var(--ease)}
+.dcard:hover .lnk{gap:1ch}
+
+/* TESTIMONIALS */
+.voices{padding:clamp(80px,11vw,140px) 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.voices-glow{position:absolute;z-index:0;width:50vw;height:50vw;left:-15vw;bottom:-20vw;background:radial-gradient(circle,rgba(240,90,40,.22),transparent 62%);filter:blur(20px)}
+.voices .head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:48px}
+.voices h2{font-size:var(--fs-h2)}
+.rating{display:flex;align-items:center;gap:12px}
+.rating .score{font-family:'Anton';font-size:2.4rem;color:var(--orange);line-height:1}
+.rating .stars{color:var(--orange);letter-spacing:2px;font-size:1rem}
+.rating .src{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-light)}
+.slider{position:relative;z-index:1}
+.viewport{overflow:hidden}
+.track{display:flex;transition:transform .65s var(--ease)}
+.slide{flex:0 0 100%;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,60px);align-items:center;padding:8px 2px}
+.slide .portrait{width:clamp(120px,18vw,210px);aspect-ratio:1;border-radius:6px;overflow:hidden;position:relative;background:var(--steel)}
+.slide .portrait::after{content:"";position:absolute;inset:0;border:2px solid var(--orange);border-radius:6px;mix-blend-mode:normal}
+.slide .portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25)}
+.slide .content{position:relative}
+.slide .qmark{font-family:'Anton';font-size:5rem;color:var(--orange);line-height:.6;height:.5em;display:block}
+.slide blockquote{font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.5;font-weight:500;max-width:60ch;margin:10px 0 24px}
+.slide .who{display:flex;flex-direction:column;gap:2px}
+.slide .who .nm{font-family:'Anton';text-transform:uppercase;font-size:1.25rem;color:#fff}
+.slide .who .co{font-size:.9rem;color:var(--orange);font-weight:600}
+.controls{display:flex;align-items:center;justify-content:space-between;margin-top:40px;position:relative;z-index:1}
+.dots{display:flex;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);border:0;cursor:pointer;padding:0;transition:.3s var(--ease)}
+.dot.active{background:var(--orange);width:30px;border-radius:5px}
+.arrows{display:flex;gap:10px}
+.arrow-btn{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:1.4rem;cursor:pointer;transition:.25s var(--ease);display:flex;align-items:center;justify-content:center}
+.arrow-btn:hover{background:var(--orange);border-color:var(--orange);transform:translateY(-2px)}
+
+/* NEWSLETTER */
+.cta{position:relative;background:var(--orange);color:#fff;padding:clamp(70px,11vw,130px) 0;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-6%;top:-30%;width:50%;height:160%;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
+.cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.cta h2{font-size:var(--fs-h2)}
+.cta p{margin-top:14px;max-width:46ch;color:rgba(255,255,255,.9)}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:200px;border:0;padding:18px 20px;border-radius:3px;font-family:'Inter';font-size:1rem;font-weight:600;color:var(--ink)}
+.nl-form input:focus{outline:3px solid var(--ink)}
+.nl-form button{background:var(--ink);color:#fff;border:0;cursor:pointer;font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;font-size:1rem;padding:0 30px;border-radius:3px;transition:transform .25s var(--ease)}
+.nl-form button:hover{transform:translateY(-3px)}
+.nl-note{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.78)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:clamp(60px,9vw,100px) 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand .brand{font-size:2.2rem;margin-bottom:18px}
+.foot-brand address{font-style:normal;color:var(--muted-light);font-size:.92rem;line-height:1.9}
+.foot-brand address a:hover{color:var(--orange)}
+.foot-col h4{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted-light);font-size:.92rem;padding:6px 0;transition:color .2s,padding-left .25s var(--ease)}
+.foot-col a:hover{color:#fff;padding-left:6px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:30px;font-size:.82rem;color:var(--muted)}
+.foot-bottom .badges{display:flex;gap:14px}
+.foot-bottom .badge{font-size:.7rem;font-weight:700;letter-spacing:.12em;border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:2px;color:var(--muted-light)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+@media(max-width:1024px){.cta-inner{grid-template-columns:1fr;gap:30px}.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}.burger{display:flex}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:30px 0}.stat{padding:14px 24px}.stat:nth-child(3){border-left:0;padding-left:24px}
+  .slide{grid-template-columns:1fr;text-align:left}
+  .slide .portrait{width:110px}
+}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.hero h1 .line span{transform:none}.reveal{opacity:1;transform:none}.track{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="index.html" class="brand">Cubion<span class="dot"></span></a>
+  <nav class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="#abschluesse">Abschlüsse</a>
+    <a href="#stimmen">Kundenstimmen</a>
+    <a href="buerovermietung.html">Bürovermietung</a>
+  </nav>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt</a>
+  <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Start</a>
+  <a href="#abschluesse">Abschlüsse</a>
+  <a href="#stimmen">Kundenstimmen</a>
+  <a href="buerovermietung.html">Bürovermietung</a>
+  <a href="index.html#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Start</a> / Unternehmen / Referenzen</div>
+    <h1 class="display">
+      <span class="line"><span>Unsere</span></span>
+      <span class="line"><span class="accent">Referenzen</span></span>
+    </h1>
+    <p class="hero-sub">Seit 2005 haben wir Millionen Quadratmeter erfolgreich vermittelt und zahlreiche Unternehmen beim Start in neuen Räumlichkeiten unterstützt. Ein Einblick in abgeschlossene Projekte und zufriedene Kundenstimmen.</p>
+  </div>
+</section>
+
+<!-- TRUST STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-count="2005" data-plain="1">0</div><div class="lab">Aktiv seit</div></div>
+      <div class="stat reveal d1"><div class="num" data-count="4.9" data-decimals="1"><span class="u">★</span></div><div class="lab">Google-Bewertung</div></div>
+      <div class="stat reveal d2"><div class="num" id="dealStat" data-count="30" data-suffix="+">0</div><div class="lab">Ausgewählte Abschlüsse</div></div>
+      <div class="stat reveal d3"><div class="num" data-count="300" data-suffix="+">0</div><div class="lab">Büros weltweit (NAI)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="abschluesse">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Erfolgreich vermittelt</span>
+      <h2 class="display">Abgeschlossene<br>Projekte</h2>
+    </div>
+    <div class="filters reveal d1" id="filters">
+      <button class="filter active" data-f="all">Alle</button>
+      <button class="filter" data-f="Investment">Investment</button>
+      <button class="filter" data-f="Büro">Büro</button>
+      <button class="filter" data-f="Logistik">Industrial &amp; Logistics</button>
+    </div>
+    <div class="deal-grid" id="dealGrid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="voices" id="stimmen">
+  <div class="voices-glow"></div>
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal">
+        <span class="eyebrow">Das sagen unsere Kunden</span>
+        <h2 class="display">Stimmen aus<br>dem Markt</h2>
+      </div>
+      <div class="rating reveal d1">
+        <span class="score">4,9</span>
+        <div><div class="stars">★★★★★</div><div class="src">Google Bewertungen</div></div>
+      </div>
+    </div>
+
+    <div class="slider reveal d1" id="slider">
+      <div class="viewport">
+        <div class="track" id="track">
+          <!-- PLATZHALTER-FOTOS: src vor Veröffentlichung gegen echte Personen-/Firmenbilder tauschen -->
+          <article class="slide">
+            <div class="portrait"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Garrit Bauknecht" loading="lazy"></div>
+            <div class="content">
+              <span class="qmark">&ldquo;</span>
+              <blockquote>Dank der erfolgreichen Unterstützung von CUBION konnten wir mehrere qualifizierte Mieter für unsere Immobilie in Bottrop gewinnen. Der Einsatz von CUBION hat maßgeblich zur Vollvermietung unserer Immobilie beigetragen. Wir freuen uns auf eine zukünftige Zusammenarbeit.</blockquote>
+              <div class="who"><span class="nm">Garrit Bauknecht</span><span class="co">Bauknecht Immobilien Holding AG</span></div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="portrait"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Maximilian Hoxha" loading="lazy"></div>
+            <div class="content">
+              <span class="qmark">&ldquo;</span>
+              <blockquote>Die Mitarbeiter von CUBION sind äußerst professionell, kompetent und immer bereit, unsere Anliegen zu unterstützen. Die Zusammenarbeit verläuft reibungslos und äußerst effizient. Wir können CUBION ohne Vorbehalt weiterempfehlen und freuen uns auf zukünftige Projekte. Vielen Dank für die herausragende Unterstützung!</blockquote>
+              <div class="who"><span class="nm">Maximilian Hoxha</span><span class="co">Vermietungsmanager, RLS Group</span></div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="portrait"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Carsten Klipstein" loading="lazy"></div>
+            <div class="content">
+              <span class="qmark">&ldquo;</span>
+              <blockquote>Dank der engagierten und professionellen Unterstützung von CUBION haben wir die ideale Lösung für unseren neuen Firmensitz gefunden. Nach langer, erfolgloser Suche half uns CUBION, unsere Vision zu verwirklichen und mit den richtigen Partnern einen maßgeschneiderten Standort zu planen. Entstanden ist eine der modernsten Arbeitswelten in Bochum und Umgebung, inzwischen sogar preisgekrönt.</blockquote>
+              <div class="who"><span class="nm">Carsten Klipstein</span><span class="co">Geschäftsführer, cosinex GmbH</span></div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="portrait"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Gerd Brinkel" loading="lazy"></div>
+            <div class="content">
+              <span class="qmark">&ldquo;</span>
+              <blockquote>Als Eigentümer mehrerer Gewerbeimmobilien im Ruhrgebiet arbeite ich seit vielen Jahren vertrauensvoll mit der CUBION Immobilien AG zusammen. Zuletzt ist es mit der Unterstützung von CUBION innerhalb von vier Wochen gelungen, einen geeigneten Nachmieter zu finden und eine direkte Anschlussvermietung herbeizuführen.</blockquote>
+              <div class="who"><span class="nm">Gerd Brinkel</span><span class="co">Geschäftsführer, Brinkel Grundstücksverwaltung Wuppertal</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="dots" id="dots"></div>
+        <div class="arrows">
+          <button class="arrow-btn" id="prev" aria-label="Vorherige Stimme">&lsaquo;</button>
+          <button class="arrow-btn" id="next" aria-label="Nächste Stimme">&rsaquo;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="cta" id="kontakt">
+  <div class="wrap cta-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:#fff">Ihr Projekt</span>
+      <h2 class="display" style="margin-top:14px">Werden Sie<br>Referenz Nr. 31.</h2>
+      <p>Ob Vermietung, Verkauf oder Investment: Sprechen Sie mit uns über Ihre Immobilie. Erstgespräch unverbindlich, bei gutem Kaffee.</p>
+    </div>
+    <div class="reveal d1">
+      <form class="nl-form" onsubmit="this.querySelector('input').value='';alert('Danke! (Demo-Formular – an CleverReach anbinden)');return false">
+        <input type="email" placeholder="E-Mail-Adresse" required aria-label="E-Mail-Adresse">
+        <button type="submit">Kontakt</button>
+      </form>
+      <p class="nl-note">Wir melden uns kurzfristig. Ihre Daten nutzen wir ausschließlich zur Bearbeitung Ihrer Anfrage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">Cubion<span class="dot"></span></div>
+        <address>
+          CUBION Immobilien AG<br>Chartered Surveyors<br>Akazienallee 65<br>45478 Mülheim an der Ruhr<br>
+          <a href="tel:+49208970670">Fon +49 208 970 670</a><br>Fax +49 208 970 6722<br>
+          <a href="mailto:info@cubion.de">info@cubion.de</a>
+        </address>
+      </div>
+      <div class="foot-col"><h4>Märkte</h4><a href="buerovermietung.html">Bürovermietung</a><a href="#">Industrial &amp; Logistics</a><a href="#">Investment</a><a href="#">Einzelhandel &amp; Gastronomie</a></div>
+      <div class="foot-col"><h4>Unternehmen</h4><a href="index.html#unternehmen">Über CUBION</a><a href="#">Team</a><a href="#">Karriere</a><a href="referenzen.html">Referenzen</a></div>
+      <div class="foot-col"><h4>Service</h4><a href="index.html#objektsuche">Objektsuche</a><a href="#">Marktberichte</a><a href="#">Neuigkeiten</a><a href="#kontakt">Kontakt</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CUBION Immobilien AG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a></span>
+      <div class="badges"><span class="badge">RICS</span><span class="badge">NAI PARTNERS GERMANY</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav + mobile */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-label',o?'Menü schließen':'Menü öffnen')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* ---------- DEAL-GALERIE ---------- */
+const B='https://cubion.de/wp-content/uploads/';
+const CATCOLOR={Investment:'var(--orange)','Büro':'#14110F',Logistik:'var(--steel-gray)'};
+const CATLABEL={Investment:'Investment','Büro':'Büro',Logistik:'Logistics'};
+const DEALS=[
+  {c:'Investment',t:'Wülfrath: Verkauf einer Gewerbeimmobilie für WILO im Bieterverfahren',img:'2025/07/Dieselstrasse-6-CUBION-768x432.jpg',u:'https://cubion.de/wuelfrath-cubion-begleitet-erfolgreichen-verkauf-einer-gewerbeimmobilie-fuer-wilo-im-bieterverfahren/'},
+  {c:'Investment',t:'Dortmund: Bürokomplex am Dortmunder U an die Stadt (67 Mio. €)',img:'2025/02/CUBION-vermittelt-Rheinische-Strasse-1-in-Dortmund_Webseite-768x486.jpg',u:'https://cubion.de/dortmund-cubion-vermittelt-buerokomplex-am-dortmunder-u-an-die-stadt/'},
+  {c:'Investment',t:'Gelsenkirchen: Verkauf einer Gewerbeimmobilie am Stadthafen',img:'2025/03/Deal-Uferstrasse-10-Gelsenkirchen-CUBION-768x576.jpg',u:'https://cubion.de/gelsenkirchen-cubion-vermittelt-verkauf-einer-gewerbeimmobilie-am-stadthafen/'},
+  {c:'Investment',t:'Düsseldorf: Verkauf des ehemaligen Krankenkassen-Sitzes',img:'2025/03/Duesseldorf-CUBION-verkauft-ehemaligen-Krankenkassen-Sitz_web-768x441.jpg',u:'https://cubion.de/duesseldorf-cubion-verkauft-ehemaligen-krankenkassen-sitz/'},
+  {c:'Investment',t:'Holzwickede: Commercial Center (rd. 7.700 m²) an Privatinvestor',img:'CUBION-Deal-Rhenusplatz-2-3-Holzwickede_-scaled.jpg',u:'https://cubion.de/holzwickede-cubion-vermittelt-das-rd-7-700-m%c2%b2-grosse-commercial-center-an-privatinvestor-2/'},
+  {c:'Investment',t:'Aachen: Büro- und Geschäftshaus (rd. 5.000 m²) in der Innenstadt',img:'CUBION-Deal-Blondelstrasse-9-21-Aachen-1.jpg',u:'https://cubion.de/aachen-cubion-vermittelt-ein-buero-und-geschaeftshaus-in-der-innenstadt/'},
+  {c:'Investment',t:'Bochum: Verkauf der ehemaligen Staples-Immobilie',img:'2024/04/Bochum-Deal-CUBION_breit_reduziert-768x363.jpg',u:'https://cubion.de/bochum-cubion-verkauft-ehemalige-staples-immobilie-mit-1-600-m%c2%b2-in-top-lage/'},
+  {c:'Investment',t:'Essen: Bürogebäude in der Essener Weststadt',img:'CUBION-Deal-Altendorfer-Str.-3-12_Webseite.jpg',u:'https://cubion.de/cubion-vermittelt-buerogebaeude-in-der-essener-weststadt/'},
+  {c:'Investment',t:'Dortmund: Käufer für Fachmarktzentrum gefunden',img:'CUBION-Deal-Dortmund.png',u:'https://cubion.de/cubion-findet-kaeufer-fuer-fachmarktzentrum-in-dortmund/'},
+  {c:'Investment',t:'Bochum: Büro- und Hallenimmobilie im Alleinauftrag',img:'CUBION-Deal-Bochum-scaled.jpg',u:'https://cubion.de/cubion-verkauft-buero-und-hallenimmobilie-in-bochum-im-alleinauftrag/'},
+
+  {c:'Büro',t:'Essen: rd. 270 m² an ZENZ Patentanwälte',img:'2026/06/CUBION-Deal-Huyssenallee-15-768x551.jpg',u:'https://cubion.de/essen-cubion-vermittelt-rd-270-m%c2%b2-an-zenz-patentanwaelte/'},
+  {c:'Büro',t:'Duisburg: rd. 430 m² in Großenbaum an FM-Dienstleister',img:'2026/05/Albert-Hahn-Strasse-9-Deal-CUBION-e1779201223396-768x414.jpg',u:'https://cubion.de/duisburg-cubion-vermittelt-rd-430-m%c2%b2-bueroflaeche-in-grossenbaum-an-einen-facility-management-dienstleister/'},
+  {c:'Büro',t:'Aachen: rd. 2.000 m² an BIG direkt gesund, Quartier Nord',img:'2026/04/Aachen-CUBION-vermittelt-BIG-direkt-gesund-rund-2.000-m%C2%B2-Buero-und-Kollaborationsflaechen-im-Quartier-Nord-web-768x512.jpg',u:'https://cubion.de/aachen-cubion-vermittelt-big-direkt-gesund-rund-2-000-m%c2%b2-buero-und-kollaborationsflaechen-im-quartier-nord/'},
+  {c:'Büro',t:'Dortmund: 670 m² am Sebrathweg 1–9',img:'2026/04/Dortmund-CUBION-vermittelt-670-m%C2%B2-Bueroflaeche-am-Sebrathweg-1%E2%80%939-768x432.jpg',u:'https://cubion.de/dortmund-cubion-vermittelt-670-m%c2%b2-bueroflaeche-am-sebrathweg-1-9/'},
+  {c:'Büro',t:'Duisburg: rd. 1.300 m² im Businesspark Asterlagen',img:'2026/03/Dr.-Alfred-Herrhausen-Allee-9-11-Deal-CUBION-web-768x432.jpg',u:'https://cubion.de/duisburg-cubion-vermittelt-rd-1-300-m%c2%b2-bueroflaeche-im-businesspark-asterlagen/'},
+  {c:'Büro',t:'Dortmund: 586 m² in der Saarlandstraße 23–27',img:'2026/02/Saarlandstrasse-23%E2%80%9327-Deal-CUBION-web-768x573.jpg',u:'https://cubion.de/dortmund-cubion-vermittelt-586-m%c2%b2-bueroflaeche-in-der-saarlandstrasse-23-27/'},
+  {c:'Büro',t:'Oberhausen: rd. 560 m² im Technologiezentrum an DMS-Deutschland',img:'2026/02/CUBION-Deal-Essener-Strasse-3%E2%80%935-web-768x432.jpg',u:'https://cubion.de/oberhausen-die-cubion-immobilien-ag-hat-erfolgreich-eine-rund-560-m%c2%b2-grosse-bueroflaeche-im-technologiezentrum-oberhausen-tzu-an-der-essener-strasse-3-5-an-dms-deutschland-verm/'},
+  {c:'Büro',t:'Essen: rd. 345 m² im EUROPA-CENTER Trineo an UKA',img:'2026/01/Am-Europa-Center-4-in-Essen-Deal-CUBION-768x576.jpg',u:'https://cubion.de/essen-cubion-vermittelt-rd-345-m%c2%b2-bueroflaeche-im-europa-center-trineo-an-uka/'},
+  {c:'Büro',t:'Duisburg: rd. 735 m² am Innenhafen an HOLINGER',img:'2026/01/CUBION-Deal-Schifferstrasse-166-1-768x432.jpg',u:'https://cubion.de/duisburg-cubion-vermittelt-rd-735-m%c2%b2-bueroflaeche-am-innenhafen-an-holinger/'},
+  {c:'Büro',t:'Gelsenkirchen: 2.100 m² Büro- und Hallenfläche im Alleinauftrag',img:'2026/01/Hamburger-Strasse-11-Deal-CUBION-768x432.jpg',u:'https://cubion.de/gelsenkirchen-cubion-vermittelt-2-100-m%c2%b2-buero-und-hallenflaeche-im-alleinauftrag/'},
+
+  {c:'Logistik',t:'Duisburg: rd. 10.000 m² Freilagerfläche an CONDACO',img:'2025/10/CUBION-vermittelte-rund-10.000-m%C2%B2-Freilagerflaeche-in-Duisburg-an-CONDACO.-Der-Spezialist-fuer-Containerloesungen-erweitert-damit-seine-Lager-und-Logistikflaechen-768x512.jpg',u:'https://cubion.de/duisburg-cubion-vermittelte-rund-10-000-m%c2%b2-freilagerflaeche-an-condaco/'},
+  {c:'Logistik',t:'Düsseldorf: 2.400 m² an The Padel Company, SEGRO Park Flingern',img:'2025/09/Duesseldorf-CUBION-vermittelt-2.400-m%C2%B2-an-The-Padel-Company-im-SEGRO-Park-Flingern-768x513.jpg',u:'https://cubion.de/duesseldorf-cubion-vermittelt-2-400-m%c2%b2-an-the-padel-company-im-segro-park-flingern/'},
+  {c:'Logistik',t:'Isselburg: 25.000 m² Freilagerfläche an Rudolph Logistik',img:'2025/03/CUBION-Deal-Isselburg-Freilagerflaeche_web-768x432.jpg',u:'https://cubion.de/isselburg-cubion-vermittelt-25-000-m%c2%b2-freilagerflaeche-an-rudolph-logistik/'},
+  {c:'Logistik',t:'Hamminkeln: 1.900 m² Lager- und 550 m² Bürofläche an Ergoflix',img:'2025/06/Hamminkeln_CUBION-vermittelt-1.900-m%C2%B2-Lager-und-550-m%C2%B2-Bueroflaeche-an-Ergoflix-768x432.jpg',u:'https://cubion.de/hamminkeln-cubion-vermittelt-1-900-m%c2%b2-lager-und-550-m%c2%b2-bueroflaeche-an-ergoflix/'},
+  {c:'Logistik',t:'Gelsenkirchen: rd. 30.000 m² Logistikfläche an FineCom',img:'CUBION-30.000-qm-Deal_-scaled.jpg',u:'https://cubion.de/gelsenkirchen-cubion-vermittelt-rd-30-000-m%c2%b2-logistikflaeche-an-finecom/'},
+  {c:'Logistik',t:'Gelsenkirchen: 4.250 m² Hallenfläche an Linlei Deutschland',img:'CUBION-Deal-Pommernstrasse-19-Gelsenkirchen_4_3.jpg',u:'https://cubion.de/gelsenkirchen-cubion-vermittelt-4-250-m%c2%b2-hallenflaeche-an-linlei-deutschland/'},
+  {c:'Logistik',t:'Essen: rd. 2.000 m² Hallenfläche an Element Boulders',img:'CUBION-Deal-Haedenkampstrasse-73-Essen-scaled.jpg',u:'https://cubion.de/essen-cubion-vermittelt-rund-2-000-m%c2%b2-hallenflaeche-an-element-boulders-3/'},
+  {c:'Logistik',t:'Essen: rd. 3.200 m² Hallenfläche für erste Padel-Tennis-Anlage',img:'CUBION-Deal-Essen-Padel-Tennis-scaled.jpg',u:'https://cubion.de/cubion-vermittelte-rd-3-200-m%c2%b2-hallenflaeche-fuer-erste-padel-tennis-anlage-in-essen/'},
+  {c:'Logistik',t:'Essen: zwei e-Mobility-Unternehmen, Green Business Park Carnaperhof',img:'CUBION-Deal-Carnaperhof.jpg',u:'https://cubion.de/essen-cubion-vermittelt-zwei-e-mobility-unternehmen-in-den-green-business-park-carnaperhof/'},
+  {c:'Logistik',t:'Mülheim a.d.R.: rd. 3.500 m² Hallen- und Bürofläche, Rhein-Ruhr-Hafen',img:'Deal-CUBION-Muelheim.jpg',u:'https://cubion.de/muelheim-an-der-ruhr-cubion-vermittelt-rd-3-500-qm-hallen-und-bueroflaeche-am-rhein-ruhr-hafen/'}
+];
+const grid=document.getElementById('dealGrid');
+const dcard=d=>`<a class="dcard" data-cat="${d.c}" href="${d.u}" target="_blank" rel="noopener">
+  <div class="ph"><span class="badge" style="background:${CATCOLOR[d.c]}">${CATLABEL[d.c]}</span><img src="${B}${d.img}" alt="${d.t}" loading="lazy"></div>
+  <div class="body"><h3>${d.t}</h3><span class="lnk">Weiterlesen →</span></div></a>`;
+function render(f){grid.innerHTML=DEALS.filter(d=>f==='all'||d.c===f).map(dcard).join('')}
+render('all');
+document.getElementById('dealStat').dataset.count=DEALS.length;
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');render(b.dataset.f);
+}));
+
+/* ---------- KUNDEN-SLIDER ---------- */
+const track=document.getElementById('track');
+const slides=track.children.length;
+const dotsEl=document.getElementById('dots');
+let idx=0,timer=null;
+for(let i=0;i<slides;i++){const d=document.createElement('button');d.className='dot'+(i===0?' active':'');d.setAttribute('aria-label','Stimme '+(i+1));d.addEventListener('click',()=>go(i,true));dotsEl.appendChild(d)}
+const dots=[...dotsEl.children];
+function go(i,manual){idx=(i+slides)%slides;track.style.transform=`translateX(-${idx*100}%)`;dots.forEach((d,k)=>d.classList.toggle('active',k===idx));if(manual)restart()}
+document.getElementById('next').addEventListener('click',()=>go(idx+1,true));
+document.getElementById('prev').addEventListener('click',()=>go(idx-1,true));
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function start(){if(!reduce)timer=setInterval(()=>go(idx+1),7000)}
+function restart(){clearInterval(timer);start()}
+const slider=document.getElementById('slider');
+slider.addEventListener('mouseenter',()=>clearInterval(timer));
+slider.addEventListener('mouseleave',start);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(idx+1,true);if(e.key==='ArrowLeft')go(idx-1,true)});
+start();
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Count-up */
+function animateCount(el){
+  const end=parseFloat(el.dataset.count),dec=parseInt(el.dataset.decimals||'0'),suf=el.dataset.suffix||'',plain=el.dataset.plain;
+  const dur=1500;let t0=null;
+  const fmt=v=>plain?Math.round(v).toString():v.toLocaleString('de-DE',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  const unit=el.querySelector('.u');const unitHTML=unit?unit.outerHTML:'';
+  const step=ts=>{if(!t0)t0=ts;const p=Math.min((ts-t0)/dur,1);const e=1-Math.pow(1-p,3);
+    el.innerHTML=fmt(end*e)+(suf?'<span class="u">'+suf+'</span>':unitHTML);
+    if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animateCount(e.target.querySelector('.num'));co.unobserve(e.target)}}),{threshold:.5});
+document.querySelectorAll('.stat').forEach(s=>co.observe(s));
+</script>
+</body>
+</html>
