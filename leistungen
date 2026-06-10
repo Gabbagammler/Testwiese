@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vermietung – Leistungen | CUBION Immobilien AG</title>
+<meta name="description" content="Vermietungsservices für Gewerbeimmobilien. Für Mieter und Vermieter: Strategie, Marktanalyse, Vermarktung, Verhandlung. Plus interaktiver Flächenrechner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14110F;--charcoal:#1B1714;--steel:#2A2522;--paper:#FFFFFF;--bone:#F4F3F0;
+  --line:#E4E2DD;--orange:#F05A28;--orange-2:#FF6B35;--concrete:#9A938C;--steel-gray:#5E5852;
+  --muted:#8A837C;--muted-light:rgba(255,255,255,.62);
+  --maxw:1280px;--gut:clamp(20px,5vw,72px);--ease:cubic-bezier(.16,1,.3,1);
+  --fs-mega:clamp(3.4rem,12vw,12rem);--fs-h2:clamp(2.2rem,6vw,5.2rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--orange);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.28em;display:inline-flex;align-items:center;gap:.7em;color:var(--orange)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);display:inline-block}
+
+/* NAV */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);transition:background .45s var(--ease),padding .45s var(--ease),box-shadow .45s var(--ease)}
+header.nav.scrolled{background:rgba(20,17,15,.92);backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.55rem;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:.5ch}
+.brand .dot{width:.42em;height:.42em;background:var(--orange);display:inline-block;margin-bottom:.18em;transform:skewX(-12deg)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);font-size:.86rem;font-weight:500;position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--orange);color:#fff;padding:11px 20px;border-radius:2px;transition:transform .25s var(--ease),background .25s}
+.nav-cta:hover{background:var(--orange-2);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:101}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s var(--ease)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:var(--gut);transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Anton';font-size:clamp(1.8rem,7vw,2.8rem);text-transform:uppercase;color:#fff;line-height:1.15;transition:color .2s,padding-left .3s var(--ease)}
+.mobile-menu a:hover{color:var(--orange);padding-left:14px}
+
+/* HERO */
+.hero{position:relative;min-height:96svh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:140px var(--gut) 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:grayscale(.4) brightness(.32)}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,var(--ink) 28%,rgba(20,17,15,.55) 70%,rgba(20,17,15,.3))}
+.hero-glow{position:absolute;z-index:0;width:55vw;height:55vw;right:-15vw;top:-10vw;background:radial-gradient(circle,rgba(240,90,40,.28),transparent 62%);filter:blur(20px);animation:glowPulse 9s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.crumb{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-bottom:22px}
+.crumb a:hover{color:var(--orange)}
+.hero h1{font-size:var(--fs-mega);margin-bottom:.2em}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+.hero h1 .accent{color:var(--orange)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-sub{max-width:52ch;font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--muted-light);margin-bottom:40px;opacity:0;animation:fadeUp .8s var(--ease) .5s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s var(--ease) .65s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6ch;font-family:'Anton';text-transform:uppercase;letter-spacing:.03em;font-size:1.05rem;padding:16px 30px;border-radius:3px;transition:transform .25s var(--ease),background .25s,color .25s}
+.btn.primary{background:var(--orange);color:#fff}.btn.primary:hover{background:var(--orange-2);transform:translateY(-3px)}
+.btn.ghost{border:1px solid rgba(255,255,255,.35);color:#fff}.btn.ghost:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+
+/* AUDIENCE SWITCH + SERVICES */
+.services{padding:clamp(70px,10vw,120px) 0;background:var(--paper)}
+.svc-head{text-align:center;margin-bottom:38px}
+.svc-head h2{font-size:var(--fs-h2);margin-top:14px}
+.aud{display:inline-flex;background:var(--bone);border:1px solid var(--line);border-radius:100px;padding:6px;position:relative;margin:30px auto 0;left:50%;transform:translateX(-50%)}
+.aud .pill{position:absolute;top:6px;bottom:6px;left:6px;width:120px;border-radius:100px;background:var(--orange);transition:transform .45s var(--ease),width .45s var(--ease);z-index:0}
+.aud button{position:relative;z-index:1;border:0;background:none;cursor:pointer;font-family:'Inter';font-weight:700;font-size:clamp(.9rem,1.3vw,1.05rem);padding:13px 32px;border-radius:100px;color:var(--steel-gray);transition:color .35s;white-space:nowrap}
+.aud button.active{color:#fff}
+
+.svc-panel{margin-top:48px;transition:opacity .35s var(--ease)}
+.svc-panel.swap{opacity:0}
+.svc-lead{max-width:60ch;margin:0 auto 36px;text-align:center;font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:500;color:var(--ink)}
+.svc-lead b{color:var(--orange);font-weight:700}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.svc-item{display:flex;gap:16px;align-items:flex-start;padding:17px 0;border-bottom:1px solid var(--line)}
+.svc-item .mk{flex:0 0 auto;width:28px;height:28px;background:var(--orange);transform:skewX(-10deg);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.svc-item .mk svg{width:15px;height:15px;transform:skewX(10deg)}
+.svc-item .tx{font-size:1rem;font-weight:500;color:var(--ink)}
+
+/* FLÄCHENRECHNER */
+.calc{padding:clamp(70px,10vw,120px) 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.calc-glow{position:absolute;z-index:0;width:48vw;height:48vw;left:-14vw;bottom:-20vw;background:radial-gradient(circle,rgba(240,90,40,.2),transparent 62%);filter:blur(20px)}
+.calc .head{position:relative;z-index:1;margin-bottom:46px;max-width:62ch}
+.calc h2{font-size:var(--fs-h2);margin:14px 0 14px}
+.calc .head p{color:var(--muted-light)}
+.calc-card{position:relative;z-index:1;display:grid;grid-template-columns:1fr .9fr;gap:0;border:1px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02)}
+.calc-inputs{padding:clamp(26px,3.5vw,46px);display:flex;flex-direction:column;gap:34px}
+.step-no{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;display:flex;align-items:center;gap:.7em}
+.step-no .n{font-family:'Anton';font-size:1.1rem}
+.fieldlabel{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.fieldlabel .nm{font-weight:600;font-size:.96rem}
+.fieldlabel .val{font-family:'Anton';font-size:1.5rem;color:var(--orange)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:rgba(255,255,255,.18);outline:none;accent-color:var(--orange)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--orange);cursor:pointer;border:3px solid var(--ink);box-shadow:0 0 0 1px var(--orange)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--orange);cursor:pointer;border:3px solid var(--ink)}
+.modes{display:flex;gap:8px;flex-wrap:wrap}
+.mode{flex:1;min-width:90px;border:1px solid rgba(255,255,255,.2);background:none;color:#fff;border-radius:4px;padding:12px 10px;cursor:pointer;text-align:left;transition:.25s var(--ease)}
+.mode .mt{font-weight:700;font-size:.92rem}
+.mode .md{font-size:.74rem;color:var(--muted-light)}
+.mode.active{border-color:var(--orange);background:rgba(240,90,40,.12)}
+.mode.active .md{color:rgba(255,255,255,.8)}
+.calc-result{background:var(--orange);padding:clamp(26px,3.5vw,46px);display:flex;flex-direction:column;justify-content:center;gap:6px;position:relative}
+.calc-result .rlabel{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.calc-result .big{font-family:'Anton';font-size:clamp(3.4rem,7vw,5.6rem);line-height:.95}
+.calc-result .big .u{font-size:.32em;margin-left:.15em}
+.calc-result .sub{font-size:.96rem;color:rgba(255,255,255,.92);margin-top:2px}
+.calc-result .costline{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.3);display:flex;gap:28px;flex-wrap:wrap}
+.calc-result .costline div .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.calc-result .costline div .v{font-family:'Anton';font-size:1.7rem;line-height:1.1}
+.calc-result .save{margin-top:18px;font-size:.86rem;background:rgba(20,17,15,.22);padding:11px 14px;border-radius:4px;line-height:1.4}
+.calc-result .save b{color:#fff}
+.calc-result .tool{margin-top:20px;display:inline-flex;align-items:center;gap:.5ch;font-family:'Anton';text-transform:uppercase;font-size:.95rem;color:#fff;border-bottom:2px solid rgba(255,255,255,.6);padding-bottom:3px;width:fit-content;transition:gap .25s var(--ease)}
+.calc-result .tool:hover{gap:1.1ch}
+.calc-note{position:relative;z-index:1;margin-top:16px;font-size:.76rem;color:var(--muted)}
+
+/* PROCESS */
+.process{padding:clamp(70px,10vw,120px) 0;background:var(--bone)}
+.process .head{margin-bottom:50px}
+.process h2{font-size:var(--fs-h2);margin-top:14px}
+.process .head .who{color:var(--orange);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;transition:opacity .35s var(--ease)}
+.steps.swap{opacity:0}
+.pstep{position:relative;padding:0 18px}
+.pstep:first-child{padding-left:0}
+.pstep::before{content:"";position:absolute;top:22px;left:0;right:0;height:2px;background:var(--line);z-index:0}
+.pstep:first-child::before{left:18px}
+.pstep:last-child::before{right:18px}
+.pstep .dot{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;background:var(--paper);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Anton';color:var(--orange);font-size:1.05rem;margin-bottom:20px}
+.pstep h3{font-size:1.05rem;font-weight:700;line-height:1.25;margin-bottom:8px}
+.pstep p{font-size:.88rem;color:var(--steel-gray)}
+
+/* DEALS MARQUEE */
+.deals{padding:clamp(70px,10vw,110px) 0 0;background:var(--ink);color:#fff;overflow:hidden}
+.deals .head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:42px}
+.deals h2{font-size:var(--fs-h2)}
+.deals .head a{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:inline-flex;gap:.5ch;align-items:center}
+.deal-row{display:flex;gap:20px;padding-bottom:clamp(60px,9vw,110px);width:max-content;animation:scrollDeals 60s linear infinite}
+.deals:hover .deal-row{animation-play-state:paused}
+.deal{width:clamp(280px,28vw,360px);flex:0 0 auto;background:var(--steel);border-radius:5px;overflow:hidden}
+.deal .ph{aspect-ratio:16/10;overflow:hidden;position:relative}
+.deal .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.deal:hover .ph img{transform:scale(1.07)}
+.deal .ph .cat{position:absolute;top:13px;left:13px;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:2px;color:#fff}
+.deal .meta{padding:20px;font-size:.92rem;line-height:1.4;color:#fff}
+@keyframes scrollDeals{to{transform:translateX(-50%)}}
+
+/* CONTACT */
+.contact{position:relative;color:#fff;padding:clamp(80px,12vw,150px) 0;overflow:hidden}
+.contact-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:brightness(.4)}
+.contact::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(120deg,rgba(20,17,15,.85),rgba(20,17,15,.4))}
+.contact-inner{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.contact h2{font-size:var(--fs-h2);max-width:16ch}
+.contact p{margin:16px 0 30px;color:var(--muted-light);max-width:42ch}
+.contact .lines{display:flex;gap:14px;flex-wrap:wrap}
+
+/* NEWSLETTER */
+.cta{position:relative;background:var(--orange);color:#fff;padding:clamp(70px,11vw,130px) 0;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-6%;top:-30%;width:50%;height:160%;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
+.cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.cta h2{font-size:var(--fs-h2)}
+.cta p{margin-top:14px;max-width:46ch;color:rgba(255,255,255,.9)}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:200px;border:0;padding:18px 20px;border-radius:3px;font-family:'Inter';font-size:1rem;font-weight:600;color:var(--ink)}
+.nl-form input:focus{outline:3px solid var(--ink)}
+.nl-form button{background:var(--ink);color:#fff;border:0;cursor:pointer;font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;font-size:1rem;padding:0 30px;border-radius:3px;transition:transform .25s var(--ease)}
+.nl-form button:hover{transform:translateY(-3px)}
+.nl-note{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.78)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:clamp(60px,9vw,100px) 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand .brand{font-size:2.2rem;margin-bottom:18px}
+.foot-brand address{font-style:normal;color:var(--muted-light);font-size:.92rem;line-height:1.9}
+.foot-brand address a:hover{color:var(--orange)}
+.foot-col h4{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted-light);font-size:.92rem;padding:6px 0;transition:color .2s,padding-left .25s var(--ease)}
+.foot-col a:hover{color:#fff;padding-left:6px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:30px;font-size:.82rem;color:var(--muted)}
+.foot-bottom .badges{display:flex;gap:14px}
+.foot-bottom .badge{font-size:.7rem;font-weight:700;letter-spacing:.12em;border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:2px;color:var(--muted-light)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+
+@media(max-width:1024px){
+  .calc-card{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:0}
+  .pstep{padding:0 0 28px 60px}
+  .pstep::before{top:0;bottom:0;left:22px;right:auto;width:2px;height:auto}
+  .pstep:first-child::before{top:22px}
+  .pstep:last-child::before{bottom:auto;height:46px}
+  .pstep .dot{position:absolute;left:0;top:0;margin:0}
+  .cta-inner{grid-template-columns:1fr;gap:30px}.foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}.burger{display:flex}
+  .svc-grid{grid-template-columns:1fr;gap:0}
+}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.hero h1 .line span{transform:none}.reveal{opacity:1;transform:none}.deal-row{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="index.html" class="brand">Cubion<span class="dot"></span></a>
+  <nav class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#rechner">Flächenrechner</a>
+    <a href="referenzen.html">Referenzen</a>
+  </nav>
+  <a href="#kontakt" class="nav-cta">Kontakt</a>
+  <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Start</a>
+  <a href="#leistungen">Leistungen</a>
+  <a href="#rechner">Flächenrechner</a>
+  <a href="referenzen.html">Referenzen</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('https://cubion.de/wp-content/uploads/2024/02/Mercartor-One3.jpg')"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Start</a> / Leistungen / Vermietung</div>
+    <h1 class="display">
+      <span class="line"><span>Wir vermieten.</span></span>
+      <span class="line"><span class="accent">Beide Seiten.</span></span>
+    </h1>
+    <p class="hero-sub">Maßgeschneiderte Beratung, fundierte Marktanalysen und die richtigen Fachleute. Für Mieter, die Fläche suchen. Und Vermieter, die Fläche an den Markt bringen.</p>
+    <div class="hero-ctas">
+      <a class="btn primary" href="#rechner">Flächenrechner starten</a>
+      <a class="btn ghost" href="#leistungen">Leistungen ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="leistungen">
+  <div class="wrap">
+    <div class="svc-head">
+      <span class="eyebrow" style="left:50%;transform:translateX(-50%);position:relative">Leistungen Vermietung</span>
+      <h2 class="display">Was wir für Sie tun</h2>
+      <div class="aud" id="aud" role="tablist" aria-label="Zielgruppe wählen">
+        <span class="pill" id="pill"></span>
+        <button class="active" data-mode="mieter" role="tab">Für Mieter</button>
+        <button data-mode="vermieter" role="tab">Für Vermieter</button>
+      </div>
+    </div>
+    <div class="svc-panel" id="svcPanel">
+      <p class="svc-lead" id="svcLead"></p>
+      <div class="svc-grid" id="svcGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLÄCHENRECHNER -->
+<section class="calc" id="rechner">
+  <div class="calc-glow"></div>
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Tool</span>
+      <h2 class="display">Flächenrechner</h2>
+      <p>Ermitteln Sie in zwei Schritten Ihren künftigen Flächenbedarf und mögliche Kosteneinsparungen. Eine erste Orientierung, in Sekunden.</p>
+    </div>
+    <div class="calc-card reveal d1">
+      <div class="calc-inputs">
+        <div>
+          <div class="step-no"><span class="n">01</span> Bedarf</div>
+          <div class="fieldlabel"><span class="nm">Mitarbeitende</span><span class="val" id="empVal">25</span></div>
+          <input type="range" id="emp" min="1" max="250" step="1" value="25">
+          <div class="fieldlabel" style="margin-top:22px"><span class="nm">Arbeitsweise</span></div>
+          <div class="modes" id="modes">
+            <button class="mode" data-f="1"><span class="mt">Präsenz</span><span class="md">1 Platz / Person</span></button>
+            <button class="mode active" data-f="0.7"><span class="mt">Hybrid</span><span class="md">~0,7 Plätze / Person</span></button>
+            <button class="mode" data-f="0.5"><span class="mt">Desk-Sharing</span><span class="md">~0,5 Plätze / Person</span></button>
+          </div>
+        </div>
+        <div>
+          <div class="step-no"><span class="n">02</span> Kosten</div>
+          <div class="fieldlabel"><span class="nm">Mietpreis</span><span class="val" id="rateVal">12,00 €/m²</span></div>
+          <input type="range" id="rate" min="6" max="30" step="0.5" value="12">
+        </div>
+      </div>
+      <div class="calc-result">
+        <span class="rlabel">Geschätzter Flächenbedarf</span>
+        <div class="big"><span id="area">0</span><span class="u">m²</span></div>
+        <div class="sub" id="wsLine">≈ 0 Arbeitsplätze</div>
+        <div class="costline">
+          <div><div class="k">pro Monat</div><div class="v" id="costM">0 €</div></div>
+          <div><div class="k">pro Jahr</div><div class="v" id="costY">0 €</div></div>
+        </div>
+        <div class="save" id="save" style="display:none"></div>
+        <a class="tool" href="https://flaechenrechner.cubion.de/public/naw" target="_blank" rel="noopener">Detaillierte Berechnung →</a>
+      </div>
+    </div>
+    <p class="calc-note">Richtwert auf Basis ca. 9 m² je Arbeitsplatz inkl. anteiliger Verkehrsfläche zzgl. 35 % für Besprechung, Sozial- und Nebenflächen. Ersetzt keine individuelle Flächenplanung.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Ablauf</span>
+      <h2 class="display">So gehen wir vor</h2>
+      <p style="color:var(--steel-gray);margin-top:10px">Ihr Weg <span class="who" id="procWho">als Mieter</span> – von der ersten Analyse bis zur Unterschrift.</p>
+    </div>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<!-- DEALS -->
+<section class="deals">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal"><span class="eyebrow">Auszug Abschlüsse</span><h2 class="display" style="margin-top:12px">Vermittelt</h2></div>
+      <a class="reveal d1" href="referenzen.html">Alle Referenzen →</a>
+    </div>
+  </div>
+  <div class="deal-row" id="dealRow"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="contact-bg" style="background-image:url('https://cubion.de/wp-content/uploads/2025/08/Kontakt-CUBION_dunkel.jpg')"></div>
+  <div class="contact-inner">
+    <span class="eyebrow" style="color:#fff">Kontakt</span>
+    <h2 class="display" style="margin-top:14px">Bereit für den<br>nächsten Schritt?</h2>
+    <p>Unser Team freut sich über Ihren Anruf oder Ihre E-Mail. Ob Mieter oder Vermieter, das Erstgespräch ist unverbindlich.</p>
+    <div class="lines">
+      <a class="btn primary" href="tel:+49208970670">+49 208 970 670</a>
+      <a class="btn ghost" href="mailto:info@cubion.de">info@cubion.de</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:#fff">Newsletter</span>
+      <h2 class="display" style="margin-top:14px">Bleiben Sie<br>am Markt.</h2>
+      <p>Marktberichte, Neuvermietungen und Standortanalysen direkt ins Postfach. Wir nutzen Ihre Adresse ausschließlich für den Versand des Newsletters.</p>
+    </div>
+    <div class="reveal d1">
+      <form class="nl-form" onsubmit="this.querySelector('input').value='';alert('Danke! (Demo-Formular – an CleverReach anbinden)');return false">
+        <input type="email" placeholder="E-Mail-Adresse" required aria-label="E-Mail-Adresse">
+        <button type="submit">Anmelden</button>
+      </form>
+      <p class="nl-note">Mit der Anmeldung stimmen Sie dem Erhalt des Newsletters zu. Abmeldung jederzeit möglich.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">Cubion<span class="dot"></span></div>
+        <address>
+          CUBION Immobilien AG<br>Chartered Surveyors<br>Akazienallee 65<br>45478 Mülheim an der Ruhr<br>
+          <a href="tel:+49208970670">Fon +49 208 970 670</a><br>Fax +49 208 970 6722<br>
+          <a href="mailto:info@cubion.de">info@cubion.de</a>
+        </address>
+      </div>
+      <div class="foot-col"><h4>Leistungen</h4><a href="vermietung.html">Vermietung</a><a href="#">Verkauf</a><a href="buerovermietung.html">Bürovermietung</a><a href="#">Investment</a></div>
+      <div class="foot-col"><h4>Unternehmen</h4><a href="index.html#unternehmen">Über CUBION</a><a href="team.html">Team</a><a href="#">Karriere</a><a href="referenzen.html">Referenzen</a></div>
+      <div class="foot-col"><h4>Service</h4><a href="index.html#objektsuche">Objektsuche</a><a href="#">Marktberichte</a><a href="#rechner">Flächenrechner</a><a href="#kontakt">Kontakt</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CUBION Immobilien AG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a></span>
+      <div class="badges"><span class="badge">RICS</span><span class="badge">NAI PARTNERS GERMANY</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav + mobile */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-label',o?'Menü schließen':'Menü öffnen')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* ---------- DATEN ---------- */
+const SERVICES={
+  mieter:{
+    lead:'Sie suchen Fläche. Wir vertreten <b>ausschließlich Ihre Interessen</b> – von der Strategie bis zum Einzug.',
+    items:['Marktanalysen','Immobilienstrategie & Anforderungsprofil','Passende Objekte lokalisieren & anbieten','Begleitung & Beratung bei Besichtigungen','Technische & kaufmännische Erstberatung','Unterstützung bei Mietpreisverhandlungen','Bauunternehmer, Architekten & Statiker vermitteln','Untervermietung Ihrer Bestandsimmobilie','Tenant Representation','Mietvertragsprüfung','Workplace-Beratung mit Partnerunternehmen']
+  },
+  vermieter:{
+    lead:'Sie haben Fläche. Wir bringen sie <b>an den Markt</b> – mit Research, Vermarktung und den richtigen Mietern.',
+    items:['Marktresearch','Mietpreiseinschätzung','Strategieberatung für Ihre Immobilie','Wettbewerbsanalyse & -vergleich','Drohnenaufnahmen Ihres Objekts','Professionelle & innovative Vermarktungskonzepte','Platzierung in Portalen & bei Suchkunden','Ermittlung & Selektion passender Interessenten','Bonitätsabfrage der Interessenten','Durchführung von Besichtigungen','Begleitung der Mietvertragsverhandlungen','Koordination von Drittmaklern','Bauunternehmer, Architekten & Statiker vermitteln']
+  }
+};
+const PROCESS={
+  mieter:[
+    ['Anforderungsprofil','Bedarf, Budget und Standortkriterien gemeinsam schärfen.'],
+    ['Marktanalyse & Auswahl','Passende Objekte recherchieren, sichten und kuratieren.'],
+    ['Besichtigung & Beratung','Vor Ort begleiten, technisch und kaufmännisch einordnen.'],
+    ['Verhandlung','Mietpreis und Konditionen in Ihrem Sinne verhandeln.'],
+    ['Vertrag & Einzug','Mietvertrag prüfen, Übergabe und Start begleiten.']
+  ],
+  vermieter:[
+    ['Research & Preis','Marktresearch und realistische Mietpreiseinschätzung.'],
+    ['Vermarktungskonzept','Strategie, Drohnenaufnahmen und Materialien erstellen.'],
+    ['Platzierung','In Portalen und bei aktiven Suchkunden positionieren.'],
+    ['Auswahl & Bonität','Interessenten selektieren, Bonität prüfen, besichtigen.'],
+    ['Abschluss','Vertragsverhandlung begleiten bis zur Unterschrift.']
+  ]
+};
+const CHECK='<svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+let mode='mieter';
+const svcGrid=document.getElementById('svcGrid');
+const svcLead=document.getElementById('svcLead');
+const svcPanel=document.getElementById('svcPanel');
+const stepsEl=document.getElementById('steps');
+const procWho=document.getElementById('procWho');
+
+function renderServices(){
+  const s=SERVICES[mode];
+  svcLead.innerHTML=s.lead;
+  svcGrid.innerHTML=s.items.map(t=>`<div class="svc-item"><span class="mk">${CHECK}</span><span class="tx">${t}</span></div>`).join('');
+}
+function renderProcess(){
+  stepsEl.innerHTML=PROCESS[mode].map((s,i)=>`<div class="pstep"><div class="dot">0${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+  procWho.textContent=mode==='mieter'?'als Mieter':'als Vermieter';
+}
+function swap(){
+  svcPanel.classList.add('swap');stepsEl.classList.add('swap');
+  setTimeout(()=>{renderServices();renderProcess();svcPanel.classList.remove('swap');stepsEl.classList.remove('swap');},340);
+}
+renderServices();renderProcess();
+
+/* Audience toggle + sliding pill */
+const aud=document.getElementById('aud');
+const pill=document.getElementById('pill');
+const audBtns=[...aud.querySelectorAll('button')];
+function movePill(){
+  const active=aud.querySelector('button.active');
+  pill.style.width=active.offsetWidth+'px';
+  pill.style.transform='translateX('+(active.offsetLeft-6)+'px)';
+}
+audBtns.forEach(b=>b.addEventListener('click',()=>{
+  if(b.classList.contains('active'))return;
+  audBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  mode=b.dataset.mode;movePill();swap();
+}));
+addEventListener('load',movePill);addEventListener('resize',movePill);movePill();
+
+/* ---------- FLÄCHENRECHNER ---------- */
+const AREA_WS=9, COMMUNAL=0.35;
+const emp=document.getElementById('emp'),rate=document.getElementById('rate');
+const empVal=document.getElementById('empVal'),rateVal=document.getElementById('rateVal');
+const areaEl=document.getElementById('area'),wsLine=document.getElementById('wsLine');
+const costM=document.getElementById('costM'),costY=document.getElementById('costY'),saveEl=document.getElementById('save');
+let factor=0.7;
+const nf=n=>Math.round(n).toLocaleString('de-DE');
+const eur=n=>Math.round(n).toLocaleString('de-DE')+' €';
+function area(e,f){const ws=Math.ceil(e*f);const base=ws*AREA_WS;const total=Math.round(base*(1+COMMUNAL)/5)*5;return{ws,total}}
+function compute(){
+  const e=+emp.value, r=+rate.value;
+  const {ws,total}=area(e,factor);
+  empVal.textContent=e;
+  rateVal.textContent=r.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €/m²';
+  areaEl.textContent=nf(total);
+  wsLine.textContent='≈ '+nf(ws)+' Arbeitsplätze · '+nf(e)+' Mitarbeitende';
+  costM.textContent=eur(total*r);
+  costY.textContent=eur(total*r*12);
+  const pres=area(e,1).total;
+  const savM2=pres-total;
+  if(savM2>0){
+    saveEl.style.display='block';
+    saveEl.innerHTML='Einsparpotenzial ggü. reiner Präsenz: <b>~'+nf(savM2)+' m²</b> · rund <b>'+eur(savM2*r*12)+'/Jahr</b>';
+  } else saveEl.style.display='none';
+}
+emp.addEventListener('input',compute);
+rate.addEventListener('input',compute);
+document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');factor=+b.dataset.f;compute();
+}));
+compute();
+
+/* ---------- DEALS MARQUEE ---------- */
+const B='https://cubion.de/wp-content/uploads/';
+const C={Büro:'#14110F',Logistik:'var(--steel-gray)'};
+const DEALS=[
+  {c:'Büro',t:'Essen: rd. 270 m² an ZENZ Patentanwälte',img:'2026/06/CUBION-Deal-Huyssenallee-15-768x551.jpg'},
+  {c:'Büro',t:'Aachen: rd. 2.000 m² an BIG direkt gesund',img:'2026/04/Aachen-CUBION-vermittelt-BIG-direkt-gesund-rund-2.000-m%C2%B2-Buero-und-Kollaborationsflaechen-im-Quartier-Nord-web-768x512.jpg'},
+  {c:'Büro',t:'Dortmund: 670 m² am Sebrathweg 1–9',img:'2026/04/Dortmund-CUBION-vermittelt-670-m%C2%B2-Bueroflaeche-am-Sebrathweg-1%E2%80%939-768x432.jpg'},
+  {c:'Büro',t:'Duisburg: rd. 1.300 m² Businesspark Asterlagen',img:'2026/03/Dr.-Alfred-Herrhausen-Allee-9-11-Deal-CUBION-web-768x432.jpg'},
+  {c:'Büro',t:'Duisburg: rd. 735 m² am Innenhafen an HOLINGER',img:'2026/01/CUBION-Deal-Schifferstrasse-166-1-768x432.jpg'},
+  {c:'Büro',t:'Essen: rd. 345 m² EUROPA-CENTER Trineo an UKA',img:'2026/01/Am-Europa-Center-4-in-Essen-Deal-CUBION-768x576.jpg'},
+  {c:'Logistik',t:'Duisburg: rd. 10.000 m² Freilager an CONDACO',img:'2025/10/CUBION-vermittelte-rund-10.000-m%C2%B2-Freilagerflaeche-in-Duisburg-an-CONDACO.-Der-Spezialist-fuer-Containerloesungen-erweitert-damit-seine-Lager-und-Logistikflaechen-768x512.jpg'},
+  {c:'Logistik',t:'Düsseldorf: 2.400 m² an The Padel Company',img:'2025/09/Duesseldorf-CUBION-vermittelt-2.400-m%C2%B2-an-The-Padel-Company-im-SEGRO-Park-Flingern-768x513.jpg'},
+  {c:'Logistik',t:'Isselburg: 25.000 m² Freilager an Rudolph Logistik',img:'2025/03/CUBION-Deal-Isselburg-Freilagerflaeche_web-768x432.jpg'},
+  {c:'Logistik',t:'Gelsenkirchen: rd. 30.000 m² Logistik an FineCom',img:'CUBION-30.000-qm-Deal_-scaled.jpg'},
+  {c:'Logistik',t:'Essen: rd. 2.000 m² Halle an Element Boulders',img:'CUBION-Deal-Haedenkampstrasse-73-Essen-scaled.jpg'},
+  {c:'Büro',t:'Gelsenkirchen: 2.100 m² Büro- und Hallenfläche',img:'2026/01/Hamburger-Strasse-11-Deal-CUBION-768x432.jpg'}
+];
+document.getElementById('dealRow').innerHTML=[...DEALS,...DEALS].map(d=>
+  `<article class="deal"><div class="ph"><span class="cat" style="background:${C[d.c]}">${d.c==='Logistik'?'Logistics':'Büro'}</span><img src="${B}${d.img}" alt="${d.t}" loading="lazy"></div><div class="meta">${d.t}</div></article>`).join('');
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
