@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bürovermietung Metropole Ruhr – CUBION Immobilien AG</title>
+<meta name="description" content="Bürovermietung Ruhrgebiet. Mietpreise, Lagen und Analysen zu Büroflächen in Essen, Duisburg, Bochum & Dortmund.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14110F;--charcoal:#1B1714;--steel:#2A2522;--paper:#FFFFFF;--bone:#F4F3F0;
+  --line:#E4E2DD;--orange:#F05A28;--orange-2:#FF6B35;--concrete:#9A938C;--steel-gray:#5E5852;
+  --muted:#8A837C;--muted-light:rgba(255,255,255,.62);
+  --maxw:1280px;--gut:clamp(20px,5vw,72px);--ease:cubic-bezier(.16,1,.3,1);
+  --fs-mega:clamp(2.8rem,9vw,9rem);--fs-h2:clamp(2.2rem,6vw,5.2rem);--fs-h3:clamp(1.5rem,3vw,2.4rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--orange);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.28em;display:inline-flex;align-items:center;gap:.7em;color:var(--orange)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);display:inline-block}
+
+/* NAV */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);transition:background .45s var(--ease),padding .45s var(--ease),box-shadow .45s var(--ease)}
+header.nav.scrolled{background:rgba(20,17,15,.92);backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.55rem;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:.5ch}
+.brand .dot{width:.42em;height:.42em;background:var(--orange);display:inline-block;margin-bottom:.18em;transform:skewX(-12deg)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);font-size:.86rem;font-weight:500;position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--orange);color:#fff;padding:11px 20px;border-radius:2px;transition:transform .25s var(--ease),background .25s}
+.nav-cta:hover{background:var(--orange-2);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:101}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s var(--ease)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:var(--gut);transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Anton';font-size:clamp(1.8rem,7vw,2.8rem);text-transform:uppercase;color:#fff;line-height:1.15;transition:color .2s,padding-left .3s var(--ease)}
+.mobile-menu a:hover{color:var(--orange);padding-left:14px}
+
+/* HERO */
+.hero{position:relative;min-height:78svh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:150px var(--gut) 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:grayscale(.3) brightness(.4)}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(to top,var(--ink) 6%,rgba(20,17,15,.4) 60%,rgba(20,17,15,.7))}
+.hero-glow{position:absolute;z-index:0;width:55vw;height:55vw;right:-15vw;top:-18vw;background:radial-gradient(circle,rgba(240,90,40,.3),transparent 62%);filter:blur(20px);animation:glowPulse 9s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.crumb{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-bottom:22px}
+.crumb a:hover{color:var(--orange)}
+.hero h1{font-size:var(--fs-mega);margin-bottom:.25em}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.12s}
+.hero h1 .accent{color:var(--orange)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-sub{max-width:54ch;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--muted-light);opacity:0;animation:fadeUp .8s var(--ease) .5s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* QUICK CITY LINKS */
+.quick{background:var(--orange);color:#fff;position:relative}
+.quick::before{content:"";position:absolute;top:-40px;left:0;width:100%;height:40px;background:var(--orange);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.quick-inner{padding:30px 0;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.quick .lbl{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.quick .cities{display:flex;gap:8px;flex-wrap:wrap}
+.quick .cities a{font-family:'Anton';text-transform:uppercase;font-size:1.05rem;padding:7px 16px;border:1.5px solid rgba(255,255,255,.45);border-radius:2px;transition:.25s var(--ease)}
+.quick .cities a:hover{background:#fff;color:var(--orange);border-color:#fff;transform:translateY(-2px)}
+.quick .cities a.soft{border-color:rgba(255,255,255,.2);font-family:'Inter';font-weight:600;font-size:.9rem;text-transform:none;color:rgba(255,255,255,.8)}
+
+/* STATS */
+.stats{background:var(--ink);color:#fff;padding:clamp(70px,10vw,120px) 0}
+.stats .head{margin-bottom:48px}
+.stats h2{font-size:var(--fs-h2);margin-top:16px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:0 24px;border-left:1px solid rgba(255,255,255,.16)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat .num{font-family:'Anton';font-size:clamp(2.6rem,5vw,4.4rem);line-height:1;color:var(--orange)}
+.stat .num .u{font-size:.4em;font-weight:400;color:#fff;margin-left:.15em}
+.stat .lab{margin-top:10px;font-size:.84rem;font-weight:600;letter-spacing:.03em;color:var(--muted-light)}
+
+/* STÄDTE */
+.staedte{padding:clamp(70px,10vw,120px) 0;background:var(--bone)}
+.staedte .head{margin-bottom:50px}
+.staedte h2{font-size:var(--fs-h2);margin-top:16px}
+.pop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pop{background:var(--paper);border-radius:4px;padding:30px 26px;position:relative;overflow:hidden;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.pop:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.pop .bar{position:absolute;left:0;top:0;width:6px;height:100%}
+.pop h3{font-family:'Anton';text-transform:uppercase;font-size:1.7rem;line-height:1}
+.pop .num{font-family:'Anton';font-size:clamp(2.2rem,3.5vw,3rem);line-height:1;margin-top:18px}
+.pop .cap{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* MIETPREIS-EXPLORER */
+.explorer{padding:clamp(70px,10vw,120px) 0;background:var(--paper)}
+.explorer .head{margin-bottom:42px;max-width:60ch}
+.explorer h2{font-size:var(--fs-h2);margin:16px 0 14px}
+.explorer .head p{color:var(--steel-gray)}
+.ex-card{border:1px solid var(--line);border-radius:6px;overflow:hidden;--accent:var(--orange)}
+.tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{flex:1;min-width:130px;padding:20px 18px;background:var(--bone);border:0;border-right:1px solid var(--line);cursor:pointer;font-family:'Anton';text-transform:uppercase;font-size:1.15rem;color:var(--muted);position:relative;transition:.25s;white-space:nowrap}
+.tab:last-child{border-right:0}
+.tab::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--uc,var(--orange));transition:width .3s var(--ease)}
+.tab.active{background:var(--paper);color:var(--ink)}
+.tab.active::after{width:100%}
+.ex-body{display:grid;grid-template-columns:260px 1fr}
+.zones{border-right:1px solid var(--line);max-height:540px;overflow-y:auto;padding:10px}
+.zone{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:13px 14px;background:none;border:0;border-radius:4px;cursor:pointer;font-family:'Inter';font-size:.92rem;font-weight:600;color:var(--ink);transition:background .2s}
+.zone:hover{background:var(--bone)}
+.zone.active{background:var(--ink);color:#fff}
+.zone .ind{font-size:.74rem;font-weight:700;color:var(--accent)}
+.zone.active .ind{color:#fff}
+.panel{padding:clamp(24px,3vw,40px)}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.panel-head .ztag{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.6em}
+.panel-head .ztag .sq{width:13px;height:13px;background:var(--accent);transform:skewX(-12deg);display:inline-block}
+.panel-head h3{font-family:'Anton';text-transform:uppercase;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:.95;margin-top:8px}
+.panel-head .top{text-align:right}
+.panel-head .top .v{font-family:'Anton';font-size:clamp(2rem,4vw,3rem);color:var(--accent);line-height:1}
+.panel-head .top .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tier{display:grid;grid-template-columns:150px 1fr 132px;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.tier:last-child{border-bottom:0}
+.tier .tname{font-weight:700;font-size:.96rem}
+.tier .tdesc{font-size:.74rem;color:var(--muted);font-weight:500}
+.tier .track{position:relative;height:34px;border-radius:3px;background:linear-gradient(90deg,var(--line) 0 1px,transparent 1px);background-size:25% 100%;border-right:1px solid var(--line)}
+.tier .seg{position:absolute;top:50%;transform:translateY(-50%);height:12px;border-radius:6px;background:var(--accent);transition:left .5s var(--ease),width .5s var(--ease)}
+.tier .seg.t0{opacity:1}.tier .seg.t1{opacity:.78}.tier .seg.t2{opacity:.56}.tier .seg.t3{opacity:.4}
+.tier .price{text-align:right;font-weight:700;font-size:.92rem;font-variant-numeric:tabular-nums}
+.tier .price.na{color:var(--muted);font-weight:500}
+.ruler{display:grid;grid-template-columns:150px 1fr 132px;gap:18px;margin-top:14px}
+.ruler .marks{grid-column:2;display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.ex-foot{font-size:.78rem;color:var(--muted);padding:0 clamp(24px,3vw,40px) 28px}
+
+/* BERICHT */
+.bericht{padding:clamp(70px,10vw,120px) 0;background:var(--ink);color:#fff}
+.bericht-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.bericht-img{position:relative;border-radius:4px;overflow:hidden}
+.bericht-img::before{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.1);z-index:2;pointer-events:none}
+.bericht-img img{width:100%;transition:transform .7s var(--ease)}
+.bericht-img:hover img{transform:scale(1.05)}
+.bericht h2{font-size:var(--fs-h2);margin:16px 0 18px}
+.bericht p{color:var(--muted-light);max-width:48ch;margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:.6ch;background:var(--orange);color:#fff;font-family:'Anton';text-transform:uppercase;letter-spacing:.03em;font-size:1.05rem;padding:15px 28px;border-radius:3px;transition:transform .25s var(--ease),background .25s}
+.btn:hover{background:var(--orange-2);transform:translateY(-3px)}
+
+/* MEHR CUBION */
+.more{padding:clamp(70px,10vw,120px) 0;background:var(--bone)}
+.more h2{font-size:var(--fs-h2);margin-bottom:44px}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mcard{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:34px 30px;position:relative;overflow:hidden;transition:transform .35s var(--ease)}
+.mcard::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:0;background:var(--orange);transition:height .35s var(--ease);z-index:0}
+.mcard:hover{transform:translateY(-6px)}
+.mcard:hover::after{height:5px}
+.mcard .k{font-family:'Anton';text-transform:uppercase;font-size:1.5rem;margin-bottom:12px}
+.mcard p{color:var(--steel-gray);font-size:.94rem;margin-bottom:20px}
+.mcard .lnk{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:inline-flex;gap:.5ch}
+
+/* NEWSLETTER */
+.cta{position:relative;background:var(--orange);color:#fff;padding:clamp(70px,11vw,130px) 0;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-6%;top:-30%;width:50%;height:160%;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
+.cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.cta h2{font-size:var(--fs-h2)}
+.cta p{margin-top:14px;max-width:46ch;color:rgba(255,255,255,.9)}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:200px;border:0;padding:18px 20px;border-radius:3px;font-family:'Inter';font-size:1rem;font-weight:600;color:var(--ink)}
+.nl-form input:focus{outline:3px solid var(--ink)}
+.nl-form button{background:var(--ink);color:#fff;border:0;cursor:pointer;font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;font-size:1rem;padding:0 30px;border-radius:3px;transition:transform .25s var(--ease)}
+.nl-form button:hover{transform:translateY(-3px)}
+.nl-note{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.78)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:clamp(60px,9vw,100px) 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand .brand{font-size:2.2rem;margin-bottom:18px}
+.foot-brand address{font-style:normal;color:var(--muted-light);font-size:.92rem;line-height:1.9}
+.foot-brand address a:hover{color:var(--orange)}
+.foot-col h4{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted-light);font-size:.92rem;padding:6px 0;transition:color .2s,padding-left .25s var(--ease)}
+.foot-col a:hover{color:#fff;padding-left:6px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:30px;font-size:.82rem;color:var(--muted)}
+.foot-bottom .badges{display:flex;gap:14px}
+.foot-bottom .badge{font-size:.7rem;font-weight:700;letter-spacing:.12em;border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:2px;color:var(--muted-light)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+@media(max-width:1024px){
+  .pop-grid{grid-template-columns:repeat(2,1fr)}
+  .more-grid{grid-template-columns:1fr}
+  .bericht-inner{grid-template-columns:1fr;gap:30px}
+  .cta-inner{grid-template-columns:1fr;gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:30px 0}
+  .stat{padding:14px 24px}.stat:nth-child(3){border-left:0;padding-left:24px}
+  .ex-body{grid-template-columns:1fr}
+  .zones{max-height:none;border-right:0;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;padding:10px 10px 14px}
+  .zone{flex:0 0 auto;flex-direction:column;align-items:flex-start;gap:2px;min-width:140px}
+  .tier{grid-template-columns:1fr;gap:8px}
+  .tier .price{text-align:left}
+  .ruler{display:none}
+}
+@media(max-width:560px){
+  .pop-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .hero h1 .line span{transform:none}.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="index.html" class="brand">Cubion<span class="dot"></span></a>
+  <nav class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="#staedte">Städte</a>
+    <a href="#mietpreise">Mietpreise</a>
+    <a href="#bericht">Marktbericht</a>
+  </nav>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt</a>
+  <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Start</a>
+  <a href="#staedte">Städte</a>
+  <a href="#mietpreise">Mietpreise</a>
+  <a href="#bericht">Marktbericht</a>
+  <a href="index.html#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('https://cubion.de/wp-content/uploads/2026/05/Bueromarkt-ruhrgebiet-2026.jpg')"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Start</a> / Märkte &amp; Preise / Bürovermietung</div>
+    <h1 class="display">
+      <span class="line"><span>Bürovermietung</span></span>
+      <span class="line"><span class="accent">Metropole Ruhr</span></span>
+    </h1>
+    <p class="hero-sub">Ein umfassender Überblick über den Bürovermietungsmarkt einer der dynamischsten Regionen Deutschlands. Tauchen Sie gezielt in die Büromärkte der urbanen Zentren ein.</p>
+  </div>
+</section>
+
+<!-- QUICK CITY LINKS -->
+<section class="quick">
+  <div class="wrap quick-inner">
+    <span class="lbl">Per Klick zu den Büromärkten</span>
+    <div class="cities">
+      <a href="#mietpreise" data-city="dortmund">Dortmund</a>
+      <a href="#mietpreise" data-city="bochum">Bochum</a>
+      <a href="#mietpreise" data-city="essen">Essen</a>
+      <a href="#mietpreise" data-city="duisburg">Duisburg</a>
+      <a href="#mietpreise" class="soft">Mülheim</a>
+      <a href="#mietpreise" class="soft">Oberhausen</a>
+      <a href="#mietpreise" class="soft">Gelsenkirchen</a>
+      <a href="#mietpreise" class="soft">Herne</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Überblick 2025</span>
+      <h2 class="display">Die Metropole<br>Ruhr in Zahlen</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-count="4435" data-unit=" km²">0</div><div class="lab">Fläche der Metropolregion</div></div>
+      <div class="stat reveal d1"><div class="num" data-count="5.13" data-decimals="2" data-unit=" Mio.">0</div><div class="lab">Einwohnerinnen und Einwohner</div></div>
+      <div class="stat reveal d2"><div class="num" data-count="1.87" data-decimals="2" data-unit=" Mio.">0</div><div class="lab">Sozialvers. Beschäftigte</div></div>
+      <div class="stat reveal d3"><div class="num" data-count="78" data-unit=" %">0</div><div class="lab">Dienstleistungsquote</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STÄDTE -->
+<section class="staedte" id="staedte">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Die vier größten Städte</span>
+      <h2 class="display">Gemessen an der<br>Einwohnerzahl</h2>
+    </div>
+    <div class="pop-grid">
+      <div class="pop reveal"><span class="bar" style="background:var(--concrete)"></span><h3>Bochum</h3><div class="num" data-count="376000">0</div><div class="cap">Einwohner</div></div>
+      <div class="pop reveal d1"><span class="bar" style="background:#111"></span><h3>Dortmund</h3><div class="num" data-count="612000">0</div><div class="cap">Einwohner</div></div>
+      <div class="pop reveal d2"><span class="bar" style="background:var(--orange)"></span><h3>Duisburg</h3><div class="num" data-count="506000">0</div><div class="cap">Einwohner</div></div>
+      <div class="pop reveal d3"><span class="bar" style="background:var(--steel-gray)"></span><h3>Essen</h3><div class="num" data-count="597000">0</div><div class="cap">Einwohner</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MIETPREIS-EXPLORER -->
+<section class="explorer" id="mietpreise">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Mietpreise nach Lage</span>
+      <h2 class="display">Was kostet der<br>Quadratmeter?</h2>
+      <p>Aktuelle Bürospitzen- und Durchschnittsmieten pro Lage und Ausstattungsqualität. Stadt wählen, Lage antippen, Preisspanne ablesen.</p>
+    </div>
+    <div class="ex-card reveal d1">
+      <div class="tabs" id="tabs"></div>
+      <div class="ex-body">
+        <div class="zones" id="zones"></div>
+        <div class="panel" id="panel"></div>
+      </div>
+      <p class="ex-foot">Angaben in €/m² Nettokaltmiete. „Projekt" = Neubau/Projektentwicklung, gefolgt von hoher, mittlerer und einfacher Ausstattungsqualität. Werte aus dem CUBION-Research, Stand 2025/2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BERICHT -->
+<section class="bericht" id="bericht">
+  <div class="wrap bericht-inner">
+    <div class="bericht-img reveal">
+      <img src="https://cubion.de/wp-content/uploads/2024/03/Bueromarktbericht-Ruhrgebiet-2024-CUBION.jpg" alt="Büromarktbericht Ruhrgebiet" loading="lazy">
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">Vertiefung</span>
+      <h2 class="display">Der ganze<br>Büromarkt</h2>
+      <p>Flächenumsatz, Leerstand, Spitzen- und Durchschnittsmieten, Prognosen: Unser Büromarktbericht Ruhrgebiet bündelt das gesamte Research zur Metropole Ruhr.</p>
+      <a class="btn" href="index.html#kontakt">Zu den Marktberichten →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEHR CUBION -->
+<section class="more">
+  <div class="wrap">
+    <h2 class="display reveal">Mehr CUBION</h2>
+    <div class="more-grid">
+      <a class="mcard reveal" href="index.html#objektsuche">
+        <div class="k">Objektsuche</div>
+        <p>Büro-, Praxis-, Hallen- und Logistikflächen im Ruhrgebiet. Einfach die passende Gewerbeimmobilie finden.</p>
+        <span class="lnk">Objekte ansehen →</span>
+      </a>
+      <a class="mcard reveal d1" href="index.html#leistungen">
+        <div class="k">Leistungen</div>
+        <p>Erstklassiger Vermietungsservice für Gewerbeimmobilien. Individuelle Beratung für Mieter und Vermieter.</p>
+        <span class="lnk">Leistungen entdecken →</span>
+      </a>
+      <a class="mcard reveal d2" href="index.html#kontakt">
+        <div class="k">Kontakt</div>
+        <p>Interesse geweckt? Kontaktieren Sie uns für ein erstes, unverbindliches Gespräch bei gutem Kaffee.</p>
+        <span class="lnk">Gespräch vereinbaren →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="cta" id="kontakt">
+  <div class="wrap cta-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:#fff">Newsletter</span>
+      <h2 class="display" style="margin-top:14px">Bleiben Sie<br>am Markt.</h2>
+      <p>Marktberichte, Neuvermietungen und Standortanalysen direkt ins Postfach. Wir nutzen Ihre Adresse ausschließlich für den Versand des Newsletters.</p>
+    </div>
+    <div class="reveal d1">
+      <form class="nl-form" onsubmit="this.querySelector('input').value='';alert('Danke! (Demo-Formular – an CleverReach anbinden)');return false">
+        <input type="email" placeholder="E-Mail-Adresse" required aria-label="E-Mail-Adresse">
+        <button type="submit">Anmelden</button>
+      </form>
+      <p class="nl-note">Mit der Anmeldung stimmen Sie dem Erhalt des Newsletters zu. Abmeldung jederzeit möglich.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">Cubion<span class="dot"></span></div>
+        <address>
+          CUBION Immobilien AG<br>Chartered Surveyors<br>Akazienallee 65<br>45478 Mülheim an der Ruhr<br>
+          <a href="tel:+49208970670">Fon +49 208 970 670</a><br>Fax +49 208 970 6722<br>
+          <a href="mailto:info@cubion.de">info@cubion.de</a>
+        </address>
+      </div>
+      <div class="foot-col"><h4>Märkte</h4><a href="buerovermietung.html">Bürovermietung</a><a href="#">Industrial &amp; Logistics</a><a href="#">Investment</a><a href="#">Einzelhandel &amp; Gastronomie</a></div>
+      <div class="foot-col"><h4>Unternehmen</h4><a href="index.html#unternehmen">Über CUBION</a><a href="#">Team</a><a href="#">Karriere</a><a href="#">Referenzen</a></div>
+      <div class="foot-col"><h4>Service</h4><a href="index.html#objektsuche">Objektsuche</a><a href="#bericht">Marktberichte</a><a href="#">Neuigkeiten</a><a href="#kontakt">Kontakt</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CUBION Immobilien AG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a></span>
+      <div class="badges"><span class="badge">RICS</span><span class="badge">NAI PARTNERS GERMANY</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav + mobile */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-label',o?'Menü schließen':'Menü öffnen')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* ---------- MIETPREIS-EXPLORER ---------- */
+const TIERS=[
+  {n:'Projekt',d:'Neubau / Projekt'},
+  {n:'Hoch',d:'Hohe Qualität'},
+  {n:'Mittel',d:'Mittlere Qualität'},
+  {n:'Niedrig',d:'Einfache Qualität'}
+];
+const SCALE=32; // €/m² Skala
+const RENT={
+  duisburg:{label:'Duisburg',accent:'#F05A28',zones:[
+    {z:'Innenhafen',t:[[23,26.5],[12.5,15.5],[10.5,12],null]},
+    {z:'Citykern',t:[[22.5,26.5],[12,17.5],[9,11.5],[6,8.5]]},
+    {z:'Duissern',t:[[20,24],[11.5,12.75],[8,11],[6.5,7.5]]},
+    {z:'Neudorf',t:[[20,24],[10.5,12.5],[8,10.5],[6,7.5]]},
+    {z:'Businesspark Niederrhein',t:[[20,24],[9.5,11.5],[7.5,9],[6.5,7]]},
+    {z:'Ruhrort',t:[[20,24],[10,13],[8,10],[6.5,7.5]]},
+    {z:'Hamborn',t:[[20,24],[9,10.5],[7.5,8.5],[6,7]]},
+    {z:'Rheinhausen / Logport',t:[[20,24],[9,10.5],[7.5,8.5],[6,7]]},
+    {z:'GG Großenbaum',t:[[20,24],[9,10.5],[8,9],[6,7]]}
+  ]},
+  essen:{label:'Essen',accent:'#5E5852',zones:[
+    {z:'Citykern',t:[[23.5,30],[11.5,17.5],[9,11],[6.5,8.5]]},
+    {z:'Grüne Mitte',t:[null,[13,15],null,null]},
+    {z:'Westviertel',t:[[21.5,25],[11,15.5],[8.5,10.5],[7.5,8]]},
+    {z:'Süd-West-Viertel',t:[[21.5,27.5],[10,12.5],[7.5,10],[6,7]]},
+    {z:'Südviertel',t:[[22,28.5],[12,18.5],[10,11.5],[8,9.5]]},
+    {z:'Rüttenscheid',t:[[22.5,28.5],[12.5,16],[10,12],[8,9.5]]},
+    {z:'Moltkeviertel',t:[null,[10,12.5],[9,10],[7.5,8.5]]},
+    {z:'Bredeney',t:[[21.5,25.5],[11,13.5],[8.5,10.5],[7,8]]},
+    {z:'GG Ludwig',t:[[20.5,23.5],[9.5,13],[8,9],[6.5,7.5]]},
+    {z:'Büroquartier Essen-Nord',t:[[20,24],[9.5,10.5],[7.5,9],[6,7]]},
+    {z:'Büroquartier Ruhrallee',t:[null,[9.5,11],[8,9],null]},
+    {z:'Gewerbepark M1',t:[null,[10,11.5],[8.5,9.5],[7,8]]},
+    {z:'GG im Teelbruch',t:[[20.5,23.5],[9,10],[7.5,9],[6,7]]},
+    {z:'Zollverein',t:[[21,24.5],[11,12.75],[7,10.5],null]}
+  ]},
+  dortmund:{label:'Dortmund',accent:'#14110F',zones:[
+    {z:'Citykern',t:[[23.5,30],[14,15.5],[10,12.5],[7.5,9]]},
+    {z:'Ausfallstraßen Süd',t:[[21,25],[12,14],[9.5,11.5],null]},
+    {z:'Büroboulevard B1',t:[[22,28],[13,16],[8.5,11.5],null]},
+    {z:'Stadtkrone Ost',t:[null,[13,14.5],[9.5,11.5],null]},
+    {z:'ECO PORT',t:[[21,25],[12,13],[9,10.5],null]},
+    {z:'Technologiepark',t:[[21,25],[11,13],[9,10.5],null]},
+    {z:'Phoenix West',t:[[21,26],[13,17.5],[11,12.5],null]},
+    {z:'Phoenix See',t:[[22,28],[14,16],[12,13.5],null]},
+    {z:'Hafen',t:[[21.5,26.5],[13.5,15.5],null,null]}
+  ]},
+  bochum:{label:'Bochum',accent:'#8A837C',zones:[
+    {z:'Citykern',t:[[22,27.5],[12.5,15.5],[9,12],[6.5,8]]},
+    {z:'Cityrand Süd',t:[[21.5,25],[13.9,15.5],[9,11.5],null]},
+    {z:'Universitätsstraße',t:[[21.5,26.5],[12,14],[9,11.5],null]},
+    {z:'Büropark Springorum',t:[null,null,[9,10.5],null]},
+    {z:'Gesundheitscampus / Uni',t:[[21.5,26],[12.5,14.5],[11,12],null]},
+    {z:'Technologie Quartier',t:[[21.5,26],[12,14],[9.5,11.5],null]},
+    {z:'Trimonte-Park',t:[null,null,[9.5,11.5],null]},
+    {z:'MARK 51°7',t:[[21,26],[14.5,18.5],null,null]}
+  ]}
+};
+const order=['duisburg','essen','dortmund','bochum'];
+const card=document.querySelector('.ex-card');
+const tabsEl=document.getElementById('tabs');
+const zonesEl=document.getElementById('zones');
+const panelEl=document.getElementById('panel');
+let curCity='essen',curZone=0;
+const eur=v=>v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+
+function renderTabs(){
+  tabsEl.innerHTML=order.map(c=>`<button class="tab ${c===curCity?'active':''}" data-city="${c}" style="--uc:${RENT[c].accent}">${RENT[c].label}</button>`).join('');
+  tabsEl.querySelectorAll('.tab').forEach(b=>{
+    b.addEventListener('click',()=>{curCity=b.dataset.city;curZone=0;renderAll()});
+  });
+}
+function renderZones(){
+  const zs=RENT[curCity].zones;
+  zonesEl.innerHTML=zs.map((z,i)=>{
+    const top=topRent(z.t);
+    return `<button class="zone ${i===curZone?'active':''}" data-i="${i}"><span>${z.z}</span><span class="ind">${top?eur(top):'—'}</span></button>`;
+  }).join('');
+  zonesEl.querySelectorAll('.zone').forEach(b=>b.addEventListener('click',()=>{curZone=+b.dataset.i;renderZones();renderPanel()}));
+}
+function topRent(t){let m=0;t.forEach(r=>{if(r)m=Math.max(m,r[1])});return m||null}
+function renderPanel(){
+  const z=RENT[curCity].zones[curZone];
+  const top=topRent(z.t);
+  let rows=TIERS.map((tier,i)=>{
+    const r=z.t[i];
+    if(!r) return `<div class="tier"><div><div class="tname">${tier.n}</div><div class="tdesc">${tier.d}</div></div><div class="track"></div><div class="price na">nicht verfügbar</div></div>`;
+    const left=(r[0]/SCALE*100).toFixed(1), w=Math.max((r[1]-r[0])/SCALE*100,1.5).toFixed(1);
+    return `<div class="tier"><div><div class="tname">${tier.n}</div><div class="tdesc">${tier.d}</div></div>`+
+      `<div class="track"><span class="seg t${i}" style="left:${left}%;width:${w}%"></span></div>`+
+      `<div class="price">${eur(r[0])} – ${eur(r[1])}</div></div>`;
+  }).join('');
+  panelEl.innerHTML=
+    `<div class="panel-head"><div><div class="ztag"><span class="sq"></span>${RENT[curCity].label}</div><h3>${z.z}</h3></div>`+
+    `<div class="top"><div class="v">${top?eur(top).replace(' €',''):'—'}</div><div class="k">Spitzenmiete €/m²</div></div></div>`+
+    rows+
+    `<div class="ruler"><div class="marks"><span>0</span><span>8</span><span>16</span><span>24</span><span>32 €</span></div></div>`;
+}
+function renderAll(){card.style.setProperty('--accent',RENT[curCity].accent);renderTabs();renderZones();renderPanel()}
+renderAll();
+
+/* quick links jump to city */
+document.querySelectorAll('.quick .cities a[data-city]').forEach(a=>{
+  a.addEventListener('click',()=>{curCity=a.dataset.city;curZone=0;renderAll()});
+});
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Count-up (de-DE) */
+function animateCount(el){
+  const end=parseFloat(el.dataset.count),dec=parseInt(el.dataset.decimals||'0'),unit=el.dataset.unit||'';
+  const dur=1500;let t0=null;
+  const fmt=v=>v.toLocaleString('de-DE',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  const step=ts=>{if(!t0)t0=ts;const p=Math.min((ts-t0)/dur,1);const e=1-Math.pow(1-p,3);
+    el.innerHTML=fmt(end*e)+(unit?'<span class="u">'+unit+'</span>':'');
+    if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animateCount(e.target.querySelector('.num'));co.unobserve(e.target)}}),{threshold:.5});
+document.querySelectorAll('.stat,.pop').forEach(s=>co.observe(s));
+</script>
+</body>
+</html>
