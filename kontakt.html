@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt – CUBION Immobilien AG</title>
+<meta name="description" content="Sprechen Sie mit CUBION: Telefon, E-Mail, Rückruf, WhatsApp oder Kontaktformular. Plus den richtigen Ansprechpartner für jede Zuständigkeit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14110F;--charcoal:#1B1714;--steel:#2A2522;--paper:#FFFFFF;--bone:#F4F3F0;
+  --line:#E4E2DD;--orange:#F05A28;--orange-2:#FF6B35;--concrete:#9A938C;--steel-gray:#5E5852;
+  --muted:#8A837C;--muted-light:rgba(255,255,255,.62);
+  --maxw:1280px;--gut:clamp(20px,5vw,72px);--ease:cubic-bezier(.16,1,.3,1);
+  --fs-mega:clamp(3rem,10vw,9rem);--fs-h2:clamp(2.1rem,5.5vw,4.6rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--orange);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.28em;display:inline-flex;align-items:center;gap:.7em;color:var(--orange)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);display:inline-block}
+
+/* NAV */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);transition:background .45s var(--ease),padding .45s var(--ease),box-shadow .45s var(--ease)}
+header.nav.scrolled{background:rgba(20,17,15,.92);backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.55rem;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:.5ch}
+.brand .dot{width:.42em;height:.42em;background:var(--orange);display:inline-block;margin-bottom:.18em;transform:skewX(-12deg)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);font-size:.86rem;font-weight:500;position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--orange);color:#fff;padding:11px 20px;border-radius:2px;transition:transform .25s var(--ease),background .25s}
+.nav-cta:hover{background:var(--orange-2);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:101}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s var(--ease)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:var(--gut);transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Anton';font-size:clamp(1.8rem,7vw,2.8rem);text-transform:uppercase;color:#fff;line-height:1.15;transition:color .2s,padding-left .3s var(--ease)}
+.mobile-menu a:hover{color:var(--orange);padding-left:14px}
+
+/* HERO */
+.hero{position:relative;min-height:72svh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:150px var(--gut) 56px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:brightness(.4) grayscale(.2);animation:heroZoom 28s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1.03)}to{transform:scale(1.12)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(to top,var(--ink) 6%,rgba(20,17,15,.45) 55%,rgba(20,17,15,.72))}
+.hero-glow{position:absolute;z-index:1;width:52vw;height:52vw;right:-14vw;top:-16vw;background:radial-gradient(circle,rgba(240,90,40,.3),transparent 62%);filter:blur(20px);animation:glowPulse 9s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.crumb{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-bottom:20px}
+.crumb a:hover{color:var(--orange)}
+.hero h1{font-size:var(--fs-mega);margin-bottom:.2em}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.12s}
+.hero h1 .accent{color:var(--orange)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-sub{max-width:50ch;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--muted-light);margin-bottom:26px;opacity:0;animation:fadeUp .8s var(--ease) .5s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.trust{display:flex;gap:10px 22px;flex-wrap:wrap;align-items:center;opacity:0;animation:fadeUp .8s var(--ease) .65s forwards}
+.trust span{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.8);display:inline-flex;align-items:center;gap:.5ch}
+.trust span b{color:var(--orange);font-family:'Anton';font-weight:400;font-size:1rem}
+.trust .sep{width:4px;height:4px;background:var(--orange);transform:skewX(-12deg)}
+
+/* QUICK TILES */
+.quick{padding:clamp(50px,7vw,84px) 0;background:var(--paper)}
+.quick .lead{text-align:center;max-width:60ch;margin:0 auto 40px}
+.quick .lead h2{font-size:var(--fs-h2);margin:14px 0 12px}
+.quick .lead p{color:var(--steel-gray)}
+.quick .lead .eyebrow{justify-content:center}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:26px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;text-align:left;font:inherit;color:inherit;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.tile::after{content:"";position:absolute;left:0;bottom:0;height:0;width:100%;background:var(--orange);transition:height .3s var(--ease)}
+.tile:hover{transform:translateY(-5px);box-shadow:0 22px 44px -26px rgba(0,0,0,.4);border-color:transparent}
+.tile:hover::after{height:5px}
+.tile .ic{width:46px;height:46px;border-radius:11px;background:rgba(240,90,40,.12);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.tile .ic svg{width:23px;height:23px;fill:var(--orange)}
+.tile .tt{font-family:'Anton';text-transform:uppercase;font-size:1.18rem}
+.tile .ts{font-size:.9rem;color:var(--steel-gray)}
+.tile .tgo{margin-top:8px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);display:inline-flex;gap:.5ch}
+
+/* FINDER */
+.finder{padding:clamp(70px,10vw,120px) 0;background:var(--ink);color:#fff;overflow:hidden}
+.finder .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.finder h2{font-size:var(--fs-h2)}
+.finder .head p{max-width:40ch;color:var(--muted-light)}
+.fchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.fchip{font-size:.78rem;font-weight:600;letter-spacing:.02em;padding:9px 15px;border:1px solid rgba(255,255,255,.22);background:none;color:rgba(255,255,255,.82);border-radius:100px;cursor:pointer;white-space:nowrap;transition:.22s var(--ease)}
+.fchip:hover{border-color:var(--orange);color:#fff}
+.fchip.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.finder-wrap{position:relative}
+.ftrack{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none;padding-bottom:6px}
+.ftrack::-webkit-scrollbar{display:none}
+.fcard{flex:0 0 clamp(280px,30vw,340px);scroll-snap-align:start;background:var(--steel);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s,transform .3s var(--ease)}
+.fcard.hot{border-color:var(--orange);transform:translateY(-4px)}
+.ftopic{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);display:flex;flex-direction:column;gap:3px}
+.ftopic em{font-style:normal;color:var(--muted-light);letter-spacing:.04em;font-weight:500;font-size:.8rem}
+.fperson{display:flex;align-items:center;gap:14px}
+.fperson img{width:66px;height:66px;border-radius:50%;object-fit:cover;background:var(--charcoal)}
+.fperson .fn{font-family:'Anton';text-transform:uppercase;font-size:1.18rem;line-height:1}
+.fperson .fr{font-size:.84rem;color:var(--muted-light);margin-top:4px}
+.factions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+.factions a{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:11px 13px;transition:.2s var(--ease)}
+.factions a:hover{border-color:var(--orange);color:var(--orange)}
+.factions svg{width:16px;height:16px;fill:var(--orange);flex:0 0 auto}
+.farrows{display:flex;gap:8px;margin-top:22px}
+.farrow{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:none;color:#fff;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.22s var(--ease)}
+.farrow:hover{background:var(--orange);border-color:var(--orange)}
+.farrow:disabled{opacity:.3;cursor:default}.farrow:disabled:hover{background:none;border-color:rgba(255,255,255,.22)}
+
+/* FORM */
+.contact{padding:clamp(70px,10vw,120px) 0;background:var(--bone)}
+.contact-grid{display:grid;grid-template-columns:1fr .82fr;gap:clamp(30px,5vw,64px);align-items:start}
+.contact h2{font-size:var(--fs-h2);margin:14px 0 14px}
+.contact .sub{color:var(--steel-gray);margin-bottom:30px;max-width:46ch}
+.intent-q{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.intents{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.intent{font-size:.85rem;font-weight:600;padding:11px 16px;border:1px solid var(--line);background:var(--paper);color:var(--steel-gray);border-radius:100px;cursor:pointer;transition:.22s var(--ease)}
+.intent:hover{border-color:var(--ink);color:var(--ink)}
+.intent.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+form.cform{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:8px;padding:13px 14px;font-family:'Inter';font-size:.95rem;font-weight:500;color:var(--ink);background:var(--paper);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--orange);border-color:var(--orange)}
+.field textarea{min-height:120px;resize:vertical}
+.field.cond{display:none}
+.field.cond.show{display:flex;animation:fadeUp .4s var(--ease)}
+.consent{grid-column:1/-1;display:flex;gap:11px;align-items:flex-start;font-size:.82rem;color:var(--steel-gray)}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--orange);flex:0 0 auto}
+.consent a{color:var(--orange);text-decoration:underline}
+.cform .submit{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cform button{background:var(--orange);color:#fff;border:0;cursor:pointer;font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;padding:16px 34px;border-radius:6px;transition:transform .25s var(--ease),background .25s}
+.cform button:hover{background:var(--orange-2);transform:translateY(-2px)}
+.cform .hint{font-size:.8rem;color:var(--muted)}
+.form-ok{display:none;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:24px;font-size:.96rem}
+.form-ok.show{display:block;animation:fadeUp .4s var(--ease)}
+.form-ok b{font-family:'Anton';text-transform:uppercase;font-size:1.2rem;display:block;margin-bottom:6px}
+
+/* aside: recommended contact + assurances */
+.aside-card{background:var(--ink);color:#fff;border-radius:12px;padding:28px;position:sticky;top:90px}
+.aside-card .rk{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.rec{display:flex;align-items:center;gap:14px;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12)}
+.rec img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.rec .rn{font-family:'Anton';text-transform:uppercase;font-size:1.15rem;line-height:1}
+.rec .rr{font-size:.82rem;color:var(--muted-light);margin-top:4px}
+.rec-links{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.rec-links a{font-size:.84rem;color:#fff;display:flex;align-items:center;gap:9px}
+.rec-links a:hover{color:var(--orange)}.rec-links svg{width:15px;height:15px;fill:var(--orange)}
+.assure{list-style:none;display:flex;flex-direction:column;gap:12px}
+.assure li{display:flex;gap:11px;font-size:.88rem;color:var(--muted-light)}
+.assure svg{width:18px;height:18px;fill:var(--orange);flex:0 0 auto;margin-top:1px}
+
+/* LOCATION */
+.loc{padding:0 0 0;background:var(--paper)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+.loc-info{padding:clamp(50px,7vw,90px) var(--gut);display:flex;flex-direction:column;justify-content:center;background:var(--ink);color:#fff}
+.loc-info .inner{max-width:520px;margin-left:auto;width:100%}
+.loc-info h2{font-size:var(--fs-h2);margin:14px 0 22px}
+.loc-info .addr{font-style:normal;font-size:1.05rem;line-height:1.8;color:var(--muted-light)}
+.loc-info .addr b{color:#fff;font-weight:600}
+.loc-rows{margin:26px 0;display:flex;flex-direction:column;gap:14px}
+.loc-rows .lr{display:flex;gap:12px;font-size:.94rem;color:var(--muted-light)}
+.loc-rows .lr svg{width:18px;height:18px;fill:var(--orange);flex:0 0 auto;margin-top:2px}
+.loc-rows .lr a:hover{color:var(--orange)}
+.loc-rows .lr b{color:#fff;font-weight:600}
+.loc-btn{display:inline-flex;align-items:center;gap:.6ch;background:var(--orange);color:#fff;font-family:'Anton';text-transform:uppercase;letter-spacing:.03em;font-size:1rem;padding:14px 26px;border-radius:5px;width:fit-content;transition:.25s var(--ease)}
+.loc-btn:hover{background:var(--orange-2);transform:translateY(-2px)}
+.loc-map{position:relative;min-height:380px;background:var(--steel)}
+.loc-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05)}
+
+/* FOOTER */
+footer{background:var(--charcoal);color:#fff;padding:clamp(60px,9vw,100px) 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand .brand{font-size:2.2rem;margin-bottom:18px}
+.foot-brand address{font-style:normal;color:var(--muted-light);font-size:.92rem;line-height:1.9}
+.foot-brand address a:hover{color:var(--orange)}
+.foot-col h4{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted-light);font-size:.92rem;padding:6px 0;transition:color .2s,padding-left .25s var(--ease)}
+.foot-col a:hover{color:#fff;padding-left:6px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:30px;font-size:.82rem;color:var(--muted)}
+.foot-bottom .badges{display:flex;gap:14px}
+.foot-bottom .badge{font-size:.7rem;font-weight:700;letter-spacing:.12em;border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:2px;color:var(--muted-light)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+
+@media(max-width:1024px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .aside-card{position:static}
+  .loc-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}.burger{display:flex}
+}
+@media(max-width:560px){
+  .tiles{grid-template-columns:1fr}
+  form.cform{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.hero h1 .line span{transform:none}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="index.html" class="brand">Cubion<span class="dot"></span></a>
+  <nav class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="objektsuche.html">Objektsuche</a>
+    <a href="vermietung.html">Leistungen</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="team.html">Team</a>
+  </nav>
+  <a href="#formular" class="nav-cta">Nachricht senden</a>
+  <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Start</a>
+  <a href="objektsuche.html">Objektsuche</a>
+  <a href="vermietung.html">Leistungen</a>
+  <a href="referenzen.html">Referenzen</a>
+  <a href="team.html">Team</a>
+  <a href="#formular">Nachricht senden</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('https://cubion.de/wp-content/uploads/2025/08/Kontakt-CUBION_dunkel.jpg')"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Start</a> / Kontakt</div>
+    <h1 class="display">
+      <span class="line"><span>Sprechen</span></span>
+      <span class="line"><span class="accent">wir.</span></span>
+    </h1>
+    <p class="hero-sub">Ob Fläche suchen, Objekt anbieten oder investieren: Sagen Sie uns, worum es geht, und Sie landen direkt beim richtigen Ansprechpartner. Unkompliziert und ohne Umwege.</p>
+    <div class="trust">
+      <span><b>4,9</b> ★ Google</span><span class="sep"></span>
+      <span>RICS Chartered Surveyors</span><span class="sep"></span>
+      <span>NAI Partners Germany</span><span class="sep"></span>
+      <span>seit <b>2005</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK TILES -->
+<section class="quick">
+  <div class="wrap">
+    <div class="lead reveal">
+      <span class="eyebrow">Schnell &amp; unkompliziert</span>
+      <h2 class="display">So erreichen<br>Sie uns</h2>
+      <p>Wählen Sie den Weg, der Ihnen am liebsten ist. Wir melden uns werktags in der Regel innerhalb von 24 Stunden.</p>
+    </div>
+    <div class="tiles">
+      <a class="tile reveal" href="tel:+49208970670">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg></span>
+        <span class="tt">Anrufen</span><span class="ts">+49 208 970 670 · Mo–Fr 9–18 Uhr</span><span class="tgo">Jetzt anrufen →</span>
+      </a>
+      <a class="tile reveal d1" href="mailto:info@cubion.de">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 7L4 7v1l8 5 8-5V7l-8 5z"/></svg></span>
+        <span class="tt">E-Mail</span><span class="ts">info@cubion.de · Antwort meist &lt; 24 h</span><span class="tgo">Mail schreiben →</span>
+      </a>
+      <a class="tile reveal d2" href="https://wa.me/4920897067?text=Hallo%20CUBION%2C%20ich%20habe%20eine%20Anfrage%20zu%20" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.2 1.4z"/></svg></span>
+        <span class="tt">WhatsApp</span><span class="ts">Kurz &amp; direkt aufs Smartphone</span><span class="tgo">Chat öffnen →</span>
+      </a>
+      <button class="tile reveal" type="button" data-intent="sonstiges" data-msg="Bitte rufen Sie mich zurück.">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9h-2a7 7 0 11-7-7zM11 7h2v5l4 2-1 1.7-5-2.7z"/></svg></span>
+        <span class="tt">Rückruf</span><span class="ts">Wir rufen Sie zum Wunschtermin zurück</span><span class="tgo">Rückruf anfordern →</span>
+      </button>
+      <button class="tile reveal d1" type="button" data-intent="mieten" data-msg="Ich möchte einen Besichtigungs- oder Beratungstermin vereinbaren.">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg></span>
+        <span class="tt">Termin</span><span class="ts">Besichtigung oder Beratung, vor Ort oder digital</span><span class="tgo">Termin vereinbaren →</span>
+      </button>
+      <a class="tile reveal d2" href="vermietung.html#rechner">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 4v3h12V6H6zm2 5H6v2h2v-2zm0 4H6v2h2v-2zm5-4h-2v2h2v-2zm0 4h-2v2h2v-2zm5-4h-2v6h2v-6z"/></svg></span>
+        <span class="tt">Flächenrechner</span><span class="ts">Ihren Flächenbedarf selbst ermitteln</span><span class="tgo">Tool öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ANSPRECHPARTNER-FINDER -->
+<section class="finder" id="ansprechpartner">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal"><span class="eyebrow">Ansprechpartner-Finder</span><h2 class="display" style="margin-top:14px">Direkt zur<br>richtigen Person</h2></div>
+      <p class="reveal d1">Wählen Sie Ihr Thema und sprechen Sie genau die Kollegin oder den Kollegen an, der zuständig ist.</p>
+    </div>
+    <div class="fchips" id="fchips"></div>
+    <div class="finder-wrap">
+      <div class="ftrack" id="ftrack"></div>
+    </div>
+    <div class="farrows">
+      <button class="farrow" id="fprev" aria-label="Zurück">&lsaquo;</button>
+      <button class="farrow" id="fnext" aria-label="Weiter">&rsaquo;</button>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAR -->
+<section class="contact" id="formular">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Nachricht senden</span>
+      <h2 class="display">Worum geht es?</h2>
+      <p class="sub">Wählen Sie Ihr Anliegen, wir zeigen nur die passenden Felder und leiten Ihre Nachricht an die richtige Stelle.</p>
+
+      <div class="intent-q">Ich möchte …</div>
+      <div class="intents" id="intents"></div>
+
+      <form class="cform" id="cform" novalidate>
+        <input type="hidden" id="subject" name="subject" value="Allgemeine Anfrage">
+        <div class="field"><label for="name">Name *</label><input id="name" name="name" required></div>
+        <div class="field"><label for="firma">Unternehmen</label><input id="firma" name="firma"></div>
+        <div class="field"><label for="email">E-Mail *</label><input id="email" name="email" type="email" required></div>
+        <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel"></div>
+
+        <div class="field cond full" data-field="stadt"><label for="stadt">Wunsch-Standort</label><input id="stadt" name="stadt" placeholder="z. B. Essen, Dortmund, Duisburg …"></div>
+        <div class="field cond" data-field="objektart"><label for="objektart">Objektart</label><select id="objektart" name="objektart"><option>Büro- / Praxisfläche</option><option>Halle / Lager / Produktion</option><option>Einzelhandel / Gastronomie</option><option>Grundstück</option><option>Sonstiges</option></select></div>
+        <div class="field cond" data-field="flaeche"><label for="flaeche">Fläche ca. (m²)</label><input id="flaeche" name="flaeche" type="number" min="0" placeholder="z. B. 350"></div>
+        <div class="field cond full" data-field="adresse"><label for="adresse">Objekt-Adresse / Lage</label><input id="adresse" name="adresse" placeholder="Straße, PLZ, Ort"></div>
+        <div class="field cond" data-field="budget"><label for="budget">Volumen / Budget</label><input id="budget" name="budget" placeholder="z. B. 2–5 Mio. €"></div>
+
+        <div class="field full"><label for="msg">Nachricht *</label><textarea id="msg" name="msg" required placeholder="Schildern Sie kurz Ihr Anliegen …"></textarea></div>
+
+        <label class="consent"><input type="checkbox" id="dsgvo" required><span>Ich habe die <a href="#">Datenschutzhinweise</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden. *</span></label>
+
+        <div class="submit">
+          <button type="submit">Absenden</button>
+          <span class="hint">* Pflichtfelder · Ihre Daten nutzen wir ausschließlich zur Bearbeitung der Anfrage.</span>
+        </div>
+      </form>
+      <div class="form-ok" id="formOk"><b>Vielen Dank!</b>Ihre Nachricht ist startklar. (Demo-Formular – im Echtbetrieb wird sie an das CUBION-Postfach bzw. den zuständigen Ansprechpartner übermittelt.)</div>
+    </div>
+
+    <aside class="reveal d1">
+      <div class="aside-card">
+        <div class="rk">Ihr Ansprechpartner</div>
+        <div class="rec">
+          <img id="recImg" src="https://cubion.de/wp-content/uploads/2023/11/selina-koether.jpg" alt="">
+          <div>
+            <div class="rn" id="recName">Selina Köther</div>
+            <div class="rr" id="recRole">Teamassistenz · Zentrale</div>
+            <div class="rec-links">
+              <a id="recTel" href="tel:+492089706734"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span id="recTelT">+49 208 970 67-34</span></a>
+              <a id="recMail" href="mailto:koether@cubion.de"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 7L4 7v1l8 5 8-5V7l-8 5z"/></svg><span id="recMailT">koether@cubion.de</span></a>
+            </div>
+          </div>
+        </div>
+        <ul class="assure">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Antwort werktags in der Regel innerhalb von 24 Stunden</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Ethisch und vertraulich nach RICS-Standard</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Eigenes Marktresearch als Basis jeder Beratung</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- STANDORT -->
+<section class="loc" id="standort">
+  <div class="loc-grid">
+    <div class="loc-info">
+      <div class="inner">
+        <span class="eyebrow">Standort &amp; Anfahrt</span>
+        <h2 class="display">Besuchen<br>Sie uns</h2>
+        <address class="addr">
+          <b>CUBION Immobilien AG</b><br>Chartered Surveyors<br>Akazienallee 65<br>45478 Mülheim an der Ruhr (Speldorf)
+        </address>
+        <div class="loc-rows">
+          <div class="lr"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9h-2a7 7 0 11-7-7zM11 7h2v5l4 2-1 1.7-5-2.7z"/></svg><span><b>Öffnungszeiten</b><br>Mo–Fr 9:00–18:00 Uhr</span></div>
+          <div class="lr"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span><a href="tel:+49208970670"><b>+49 208 970 670</b></a> · Fax 970 6722</span></div>
+          <div class="lr"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 7L4 7v1l8 5 8-5V7l-8 5z"/></svg><span><a href="mailto:info@cubion.de"><b>info@cubion.de</b></a></span></div>
+          <div class="lr"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg><span>Parkplätze am Haus · S-Bahn/Bus Haltestelle Speldorf in der Nähe</span></div>
+        </div>
+        <a class="loc-btn" href="https://www.google.com/maps/dir/?api=1&destination=Akazienallee%2065%2C%2045478%20M%C3%BClheim%20an%20der%20Ruhr" target="_blank" rel="noopener">Route planen →</a>
+      </div>
+    </div>
+    <div class="loc-map">
+      <iframe title="Karte CUBION Immobilien AG" loading="lazy" src="https://maps.google.com/maps?q=Akazienallee%2065%2C%2045478%20M%C3%BClheim%20an%20der%20Ruhr&z=15&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">Cubion<span class="dot"></span></div>
+        <address>CUBION Immobilien AG<br>Chartered Surveyors<br>Akazienallee 65<br>45478 Mülheim an der Ruhr<br><a href="tel:+49208970670">Fon +49 208 970 670</a><br><a href="mailto:info@cubion.de">info@cubion.de</a></address>
+      </div>
+      <div class="foot-col"><h4>Leistungen</h4><a href="vermietung.html">Vermietung</a><a href="buerovermietung.html">Bürovermietung</a><a href="#">Investment</a><a href="#">Industrial &amp; Logistics</a></div>
+      <div class="foot-col"><h4>Unternehmen</h4><a href="index.html#unternehmen">Über CUBION</a><a href="team.html">Team</a><a href="referenzen.html">Referenzen</a><a href="#">Karriere</a></div>
+      <div class="foot-col"><h4>Service</h4><a href="objektsuche.html">Objektsuche</a><a href="#standort">Anfahrt</a><a href="#ansprechpartner">Ansprechpartner</a><a href="#formular">Kontaktformular</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CUBION Immobilien AG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a></span>
+      <div class="badges"><span class="badge">RICS</span><span class="badge">NAI PARTNERS GERMANY</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav + mobile */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-label',o?'Menü schließen':'Menü öffnen')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* ---------- Kontakte ---------- */
+const IMG='https://cubion.de/wp-content/uploads/';
+const C={
+  koether:{n:'Selina Köther',r:'Teamassistenz · Zentrale',ext:'34',mail:'koether@cubion.de',img:'2023/11/selina-koether.jpg'},
+  klein:{n:'Niklas Klein',r:'Director Office Leasing',ext:'32',mail:'klein@cubion.de',img:'2023/11/niklas-klein.jpg'},
+  darman:{n:'Stewart Darman',r:'Senior Director Leasing',ext:'18',mail:'darman@cubion.de',img:'2023/11/stewart-darman.jpg'},
+  ross:{n:'Andreas Roß',r:'Director Investment',ext:'16',mail:'ross@cubion.de',img:'2023/11/andreas-ross.jpg'},
+  marvin:{n:'Marvin Prochowski',r:'Senior Consultant',ext:'13',mail:'prochowski@cubion.de',img:'2023/11/marvin-prochowski.jpg'},
+  radu:{n:'Radu-George Moldovan',r:'Retail · conceptstories',ext:'',mail:'moldovan@conceptstories.de',img:'2024/10/Radu_conceptstories_neu_CUBION_web.jpg'},
+  dreher:{n:'Svenja Dreher',r:'Leitung Baumanagement',ext:'28',mail:'dreher@cubion.de',img:'2023/11/svenja-dreher.jpg'},
+  lichtenheld:{n:'Julius Lichtenheld',r:'Marketing & Presse',ext:'35',mail:'j.lichtenheld@cubion.de',img:'2024/02/Julius-Lichtenheld-CUBION-Immobilien-scaled.jpg'}
+};
+const tel=ext=>ext===''?'':'+4920897067'+(ext==='0'?'0':ext);
+const telT=ext=>ext===''?'':'+49 208 970 67-'+ext;
+
+/* ---------- Ansprechpartner-Finder ---------- */
+const FINDER=[
+  {chip:'Zentrale',topic:'Generelle Anliegen',sub:'Zentrale & Empfang',c:'koether'},
+  {chip:'Büro Essen & Duisburg',topic:'Bürovermietung',sub:'Essen & Duisburg',c:'klein'},
+  {chip:'Büro Dortmund & Bochum',topic:'Bürovermietung',sub:'Dortmund & Bochum',c:'darman'},
+  {chip:'Investment',topic:'Investment & Verkauf',sub:'An- & Verkauf',c:'ross'},
+  {chip:'Industrial & Logistics',topic:'Industrial & Logistics',sub:'Hallen, Lager, Logistik',c:'marvin'},
+  {chip:'Retail',topic:'Retail & Gastronomie',sub:'Laden- & Gastroflächen',c:'radu'},
+  {chip:'Property',topic:'Property Management',sub:'Bewirtschaftung & Bau',c:'dreher'},
+  {chip:'Presse',topic:'Presse & Marketing',sub:'Medienanfragen',c:'lichtenheld'}
+];
+const PHONE='<svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>';
+const MAIL='<svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 7L4 7v1l8 5 8-5V7l-8 5z"/></svg>';
+const ftrack=document.getElementById('ftrack'),fchips=document.getElementById('fchips');
+ftrack.innerHTML=FINDER.map((f,i)=>{const p=C[f.c];return `<article class="fcard" id="fc${i}">
+  <span class="ftopic">${f.topic}<em>${f.sub}</em></span>
+  <div class="fperson"><img src="${IMG}${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.opacity=0"><div><div class="fn">${p.n}</div><div class="fr">${p.r}</div></div></div>
+  <div class="factions">${p.ext?`<a href="tel:${tel(p.ext)}">${PHONE}${telT(p.ext)}</a>`:''}<a href="mailto:${p.mail}">${MAIL}${p.mail}</a></div>
+</article>`}).join('');
+fchips.innerHTML=FINDER.map((f,i)=>`<button class="fchip${i===0?' active':''}" data-i="${i}">${f.chip}</button>`).join('');
+const fcards=[...ftrack.children];
+function setHot(i){fcards.forEach((c,k)=>c.classList.toggle('hot',k===i));fchips.querySelectorAll('.fchip').forEach((c,k)=>c.classList.toggle('active',k===i))}
+fchips.querySelectorAll('.fchip').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i;setHot(i);fcards[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'})}));
+const fprev=document.getElementById('fprev'),fnext=document.getElementById('fnext');
+function fstep(){const c=ftrack.querySelector('.fcard');return c?c.offsetWidth+18:340}
+function fupd(){fprev.disabled=ftrack.scrollLeft<8;fnext.disabled=ftrack.scrollLeft>=ftrack.scrollWidth-ftrack.clientWidth-8}
+fprev.addEventListener('click',()=>ftrack.scrollBy({left:-fstep(),behavior:'smooth'}));
+fnext.addEventListener('click',()=>ftrack.scrollBy({left:fstep(),behavior:'smooth'}));
+ftrack.addEventListener('scroll',fupd,{passive:true});addEventListener('resize',fupd);fupd();
+
+/* ---------- Anliegen-Router + Formular ---------- */
+const INTENTS={
+  mieten:{label:'Fläche mieten / suchen',subj:'Flächenanfrage (Miete)',fields:['stadt','objektart','flaeche'],c:'klein'},
+  anbieten:{label:'Fläche / Objekt anbieten',subj:'Objektangebot',fields:['objektart','adresse','flaeche'],c:'darman'},
+  investment:{label:'Investment / Ankauf',subj:'Investment-Anfrage',fields:['objektart','budget'],c:'ross'},
+  bewertung:{label:'Immobilie bewerten',subj:'Bewertungsanfrage',fields:['objektart','adresse'],c:'ross'},
+  presse:{label:'Presse & Medien',subj:'Presseanfrage',fields:[],c:'lichtenheld'},
+  sonstiges:{label:'Sonstiges',subj:'Allgemeine Anfrage',fields:[],c:'koether'}
+};
+const order=['mieten','anbieten','investment','bewertung','presse','sonstiges'];
+const intentsEl=document.getElementById('intents');
+intentsEl.innerHTML=order.map((k,i)=>`<button type="button" class="intent${i===0?' active':''}" data-k="${k}">${INTENTS[k].label}</button>`).join('');
+const condFields=[...document.querySelectorAll('.field.cond')];
+const subject=document.getElementById('subject');
+function applyIntent(k){
+  const it=INTENTS[k];
+  subject.value=it.subj;
+  condFields.forEach(f=>f.classList.toggle('show',it.fields.includes(f.dataset.field)));
+  const p=C[it.c];
+  document.getElementById('recImg').src=IMG+p.img;
+  document.getElementById('recName').textContent=p.n;
+  document.getElementById('recRole').textContent=p.r;
+  const rt=document.getElementById('recTel'),rtt=document.getElementById('recTelT');
+  if(p.ext){rt.style.display='';rt.href='tel:'+tel(p.ext);rtt.textContent=telT(p.ext)}else{rt.style.display='none'}
+  document.getElementById('recMail').href='mailto:'+p.mail;
+  document.getElementById('recMailT').textContent=p.mail;
+}
+intentsEl.querySelectorAll('.intent').forEach(b=>b.addEventListener('click',()=>{
+  intentsEl.querySelectorAll('.intent').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');applyIntent(b.dataset.k);
+}));
+applyIntent('mieten');
+
+/* Tiles that route into the form */
+function selectIntent(k){const b=intentsEl.querySelector(`[data-k="${k}"]`);if(b)b.click()}
+document.querySelectorAll('.tile[data-intent]').forEach(t=>t.addEventListener('click',()=>{
+  selectIntent(t.dataset.intent);
+  if(t.dataset.msg)document.getElementById('msg').value=t.dataset.msg;
+  document.getElementById('formular').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>document.getElementById('name').focus(),600);
+}));
+
+/* Submit (Demo) */
+const cform=document.getElementById('cform'),formOk=document.getElementById('formOk');
+cform.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!cform.checkValidity()){cform.reportValidity();return}
+  cform.style.display='none';
+  document.querySelector('.intents').style.display='none';
+  document.querySelector('.intent-q').style.display='none';
+  formOk.classList.add('show');
+  formOk.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
