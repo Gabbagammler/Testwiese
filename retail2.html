@@ -169,7 +169,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .cta{background:var(--bg);color:#fff;padding:clamp(62px,7vw,96px) 0 clamp(46px,5vw,70px);position:relative;overflow:hidden}
 .cta .glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(620px circle at var(--gx,60%) var(--gy,40%),rgba(255,111,32,.16),transparent 68%)}
 .cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,4.4vw,64px);align-items:center}
-.cta .lead-q{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;line-height:1.6;color:var(--grey-d)}
+.cta .lead-q{font-size:clamp(1rem,1.3vw,1.15rem);font-weight:600;letter-spacing:-.015em;line-height:1.4;color:rgba(255,255,255,.72)}
 .cta .lead-q{max-width:none}
 .cta .big-q{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.08;color:#fff;margin-top:18px}
 .cta .big-q em{font-style:normal;color:var(--orange)}
@@ -180,7 +180,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .cta-person .pht{display:flex;align-items:center;gap:18px;margin-bottom:22px}
 .cta-person .pht img{width:clamp(74px,5.6vw,86px);height:clamp(74px,5.6vw,86px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange);flex:0 0 auto}
 .cta-person .ct{font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
-.cta-person .cn{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:1.15rem;line-height:1.05}
+.cta-person .cn{font-size:clamp(1.15rem,1.5vw,1.32rem);font-weight:600;letter-spacing:-.02em;line-height:1.25}
 .cta-person .cr{font-size:.84rem;color:var(--grey-d);margin-top:8px;line-height:1.5}
 .cta-person .clinks{display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
 .cta-person .clinks a{display:flex;align-items:center;gap:15px;color:#fff;font-size:.96rem;font-weight:500;transition:.25s}
@@ -220,7 +220,7 @@ html,body{overflow-x:clip}
 .rh-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,74px);align-items:center;padding-bottom:clamp(46px,6vh,74px)}
 .rh-txt .eyebrow{display:block;color:var(--grey-d);margin-bottom:clamp(16px,2.4vh,26px);opacity:0}
 .loaded .rh-txt .eyebrow{opacity:1;transition:opacity .9s var(--ease2) .1s}
-.rh-txt h1{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.1rem,5.4vw,4.5rem);line-height:.95;letter-spacing:-.005em}
+.rh-txt h1{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.9vw,4.1rem);line-height:.95;letter-spacing:-.005em}
 .rh-txt h1 em{font-style:normal;color:var(--orange)}
 .rh-txt h1 .line{display:block;overflow:hidden;padding-top:.1em;margin-top:-.1em}
 .rh-txt h1 .line>span{display:block;transform:translateY(112%)}
@@ -233,27 +233,22 @@ html,body{overflow-x:clip}
 .loaded .rh-acts{opacity:1;transition:opacity .9s var(--ease2) .72s}
 
 /* Marken-Lockup mit Concept-Stories-Logo */
-.lockup{display:flex;align-items:center;gap:clamp(16px,2vw,26px);margin-top:clamp(26px,3.6vh,38px);padding:16px 22px 16px 20px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);max-width:560px;position:relative;overflow:hidden;opacity:0}
+.lockup{display:flex;align-items:center;gap:clamp(18px,2.2vw,28px);margin-top:clamp(26px,3.6vh,38px);max-width:560px;position:relative;opacity:0}
 .loaded .lockup{opacity:1;transition:opacity 1s var(--ease2) .6s}
-.lockup::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--orange),transparent)}
-.lockup img{width:clamp(132px,13vw,166px);height:auto;flex:0 0 auto}
-.lockup .lk-t{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.7)}
-.lockup .lk-t b{color:#fff;font-weight:600}
-@media(max-width:520px){.lockup{flex-direction:column;align-items:flex-start;gap:14px}}
+.lockup img{width:clamp(126px,12vw,156px);height:auto;flex:0 0 auto}
+.lockup .lk-t{font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;line-height:1.75;color:rgba(255,255,255,.46);padding-left:clamp(18px,2.2vw,28px);border-left:1px solid rgba(255,255,255,.14)}
+@media(max-width:520px){.lockup{flex-direction:column;align-items:flex-start;gap:14px}.lockup .lk-t{padding-left:0;border-left:0}}
 
 /* Bildkomposition */
 .rh-media{position:relative;height:clamp(380px,52vw,560px)}
-.rh-fig{position:absolute;border-radius:18px;overflow:hidden;background:var(--bg2);box-shadow:0 50px 90px -46px rgba(0,0,0,.85);opacity:0;transform:translateY(26px)}
+.rh-fig{position:absolute;border-radius:14px;overflow:hidden;background:var(--bg2);box-shadow:0 60px 100px -60px rgba(0,0,0,.9);opacity:0;transform:translateY(26px)}
 .loaded .rh-fig{opacity:1;transform:none;transition:opacity 1.1s var(--ease2),transform 1.1s var(--ease2)}
 .loaded .rh-fig.f2{transition-delay:.16s}
 .loaded .rh-fig.f3{transition-delay:.28s}
 .rh-fig img{width:100%;height:100%;object-fit:cover;transform:translate3d(0,var(--py,0px),0) scale(1.12);will-change:transform}
 .rh-fig.f1{left:12%;top:0;width:60%;height:78%;z-index:2}
-.rh-fig.f2{right:0;top:22%;width:40%;height:44%;z-index:3;border:1px solid rgba(255,255,255,.14)}
-.rh-fig.f3{left:0;bottom:0;width:38%;height:38%;z-index:3;border:1px solid rgba(255,255,255,.14)}
-.rh-fig.f1::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,11,0) 55%,rgba(14,12,11,.6))}
-.rh-chip{position:absolute;left:14px;bottom:13px;z-index:3;display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(14,12,11,.5);border:1px solid rgba(255,255,255,.16);padding:7px 12px;border-radius:100px;backdrop-filter:blur(6px)}
-.rh-chip i{width:6px;height:6px;border-radius:50%;background:var(--orange);flex:0 0 auto}
+.rh-fig.f2{right:0;top:22%;width:40%;height:44%;z-index:3}
+.rh-fig.f3{left:0;bottom:0;width:38%;height:38%;z-index:3}
 @media(max-width:940px){
   .rh-inner{grid-template-columns:1fr;gap:36px}
   .rh-media{height:min(64vw,400px);order:2}
@@ -272,25 +267,39 @@ html,body{overflow-x:clip}
 @keyframes tkrun{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.rh-tick .tk{animation:none}.rh-fig{opacity:1!important;transform:none!important}}
 
-/* ===== CONCEPT STORIES VORSTELLEN ===== */
-.cs{background:var(--paper);padding:clamp(56px,6.4vw,92px) 0}
-.cs-grid{display:grid;grid-template-columns:.62fr 1.38fr;gap:clamp(26px,3.6vw,54px);align-items:center;max-width:1120px;margin:0 auto}
-.cs-shot{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1/1;background:var(--bone2)}
-.cs-shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.cs-shot:hover img{transform:scale(1.04)}
-.cs-shot::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:linear-gradient(90deg,var(--orange),transparent)}
-.cs-logo{height:clamp(21px,2vw,26px);width:auto;margin-bottom:clamp(14px,1.6vw,18px)}
-.cs-body h2{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;line-height:1;font-size:clamp(1.45rem,2.5vw,2rem);max-width:20ch}
-.cs-body h2 em{font-style:normal;color:var(--orange)}
-.cs-body p{color:#54514C;font-size:clamp(.93rem,1vw,1rem);line-height:1.75;max-width:60ch;margin-top:16px}
-.cs-link{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-weight:600;font-size:.9rem;color:var(--ink);border-bottom:1.5px solid var(--orange);padding-bottom:4px;transition:gap .3s var(--ease),color .3s}
-.cs-link:hover{gap:16px;color:var(--orange)}
-.cs-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
-.cs-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,22px);margin-top:clamp(24px,2.8vw,32px);border-top:1px solid var(--line);padding-top:clamp(18px,2vw,22px)}
-.cs-fact .fv{font-family:'Benton Wide';font-weight:900;font-size:clamp(1.02rem,1.5vw,1.3rem);line-height:1;color:var(--ink)}
-.cs-fact .fv em{font-style:normal;color:var(--orange)}
-.cs-fact .fl{font-family:'IBM Plex Mono';font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-top:7px;line-height:1.5}
-@media(max-width:900px){.cs-grid{grid-template-columns:1fr;gap:28px}.cs-shot{aspect-ratio:16/10;max-height:300px}.cs-facts{grid-template-columns:1fr 1fr}}
+/* ===== MARKENPOSITIONIERUNG (CUBION x conceptstories) ===== */
+.marke{background:var(--paper);padding:clamp(64px,7.6vw,112px) 0}
+.mk-shot{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:21/8;background:var(--bone2);margin-bottom:clamp(38px,5vw,66px)}
+.mk-shot img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.03);transition:transform 1.4s var(--ease)}
+.mk-shot:hover img{transform:scale(1)}
+.mk-lead{display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(28px,5vw,80px);align-items:start}
+.mk-lead h2{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;line-height:1;font-size:clamp(1.65rem,2.9vw,2.4rem);letter-spacing:-.005em}
+.mk-lead h2 em{font-style:normal;color:var(--orange)}
+.mk-txt p{color:#54514C;font-size:clamp(.97rem,1.1vw,1.06rem);line-height:1.8;max-width:58ch}
+.mk-txt p+p{margin-top:18px}
+.mk-brands{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(20px,4vw,60px);margin-top:clamp(44px,5.6vw,78px);border-top:1px solid var(--line);padding-top:clamp(34px,4vw,54px)}
+.mkb{position:relative;display:flex;align-items:center;justify-content:center;gap:22px;padding:clamp(16px,2vw,26px) 8px;border-radius:16px;color:var(--ink);transition:background .4s var(--ease)}
+.mkb:hover{background:var(--bone)}
+.mkb:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.mkb .mlg{display:block;transition:transform .5s var(--ease)}
+.mkb:hover .mlg{transform:translateY(-3px)}
+.mkb span.mlg{height:clamp(30px,3.2vw,42px)}
+.mkb span.mlg svg{height:100%;width:auto;display:block}
+.mkb img.mlg{width:clamp(168px,17vw,224px);height:auto}
+.mkb .mgo{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:background .35s var(--ease),border-color .35s var(--ease),color .35s,transform .5s var(--ease)}
+.mkb .mgo svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .4s var(--ease)}
+.mkb:hover .mgo{background:var(--orange);border-color:var(--orange);color:#fff}
+.mkb:hover .mgo svg{transform:translate(2px,-2px)}
+.mk-x{width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:.92rem;position:relative;flex:0 0 auto}
+.mk-x::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--orange);animation:cpulse 3.4s ease-out infinite}
+@media(prefers-reduced-motion:reduce){.mk-x::after{animation:none;opacity:0}}
+@media(max-width:900px){
+  .mk-shot{aspect-ratio:16/9}
+  .mk-lead{grid-template-columns:1fr;gap:22px}
+  .mk-brands{grid-template-columns:1fr;gap:14px;margin-top:38px;padding-top:30px}
+  .mkb{justify-content:space-between;padding:16px 6px}
+  .mk-x{transform:rotate(90deg);margin:0 auto}
+}
 
 /* ===== LEISTUNGEN (dunkel, mit Perspektivwechsel) ===== */
 .leist{background:var(--ink);color:#fff;padding:clamp(68px,8.2vw,120px) 0;position:relative;overflow:hidden}
@@ -311,37 +320,29 @@ html,body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){.lsw-th{transition:none}}
 @media(max-width:560px){.lsw{display:grid;width:100%}.lsw button{padding:12px 8px;font-size:.83rem}}
 
-/* Panel: links Auswahl, rechts Erklaerung */
-.lx{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(22px,4.6vw,76px);align-items:start}
-.lx-list{border-top:1px solid rgba(255,255,255,.13)}
-.lx-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.13);padding:clamp(15px,1.7vw,19px) 2px;cursor:pointer;color:#fff;font-family:inherit;transition:padding-left .4s var(--ease)}
-.lx-row .t{flex:1;font-size:clamp(1rem,1.35vw,1.15rem);font-weight:500;letter-spacing:-.015em;line-height:1.35;transition:color .3s}
-.lx-row .ar{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--orange);stroke-width:2;opacity:0;transform:translateX(-8px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
-.lx-row:hover,.lx-row.on{padding-left:12px}
-.lx-row:hover .t,.lx-row.on .t{color:var(--orange)}
-.lx-row:hover .ar,.lx-row.on .ar{opacity:1;transform:none}
+/* Accordion */
+.lx-list{max-width:960px;border-top:1px solid rgba(255,255,255,.13)}
+.lx-row{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.13);padding:clamp(19px,2.2vw,26px) 2px;color:#fff;font-family:inherit;cursor:pointer;transition:padding-left .5s var(--ease)}
+.lx-row:hover,.lx-row.on{padding-left:14px}
 .lx-row:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-.lx-detail{position:sticky;top:110px;padding-top:4px}
-.lx-detail h3{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.06;letter-spacing:-.005em}
-.lx-detail p{color:rgba(255,255,255,.64);font-size:clamp(.95rem,1.05vw,1.02rem);line-height:1.8;margin-top:18px;max-width:42ch}
-.lx-fade{transition:opacity .3s var(--ease),transform .45s var(--ease)}
-.lx-fade.out{opacity:0;transform:translateY(6px)}
-.lx-m{display:none}
-@media(prefers-reduced-motion:reduce){.lx-fade{transition:none}}
-@media(max-width:900px){
-  .lx{grid-template-columns:1fr}
-  .lx-detail{display:none}
-  .lx-m{display:block;flex-basis:100%;max-height:0;opacity:0;overflow:hidden;color:rgba(255,255,255,.64);font-size:.92rem;line-height:1.7;max-width:46ch;transition:max-height .5s var(--ease),opacity .35s,margin-top .35s}
-  .lx-row.on .lx-m{max-height:18em;opacity:1;margin-top:12px}
-  .lx-row:hover,.lx-row.on{padding-left:2px}
-  .lx-row:hover .t{color:#fff}
-  .lx-row.on .t{color:var(--orange)}
-  .lx-row .ar,.lx-row:hover .ar{opacity:.42;transform:rotate(90deg)}
-  .lx-row.on .ar,.lx-row.on:hover .ar{opacity:1;transform:rotate(-90deg)}
-}
+.lx-hd{display:flex;width:100%;align-items:center;gap:clamp(16px,2vw,28px)}
+.lx-hd .t{flex:1;font-size:clamp(1.08rem,1.75vw,1.45rem);font-weight:600;letter-spacing:-.02em;line-height:1.3;transition:color .35s}
+.lx-row:hover .t,.lx-row.on .t{color:var(--orange)}
+.lx-ic{position:relative;width:18px;height:18px;flex:0 0 auto;color:rgba(255,255,255,.42);transition:color .35s,transform .5s var(--ease)}
+.lx-ic::before,.lx-ic::after{content:"";position:absolute;left:50%;top:50%;background:currentColor;border-radius:2px;transition:transform .5s var(--ease),opacity .35s}
+.lx-ic::before{width:18px;height:1.5px;transform:translate(-50%,-50%)}
+.lx-ic::after{width:1.5px;height:18px;transform:translate(-50%,-50%)}
+.lx-row:hover .lx-ic,.lx-row.on .lx-ic{color:var(--orange)}
+.lx-row.on .lx-ic{transform:rotate(180deg)}
+.lx-row.on .lx-ic::after{transform:translate(-50%,-50%) scaleY(0);opacity:0}
+.lx-bd{display:block;overflow:hidden;max-height:0;opacity:0;transition:max-height .6s var(--ease),opacity .4s var(--ease)}
+.lx-row.on .lx-bd{max-height:22em;opacity:1}
+.lx-bd p{color:rgba(255,255,255,.54);font-size:clamp(.95rem,1.05vw,1.03rem);line-height:1.85;max-width:64ch;margin-top:clamp(14px,1.6vw,20px);padding-right:clamp(0px,4vw,60px)}
+@media(prefers-reduced-motion:reduce){.lx-bd{transition:none}}
+@media(max-width:640px){.lx-bd p{padding-right:0}.lx-row:hover{padding-left:2px}.lx-row.on{padding-left:8px}}
 
 /* ===== PROJEKTE ===== */
-.proj{background:var(--paper);padding:clamp(76px,9.5vw,134px) 0}
+.proj{background:var(--bone);padding:clamp(70px,8.4vw,124px) 0}
 .pgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.6vw,22px)}
 .pcard{position:relative;grid-column:span 2;border-radius:18px;overflow:hidden;background:var(--bone2);min-height:clamp(250px,26vw,330px);display:block;isolation:isolate}
 .pcard.big{grid-column:span 3;min-height:clamp(300px,32vw,430px)}
@@ -362,37 +363,6 @@ html,body{overflow-x:clip}
 .pcard:hover p{max-height:5.6em;opacity:1}
 @media(max-width:980px){.pgrid{grid-template-columns:repeat(4,1fr)}.pcard,.pcard.big{grid-column:span 2}}
 @media(max-width:620px){.pgrid{grid-template-columns:1fr}.pcard,.pcard.big{grid-column:span 1;min-height:270px}.pcard p{max-height:5.6em;opacity:1}}
-
-/* ===== VERBUND ===== */
-.verb{background:var(--bone);border-top:1px solid var(--line);padding:clamp(70px,8.4vw,124px) 0}
-.vb{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(18px,2.6vw,36px);align-items:stretch}
-.vbc{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;color:var(--ink);transition:border-color .35s,transform .45s var(--ease),box-shadow .45s}
-.vbc:hover{border-color:var(--ink);transform:translateY(-4px);box-shadow:0 34px 60px -40px rgba(27,23,20,.5)}
-.vbc:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
-.vbc .vgo{position:absolute;top:clamp(22px,2.4vw,30px);right:clamp(22px,2.4vw,30px);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .35s var(--ease),border-color .35s var(--ease),color .35s}
-.vbc .vgo svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .4s var(--ease)}
-.vbc:hover .vgo{background:var(--orange);border-color:var(--orange);color:#fff}
-.vbc:hover .vgo svg{transform:translate(2px,-2px)}
-.vbc .vlogo{display:block;width:auto;margin-bottom:clamp(20px,2.4vw,28px)}
-.vbc span.vlogo{height:clamp(24px,2.4vw,30px)}
-.vbc span.vlogo svg{height:100%;width:auto;display:block}
-.vbc img.vlogo{width:clamp(150px,14.5vw,182px);height:auto}
-.vbc .vlogo{padding-right:56px}
-.vbc .vk{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
-.vbc h3{font-size:clamp(1.05rem,1.5vw,1.24rem);font-weight:600;letter-spacing:-.015em;line-height:1.35;max-width:24ch}
-.vbc .vch{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:clamp(20px,2.4vw,28px)}
-.vbc .vch span{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line);border-radius:100px;padding:7px 12px;transition:.3s}
-.vbc:hover .vch span{border-color:rgba(255,111,32,.5)}
-.vb-node{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 4px}
-.vb-node .ln{flex:1;width:1px;background:linear-gradient(180deg,transparent,var(--line) 22%,var(--line) 78%,transparent)}
-.vb-node .dot{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:.9rem;flex:0 0 auto;position:relative}
-.vb-node .dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--orange);animation:cpulse 3.4s ease-out infinite}
-@media(prefers-reduced-motion:reduce){.vb-node .dot::after{animation:none;opacity:0}}
-@media(max-width:860px){
-  .vb{grid-template-columns:1fr}
-  .vb-node{flex-direction:row;padding:4px 0}
-  .vb-node .ln{height:1px;width:auto;background:linear-gradient(90deg,transparent,var(--line) 22%,var(--line) 78%,transparent)}
-}
 
 /* CTA-Ergänzung: externer Link */
 .cta-person .cs-badge{display:flex;align-items:center;gap:12px;margin-bottom:24px}
@@ -453,10 +423,9 @@ html,body{overflow-x:clip}
 
 <!-- SECTION RAIL -->
 <nav id="rail" aria-label="Seitennavigation">
-  <a href="#konzept" data-s="konzept"><span class="lab">conceptstories</span><span class="tick"></span></a>
+  <a href="#marken" data-s="marken"><span class="lab">Marken</span><span class="tick"></span></a>
   <a href="#leistungen" data-s="leistungen"><span class="lab">Leistungen</span><span class="tick"></span></a>
   <a href="#projekte" data-s="projekte"><span class="lab">Projekte</span><span class="tick"></span></a>
-  <a href="#verbund" data-s="verbund"><span class="lab">Verbund</span><span class="tick"></span></a>
   <a href="#kontakt" data-s="kontakt"><span class="lab">Kontakt</span><span class="tick"></span></a>
 </nav>
 
@@ -546,14 +515,13 @@ html,body{overflow-x:clip}
     <div class="rh-txt">
       <span class="eyebrow">Leistungen <span class="dot">·</span> Retail &amp; Gastronomie</span>
       <h1>
-        <span class="line"><span>Räume für</span></span>
-        <span class="line"><span>Marken und</span></span>
-        <span class="line"><span>Geschichten<em>.</em></span></span>
+        <span class="line"><span>Raum für</span></span>
+        <span class="line"><span>Erfolgs&shy;geschichten<em>.</em></span></span>
       </h1>
-      <p class="sub">Einzelhandel, Gastronomie und Nutzungskonzepte. Diesen Bereich deckt CUBION über die Tochtergesellschaft conceptstories Immobilien ab. Wir denken Fläche, Marke und Konzept zusammen.</p>
+      <p class="sub">Einzelhandel, Gastronomie und Nutzungskonzepte in Nordrhein-Westfalen. Wir denken Fläche, Marke und Konzept zusammen.</p>
       <div class="lockup">
         <img src="data:image/png;base64,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" alt="conceptstories Immobilien" width="1000" height="114">
-        <span class="lk-t"><b>conceptstories Immobilien GmbH</b><br>Hundertprozentige Tochtergesellschaft der CUBION Immobilien AG</span>
+        <span class="lk-t">100%ige Tochtergesellschaft der<br>CUBION Immobilien AG</span>
       </div>
       <div class="rh-acts">
         <a href="#kontakt" class="btn btn-o magnet">Über Ihren Standort sprechen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -564,7 +532,6 @@ html,body{overflow-x:clip}
     <div class="rh-media" aria-hidden="true">
       <figure class="rh-fig f1" data-par="-26">
         <img src="https://cubion.de/wp-content/uploads/2024/04/shawnanggg-nmpW_WwwVSc-unsplash.jpg" alt="" loading="eager" decoding="async">
-        <span class="rh-chip"><i></i>Erdgeschosszone</span>
       </figure>
       <figure class="rh-fig f2" data-par="34">
         <img src="https://cubion.de/wp-content/uploads/2023/11/conceptstories-cubion.jpg" alt="" loading="lazy" decoding="async">
@@ -580,23 +547,31 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
-<!-- ===== CONCEPT STORIES ===== -->
-<section class="cs" id="konzept">
-  <div class="wrap cs-grid">
-    <div class="cs-shot rv">
-      <img src="https://cubion.de/wp-content/uploads/2023/11/conceptstories-3.jpg" alt="Ladenlokal in urbaner Lage" loading="lazy" decoding="async">
-    </div>
-    <div class="cs-body rv d1">
-      <img class="cs-logo" src="data:image/png;base64,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" alt="conceptstories Immobilien" width="1000" height="114" loading="lazy">
-      <h2>Ein Team für Marken, Standorte und Konzepte<em>.</em></h2>
-      <p>conceptstories Immobilien ist auf Einzelhandels- und Gastronomieflächen spezialisiert und gehört seit Ende 2023 vollständig zur CUBION Immobilien AG. Das Team arbeitet für Eigentümer ebenso wie für Händler und Gastronomen. Entscheidend ist selten die Fläche allein, sondern welches Konzept an einem Standort trägt.</p>
-      <a class="cs-link" href="https://conceptstories.de" target="_blank" rel="noopener">conceptstories.de öffnen <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      <div class="cs-facts">
-        <div class="cs-fact"><div class="fv">2020</div><div class="fl">Markteintritt<br>in Köln</div></div>
-        <div class="cs-fact"><div class="fv">100<em>%</em></div><div class="fl">Tochter der<br>CUBION Immobilien AG</div></div>
-        <div class="cs-fact"><div class="fv">NRW</div><div class="fl">Marktgebiet, Schwerpunkt<br>Rheinland und Ruhrgebiet</div></div>
-        <div class="cs-fact"><div class="fv">2</div><div class="fl">Standorte: Köln und<br>Mülheim an der Ruhr</div></div>
+<!-- ===== MARKEN: CUBION x conceptstories ===== -->
+<section class="marke" id="marken">
+  <div class="wrap">
+    <figure class="mk-shot rv">
+      <img src="https://cubion.de/wp-content/uploads/2023/11/conceptstories-cubion.jpg" alt="Ladenlokal in urbaner Lage" loading="lazy" decoding="async">
+    </figure>
+
+    <div class="mk-lead">
+      <h2 class="rv">Ein Haus.<br>Zwei Spezialisten<em>.</em></h2>
+      <div class="mk-txt rv d1">
+        <p>conceptstories startete 2020 in Köln, weil Handels- und Gastronomieflächen eine eigene Handschrift verlangen: andere Mieter, andere Konzepte, andere Verhandlungen. Ende 2023 hat CUBION das Unternehmen vollständig übernommen und diese Spezialisierung fest im Haus verankert.</p>
+        <p>CUBION bringt regionale Marktkenntnis, eigenes Research, Netzwerk und Gewerbeimmobilienkompetenz ein, conceptstories die Spezialisierung auf Retail, Gastronomie, Marken und Nutzungskonzepte. Für Sie greift beides ineinander: eine Beratung, ein Netzwerk, ein direkter Zugang.</p>
       </div>
+    </div>
+
+    <div class="mk-brands rv d2">
+      <a class="mkb" href="kontakt.html" aria-label="CUBION Immobilien AG: zur Kontaktseite">
+        <span class="mlg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="671.9" height="154.44" viewBox="0 0 671.9 154.44"><defs><clipPath id="clip-0"><path clip-rule="nonzero" d="M 10 129 L 670.64 129 L 670.64 153.88 L 10 153.88 Z M 10 129 "/></clipPath><clipPath id="clip-1"><path clip-rule="nonzero" d="M 1.16 0 L 662 0 L 662 97 L 1.16 97 Z M 1.16 0 "/></clipPath></defs><g clip-path="url(#clip-0)"><path fill-rule="nonzero" fill="#231f20" fill-opacity="1" d="M 10.23 153.45 L 16.94 153.45 L 16.94 145.73 L 25.06 145.73 L 29.36 153.45 L 36.57 153.45 L 31.84 144.82 C 34.75 143.72 36.19 141.66 36.19 137.96 C 36.19 132.16 32.46 130.24 26.44 130.24 L 10.23 130.24 Z M 16.94 140.59 L 16.94 135.70 L 26.19 135.70 C 28.54 135.70 29.54 136.29 29.54 138.14 C 29.54 139.96 28.54 140.59 26.19 140.59 Z M 41.43 153.45 L 65.20 153.45 L 65.20 147.96 L 48.26 147.96 L 48.26 144.35 L 61.68 144.35 L 61.68 139.05 L 48.26 139.05 L 48.26 135.88 L 64.63 135.88 L 64.63 130.24 L 41.43 130.24 Z M 67.89 153.45 L 74.73 153.45 L 76.73 149.52 L 89.94 149.52 L 91.95 153.45 L 99.31 153.45 L 87.43 130.15 L 79.78 130.15 Z M 79.18 144.70 L 83.32 136.57 L 87.46 144.70 Z M 103.14 153.45 L 125.78 153.45 L 125.78 147.96 L 109.97 147.96 L 109.97 130.24 L 103.14 130.24 Z M 139.01 153.45 L 162.78 153.45 L 162.78 147.96 L 145.85 147.96 L 145.85 144.35 L 159.27 144.35 L 159.27 139.05 L 145.85 139.05 L 145.85 135.88 L 162.21 135.88 L 162.21 130.24 L 139.01 130.24 Z M 179.78 153.89 C 190.53 153.89 192.91 150.06 192.91 146.36 C 192.91 140.21 185.64 139.49 179.96 138.99 C 175.38 138.58 173.41 138.39 173.41 136.80 C 173.41 135.54 175.23 135.10 179.24 135.10 C 183.26 135.10 185.26 135.79 186.08 137.32 L 192.35 135.20 C 191.22 132.88 188.40 129.80 179.27 129.80 C 171.31 129.80 166.76 132.40 166.76 137.36 C 166.76 143.38 173.79 144.16 179.40 144.70 C 184.42 145.17 186.24 145.39 186.24 146.96 C 186.24 148.21 184.54 148.81 179.62 148.81 C 174.38 148.81 172.16 147.68 171.53 145.83 L 165.60 147.08 C 166.79 150.66 169.96 153.89 179.78 153.89 M 205.43 153.45 L 212.23 153.45 L 212.23 135.88 L 222.23 135.88 L 222.23 130.24 L 195.42 130.24 L 195.42 135.88 L 205.43 135.88 Z M 220.41 153.45 L 227.25 153.45 L 229.26 149.52 L 242.46 149.52 L 244.47 153.45 L 251.84 153.45 L 239.95 130.15 L 232.30 130.15 Z M 231.70 144.70 L 235.84 136.57 L 239.98 144.70 Z M 260.02 153.45 L 266.82 153.45 L 266.82 135.88 L 276.82 135.88 L 276.82 130.24 L 250.02 130.24 L 250.02 135.88 L 260.02 135.88 Z M 280.90 153.45 L 304.67 153.45 L 304.67 147.96 L 287.74 147.96 L 287.74 144.35 L 301.16 144.35 L 301.16 139.05 L 287.74 139.05 L 287.74 135.88 L 304.11 135.88 L 304.11 130.24 L 280.90 130.24 Z M 308.18 153.45 L 315.21 153.45 L 315.21 147.40 L 308.18 147.40 Z M 328.47 153.45 L 335.18 153.45 L 335.18 145.73 L 343.30 145.73 L 347.60 153.45 L 354.81 153.45 L 350.07 144.82 C 352.99 143.72 354.44 141.66 354.44 137.96 C 354.44 132.16 350.70 130.24 344.68 130.24 L 328.47 130.24 Z M 335.18 140.59 L 335.18 135.70 L 344.43 135.70 C 346.79 135.70 347.79 136.29 347.79 138.14 C 347.79 139.96 346.79 140.59 344.43 140.59 Z M 359.67 153.45 L 383.44 153.45 L 383.44 147.96 L 366.51 147.96 L 366.51 144.35 L 379.93 144.35 L 379.93 139.05 L 366.51 139.05 L 366.51 135.88 L 382.88 135.88 L 382.88 130.24 L 359.67 130.24 Z M 386.14 153.45 L 392.97 153.45 L 394.98 149.52 L 408.18 149.52 L 410.19 153.45 L 417.56 153.45 L 405.67 130.15 L 398.02 130.15 Z M 397.43 144.70 L 401.57 136.57 L 405.70 144.70 Z M 421.38 153.45 L 444.02 153.45 L 444.02 147.96 L 428.22 147.96 L 428.22 130.24 L 421.38 130.24 Z M 457.25 153.45 L 481.02 153.45 L 481.02 147.96 L 464.09 147.96 L 464.09 144.35 L 477.51 144.35 L 477.51 139.05 L 464.09 139.05 L 464.09 135.88 L 480.46 135.88 L 480.46 130.24 L 457.25 130.24 Z M 483.62 153.45 L 490.84 153.45 L 497.74 145.45 L 504.98 153.45 L 512.66 153.45 L 501.71 141.37 L 511.62 130.24 L 504.41 130.24 L 498.17 137.45 L 491.68 130.24 L 484.00 130.24 L 494.23 141.56 Z M 516.39 153.45 L 523.16 153.45 L 523.16 146.45 L 531.85 146.45 C 536.33 146.45 542.14 145.55 542.14 138.33 C 542.14 131.12 536.80 130.24 531.85 130.24 L 516.39 130.24 Z M 523.16 141.35 L 523.16 135.70 L 532.10 135.70 C 534.83 135.70 535.46 136.89 535.46 138.52 C 535.46 140.12 534.83 141.35 532.10 141.35 Z M 546.43 153.45 L 570.20 153.45 L 570.20 147.96 L 553.27 147.96 L 553.27 144.35 L 566.69 144.35 L 566.69 139.05 L 553.27 139.05 L 553.27 135.88 L 569.64 135.88 L 569.64 130.24 L 546.43 130.24 Z M 574.71 153.45 L 581.43 153.45 L 581.43 145.73 L 589.55 145.73 L 593.84 153.45 L 601.05 153.45 L 596.32 144.82 C 599.24 143.72 600.68 141.66 600.68 137.96 C 600.68 132.16 596.95 130.24 590.93 130.24 L 574.71 130.24 Z M 581.43 140.59 L 581.43 135.70 L 590.68 135.70 C 593.03 135.70 594.03 136.29 594.03 138.14 C 594.03 139.96 593.03 140.59 590.68 140.59 Z M 613.73 153.45 L 620.53 153.45 L 620.53 135.88 L 630.53 135.88 L 630.53 130.24 L 603.72 130.24 L 603.72 135.88 L 613.73 135.88 Z M 646.77 153.89 C 657.53 153.89 659.92 150.06 659.92 146.36 C 659.92 140.21 652.64 139.49 646.96 138.99 C 642.39 138.58 640.41 138.39 640.41 136.80 C 640.41 135.54 642.23 135.10 646.24 135.10 C 650.25 135.10 652.27 135.79 653.08 137.32 L 659.35 135.20 C 658.22 132.88 655.40 129.80 646.28 129.80 C 638.31 129.80 633.76 132.40 633.76 137.36 C 633.76 143.38 640.79 144.16 646.39 144.70 C 651.41 145.17 653.23 145.39 653.23 146.96 C 653.23 148.21 651.54 148.81 646.62 148.81 C 641.38 148.81 639.15 147.68 638.53 145.83 L 632.60 147.08 C 633.80 150.66 636.96 153.89 646.77 153.89 M 663.62 153.45 L 670.64 153.45 L 670.64 147.40 L 663.62 147.40 L 663.62 153.45 "/></g><g clip-path="url(#clip-1)"><path fill-rule="nonzero" fill="#231f20" fill-opacity="1" d="M 59.87 96.28 C 85.41 96.28 106.36 86.12 114.83 65.94 L 90.28 57.79 C 85.67 69.20 74.07 74.59 59.99 74.59 C 39.80 74.59 28.46 64.31 28.46 48.27 C 28.46 31.71 39.68 22.32 59.87 22.32 C 75.57 22.32 85.67 28.33 89.03 37.36 L 114.71 29.71 C 108.85 13.16 92.02 0 59.99 0 C 29.58 0 1.16 13.54 1.16 48.27 C 1.16 82.73 27.59 96.28 59.87 96.28 M 181.34 95.90 C 216.87 95.90 235.56 81.86 235.56 56.41 L 235.56 1.75 L 209.02 1.75 L 209.02 55.79 C 209.02 68.32 198.92 73.46 181.60 73.46 C 164.27 73.46 154.05 68.45 154.05 55.91 L 154.05 1.75 L 126.88 1.75 L 126.88 56.54 C 126.88 81.86 145.82 95.90 181.34 95.90 M 255.13 94.52 L 322.43 94.52 C 337.52 94.52 357.08 89.38 357.08 68.57 C 357.08 53.53 349.23 48.01 337.76 45.88 C 347.11 43.88 355.09 37.86 355.09 24.45 C 355.09 3.76 336.14 1.75 321.43 1.75 L 255.13 1.75 Z M 281.80 74.09 L 281.80 56.79 L 318.82 56.79 C 327.29 56.79 330.66 59.67 330.66 65.18 C 330.66 70.95 327.17 74.09 318.70 74.09 Z M 281.80 38.11 L 281.80 22.56 L 318.94 22.56 C 326.67 22.56 329.29 25.82 329.29 30.34 C 329.29 34.85 326.67 38.11 318.44 38.11 Z M 376.00 94.52 L 403.17 94.52 L 403.17 1.76 L 376.00 1.76 Z M 478.27 96.28 C 509.18 96.28 536.85 82.61 536.85 48.14 C 536.85 13.67 508.56 0 478.27 0 C 447.99 0 419.69 13.67 419.69 48.14 C 419.69 82.61 447.36 96.28 478.27 96.28 M 478.27 74.46 C 457.96 74.46 446.74 64.18 446.74 48.14 C 446.74 32.09 457.96 22.44 478.27 22.44 C 498.59 22.44 509.68 32.09 509.68 48.14 C 509.68 64.18 498.59 74.46 478.27 74.46 M 553.07 94.52 L 579.12 94.52 L 579.12 34.98 L 634.46 94.52 L 661.13 94.52 L 661.13 1.75 L 635.09 1.75 L 635.09 58.04 L 583.24 1.75 L 553.07 1.75 L 553.07 94.52 "/></g></svg></span>
+        <span class="mgo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+      <span class="mk-x" aria-hidden="true">×</span>
+      <a class="mkb" href="https://conceptstories.de/startseite.html" target="_blank" rel="noopener" aria-label="conceptstories Immobilien GmbH: Website öffnen">
+        <img class="mlg" src="data:image/png;base64,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" alt="conceptstories Immobilien" width="1000" height="114" loading="lazy">
+        <span class="mgo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -610,22 +585,16 @@ html,body{overflow-x:clip}
         <span class="eyebrow">Leistungen <span class="dot">·</span> Retail &amp; Gastronomie</span>
         <h2 class="benton">Von der Fläche bis zum Konzept</h2>
       </div>
-      <p class="note">Beratung und Vermittlung gehören für uns zusammen. Wählen Sie, aus welcher Richtung Sie auf den Standort schauen.</p>
+      <p class="note">Beratung und Vermittlung gehören für uns zusammen.</p>
     </div>
 
     <div class="lsw" id="lsw" data-side="0" role="tablist" aria-label="Perspektive wählen">
       <span class="lsw-th" aria-hidden="true"></span>
-      <button type="button" role="tab" id="lswA" data-side="suche" data-idx="0" aria-selected="true" aria-controls="lxPanel" tabindex="0">Ich suche eine Fläche</button>
-      <button type="button" role="tab" id="lswB" data-side="biete" data-idx="1" aria-selected="false" aria-controls="lxPanel" tabindex="-1">Ich biete eine Fläche</button>
+      <button type="button" role="tab" id="lswA" data-side="suche" data-idx="0" aria-selected="true" aria-controls="lxPanel" tabindex="0">Fläche gesucht</button>
+      <button type="button" role="tab" id="lswB" data-side="biete" data-idx="1" aria-selected="false" aria-controls="lxPanel" tabindex="-1">Fläche zu vergeben</button>
     </div>
 
-    <div class="lx" id="lxPanel" role="tabpanel" aria-labelledby="lswA">
-      <div class="lx-list" id="lxList"></div>
-      <div class="lx-detail" aria-live="polite">
-        <h3 class="lx-fade" id="lxTitle"></h3>
-        <p class="lx-fade" id="lxText"></p>
-      </div>
-    </div>
+    <div class="lx-list" id="lxList" role="tabpanel" aria-labelledby="lswA"></div>
   </div>
 </section>
 
@@ -643,51 +612,14 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
-<!-- ===== VERBUND ===== -->
-<section class="verb" id="verbund">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow">Zusammenspiel</span>
-        <h2 class="benton">Ein Haus. Zwei Spezialisten.</h2>
-      </div>
-      <p class="note">Regionale Marktkenntnis und Spezialisierung greifen ineinander. Für Sie bleibt es eine Beratung, ein Netzwerk, ein Ansprechpartner.</p>
-    </div>
-
-    <div class="vb">
-      <a class="vbc rv" href="kontakt.html" aria-label="CUBION Immobilien AG: zur Kontaktseite">
-        <span class="vlogo"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="671.9" height="154.44" viewBox="0 0 671.9 154.44"><defs><clipPath id="clip-0"><path clip-rule="nonzero" d="M 10 129 L 670.64 129 L 670.64 153.88 L 10 153.88 Z M 10 129 "/></clipPath><clipPath id="clip-1"><path clip-rule="nonzero" d="M 1.16 0 L 662 0 L 662 97 L 1.16 97 Z M 1.16 0 "/></clipPath></defs><g clip-path="url(#clip-0)"><path fill-rule="nonzero" fill="#231f20" fill-opacity="1" d="M 10.23 153.45 L 16.94 153.45 L 16.94 145.73 L 25.06 145.73 L 29.36 153.45 L 36.57 153.45 L 31.84 144.82 C 34.75 143.72 36.19 141.66 36.19 137.96 C 36.19 132.16 32.46 130.24 26.44 130.24 L 10.23 130.24 Z M 16.94 140.59 L 16.94 135.70 L 26.19 135.70 C 28.54 135.70 29.54 136.29 29.54 138.14 C 29.54 139.96 28.54 140.59 26.19 140.59 Z M 41.43 153.45 L 65.20 153.45 L 65.20 147.96 L 48.26 147.96 L 48.26 144.35 L 61.68 144.35 L 61.68 139.05 L 48.26 139.05 L 48.26 135.88 L 64.63 135.88 L 64.63 130.24 L 41.43 130.24 Z M 67.89 153.45 L 74.73 153.45 L 76.73 149.52 L 89.94 149.52 L 91.95 153.45 L 99.31 153.45 L 87.43 130.15 L 79.78 130.15 Z M 79.18 144.70 L 83.32 136.57 L 87.46 144.70 Z M 103.14 153.45 L 125.78 153.45 L 125.78 147.96 L 109.97 147.96 L 109.97 130.24 L 103.14 130.24 Z M 139.01 153.45 L 162.78 153.45 L 162.78 147.96 L 145.85 147.96 L 145.85 144.35 L 159.27 144.35 L 159.27 139.05 L 145.85 139.05 L 145.85 135.88 L 162.21 135.88 L 162.21 130.24 L 139.01 130.24 Z M 179.78 153.89 C 190.53 153.89 192.91 150.06 192.91 146.36 C 192.91 140.21 185.64 139.49 179.96 138.99 C 175.38 138.58 173.41 138.39 173.41 136.80 C 173.41 135.54 175.23 135.10 179.24 135.10 C 183.26 135.10 185.26 135.79 186.08 137.32 L 192.35 135.20 C 191.22 132.88 188.40 129.80 179.27 129.80 C 171.31 129.80 166.76 132.40 166.76 137.36 C 166.76 143.38 173.79 144.16 179.40 144.70 C 184.42 145.17 186.24 145.39 186.24 146.96 C 186.24 148.21 184.54 148.81 179.62 148.81 C 174.38 148.81 172.16 147.68 171.53 145.83 L 165.60 147.08 C 166.79 150.66 169.96 153.89 179.78 153.89 M 205.43 153.45 L 212.23 153.45 L 212.23 135.88 L 222.23 135.88 L 222.23 130.24 L 195.42 130.24 L 195.42 135.88 L 205.43 135.88 Z M 220.41 153.45 L 227.25 153.45 L 229.26 149.52 L 242.46 149.52 L 244.47 153.45 L 251.84 153.45 L 239.95 130.15 L 232.30 130.15 Z M 231.70 144.70 L 235.84 136.57 L 239.98 144.70 Z M 260.02 153.45 L 266.82 153.45 L 266.82 135.88 L 276.82 135.88 L 276.82 130.24 L 250.02 130.24 L 250.02 135.88 L 260.02 135.88 Z M 280.90 153.45 L 304.67 153.45 L 304.67 147.96 L 287.74 147.96 L 287.74 144.35 L 301.16 144.35 L 301.16 139.05 L 287.74 139.05 L 287.74 135.88 L 304.11 135.88 L 304.11 130.24 L 280.90 130.24 Z M 308.18 153.45 L 315.21 153.45 L 315.21 147.40 L 308.18 147.40 Z M 328.47 153.45 L 335.18 153.45 L 335.18 145.73 L 343.30 145.73 L 347.60 153.45 L 354.81 153.45 L 350.07 144.82 C 352.99 143.72 354.44 141.66 354.44 137.96 C 354.44 132.16 350.70 130.24 344.68 130.24 L 328.47 130.24 Z M 335.18 140.59 L 335.18 135.70 L 344.43 135.70 C 346.79 135.70 347.79 136.29 347.79 138.14 C 347.79 139.96 346.79 140.59 344.43 140.59 Z M 359.67 153.45 L 383.44 153.45 L 383.44 147.96 L 366.51 147.96 L 366.51 144.35 L 379.93 144.35 L 379.93 139.05 L 366.51 139.05 L 366.51 135.88 L 382.88 135.88 L 382.88 130.24 L 359.67 130.24 Z M 386.14 153.45 L 392.97 153.45 L 394.98 149.52 L 408.18 149.52 L 410.19 153.45 L 417.56 153.45 L 405.67 130.15 L 398.02 130.15 Z M 397.43 144.70 L 401.57 136.57 L 405.70 144.70 Z M 421.38 153.45 L 444.02 153.45 L 444.02 147.96 L 428.22 147.96 L 428.22 130.24 L 421.38 130.24 Z M 457.25 153.45 L 481.02 153.45 L 481.02 147.96 L 464.09 147.96 L 464.09 144.35 L 477.51 144.35 L 477.51 139.05 L 464.09 139.05 L 464.09 135.88 L 480.46 135.88 L 480.46 130.24 L 457.25 130.24 Z M 483.62 153.45 L 490.84 153.45 L 497.74 145.45 L 504.98 153.45 L 512.66 153.45 L 501.71 141.37 L 511.62 130.24 L 504.41 130.24 L 498.17 137.45 L 491.68 130.24 L 484.00 130.24 L 494.23 141.56 Z M 516.39 153.45 L 523.16 153.45 L 523.16 146.45 L 531.85 146.45 C 536.33 146.45 542.14 145.55 542.14 138.33 C 542.14 131.12 536.80 130.24 531.85 130.24 L 516.39 130.24 Z M 523.16 141.35 L 523.16 135.70 L 532.10 135.70 C 534.83 135.70 535.46 136.89 535.46 138.52 C 535.46 140.12 534.83 141.35 532.10 141.35 Z M 546.43 153.45 L 570.20 153.45 L 570.20 147.96 L 553.27 147.96 L 553.27 144.35 L 566.69 144.35 L 566.69 139.05 L 553.27 139.05 L 553.27 135.88 L 569.64 135.88 L 569.64 130.24 L 546.43 130.24 Z M 574.71 153.45 L 581.43 153.45 L 581.43 145.73 L 589.55 145.73 L 593.84 153.45 L 601.05 153.45 L 596.32 144.82 C 599.24 143.72 600.68 141.66 600.68 137.96 C 600.68 132.16 596.95 130.24 590.93 130.24 L 574.71 130.24 Z M 581.43 140.59 L 581.43 135.70 L 590.68 135.70 C 593.03 135.70 594.03 136.29 594.03 138.14 C 594.03 139.96 593.03 140.59 590.68 140.59 Z M 613.73 153.45 L 620.53 153.45 L 620.53 135.88 L 630.53 135.88 L 630.53 130.24 L 603.72 130.24 L 603.72 135.88 L 613.73 135.88 Z M 646.77 153.89 C 657.53 153.89 659.92 150.06 659.92 146.36 C 659.92 140.21 652.64 139.49 646.96 138.99 C 642.39 138.58 640.41 138.39 640.41 136.80 C 640.41 135.54 642.23 135.10 646.24 135.10 C 650.25 135.10 652.27 135.79 653.08 137.32 L 659.35 135.20 C 658.22 132.88 655.40 129.80 646.28 129.80 C 638.31 129.80 633.76 132.40 633.76 137.36 C 633.76 143.38 640.79 144.16 646.39 144.70 C 651.41 145.17 653.23 145.39 653.23 146.96 C 653.23 148.21 651.54 148.81 646.62 148.81 C 641.38 148.81 639.15 147.68 638.53 145.83 L 632.60 147.08 C 633.80 150.66 636.96 153.89 646.77 153.89 M 663.62 153.45 L 670.64 153.45 L 670.64 147.40 L 663.62 147.40 L 663.62 153.45 "/></g><g clip-path="url(#clip-1)"><path fill-rule="nonzero" fill="#231f20" fill-opacity="1" d="M 59.87 96.28 C 85.41 96.28 106.36 86.12 114.83 65.94 L 90.28 57.79 C 85.67 69.20 74.07 74.59 59.99 74.59 C 39.80 74.59 28.46 64.31 28.46 48.27 C 28.46 31.71 39.68 22.32 59.87 22.32 C 75.57 22.32 85.67 28.33 89.03 37.36 L 114.71 29.71 C 108.85 13.16 92.02 0 59.99 0 C 29.58 0 1.16 13.54 1.16 48.27 C 1.16 82.73 27.59 96.28 59.87 96.28 M 181.34 95.90 C 216.87 95.90 235.56 81.86 235.56 56.41 L 235.56 1.75 L 209.02 1.75 L 209.02 55.79 C 209.02 68.32 198.92 73.46 181.60 73.46 C 164.27 73.46 154.05 68.45 154.05 55.91 L 154.05 1.75 L 126.88 1.75 L 126.88 56.54 C 126.88 81.86 145.82 95.90 181.34 95.90 M 255.13 94.52 L 322.43 94.52 C 337.52 94.52 357.08 89.38 357.08 68.57 C 357.08 53.53 349.23 48.01 337.76 45.88 C 347.11 43.88 355.09 37.86 355.09 24.45 C 355.09 3.76 336.14 1.75 321.43 1.75 L 255.13 1.75 Z M 281.80 74.09 L 281.80 56.79 L 318.82 56.79 C 327.29 56.79 330.66 59.67 330.66 65.18 C 330.66 70.95 327.17 74.09 318.70 74.09 Z M 281.80 38.11 L 281.80 22.56 L 318.94 22.56 C 326.67 22.56 329.29 25.82 329.29 30.34 C 329.29 34.85 326.67 38.11 318.44 38.11 Z M 376.00 94.52 L 403.17 94.52 L 403.17 1.76 L 376.00 1.76 Z M 478.27 96.28 C 509.18 96.28 536.85 82.61 536.85 48.14 C 536.85 13.67 508.56 0 478.27 0 C 447.99 0 419.69 13.67 419.69 48.14 C 419.69 82.61 447.36 96.28 478.27 96.28 M 478.27 74.46 C 457.96 74.46 446.74 64.18 446.74 48.14 C 446.74 32.09 457.96 22.44 478.27 22.44 C 498.59 22.44 509.68 32.09 509.68 48.14 C 509.68 64.18 498.59 74.46 478.27 74.46 M 553.07 94.52 L 579.12 94.52 L 579.12 34.98 L 634.46 94.52 L 661.13 94.52 L 661.13 1.75 L 635.09 1.75 L 635.09 58.04 L 583.24 1.75 L 553.07 1.75 L 553.07 94.52 "/></g></svg></span>
-        <div class="vk">Muttergesellschaft</div>
-        <h3>Marktdaten, Netzwerk und Beratung für gewerbliche Immobilien im Ruhrgebiet seit 2005.</h3>
-        <div class="vch"><span>Bürovermietung</span><span>Investment</span><span>Industrial &amp; Logistics</span><span>Research</span></div>
-        <span class="vgo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      </a>
-
-      <div class="vb-node" aria-hidden="true">
-        <span class="ln"></span>
-        <span class="dot">×</span>
-        <span class="ln"></span>
-      </div>
-
-      <a class="vbc rv d1" href="https://conceptstories.de/startseite.html" target="_blank" rel="noopener" aria-label="conceptstories Immobilien GmbH: Website öffnen">
-        <img class="vlogo" src="data:image/png;base64,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" alt="conceptstories Immobilien" width="1000" height="114" loading="lazy">
-        <div class="vk">Tochtergesellschaft</div>
-        <h3>Spezialisierung auf Einzelhandel, Gastronomie und Nutzungskonzepte in ganz Nordrhein-Westfalen.</h3>
-        <div class="vch"><span>Einzelhandel</span><span>Gastronomie</span><span>Nutzungskonzepte</span><span>Standortberatung</span></div>
-        <span class="vgo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ===== KONTAKT ===== -->
 <section class="cta" id="kontakt">
   <div class="glow" aria-hidden="true"></div>
   <div class="wrap cta-grid">
     <div class="rv">
-      <p class="lead-q">Fläche gesucht oder Fläche zu vergeben</p>
-      <h2 class="big-q">Sprechen wir darüber<em>.</em></h2>
-      <p>Kurz schildern, worum es geht. Sie bekommen eine erste Einschätzung zu Fläche, Konzept und Markt.</p>
+      <p class="lead-q">Fläche gesucht oder Fläche zu vergeben?</p>
+      <h2 class="big-q">Sprechen wir<em>.</em></h2>
+      <p>Kurz schildern, worum es geht. Sie bekommen eine erste Einschätzung.</p>
       <div class="acts">
         <a href="mailto:biermann@conceptstories.de" class="btn btn-o magnet">Anfrage senden <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="https://conceptstories.de" target="_blank" rel="noopener" class="btn btn-gd">conceptstories.de</a>
@@ -851,50 +783,47 @@ const LEIST={
  ]
 };
 (function(){
- const list=document.getElementById('lxList'),sw=document.getElementById('lsw'),panel=document.getElementById('lxPanel');
+ const list=document.getElementById('lxList'),sw=document.getElementById('lsw');
  if(!list||!sw)return;
- const T=document.getElementById('lxTitle'),D=document.getElementById('lxText');
- const fades=[T,D];
  const tabs=[...sw.querySelectorAll('button')];
- const mq=matchMedia('(max-width:900px)');
- let side='suche',cur=-1,tm;
+ const fine=matchMedia('(hover:hover) and (pointer:fine)');
+ let side='suche',cur=-1;
 
- function paint(i){const it=LEIST[side][i];T.textContent=it.t;D.textContent=it.d;}
- function show(i,instant,fromClick){
-  const rows=[...list.children];
-  if(fromClick&&mq.matches&&i===cur){
-   rows.forEach(r=>{r.classList.remove('on');r.setAttribute('aria-expanded','false');});
-   cur=-1;return;
-  }
-  rows.forEach(r=>{const on=+r.dataset.i===i;r.classList.toggle('on',on);r.setAttribute('aria-expanded',on?'true':'false');});
+ function open(i){
   if(i===cur)return;
-  if(instant||reduce){cur=i;paint(i);return;}
-  clearTimeout(tm);
-  fades.forEach(f=>f.classList.add('out'));
-  tm=setTimeout(()=>{cur=i;paint(i);fades.forEach(f=>f.classList.remove('out'));},190);
+  cur=i;
+  [...list.children].forEach(r=>{
+   const on=+r.dataset.i===i;
+   r.classList.toggle('on',on);
+   r.setAttribute('aria-expanded',on?'true':'false');
+  });
+ }
+ function toggle(i){
+  if(i===cur){cur=-1;[...list.children].forEach(r=>{r.classList.remove('on');r.setAttribute('aria-expanded','false');});return;}
+  open(i);
  }
  function build(){
-  list.innerHTML='';
+  list.innerHTML='';cur=-1;
   LEIST[side].forEach((it,i)=>{
    const b=document.createElement('button');
    b.type='button';b.className='lx-row';b.dataset.i=i;
    b.setAttribute('aria-expanded','false');
-   b.innerHTML='<span class="t">'+it.t+'</span>'+
-     '<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
-     '<p class="lx-m">'+it.d+'</p>';
-   b.addEventListener('mouseenter',()=>{if(!mq.matches)show(i);});
-   b.addEventListener('focus',()=>show(i));
-   b.addEventListener('click',()=>show(i,false,true));
+   b.innerHTML='<span class="lx-hd"><span class="t">'+it.t+'</span>'+
+     '<span class="lx-ic" aria-hidden="true"></span></span>'+
+     '<span class="lx-bd"><p>'+it.d+'</p></span>';
+   b.addEventListener('mouseenter',()=>{if(fine.matches&&!reduce)open(i);});
+   b.addEventListener('focus',()=>open(i));
+   b.addEventListener('click',()=>toggle(i));
    list.appendChild(b);
   });
-  cur=-1;show(0,true);
+  open(0);
  }
  function select(tab){
   if(tab.dataset.side===side)return;
   side=tab.dataset.side;
   sw.dataset.side=tab.dataset.idx;
   tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;});
-  if(panel)panel.setAttribute('aria-labelledby',tab.id);
+  list.setAttribute('aria-labelledby',tab.id);
   build();
  }
  tabs.forEach((t,i)=>{
@@ -955,7 +884,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 document.querySelectorAll('.sec-head').forEach(el=>{if(!el.classList.contains('rv'))el.classList.add('rv');io.observe(el);});
 
 /* ===== rail + progress + top ===== */
-const SECIDS=['konzept','leistungen','projekte','verbund','kontakt'];
+const SECIDS=['marken','leistungen','projekte','kontakt'];
 const secMap=SECIDS.map(id=>({id,el:document.getElementById(id)}));
 const railLinks=document.querySelectorAll('#rail a');
 railLinks.forEach(a=>a.addEventListener('click',e=>{
