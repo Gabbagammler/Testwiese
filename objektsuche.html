@@ -161,7 +161,6 @@ html,body{overflow-x:clip}
 .ocard:hover .ph img.sl.on{transform:scale(1.06)}
 .ocard .badge{position:absolute;left:10px;top:10px;z-index:3;display:flex;gap:5px}
 .ocard .badge span{font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(14,12,11,.66);backdrop-filter:blur(8px);padding:5px 9px;border-radius:100px}
-.ocard .badge span.kf{background:var(--orange)}
 .ocard .save{position:absolute;right:10px;top:10px;z-index:4;width:33px;height:33px;border-radius:50%;border:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease),background .3s,color .3s;box-shadow:0 8px 20px -8px rgba(0,0,0,.3)}
 .ocard .save:hover{transform:scale(1.1)}
 .ocard .save svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;transition:.25s}
@@ -333,49 +332,50 @@ html,body{overflow-x:clip}
 @media(max-width:560px){.hero h1 .ln{white-space:normal}.hero h1{font-size:clamp(1.85rem,8.6vw,2.6rem)}}
 @media(prefers-reduced-motion:reduce){.hero-media img{transform:none}.hero h1 .ln i{transform:none}}
 
-/* ===== SUCH- UND FILTER-CONTROL (sticky) ===== */
-.toolbar{position:sticky;top:var(--navh);z-index:80;background:var(--bone);border-bottom:1px solid var(--line);transition:box-shadow .3s}
-.toolbar.stuck{box-shadow:0 16px 32px -28px rgba(27,23,20,.55)}
+/* ===== SUCH- UND FILTER-CONTROL (sticky, Dark Mode) ===== */
+.toolbar{position:sticky;top:var(--navh);z-index:80;background:var(--bg);border-top:1px solid rgba(255,255,255,.06);color-scheme:dark;transition:box-shadow .3s}
+.toolbar.stuck{box-shadow:0 18px 36px -24px rgba(14,12,11,.6)}
 .tbwrap{max-width:1600px;margin:0 auto;padding:12px var(--gut)}
-.ctrl{display:flex;align-items:stretch;min-height:58px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(27,23,20,.04)}
+.ctrl{display:flex;align-items:stretch;min-height:58px;background:#1c1815;border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
 /* Textsuche: breitestes Segment, größere Schrift, eigener Fokuszustand */
-.tsearch{position:relative;display:flex;align-items:center;gap:12px;flex:1 1 330px;min-width:180px;max-width:440px;padding:0 10px 0 20px;border-right:1px solid var(--line);border-radius:15px 0 0 15px;transition:box-shadow .25s,background .25s}
-.tsearch:focus-within{box-shadow:inset 0 0 0 2px var(--ink)}
+.tsearch{position:relative;display:flex;align-items:center;gap:12px;flex:1 1 330px;min-width:180px;max-width:440px;padding:0 10px 0 20px;border-right:1px solid rgba(255,255,255,.12);border-radius:15px 0 0 15px;transition:box-shadow .25s,background .25s}
+.tsearch:focus-within{background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
 .tsearch .sic{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--orange);stroke-width:2.1}
-.tsearch input{flex:1;min-width:0;height:100%;border:0;outline:none;background:none;font-family:'Inter';font-size:.98rem;font-weight:500;color:var(--ink)}
-.tsearch input::placeholder{color:#8f8b85;font-weight:400}
+.tsearch input{flex:1;min-width:0;height:100%;border:0;outline:none;background:none;font-family:'Inter';font-size:.98rem;font-weight:500;color:#fff;caret-color:var(--orange)}
+.tsearch input::placeholder{color:rgba(255,255,255,.52);font-weight:400}
 .tsearch input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
-.tsearch .sclear{width:26px;height:26px;border-radius:50%;border:0;background:var(--bone);color:var(--grey);cursor:pointer;display:none;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
+.tsearch .sclear{width:26px;height:26px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);cursor:pointer;display:none;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
 .tsearch .sclear.show{display:flex}
-.tsearch .sclear:hover{background:var(--ink);color:#fff}
+.tsearch .sclear:hover{background:#fff;color:var(--ink)}
 .tsearch .sclear svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.2}
 /* Filter: eine Zeile */
 .tpills{display:flex;align-items:center;gap:2px;flex:0 0 auto;padding:0 8px;flex-wrap:nowrap;margin-right:auto}
 .fwrap{position:relative;flex:0 0 auto}
-.fpill{display:flex;align-items:center;gap:7px;height:40px;border:0;background:none;border-radius:10px;padding:0 12px;font-size:.87rem;font-weight:550;color:var(--ink);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
-.fpill:hover{background:var(--bone)}
-.fpill:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.fpill{display:flex;align-items:center;gap:7px;height:40px;border:0;background:none;border-radius:10px;padding:0 12px;font-size:.87rem;font-weight:550;color:rgba(255,255,255,.9);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
+.fpill:hover{background:rgba(255,255,255,.08);color:#fff}
+.fpill:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:1px}
 .fpill .car{width:9px;height:9px;fill:none;stroke:currentColor;stroke-width:2;opacity:.6;transition:transform .3s var(--ease)}
-.fwrap.open .fpill{background:var(--ink);color:#fff}
+.fwrap.open .fpill{background:#fff;color:var(--ink)}
 .fwrap.open .fpill .car{transform:rotate(180deg);opacity:1}
 .fpill .fb{min-width:18px;height:18px;border-radius:9px;background:var(--orange);color:#fff;font-family:'IBM Plex Mono';font-size:.6rem;display:none;align-items:center;justify-content:center;padding:0 5px}
-.fpill.set{background:var(--bone)}
-.fwrap.open .fpill.set{background:var(--ink)}
+.fpill.set{background:rgba(255,255,255,.1);color:#fff}
+.fwrap.open .fpill.set{background:#fff;color:var(--ink)}
 .fpill.set .fb{display:flex}
 .tpills .fpill.set .car{display:none}   /* Zähler ersetzt den Pfeil: Breite bleibt stabil */
 /* Ergebnissteuerung: gleiche Fläche, eigener Tonwert */
-.tright{display:flex;align-items:center;gap:4px;flex:0 0 auto;padding:0 9px 0 18px;background:#F8F7F4;border-left:1px solid var(--line);border-radius:0 15px 15px 0}
-.tcount{font-size:.85rem;color:var(--grey);white-space:nowrap;margin-right:8px}
-.tcount b{color:var(--ink);font-weight:650}
+.tright{display:flex;align-items:center;gap:4px;flex:0 0 auto;padding:0 9px 0 18px;background:rgba(255,255,255,.04);border-left:1px solid rgba(255,255,255,.12);border-radius:0 15px 15px 0}
+.tcount{font-size:.85rem;color:rgba(255,255,255,.56);white-space:nowrap;margin-right:8px}
+.tcount b{color:#fff;font-weight:650}
 .sortw .fpill{gap:8px}
-.sortw .fpill:hover,.sortw .fpill.set{background:var(--bone2)}
-.sortw .fpill .sic2{width:14px;height:14px;fill:none;stroke:var(--grey);stroke-width:2;flex:0 0 auto}
-.fwrap.open .fpill .sic2{stroke:#fff}
+.sortw .fpill:hover,.sortw .fpill.set{background:rgba(255,255,255,.08)}
+.sortw .fpill .sic2{width:14px;height:14px;fill:none;stroke:rgba(255,255,255,.5);stroke-width:2;flex:0 0 auto}
+.fwrap.open .fpill .sic2{stroke:var(--grey)}
 .pop.pright{left:auto;right:0}
-.vtog{display:flex;background:var(--bone2);border-radius:11px;padding:3px;gap:2px;margin-left:4px}
-.vtog button{width:34px;height:32px;border:0;background:none;border-radius:8px;color:var(--grey);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
-.vtog button:hover{color:var(--ink)}
-.vtog button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(27,23,20,.16)}
+.vtog{display:flex;background:rgba(255,255,255,.08);border-radius:11px;padding:3px;gap:2px;margin-left:4px}
+.vtog button{width:34px;height:32px;border:0;background:none;border-radius:8px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
+.vtog button:hover{color:#fff}
+.vtog button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.vtog button:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:1px}
 .vtog svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
 /* Desktop eng: Filter bleiben in einer Zeile */
 @media(max-width:1380px){.tsearch{flex-basis:260px;padding-left:18px;gap:10px}.tsearch input{font-size:.95rem}.fpill{padding:0 9px;gap:6px;font-size:.84rem}.tpills{padding:0 5px}.tright{padding-left:14px}.sortw .fpill .sic2{display:none}.tcount{margin-right:4px}}
@@ -384,7 +384,7 @@ html,body{overflow-x:clip}
   .ctrl{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"s r" "p p"}
   .tsearch{grid-area:s;max-width:none;min-height:54px;border-right:0;border-radius:15px 0 0 0;padding-left:20px}
   .tright{grid-area:r;border-radius:0 15px 0 0}
-  .tpills{grid-area:p;border-top:1px solid var(--line);padding:6px;flex-wrap:wrap;margin-right:0}
+  .tpills{grid-area:p;border-top:1px solid rgba(255,255,255,.12);padding:6px;flex-wrap:wrap;margin-right:0}
   .fpill{padding:0 11px}
   .sortw .fpill .sic2{display:block}
 }
@@ -395,9 +395,9 @@ html,body{overflow-x:clip}
   .tsearch{min-height:48px;padding-left:15px;border-radius:13px 13px 0 0}
   .tsearch input{font-size:16px}
   .tpills{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:4px 30px 4px 6px}
-  .ctrl::after{content:"";grid-area:p;justify-self:end;align-self:stretch;width:34px;margin-top:1px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 80%);pointer-events:none;z-index:1}   /* Hinweis: Filterzeile ist scrollbar */
+  .ctrl::after{content:"";grid-area:p;justify-self:end;align-self:stretch;width:34px;margin-top:1px;background:linear-gradient(90deg,rgba(28,24,21,0),#1c1815 80%);pointer-events:none;z-index:1}   /* Hinweis: Filterzeile ist scrollbar */
   .tpills::-webkit-scrollbar{display:none}
-  .tright{border-left:0;border-top:1px solid var(--line);border-radius:0 0 13px 13px;min-height:44px;padding:3px 5px 3px 15px}
+  .tright{border-left:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0 0 13px 13px;min-height:44px;padding:3px 5px 3px 15px}
   .tcount{margin-right:auto}
   .fpill{height:36px}
 }
@@ -440,27 +440,45 @@ html,body{overflow-x:clip}
 /* chips (unter dem Control, inkl. Zurücksetzen) */
 .chiprow{display:none;flex-wrap:wrap;gap:7px;padding:10px 2px 0;align-items:center}
 .chiprow.show{display:flex}
-.chip{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:5px 6px 5px 12px;font-size:.78rem;font-weight:550;animation:chin .3s var(--ease)}
-.chip.area{border-color:rgba(255,111,32,.55)}
-.chip.area::before{content:"";width:9px;height:9px;border-radius:3px;border:1.5px solid var(--orange);background:rgba(255,111,32,.14)}
+.chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:100px;padding:5px 6px 5px 12px;font-size:.78rem;font-weight:550;animation:chin .3s var(--ease)}
+.chip.area{border-color:rgba(255,111,32,.6)}
+.chip.area::before{content:"";width:9px;height:9px;border-radius:3px;border:1.5px solid var(--orange);background:rgba(255,111,32,.2)}
 @keyframes chin{from{opacity:0;transform:scale(.9)}}
-.chip .cx{width:19px;height:19px;border-radius:50%;background:var(--bone);border:0;color:var(--grey);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
-.chip .cx:hover{background:var(--ink);color:#fff}
+.chip .cx{width:19px;height:19px;border-radius:50%;background:rgba(255,255,255,.12);border:0;color:rgba(255,255,255,.7);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.chip .cx:hover{background:#fff;color:var(--ink)}
 .chip .cx svg{width:9px;height:9px;fill:none;stroke:currentColor;stroke-width:2.4}
-.treset{display:none;align-items:center;gap:7px;background:none;border:0;font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);cursor:pointer;padding:7px 8px;transition:.25s;white-space:nowrap}
+.treset{display:none;align-items:center;gap:7px;background:none;border:0;font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);cursor:pointer;padding:7px 8px;transition:.25s;white-space:nowrap}
 .treset:hover{color:var(--orange)}
 .treset svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
 .treset.show{display:flex}
 @media(max-width:640px){.chiprow{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-top:8px}.chiprow::-webkit-scrollbar{display:none}.chip{flex:0 0 auto}}
+/* Dropdowns im dunklen Control */
+.toolbar .pop{background:#1c1815;border-color:rgba(255,255,255,.12);box-shadow:0 44px 90px -30px rgba(0,0,0,.75);color:#fff}
+.toolbar .pop .plab{color:rgba(255,255,255,.5)}
+.toolbar .pop .copt{color:rgba(255,255,255,.9)}
+.toolbar .pop .copt:hover{background:rgba(255,255,255,.07)}
+.toolbar .pop .copt .bx{border-color:rgba(255,255,255,.32)}
+.toolbar .pop .copt.on{color:#fff}
+.toolbar .pop .copt.on .bx{background:var(--orange);border-color:var(--orange)}
+.toolbar .pop .copt .cnum{color:rgba(255,255,255,.42)}
+.toolbar .pop .rrow .dash{color:rgba(255,255,255,.3)}
+.toolbar .pop .nin input{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#fff}
+.toolbar .pop .nin input::placeholder{color:rgba(255,255,255,.4)}
+.toolbar .pop .nin input:focus{border-color:rgba(255,255,255,.6)}
+.toolbar .pop .nin .u{color:rgba(255,255,255,.5)}
+.toolbar .pop .kaufnote{color:rgba(255,255,255,.5)}
+.toolbar .range .track{background:rgba(255,255,255,.14)}
+.toolbar .range input[type=range]::-webkit-slider-thumb{background:#fff;border-color:var(--orange);box-shadow:0 4px 12px rgba(0,0,0,.45)}
+.toolbar .range input[type=range]::-moz-range-thumb{border-color:var(--orange)}
 
-/* ===== workspace: kompakte Liste links, große Karte rechts ===== */
-.workspace{max-width:1600px;margin:0 auto;padding:clamp(16px,1.8vw,22px) var(--gut) clamp(70px,8vw,110px);display:grid;grid-template-columns:clamp(500px,41%,640px) minmax(0,1fr);gap:clamp(16px,1.6vw,24px);align-items:start}
+/* ===== workspace: Liste links, Karte rechts ===== */
+.workspace{max-width:1600px;margin:0 auto;padding:clamp(16px,1.8vw,22px) var(--gut) clamp(70px,8vw,110px);display:grid;grid-template-columns:clamp(540px,46%,720px) minmax(0,1fr);gap:clamp(16px,1.6vw,24px);align-items:start}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
 .mapcol{position:sticky;top:calc(var(--navh) + var(--tbh) + 16px)}
 /* Liste mindestens so hoch wie die Karte: bei wenigen Treffern rutscht die Karte nicht unter das Control */
 .workspace>.listcol{min-height:calc(100vh - var(--navh) - var(--tbh) - 32px)}
 .mapcol .mapcard.live{height:calc(100vh - var(--navh) - var(--tbh) - 32px);min-height:440px}
-@media(max-width:1180px){.workspace{grid-template-columns:clamp(470px,46%,560px) minmax(0,1fr)}.cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+@media(max-width:1180px){.workspace{grid-template-columns:clamp(490px,50%,600px) minmax(0,1fr)}.cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
 @media(max-width:1020px){
   .workspace{grid-template-columns:1fr}
   .cards{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
@@ -509,14 +527,13 @@ html,body{overflow-x:clip}
 #drawer .dempty .btn{margin-top:20px}
 
 /* ===== Live-Karte (Leaflet / OpenStreetMap), hell im CUBION-Ton ===== */
-.mapcard.live{position:relative;padding:0;background:#E8E6E1;border:1px solid var(--line);border-radius:20px;color:var(--ink);overflow:hidden}
+.mapcard.live{position:relative;padding:0;background:#F7F7F5;container-type:inline-size;border:1px solid var(--line);border-radius:20px;color:var(--ink);overflow:hidden}
 .mapcard.live::after{display:none}
-.osmwrap{background:#E8E6E1}
+.osmwrap{background:#F7F7F5}
 .mapcard.live .osmwrap{position:absolute;inset:0;z-index:1}
-.leaflet-container{font-family:'Inter',sans-serif;background:#E8E6E1}
-/* OSM-Standardkacheln entsättigt und leicht warm, damit sie zur Bone-Palette passen */
-.tiles-osm .leaflet-tile-pane{filter:grayscale(1) sepia(.1) brightness(1.04) contrast(.9)}
-.tiles-carto .leaflet-tile-pane{filter:sepia(.06)}
+.leaflet-container{font-family:'Inter',sans-serif;background:#F7F7F5}
+/* OSM-Standardkacheln: neutral entsättigt, aufgehellt, leicht mehr Kontrast → weiße Flächen, klare Straßenkanten */
+.tiles-osm .leaflet-tile-pane{filter:grayscale(1) brightness(1.12) contrast(1.08)}
 .leaflet-top .leaflet-control{margin-top:14px}
 .leaflet-left .leaflet-control{margin-left:14px}
 .leaflet-right .leaflet-control{margin-right:14px}
@@ -525,7 +542,7 @@ html,body{overflow-x:clip}
 .leaflet-control-zoom a+a{border-top:1px solid var(--line)!important}
 .leaflet-control-zoom a:hover{background:var(--bone)!important;color:var(--orange)!important}
 .leaflet-control-zoom a.leaflet-disabled{color:var(--grey2)!important;background:#fff!important}
-.leaflet-control-attribution{background:rgba(255,255,255,.72)!important;color:var(--grey)!important;font-size:9px!important;border-radius:0 6px 0 0}
+.leaflet-control-attribution{background:rgba(255,255,255,.85)!important;color:var(--grey)!important;font-size:9px!important;border-radius:0 6px 0 0}
 .leaflet-control-attribution a{color:var(--slate,#3A3633)!important}
 /* Zeichnen-Werkzeug */
 .drawctl{display:flex;gap:6px}
@@ -540,10 +557,22 @@ html,body{overflow-x:clip}
 .maphint.on{opacity:1;transform:translate(-50%,0)}
 .leaflet-container.drawing,.leaflet-container.drawing .leaflet-interactive{cursor:crosshair!important}
 .leaflet-container.drawing .leaflet-marker-pane,.leaflet-container.drawing .leaflet-tooltip-pane{pointer-events:none}
+/* Zoom-Hinweis: dauerhaft neben der Zoomsteuerung, reagiert auf normales Scrollen über der Karte */
+.zoomhint{position:absolute;top:14px;right:62px;z-index:800;display:flex;align-items:center;gap:7px;height:40px;padding:0 13px 0 11px;border-radius:12px;background:rgba(255,255,255,.95);border:1px solid var(--line);color:#3A3633;font-size:.8rem;font-weight:500;white-space:nowrap;pointer-events:none;box-shadow:0 10px 24px -16px rgba(27,23,20,.35);transition:opacity .4s var(--ease),background .25s,color .25s,border-color .25s}
+.zoomhint svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;flex:0 0 auto;opacity:.75}
+.zoomhint kbd{font:600 .74rem/1 'Inter',system-ui,sans-serif;padding:4px 7px;border-radius:6px;background:var(--bone);border:1px solid var(--line);color:var(--ink)}
+.zoomhint.nudge{background:var(--ink);border-color:var(--ink);color:#fff}
+.zoomhint.nudge kbd{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff}
+.zoomhint.learned{opacity:0}
+.zoomhint.learned.nudge{opacity:1}
+.leaflet-container.drawing .zoomhint{opacity:0}
+@container (max-width:560px){.zoomhint .zt{display:none}}
+@media(hover:none){.zoomhint{display:none}}
+#mapSheet .zoomhint{display:none}
 /* Marker */
 .osmk{background:none;border:0}
 .osmk .halo{position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:rgba(255,111,32,.2);transition:transform .3s var(--ease),background .3s}
-.osmk .pt{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--orange);border:2.5px solid #fff;transition:transform .3s var(--ease),background .3s;box-shadow:0 0 0 1px rgba(27,23,20,.18),0 4px 10px rgba(27,23,20,.32)}
+.osmk .pt{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--orange);border:2.5px solid #fff;transition:transform .3s var(--ease),background .3s;box-shadow:0 0 0 1px rgba(27,23,20,.28),0 4px 10px rgba(27,23,20,.3)}
 .osmk:hover .pt,.osmk.hot .pt{transform:scale(1.35);background:var(--ink)}
 .osmk:hover .halo,.osmk.hot .halo{transform:scale(1.9);background:rgba(255,111,32,.3)}
 .osmtip{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:12px!important;box-shadow:0 18px 40px -16px rgba(27,23,20,.45)!important;padding:9px 12px!important}
@@ -1162,7 +1191,7 @@ function cardHTML(o){
   return `<article class="ocard" data-id="${o.id}" tabindex="0" aria-label="${esc(o.titel)}">
     <div class="ph">
       ${slides}
-      <div class="badge"><span>${ARTL[o.art]}</span>${o.typ==='kauf'?'<span class="kf">Kauf</span>':''}</div>
+      <div class="badge"><span>${ARTL[o.art]}</span></div>
       <button class="save${merkHas(o.id)?' on':''}" data-saveid="${o.id}" aria-label="Auf die Merkliste"><svg viewBox="0 0 24 24"><path d="M19 21l-7-4.5L5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
       <button class="sarw p" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
       <button class="sarw n" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -1451,6 +1480,8 @@ function mkMap(el){
   L.control.zoom({position:'topright',zoomInTitle:'Hineinzoomen',zoomOutTitle:'Herauszoomen'}).addTo(m);
   m.setView([51.47,7.05],10);
   m._hint=L.DomUtil.create('div','maphint',el);
+  m._zhint=L.DomUtil.create('div','zoomhint',el);
+  m._zhint.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 7v4"/></svg><kbd>'+(IS_MAC?'⌘':'Strg')+'</kbd><span>+ Mausrad<span class="zt"> zum Zoomen</span></span>';
   ctrlWheel(m);
   addDrawControl(m,el);
   return m;
@@ -1460,12 +1491,14 @@ function mapHint(m,txt,ms){
   if(ms)m._hintT=setTimeout(()=>h.classList.remove('on'),ms);
 }
 
-/* Zoom nur mit Strg/⌘ + Mausrad; normales Scrollen scrollt die Seite */
+/* Zoom nur mit Strg/⌘ + Mausrad; normales Scrollen scrollt die Seite und hebt den Hinweis kurz hervor */
 function ctrlWheel(m){
   const h=m.scrollWheelZoom,base=L.Map.ScrollWheelZoom.prototype._onWheelScroll;
+  const z=m._zhint;let t;
   h._onWheelScroll=function(e){
-    if(e.ctrlKey||e.metaKey){if(!m._drawing)m._hint.classList.remove('on');return base.call(this,e)}
-    if(!m._drawing)mapHint(m,(IS_MAC?'⌘':'Strg')+' + Mausrad zum Zoomen',1300);
+    if(e.ctrlKey||e.metaKey){z.classList.remove('nudge');z.classList.add('learned');return base.call(this,e)}
+    if(m._drawing)return;
+    z.classList.add('nudge');clearTimeout(t);t=setTimeout(()=>z.classList.remove('nudge'),1400);
   };
   h.enable();
 }
