@@ -439,8 +439,8 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 
 /* ===== RESEARCH PAGE ===== */
 /* Header im Karriere-Design */
-.rhero{position:relative;z-index:5;min-height:clamp(520px,64svh,660px);color:#fff;display:flex;align-items:stretch;
-      padding:clamp(124px,15vh,168px) var(--gut) clamp(44px,6vh,80px);overflow:hidden}
+.rhero{position:relative;z-index:5;min-height:clamp(580px,72svh,740px);color:#fff;display:flex;align-items:stretch;
+      padding:clamp(124px,15vh,168px) var(--gut) clamp(96px,13vh,140px);overflow:hidden}
 .rhero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
 .rhero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
 .loaded .rhero-media img{transform:scale(1)}
@@ -459,7 +459,7 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .rhero .sub{max-width:48ch;margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.85);font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.72}
 .rhero .scrollcue{bottom:clamp(18px,2.4vh,28px)}
 @media(max-width:1024px){
- .rhero{min-height:auto;padding-top:clamp(112px,16vh,150px)}
+ .rhero{min-height:auto;padding-top:clamp(112px,16vh,150px);padding-bottom:clamp(72px,11vh,110px)}
  .rhero-inner{padding-right:0}
  .rhero-wash{background:radial-gradient(120% 66% at 50% 126%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.55) 34%,rgba(255,111,32,0) 66%)}
  .rhero .scrollcue{display:none}
@@ -840,12 +840,6 @@ html,body{overflow-x:clip}
 <!-- ===== TEAM GRID ===== -->
 <section class="tgrid-sec" id="team">
   <div class="wrap">
-    <div class="r-head">
-      <div>
-        <span class="lead">Menschen bei CUBION</span>
-        <h2>Ihre Ansprechpartner<br>im Ruhrgebiet</h2>
-      </div>
-    </div>
     <div class="pills rv" id="tFilters"></div>
     <div class="tgrid" id="tGrid"></div>
   </div>
