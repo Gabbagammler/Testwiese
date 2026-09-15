@@ -539,7 +539,7 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
   padding:18px calc(var(--bleed) - var(--pad)) 44px;margin:-18px calc(-1 * var(--bleed)) -44px;scroll-padding-inline:calc(var(--bleed) - var(--pad))}
 .pubtrack::-webkit-scrollbar{display:none}
 .pubcard{flex:0 0 calc((100% - 3 * var(--pgap)) / 4);min-width:232px;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;
-  padding:var(--pad) var(--pad) 20px;border-radius:22px;background:var(--paper);color:var(--ink);transition:box-shadow .5s var(--ease)}
+  padding:var(--pad) var(--pad) 20px;border-radius:22px;background:#F6F6F5;color:var(--ink);transition:box-shadow .5s var(--ease)}
 .pubcard:hover,.pubcard:focus-within{box-shadow:0 24px 44px -32px rgba(27,23,20,.24),0 1px 2px rgba(27,23,20,.04)}
 /* Bildausschnitt: dasselbe Motiv, je Ausgabe ein anderer Ausschnitt (Cover, Doppelseite, Diagramme) */
 .pc-img{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#d9d8d6}
@@ -641,13 +641,13 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .lk-reset:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 .lk-reset svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
 /* PDF-Downloads: ruhige Zeile unter der Karte, klar getrennt von den Stadtankern */
-.lk-dl{display:flex;align-items:center;justify-content:space-between;gap:16px 36px;flex-wrap:wrap;margin-top:clamp(22px,2.6vw,32px);padding:0 4px}
-.lk-dl-t{font-family:var(--sans-b);font-weight:700;font-size:1.04rem;letter-spacing:-.01em;line-height:1.3}
-.lk-dl-s{display:block;font-size:.88rem;color:var(--grey-d);margin-top:2px}
-.lk-dl-l{display:flex;gap:8px;flex-wrap:wrap}
-.lk-pdf{display:inline-flex;align-items:center;gap:9px;padding:10px 16px 10px 13px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.9rem;font-weight:500;white-space:nowrap;transition:background .3s var(--ease),border-color .3s var(--ease)}
-.lk-pdf svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:1.9;transition:stroke .3s}
-.lk-pdf small{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.46);transition:color .3s}
+.lk-dl{display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;margin-top:clamp(40px,4.6vw,64px);padding:0 4px}
+.lk-dl-t{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.14rem,1.4vw,1.3rem);letter-spacing:-.015em;line-height:1.25}
+.lk-dl-s{display:block;font-size:.94rem;color:rgba(255,255,255,.66);margin-top:4px}
+.lk-dl-l{display:flex;gap:10px;flex-wrap:wrap}
+.lk-pdf{display:inline-flex;align-items:center;gap:10px;padding:13px 20px 13px 16px;border-radius:100px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.05);color:#fff;font-size:.96rem;font-weight:500;white-space:nowrap;transition:background .3s var(--ease),border-color .3s var(--ease)}
+.lk-pdf svg{width:16px;height:16px;fill:none;stroke:var(--orange);stroke-width:1.9;transition:stroke .3s}
+.lk-pdf small{font-family:'IBM Plex Mono';font-size:.64rem;letter-spacing:.08em;color:rgba(255,255,255,.52);transition:color .3s}
 .lk-pdf:hover{background:var(--orange);border-color:var(--orange)}
 .lk-pdf:hover svg{stroke:#fff}.lk-pdf:hover small{color:rgba(255,255,255,.85)}
 .lk-pdf:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
@@ -682,20 +682,15 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .cty-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,1.8vw,28px)}
 .cty-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .cty-name{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.5rem,2vw,2rem);letter-spacing:-.02em;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-.cty-tg{position:relative;z-index:3;width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;
-  border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  transition:transform .45s var(--ease),background .3s,border-color .3s}
-.cty-tg svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
-.cty-tg:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .cty-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s var(--ease2)}
 .cty-in{min-height:0;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .3s var(--ease),transform .5s var(--ease)}
 .cty-yr{display:block;font-family:'IBM Plex Mono';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:22px 0 8px}
-.cty-kpi div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px solid rgba(255,255,255,.16)}
-.cty-kpi dt{font-size:.84rem;color:rgba(255,255,255,.72)}
-.cty-kpi dd{font-family:var(--sans-b);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.cty-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-weight:600;font-size:.94rem;letter-spacing:-.01em;color:#fff;transition:color .25s}
-.cty-cta .ar{width:34px;height:34px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .35s var(--ease)}
-.cty-cta .ar svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2}
+.cty-kpi div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.16)}
+.cty-kpi dt{flex:1 1 auto;min-width:0;font-size:.8rem;color:rgba(255,255,255,.72)}
+.cty-kpi dd{flex:0 0 auto;font-family:var(--sans-b);font-weight:700;font-size:.96rem;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cty-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-weight:600;font-size:clamp(.8rem,1.05vw,.9rem);white-space:nowrap;letter-spacing:-.01em;color:#fff;padding-right:8px;transition:color .25s}
+.cty-cta .ar{width:28px;height:28px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .35s var(--ease)}
+.cty-cta .ar svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2}
 .cty-cta:hover{color:var(--orange)}
 .cty-cta:hover .ar{transform:translateX(3px)}
 .cty-cta:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:6px}
@@ -704,15 +699,15 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .cty.on .cty-img{transform:scale(1.06)}
 .cty.on .cty-more{grid-template-rows:1fr}
 .cty.on .cty-in{opacity:1;transform:none;transition-delay:.12s,.12s}
-.cty.on .cty-tg{transform:rotate(45deg);background:var(--orange);border-color:var(--orange)}
 .cty.on .cty-cta::after{content:"";position:absolute;inset:0;z-index:2}
 .cty-bar{display:none}
-@media(max-width:1100px){
+@media(max-width:1180px){
  .cty-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;scrollbar-width:none;
    margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut);scroll-padding-inline:var(--gut)}
  .cty-grid::-webkit-scrollbar{display:none}
  .cty{flex:0 0 clamp(270px,40vw,340px);height:clamp(460px,62vw,540px);scroll-snap-align:start}
  .cty-bar{display:flex}
+ .cty-cta{font-size:.9rem}
 }
 @media(max-width:600px){.cty{flex-basis:78vw;height:min(520px,132vw)}}
 @media(prefers-reduced-motion:reduce){.cty-img,.cty-more,.cty-in,.cty::after{transition:none}}
@@ -779,11 +774,10 @@ html,body{overflow-x:clip}
 
 <!-- SECTION RAIL -->
 <nav id="rail" aria-label="Seitennavigation">
-  <a href="#marktbericht" data-s="marktbericht"><span class="lab">Publikationen</span><span class="tick"></span></a>
+  <a href="#marktbericht" data-s="marktbericht"><span class="lab">Büromarktbericht</span><span class="tick"></span></a>
   <a href="#updates" data-s="updates"><span class="lab">Marktupdates</span><span class="tick"></span></a>
   <a href="#lagen" data-s="lagen"><span class="lab">Lagen &amp; Mieten</span><span class="tick"></span></a>
   <a href="#staedte" data-s="staedte"><span class="lab">Analyse Märkte</span><span class="tick"></span></a>
-  <a href="#deutschland" data-s="deutschland"><span class="lab">Deutschland</span><span class="tick"></span></a>
   <a href="#kontakt" data-s="kontakt"><span class="lab">Kontakt</span><span class="tick"></span></a>
 </nav>
 
@@ -1114,7 +1108,7 @@ document.querySelectorAll('.rv,[data-count],.mk').forEach(el=>io.observe(el));
 document.querySelectorAll('.r-head').forEach(el=>{el.classList.add('rv');io.observe(el);});
 
 /* ===== rail + progress + top button ===== */
-const SECIDS=['marktbericht','updates','lagen','staedte','deutschland','kontakt'];
+const SECIDS=['marktbericht','updates','lagen','staedte','kontakt'];
 const secMap=SECIDS.map(id=>({id,el:document.getElementById(id)}));
 const railLinks=document.querySelectorAll('#rail a');
 railLinks.forEach(a=>a.addEventListener('click',e=>{
@@ -1465,14 +1459,12 @@ const STAEDTE=[
 ];
 (function(){
  const grid=document.getElementById('ctyGrid');if(!grid)return;
- const PLUS='<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
- grid.innerHTML=STAEDTE.map(c=>`
+  grid.innerHTML=STAEDTE.map(c=>`
  <article class="cty" data-k="${c.k}">
   <img class="cty-img" src="${c.img}" alt="Büromarkt ${c.n}" loading="lazy" decoding="async" style="object-position:${c.pos}" onerror="this.remove()">
   <div class="cty-body">
    <div class="cty-head">
     <h3 class="cty-name">${c.n}</h3>
-    <button class="cty-tg" type="button" aria-expanded="false" aria-controls="cty-${c.k}" aria-label="Kennzahlen ${c.n} anzeigen">${PLUS}</button>
    </div>
    <div class="cty-more" id="cty-${c.k}">
     <div class="cty-in">
@@ -1490,10 +1482,7 @@ const STAEDTE=[
  grid.addEventListener('pointerdown',e=>{lastType=e.pointerType||'mouse';},true);
  function set(card){
   cards.forEach(c=>{
-   const on=c===card,t=c.querySelector('.cty-tg'),n=c.querySelector('.cty-name').textContent;
-   c.classList.toggle('on',on);
-   t.setAttribute('aria-expanded',on);
-   t.setAttribute('aria-label',(on?'Kennzahlen ausblenden: ':'Kennzahlen anzeigen: ')+n);
+   c.classList.toggle('on',c===card);
   });
  }
  cards.forEach(c=>{
@@ -1502,7 +1491,6 @@ const STAEDTE=[
   c.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible'))set(c);});
   c.addEventListener('focusout',e=>{if(!c.contains(e.relatedTarget)&&!(lastType==='mouse'&&c.matches(':hover')))c.classList.contains('on')&&set(null);});
   c.addEventListener('click',e=>{
-   if(e.target.closest('.cty-tg')){e.preventDefault();set(c.classList.contains('on')?null:c);return;}
    if(!c.classList.contains('on')){e.preventDefault();set(c);}
   });
  });
