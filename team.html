@@ -646,9 +646,13 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .tmcard{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(12px);animation:upIn .55s var(--ease) forwards}
 .tmph{position:relative;aspect-ratio:4/4.6;overflow:hidden;background:var(--bone2)}
 .tmph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
-.tmph img{transition:transform 1.2s var(--ease)}
+.tmph img{transition:opacity .5s var(--ease),transform 1.2s var(--ease)}
 .tmcard:hover .tmph img{transform:scale(1.025)}
-@media(prefers-reduced-motion:reduce){.tmph img{transition:none}.tmcard:hover .tmph img{transform:none}}
+/* Kinderfoto beim Hover (ohne Label) */
+.tmph .kid{opacity:0}
+.haskid:hover .tmph .kid,.haskid.showkid .tmph .kid{opacity:1}
+.haskid:hover .tmph .ad,.haskid.showkid .tmph .ad{opacity:0}
+@media(prefers-reduced-motion:reduce){.tmph img{transition:opacity .2s linear}.tmcard:hover .tmph img{transform:none}}
 .tmbd{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
 .tmn{font-family:'Inter';font-weight:600;font-size:1.04rem;letter-spacing:-.01em;line-height:1.3}
 .tmr{font-family:'Inter';font-size:.86rem;color:var(--grey);margin-top:4px;line-height:1.45}
@@ -1039,9 +1043,10 @@ tFilters.innerHTML='<button class="pill on" data-f="all">Alle</button>'+DEPTS.ma
 function renderTeam(f){
  const list=f==='all'?PEOPLE:PEOPLE.filter(p=>p.d.includes(f));
  tGrid.innerHTML=list.map((p,i)=>`
-  <article class="tmcard" style="animation-delay:${Math.min(i*55,440)}ms">
+  <article class="tmcard${p.c?' haskid':''}" style="animation-delay:${Math.min(i*55,440)}ms">
    <div class="tmph">
-    <img src="${U+p.a}" alt="${p.n}" loading="lazy">
+    <img class="ad" src="${U+p.a}" alt="${p.n}" loading="lazy">
+    ${p.c?`<img class="kid" src="${U+p.c}" alt="" loading="lazy" aria-hidden="true">`:''}
    </div>
    <div class="tmbd">
     <div class="tmn">${p.n}</div>
@@ -1059,6 +1064,12 @@ tFilters.addEventListener('click',e=>{
  const p=e.target.closest('.pill');if(!p)return;
  tFilters.querySelectorAll('.pill').forEach(x=>x.classList.toggle('on',x===p));
  renderTeam(p.dataset.f);
+});
+/* touch: Foto antippen wechselt Kinderfoto/Heute */
+tGrid.addEventListener('click',e=>{
+ if(matchMedia('(hover:hover)').matches)return;
+ const ph=e.target.closest('.tmph');
+ if(ph&&ph.parentElement.classList.contains('haskid')){e.preventDefault();ph.parentElement.classList.toggle('showkid');}
 });
 
 /* ===== RAIL VISIBILITY (after statement) ===== */
