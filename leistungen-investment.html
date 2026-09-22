@@ -355,6 +355,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .om-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(30px,4vw,70px);align-items:end}
 .om-copy{padding-bottom:var(--sec-y);max-width:560px}
 .om-copy h2{font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1.1;max-width:none}
+.om-copy h2 span{display:block;white-space:nowrap}
 .om-copy>p{color:#5E5A55;font-size:clamp(1rem,1.15vw,1.1rem);line-height:1.72;max-width:44ch;margin-top:clamp(18px,2vw,26px)}
 .om-links{max-width:420px;margin-top:clamp(28px,3vw,38px);border-top:1px solid rgba(27,23,20,.14)}
 .om-link{display:grid;grid-template-columns:38px minmax(0,1fr) 18px;align-items:center;column-gap:14px;padding:12px 2px;
@@ -363,7 +364,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
   box-shadow:0 6px 16px -12px rgba(27,23,20,.45);transition:background .35s var(--ease),transform .35s var(--ease)}
 .om-link .ic svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:1.7;transition:stroke .35s}
 .om-link small{display:block;font-size:.8rem;color:var(--grey);line-height:1.3}
-.om-link b{display:block;font-family:var(--sans-b);font-weight:700;font-size:clamp(1rem,1.1vw,1.08rem);letter-spacing:-.01em;line-height:1.3;margin-top:1px;overflow-wrap:anywhere}
+.om-link b{display:block;font-family:var(--sans-b);font-weight:700;font-size:clamp(.94rem,1vw,1rem);letter-spacing:-.01em;line-height:1.3;margin-top:1px;overflow-wrap:anywhere}
 .om-link .go{width:16px;height:16px;fill:none;stroke:var(--grey);stroke-width:1.8;transition:transform .4s var(--ease),stroke .3s}
 .om-link:hover .ic,.om-link:focus-visible .ic{background:var(--orange)}
 .om-link:hover .ic svg,.om-link:focus-visible .ic svg{stroke:#fff}
@@ -776,7 +777,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
   <div class="wrap railsafe om-grid">
     <div class="om-copy rv">
       <span class="lead">Off-Market</span>
-      <h2>Vieles beginnt<br>vertraulich.</h2>
+      <h2><span>Vieles beginnt</span> <span>vertraulich.</span></h2>
       <p>Ein Großteil unserer Investmenttransaktionen findet off-market und vertraulich statt. Ob Sie ein Objekt veräußern oder gezielt investieren möchten: Sprechen Sie mit uns persönlich über Ihr Vorhaben.</p>
       <div class="om-links">
         <a class="om-link" href="tel:+4920897067016"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.25a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Telefon</small><b>+49 208 970 67-16</b></span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
