@@ -643,6 +643,15 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .cta-people .clinks a{font-size:.94rem;word-break:break-word}
 @media(max-width:1080px){.cta-grid.two{grid-template-columns:1fr}}
 @media(max-width:640px){.cta-people{grid-template-columns:1fr}}
+
+/* ===== FEINSCHLIFF DESKTOP =====
+   Grosse Headlines ab 561px um 12 % kleiner (Maximalwert und vw-Anteil jeweils x 0,88).
+   Mobile Regeln bis 560px bleiben unberuehrt. */
+@media(min-width:561px){
+ .rhero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
+ .mhead h2,.deals-head h2,.finder h2{font-size:clamp(1.8rem,3.17vw,2.55rem)}
+ .cta .big-q{font-size:clamp(2.2rem,4.05vw,3.26rem)}
+}
 </style>
 </head>
 <body>
