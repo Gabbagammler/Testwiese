@@ -796,6 +796,14 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 
 @media(max-width:430px){.r-head h2{font-size:clamp(1.2rem,5.35vw,1.9rem)}}
 html,body{overflow-x:clip}
+/* ===== FEINSCHLIFF DESKTOP =====
+   Grosse Headlines ab 561px um 12 % kleiner, analog zur Investmentseite.
+   Mobile Regeln bis 560px bleiben unberuehrt. */
+@media(min-width:561px){
+ .rhero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
+ .r-head h2{font-size:clamp(1.8rem,3.17vw,2.55rem)}
+ .cta .big-q{font-size:clamp(2.2rem,4.05vw,3.26rem)}
+}
 </style>
 </head>
 <body>
