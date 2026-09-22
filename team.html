@@ -691,6 +691,13 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 @media(max-width:900px){.kmod-grid{grid-template-columns:1fr;gap:44px}}
 
 html,body{overflow-x:clip}
+
+/* ===== HEADLINE-GROESSEN DESKTOP =====
+   Grosse Headlines ab 561px um ca. 12 % kleiner. Mobile Regeln bis 560px bleiben unberuehrt. */
+@media(min-width:561px){
+ .rhero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
+ .kmod .big-q{font-size:clamp(2.1rem,4.05vw,3.26rem)}
+}
 </style>
 </head>
 <body>
