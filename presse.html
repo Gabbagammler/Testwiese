@@ -406,6 +406,13 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .nl>a.cur{color:var(--orange)}
 html,body{overflow-x:clip}
 
+
+/* ===== HEADLINE-GROESSEN DESKTOP =====
+   Grosse Headlines ab 561px um ca. 12 % kleiner. Mobile Regeln bis 560px bleiben unberuehrt. */
+@media(min-width:561px){
+ .hero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
+ .cta.presse .big-q{font-size:clamp(2.1rem,3.87vw,2.99rem)}
+}
 </style>
 </head>
 <body>
