@@ -355,6 +355,14 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 @media(max-width:940px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
 
 html,body{overflow-x:clip}
+
+/* ===== HEADLINE-GROESSEN DESKTOP =====
+   Grosse Headlines ab 561px um ca. 12 % kleiner. Mobile Regeln bis 560px bleiben unberuehrt. */
+@media(min-width:561px){
+ .hero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
+ .mhead h2{font-size:clamp(1.8rem,3.17vw,2.55rem)}
+ .cta h2{font-size:clamp(2.1rem,4.05vw,3.26rem)}
+}
 </style>
 </head>
 <body>
