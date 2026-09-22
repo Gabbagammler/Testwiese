@@ -529,7 +529,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .rs-media{margin:0}
 .rs-media a{display:block;border-radius:var(--r);outline-offset:6px;background:#CCC8C2;padding:clamp(18px,2.2vw,30px) clamp(16px,2vw,28px) clamp(16px,1.8vw,24px);overflow:hidden}
 .rs-media a:focus-visible{outline:2px solid var(--orange)}
-.rs-media .rs-scroll{overflow-x:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.rs-media .rs-scroll{overflow:hidden}
 .rs-media img{display:block;width:100%;height:auto;transition:transform .9s var(--ease2)}
 .rs-media a:hover img{transform:scale(1.015)}
 .rs-leg{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:clamp(14px,1.6vw,18px);padding-top:clamp(12px,1.4vw,16px);border-top:1px solid rgba(27,23,20,.14)}
@@ -538,7 +538,6 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .rs-media figcaption{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.9rem;line-height:1.6;color:var(--grey)}
 @media(prefers-reduced-motion:reduce){.rs-media img{transition:none}}
 @media(max-width:900px){.rs-grid{grid-template-columns:1fr}.rs-copy h2{max-width:none}}
-@media(max-width:620px){.rs-media .rs-scroll img{min-width:520px}}
 
 /* ===== KONTAKT: zwei gleichwertige Ansprechpartner ===== */
 .cta-grid.two{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}
