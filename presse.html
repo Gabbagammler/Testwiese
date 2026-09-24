@@ -318,15 +318,16 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 /* Karte: Größe und Position bleiben beim Hover fix */
 .prow{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);cursor:pointer}
 .prow.rv{transform:translateY(14px)}
+.plist .rv{transition:opacity .6s var(--ease2),transform .6s var(--ease2)}
 .prow.rv.in{transform:none}
 .prow .pimg{position:relative;aspect-ratio:11/4;overflow:hidden;background:var(--bone2);isolation:isolate}
 .prow .pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .prow .bd{display:flex;flex-direction:column;flex:1;padding:clamp(16px,1.6vw,22px) clamp(18px,1.8vw,24px) clamp(16px,1.6vw,20px)}
-.prow .pd{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.04em;line-height:1.2;color:var(--grey);margin-bottom:8px}
+.prow .pd{font-family:'Inter',system-ui,sans-serif;font-weight:500;font-size:.78rem;letter-spacing:0;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--grey);margin-bottom:8px}
 .prow h3{font-size:clamp(1rem,1.2vw,1.12rem);font-weight:600;letter-spacing:-.012em;line-height:1.38;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .prow .tz{font-size:.86rem;color:var(--grey);line-height:1.58;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .prow .go{display:inline-flex;align-items:center;align-self:flex-start;gap:9px;margin-top:auto;padding-top:14px;color:var(--grey);transition:color .3s var(--ease)}
-.prow .go .gl{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;line-height:1}
+.prow .go .gl{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:.84rem;letter-spacing:-.005em;line-height:1}
 .prow .go svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .35s var(--ease)}
 @media(hover:hover){
   .prow:hover .pimg img{transform:scale(1.04)}
@@ -339,9 +340,11 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .prow:focus-visible .go svg{transform:translateX(4px)}
 
 /* Kategorie-Tags: gleiche Form, Farbe je Kategorie */
-.ptag{position:absolute;top:12px;left:12px;z-index:1;display:inline-flex;align-items:center;height:22px;padding:0 10px;border-radius:100px;
-      font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;line-height:1;white-space:nowrap;
-      background:var(--bone);color:var(--ink)}
+.ptag{position:absolute;top:12px;left:12px;z-index:1;display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:100px;
+      font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:.76rem;letter-spacing:-.005em;line-height:1;white-space:nowrap;
+      background:var(--bone);color:var(--ink);
+      box-shadow:0 0 0 1px rgba(255,255,255,.24),0 1px 2px rgba(20,16,12,.14)}
+.ptag.t-x{box-shadow:inset 0 0 0 1px #CFCBC4,0 1px 2px rgba(20,16,12,.10)}
 .t-v{background:var(--ink);color:#fff}        /* Vermittlungen */
 .t-m{background:var(--orange);color:#fff}     /* Marktberichte */
 .t-u{background:#5A5550;color:#fff}           /* Unternehmen */
@@ -706,6 +709,8 @@ navMerk.onclick=()=>location.href='objektsuche.html';
 /* reveal */
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* Presse-Einträge: früher und direkter einblenden */
+const pio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');pio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px 40px 0px'});
 
 /* ===== PRESSEMITTEILUNGEN ===== */
 /* c: v=Vermittlungen, m=Marktberichte, u=Unternehmen */
@@ -786,7 +791,7 @@ function appendBatch(){
   frag.innerHTML=html;
   const nodes=[...frag.content.children];
   plist.append(frag.content);
-  nodes.forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,7)*55)+'ms';io.observe(el);});
+  nodes.forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,5)*35)+'ms';pio.observe(el);});
   shown+=slice.length;
   if(shown>=filtered.length){
     sentinel.style.display='none';
@@ -798,7 +803,7 @@ function appendBatch(){
   }else{sentinel.style.display='';}
 }
 /* Auto-Nachladen */
-const moreIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)appendBatch();});},{rootMargin:'420px 0px'});
+const moreIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)appendBatch();});},{rootMargin:'800px 0px'});
 moreIO.observe(sentinel);
 
 /* Suche */
