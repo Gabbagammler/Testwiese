@@ -272,14 +272,14 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
    Der CTA liegt absolut im Bild und verschiebt kein Layout. Ueberschrift bleibt dunkel. */
 .refs{background:var(--paper);padding:clamp(84px,11vw,150px) 0 clamp(84px,10vw,130px)}
 .filters{display:flex;gap:9px;flex-wrap:wrap;padding-top:clamp(4px,1vw,10px)}
-.filters button{font-family:'IBM Plex Mono';font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);background:none;border:1px solid var(--line);border-radius:100px;padding:12px 22px;cursor:pointer;transition:.28s var(--ease)}
+.filters button{font-family:'Inter',system-ui,sans-serif;font-size:.84rem;font-weight:550;letter-spacing:-.005em;line-height:1.2;color:var(--grey);background:none;border:1px solid var(--line);border-radius:100px;padding:11px 20px;cursor:pointer;white-space:nowrap;transition:.28s var(--ease)}
 .filters button:hover{border-color:var(--ink);color:var(--ink)}
 .filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,28px)}
 .rtile{display:flex;flex-direction:column;color:var(--ink);background:#F5F4F1;border-radius:16px;overflow:hidden;isolation:isolate;transition:background-color .45s var(--ease)}
 .rtile:hover{background:#F0EEEA}
 .rtile:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
-.rtile .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bone2)}
+.rtile .ph{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--bone2)}
 .rtile .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease2)}
 .rtile:hover .ph img{transform:scale(1.045)}
 /* oben: feiner Verlauf fuer das Kategorie-Tag / unten: Verlauf fuer den CTA, nur im Hover */
