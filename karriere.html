@@ -164,41 +164,48 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .msub a.cur{color:var(--orange)}
 #menu .mfoot{display:flex;gap:28px;font-family:'IBM Plex Mono';font-size:.74rem;color:var(--grey-d);flex-wrap:wrap;flex:0 0 auto}
 
-/* ===== HERO (Karriere) ===== */
-.hero{position:relative;z-index:5;min-height:clamp(600px,78svh,800px);color:#fff;display:flex;align-items:stretch;
-      padding:clamp(124px,15vh,168px) var(--gut) clamp(44px,6vh,80px);overflow:hidden}
+/* ===== HERO (Karriere, Aufbau wie presse.html) ===== */
+.hero{position:relative;z-index:5;min-height:clamp(560px,72svh,760px);color:#fff;display:flex;align-items:stretch;
+      padding:clamp(124px,15vh,168px) var(--gut) clamp(44px,6vh,80px);overflow:hidden;background:var(--bg)}
 .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.9) contrast(1.05);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.86) contrast(1.02);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
 .loaded .hero-media img{transform:scale(1)}
 .hero-media::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(78deg,rgba(14,12,11,.93) 0%,rgba(14,12,11,.76) 32%,rgba(14,12,11,.36) 60%,rgba(14,12,11,.18) 100%),
-  linear-gradient(180deg,rgba(14,12,11,.66) 0%,rgba(14,12,11,0) 34%,rgba(14,12,11,.48) 100%)}
-/* Orangefeld unten rechts */
+  linear-gradient(78deg,rgba(14,12,11,.9) 0%,rgba(14,12,11,.76) 30%,rgba(14,12,11,.5) 58%,rgba(14,12,11,.32) 100%),
+  linear-gradient(180deg,rgba(14,12,11,.6) 0%,rgba(14,12,11,.1) 36%,rgba(14,12,11,.54) 100%)}
 .hero-wash{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  radial-gradient(88% 104% at 100% 116%,rgba(255,111,32,1) 0%,rgba(255,111,32,.95) 22%,rgba(255,111,32,.74) 39%,rgba(255,111,32,.38) 56%,rgba(255,111,32,.1) 72%,rgba(255,111,32,0) 84%)}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;
+  radial-gradient(78% 96% at 100% 118%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.62) 24%,rgba(255,111,32,.34) 42%,rgba(255,111,32,.12) 60%,rgba(255,111,32,0) 76%)}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:calc(var(--maxw) - 2 * var(--gut));margin:0 auto;
   display:grid;grid-template-columns:minmax(0,1fr);align-items:start;padding-right:clamp(0px,4.6vw,86px)}
-.hero h1{font-size:clamp(1.9rem,4.6vw,4.2rem);line-height:.88;letter-spacing:-.015em;margin-top:clamp(8px,1.2vw,16px)}
+.hero h1{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(1.9rem,4.6vw,4.2rem);line-height:.88;letter-spacing:-.015em;margin-top:clamp(8px,1.2vw,16px)}
 .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap;padding-top:.1em;margin-top:-.1em}
 .hero h1 .ln i{display:block;font-style:normal;transform:translateY(112%)}
 .loaded .hero h1 .ln i{transform:none;transition:transform 1.05s var(--ease2) .1s}
 .loaded .hero h1 .ln:nth-child(2) i{transition-delay:.2s}
-.hero h1 em{font-style:normal;color:var(--orange)}
-.hero .sub{max-width:48ch;margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.85);font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.72}
-.hero .acts{margin-top:clamp(22px,2.6vw,32px);display:flex;gap:13px;flex-wrap:wrap}
-
-.scrollcue{position:absolute;left:var(--gut);bottom:clamp(18px,2.4vh,28px);z-index:3;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0}
+.hero .sub{max-width:52ch;margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.85);font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.72}
+/* Direkte Einstiege im Header: Glas-Pills wie Research */
+.rjump{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(28px,3.2vw,42px)}
+.rjump a{display:inline-flex;align-items:center;padding:13px 23px;border-radius:100px;border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);
+  color:#fff;font-size:.95rem;font-weight:500;letter-spacing:-.005em;line-height:1.2;white-space:nowrap;
+  transition:background .32s var(--ease),border-color .32s var(--ease)}
+.rjump a:hover{background:var(--orange);border-color:var(--orange)}
+.rjump a:focus-visible{outline:2px solid #fff;outline-offset:3px;background:var(--orange);border-color:var(--orange)}
+@media(max-width:560px){.rjump{gap:8px}.rjump a{padding:11px 18px;font-size:.9rem}}
+.scrollcue{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0;
+  left:max(var(--gut),calc((100% - var(--maxw)) / 2 + var(--gut)));bottom:clamp(18px,2.4vh,28px)}
 .loaded .scrollcue{opacity:1;transition:opacity 1s .9s}
 .scrollcue .ln{width:46px;height:1px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
 .scrollcue .ln i{position:absolute;inset:0;background:var(--orange);animation:cue 2s var(--ease) infinite}
 @keyframes cue{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.scrollcue .ln i{animation:none}}
 @media(max-width:1024px){
  .hero{min-height:auto;padding-top:clamp(112px,16vh,150px)}
  .hero-inner{padding-right:0}
  .hero-wash{background:radial-gradient(120% 66% at 50% 126%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.55) 34%,rgba(255,111,32,0) 66%)}
- .scrollcue{display:none}
+ .hero .scrollcue{display:none}
 }
-@media(max-width:560px){.hero h1 .ln{white-space:normal}.hero h1{font-size:clamp(1.85rem,8.6vw,2.6rem)}}
+@media(max-width:560px){.hero h1 .ln{white-space:normal}.hero h1{font-size:clamp(1.5rem,7.1vw,2.6rem)}}
 @media(prefers-reduced-motion:reduce){.hero-media img{transform:none}.hero h1 .ln i{transform:none}}
 
 /* ===== SHARED MODULE HEAD ===== */
@@ -248,9 +255,6 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .tp .nm{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff}
 .tp .nm b{display:block;font-weight:600;font-size:.98rem;letter-spacing:-.01em;line-height:1.3}
 .tp .nm span{display:block;font-size:.79rem;color:rgba(255,255,255,.72);margin-top:3px;line-height:1.4}
-.kchip{position:absolute;left:14px;top:14px;z-index:3;font-weight:600;font-size:.74rem;color:#fff;background:var(--orange);border-radius:9px;padding:6px 12px;box-shadow:0 12px 26px -12px rgba(255,111,32,.8);opacity:0;transform:translateY(-6px);transition:.35s var(--ease);pointer-events:none}
-.tp:hover .kchip,.tp.showkid .kchip{opacity:1;transform:none}
-@media(hover:none){.tp .kchip{opacity:1;transform:none}}
 .tfoot{margin-top:clamp(28px,3.4vw,42px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:clamp(22px,2.6vw,30px);border-top:1px solid #DAD7D1}
 .tfoot p{color:var(--grey);max-width:46ch;line-height:1.7}
 
@@ -265,7 +269,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .jt{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.22rem,2vw,1.62rem);line-height:1.2;letter-spacing:-.02em;transition:color .3s}
 .jhead:hover .jt,.job.open .jt{color:var(--orange)}
 .jmeta{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
-.jtag{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--grey);border:1px solid var(--line);background:var(--bone);border-radius:100px;padding:6px 13px;white-space:nowrap}
+.jtag{font-family:'Inter',system-ui,sans-serif;font-size:.86rem;font-weight:400;letter-spacing:-.005em;line-height:1.2;text-transform:none;color:var(--grey);border:1px solid var(--line);background:var(--bone);border-radius:100px;padding:7px 14px;white-space:nowrap}
 .jtag.fb{color:var(--orange)}
 .jplus{width:40px;height:40px;border-radius:50%;border:1px solid #DAD7D1;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.35s var(--ease);position:relative}
 .jplus::before,.jplus::after{content:"";position:absolute;background:var(--ink);transition:.35s var(--ease)}
@@ -288,47 +292,44 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .jempty p{color:var(--grey);line-height:1.78;margin-top:16px;max-width:48ch}
 @media(max-width:920px){.jinner{grid-template-columns:1fr}}
 
-/* Initiativbewerbung, schließt direkt an die Stellenliste an */
-.initiativ{margin-top:clamp(18px,2vw,26px);background:var(--bone);border-radius:18px;padding:clamp(40px,5vw,76px) clamp(26px,3.6vw,52px) clamp(34px,4.2vw,60px)}
-.initiativ h3{   font-family:var(--sans-b);   font-weight:700;   font-size:clamp(1.5rem,3vw,2.7rem);   line-height:1.04;   letter-spacing:-.035em;   color:var(--ink);   margin-bottom:clamp(30px,3.8vw,54px); }
+/* Initiativbewerbung: eigenes helles Band direkt unter der Stellenliste, auf dem Seitenraster */
+.jobs{padding-bottom:clamp(64px,8vw,112px)}
+.initiativ-band{background:var(--bone);padding:clamp(76px,9vw,128px) 0}
+.initiativ{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(34px,6vw,110px);align-items:end}
+.initiativ h3{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.5rem,3vw,2.7rem);line-height:1.04;letter-spacing:-.035em;color:var(--ink);margin-bottom:clamp(26px,3vw,40px)}
 .initiativ h3 .ln{display:block;overflow:hidden;padding:.06em 0 .08em;margin:-.06em 0 -.08em}
 .initiativ h3 .ln i{display:block;font-style:normal;transform:translateY(108%);transition:transform 1.05s var(--ease2) .12s}
-.initiativ h3 .ln:first-child{color:var(--grey)} .initiativ h3 .orange{color:var(--orange);font-weight:700}
+.initiativ h3 .ln:first-child{color:var(--grey)}
 .initiativ.in h3 .ln i{transform:none}
 .initiativ.in h3 .ln:nth-child(2) i{transition-delay:.24s}
-.ibody{display:grid;grid-template-columns:1.14fr .86fr;gap:clamp(30px,4.4vw,72px);align-items:start}
 .initiativ p{color:var(--grey);line-height:1.78;margin-top:16px;max-width:50ch}
-.initiativ p:first-child{margin-top:0}
+.initiativ .icopy p:first-of-type{margin-top:0}
 .icontact{display:flex;flex-direction:column}
-.icontact a{display:flex;align-items:center;gap:18px;color:var(--ink);padding:clamp(15px,1.8vw,19px) 4px;border-top:1px solid #DAD7D1;transition:padding-left .35s var(--ease)}
+.icontact a{display:flex;align-items:center;gap:18px;color:var(--ink);padding:clamp(16px,1.9vw,21px) 4px;border-top:1px solid #DAD7D1;transition:padding-left .35s var(--ease)}
 .icontact a:last-child{border-bottom:1px solid #DAD7D1}
 .icontact a:hover{padding-left:14px}
 .icontact .ic{width:44px;height:44px;border-radius:50%;border:1px solid #DAD7D1;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
 .icontact .ic svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:1.7;transition:.25s}
 .icontact a:hover .ic{background:var(--orange);border-color:var(--orange)}
 .icontact a:hover .ic svg{stroke:#fff}
-.icontact small{display:block;font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:5px}
 .icontact .iv{display:block;font-weight:500;font-size:clamp(1.02rem,1.5vw,1.26rem);letter-spacing:-.015em;transition:color .25s}
 .icontact a:hover .iv{color:var(--orange)}
-@media(min-width:921px){.initiativ{--ipx:clamp(28px,3.2vw,48px);padding-inline:var(--ipx);margin-inline:calc(var(--ipx) * -1)}}
-@media(max-width:920px){.ibody{grid-template-columns:1fr;gap:34px}}
+@media(max-width:920px){.initiativ{grid-template-columns:1fr;gap:34px}}
 @media(prefers-reduced-motion:reduce){.initiativ h3 .ln i{transform:none;transition:none}}
 @media(max-width:760px){.jhead{grid-template-columns:minmax(0,1fr) auto;gap:16px}.jmeta{grid-column:1/-1;justify-content:flex-start;order:3}}
 
-/* ===== 6 · ABSCHLUSS / KONTAKT ===== */
-.cta{background:var(--bg);color:#fff;padding:clamp(84px,10vw,140px) 0 clamp(54px,6vw,80px);position:relative;overflow:hidden}
-.cta .glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(620px circle at var(--gx,62%) var(--gy,42%),rgba(255,111,32,.14),transparent 68%)}
-.cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(36px,5vw,80px);align-items:center}
-.cta .lead-q{font-size:clamp(1.15rem,2vw,1.55rem);font-weight:500;letter-spacing:-.02em;line-height:1.4;color:rgba(255,255,255,.78);max-width:26ch}
-.cta h2{font-size:clamp(2.1rem,4.6vw,3.7rem);color:#fff;margin-top:16px}
-.cta h2 em{font-style:normal;color:var(--orange)}
-.cta .acts{display:flex;gap:13px;margin-top:clamp(28px,3.4vw,40px);flex-wrap:wrap}
-.cta-person{position:relative;background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:clamp(26px,2.8vw,40px);display:flex;flex-direction:column;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+/* ===== 6 · ABSCHLUSS / KONTAKT (Komponente wie referenzen.html) ===== */
+.cta{background:var(--bg);color:#fff;padding:clamp(76px,9vw,124px) 0 clamp(54px,6vw,80px);position:relative;overflow:hidden}
+.cta .glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(620px circle at var(--gx,60%) var(--gy,40%),rgba(255,111,32,.16),transparent 68%)}
+.cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,5vw,80px);align-items:center}
+.cta .big-q{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:-.005em;color:#fff}
+.cta p{color:var(--grey-d);max-width:46ch;margin:22px 0 0}
+.cta-person{position:relative;width:100%;max-width:420px;justify-self:end;background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:clamp(26px,2.8vw,40px);display:flex;flex-direction:column;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cta-person::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(160deg,rgba(255,111,32,.6),transparent 44%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .cta-person .pht{display:flex;align-items:center;gap:22px;margin-bottom:26px}
-.cta-person .pav{width:clamp(88px,7vw,106px);height:clamp(88px,7vw,106px);border-radius:50%;object-fit:cover;flex:0 0 auto;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange);background:var(--bg2)}
-.cta-person .ct{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
-.cta-person .cn{font-weight:600;font-size:clamp(1.2rem,1.6vw,1.42rem);letter-spacing:-.02em;line-height:1.2}
-.cta-person .cr{font-size:.92rem;color:var(--grey-d);margin-top:7px;line-height:1.5}
+.cta-person .pht img{width:clamp(88px,7vw,106px);height:clamp(88px,7vw,106px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange);flex:0 0 auto;background:var(--bg2)}
+.cta-person .cn{font-family:var(--sans-b);font-weight:700;text-transform:none;font-size:clamp(1.24rem,1.6vw,1.44rem);letter-spacing:-.015em;line-height:1.15}
+.cta-person .cr{font-size:.86rem;color:var(--grey-d);margin-top:7px}
 .cta-person .clinks{display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:22px}
 .cta-person .clinks a{display:flex;align-items:center;gap:15px;color:#fff;font-size:.96rem;font-weight:500;transition:.25s}
 .cta-person .clinks a:hover{color:var(--orange)}
@@ -336,7 +337,7 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .cta-person .clinks a:hover .ic{background:var(--orange)}
 .cta-person .clinks a:hover .ic svg{stroke:#fff}
 .cta-person .clinks a svg{width:17px;height:17px;fill:none;stroke:var(--orange);stroke-width:1.7;transition:.25s}
-@media(max-width:860px){.cta-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.cta-grid{grid-template-columns:1fr}.cta-person{justify-self:stretch;max-width:none}}
 
 /* ===== FOOTER ===== */
 footer{background:var(--bg);color:#fff;padding-bottom:30px}
@@ -361,7 +362,7 @@ html,body{overflow-x:clip}
 @media(min-width:561px){
  .hero h1{font-size:clamp(1.9rem,4.05vw,3.7rem)}
  .mhead h2{font-size:clamp(1.8rem,3.17vw,2.55rem)}
- .cta h2{font-size:clamp(2.1rem,4.05vw,3.26rem)}
+ .cta .big-q{font-size:clamp(2.2rem,4.05vw,3.26rem)}
 }
 </style>
 </head>
@@ -509,13 +510,13 @@ html,body{overflow-x:clip}
       <span class="lead rv">Karriere bei CUBION</span>
       <h1><span class="ln"><i>Großer Markt.</i></span><span class="ln"><i>Kurze Wege.</i></span></h1>
       <p class="sub rv d2">Wir beraten seit 2005 im Gewerbeimmobilienmarkt des Ruhrgebiets: mit 20 Köpfen, eigenem Research und ohne Konzernebenen dazwischen. Wer hier anfängt, sitzt vom ersten Mandat an mit am Tisch.</p>
-      <div class="acts rv d3">
-        <a href="#stellen" class="btn btn-w">Offene Stellen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#arbeiten" class="btn btn-gd">Wie wir arbeiten</a>
-      </div>
+      <nav class="rjump rv d3" aria-label="Direkt zu den Bereichen">
+        <a href="#stellen">Offene Stellen</a>
+        <a href="#arbeiten">Wie wir arbeiten</a>
+      </nav>
     </div>
   </div>
-  <div class="scrollcue"><span class="ln"><i></i></span> Scrollen</div>
+  <div class="scrollcue" aria-hidden="true"><span class="ln"><i></i></span> Scrollen</div>
 </section>
 
 <!-- ===== 1 · OFFENE STELLEN + INITIATIVBEWERBUNG ===== -->
@@ -530,23 +531,28 @@ html,body{overflow-x:clip}
     </div>
     <div id="jobsMount" class="rv d1"></div>
 
-    <div class="initiativ rv d2" id="initiativ">
-      <h3><span class="ln"><i>Nichts Passendes dabei?</i></span><span class="ln"><i>Dann bewirb dich <span class="orange">initiativ.</span></i></span></h3>
-      <div class="ibody">
-        <div>
-          <p>Wenn jemand den Ruhrgebietsmarkt kennt und etwas mitbringt, das wir noch nicht haben, finden wir daf&uuml;r einen Platz. Es w&auml;re nicht das erste Mal, dass wir eine Stelle f&uuml;r einen Kandidaten geschaffen haben.</p>
-          <p>Schick uns kurz, was du machst, wann du k&ouml;nntest und was du dir vorstellst. Ein Anschreiben in Romanl&auml;nge brauchen wir nicht.</p>
-        </div>
-        <div class="icontact">
-          <a href="mailto:job@cubion.de?subject=Initiativbewerbung">
-            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-            <span><small>E-Mail</small><span class="iv">job@cubion.de</span></span>
-          </a>
-          <a href="tel:+49208970670">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.25a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></span>
-            <span><small>Telefon</small><span class="iv">+49 208 970 670</span></span>
-          </a>
-        </div>
+  </div>
+</section>
+
+<!-- ===== 1b · INITIATIVBEWERBUNG ===== -->
+<section class="initiativ-band" id="initiativ">
+  <div class="wrap">
+    <div class="initiativ rv">
+      <div class="icopy">
+        <span class="lead">Initiativbewerbung</span>
+        <h3><span class="ln"><i>Nichts Passendes dabei?</i></span><span class="ln"><i>Dann bewirb dich initiativ.</i></span></h3>
+        <p>Wenn jemand den Ruhrgebietsmarkt kennt und etwas mitbringt, das wir noch nicht haben, finden wir daf&uuml;r einen Platz. Es w&auml;re nicht das erste Mal, dass wir eine Stelle f&uuml;r einen Kandidaten geschaffen haben.</p>
+        <p>Schick uns kurz, was du machst, wann du k&ouml;nntest und was du dir vorstellst. Ein Anschreiben in Romanl&auml;nge brauchen wir nicht.</p>
+      </div>
+      <div class="icontact">
+        <a href="mailto:job@cubion.de?subject=Initiativbewerbung" aria-label="E-Mail an job@cubion.de">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="iv">job@cubion.de</span>
+        </a>
+        <a href="tel:+49208970670" aria-label="Anrufen: +49 208 970 670">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="iv">+49 208 970 670</span>
+        </a>
       </div>
     </div>
   </div>
@@ -613,21 +619,17 @@ html,body{overflow-x:clip}
   <div class="wrap cta-grid">
     <div class="rv">
       <span class="lead">Kontakt</span>
-      <p class="lead-q">Lieber vorher reden als lange schreiben?</p>
-      <h2>Dann sprechen wir<em>.</em></h2>
-      <div class="acts">
-        <a href="mailto:job@cubion.de" class="btn btn-o">Bewerbung senden <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="team.html" class="btn btn-gd">Zum Team</a>
-      </div>
+      <h2 class="big-q">Sprechen wir.</h2>
+      <p>Lieber vorher reden als lange schreiben? Fragen zu einer Stelle, zum Ablauf oder zum Einstieg kl&auml;ren wir gern vorab am Telefon.</p>
     </div>
     <div class="cta-person rv d1">
       <div class="pht">
-        <img class="pav" src="https://cubion.de/wp-content/uploads/2023/11/selina-koether.jpg" alt="Selina Köther" loading="lazy">
-        <div><div class="ct">Deine Ansprechpartnerin</div><div class="cn">Selina Köther</div><div class="cr">Office Management</div></div>
+        <img src="https://cubion.de/wp-content/uploads/2023/11/selina-koether.jpg" alt="Selina Köther" loading="lazy">
+        <div><div class="cn">Selina Köther</div><div class="cr">Office Management</div></div>
       </div>
       <div class="clinks">
+        <a href="tel:+492089706734"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>+49 208 970 67-34</a>
         <a href="mailto:job@cubion.de"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>job@cubion.de</a>
-        <a href="tel:+492089706734"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.25a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></span>+49 208 970 67-34</a>
       </div>
     </div>
   </div>
@@ -703,7 +705,6 @@ tStrip.innerHTML=TEASER.map(p=>`
    <img class="kid" src="${U+p.c}" alt="" loading="lazy" aria-hidden="true">
   </div>
   <span class="grad" aria-hidden="true"></span>
-  <span class="kchip">Damals</span>
   <div class="nm"><b>${p.n}</b><span>${p.r}</span></div>
  </article>`).join('');
 tStrip.addEventListener('click',e=>{
