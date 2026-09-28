@@ -430,12 +430,12 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .cta .acts{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
 .cta-person{position:relative;background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:clamp(26px,2.8vw,40px);display:flex;flex-direction:column;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .cta-person::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(160deg,rgba(255,111,32,.6),transparent 44%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.cta-person .pht{display:flex;align-items:center;gap:22px;margin-bottom:26px}
+.cta-person .pht{display:flex;align-items:center;gap:22px;margin-bottom:24px}
 .cta-person .pht img{width:clamp(88px,7vw,106px);height:clamp(88px,7vw,106px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange);flex:0 0 auto}
 .cta-person .ct{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
 .cta-person .cn{font-family:var(--sans-b);font-weight:700;text-transform:none;font-size:clamp(1.24rem,1.6vw,1.44rem);letter-spacing:-.015em;line-height:1.15}
 .cta-person .cr{font-size:.86rem;color:var(--grey-d);margin-top:7px}
-.cta-person .clinks{display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:22px}
+.cta-person .clinks{display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(255,255,255,.1);padding-top:24px}
 .cta-person .clinks a{display:flex;align-items:center;gap:15px;color:#fff;font-size:.96rem;font-weight:500;transition:.25s}
 .cta-person .clinks a:hover{color:var(--orange)}
 .cta-person .clinks a .ic{width:40px;height:40px;border-radius:50%;background:rgba(255,111,32,.14);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
@@ -473,8 +473,8 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .rhero-media img{width:100%;height:100%;object-fit:cover;object-position:center 46%;filter:saturate(.82) contrast(1.02) brightness(.92);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
 .loaded .rhero-media img{transform:scale(1)}
 .rhero-media::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(78deg,rgba(14,12,11,.95) 0%,rgba(14,12,11,.88) 30%,rgba(14,12,11,.7) 58%,rgba(14,12,11,.55) 100%),
-  linear-gradient(180deg,rgba(14,12,11,.72) 0%,rgba(14,12,11,.2) 36%,rgba(14,12,11,.66) 100%)}
+  linear-gradient(78deg,rgba(14,12,11,.76) 0%,rgba(14,12,11,.7) 30%,rgba(14,12,11,.56) 58%,rgba(14,12,11,.44) 100%),
+  linear-gradient(180deg,rgba(14,12,11,.58) 0%,rgba(14,12,11,.16) 36%,rgba(14,12,11,.53) 100%)}
 .rhero-wash{position:absolute;inset:0;z-index:1;pointer-events:none;background:
   radial-gradient(78% 96% at 100% 118%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.62) 24%,rgba(255,111,32,.34) 42%,rgba(255,111,32,.12) 60%,rgba(255,111,32,0) 76%)}
 .rhero-inner{position:relative;z-index:2;width:100%;max-width:calc(var(--maxw) - 2 * var(--gut));margin:0 auto;
@@ -559,6 +559,12 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .pc-dl:focus-visible{outline:none}
 .pubcard:has(.pc-dl:focus-visible){outline:2px solid var(--orange);outline-offset:2px}
 .pubcard.hide{display:none}
+/* Einblendung: der Track wird einmal beobachtet, die Karten folgen gestaffelt.
+   Eigene Transition-Liste, damit der Hover-Schatten die Reveal-Bewegung nicht ueberschreibt. */
+.pubtrack .pubcard{opacity:0;transform:translate3d(0,26px,0);
+  transition:opacity .8s var(--ease2) var(--pd,0s),transform .8s var(--ease2) var(--pd,0s),box-shadow .5s var(--ease)}
+.pubtrack.in .pubcard{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.pubtrack .pubcard{opacity:1;transform:none;transition:box-shadow .5s var(--ease)}}
 
 /* Jahrgangsfilter: schmaler und kompakter, Farbton bleibt schwarz */
 .pubfilter{position:relative;width:clamp(168px,19vw,202px);user-select:none;z-index:40}
@@ -597,15 +603,15 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .upcard:hover,.upcard:focus-visible{box-shadow:0 24px 44px -32px rgba(27,23,20,.24)}
 .upcard:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 @keyframes upIn{from{opacity:0}to{opacity:1}}
-.upcard .im{aspect-ratio:16/10;overflow:hidden;background:var(--bone2);flex:0 0 auto}
+.upcard .im{aspect-ratio:2/1;overflow:hidden;background:var(--bone2);flex:0 0 auto}
 .upcard .im img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .upcard:hover .im img{transform:scale(1.06)}
 /* feste Content-Hoehe: unterschiedlich lange Titel duerfen das Raster nicht sprengen */
-.upcard .bd{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.upcard .bd{padding:18px 20px 18px;display:flex;flex-direction:column;flex:1}
 .upcard .ut{font-weight:600;font-size:clamp(1rem,1.35vw,1.15rem);letter-spacing:-.01em;line-height:1.38;
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
   min-height:calc(2 * 1.38em);max-height:calc(2 * 1.38em)}
-.upcard .ulink{display:flex;align-items:center;gap:9px;margin-top:auto;padding-top:20px;font-weight:500;font-size:.88rem;color:var(--grey);transition:.25s}
+.upcard .ulink{display:flex;align-items:center;gap:9px;margin-top:auto;padding-top:14px;font-weight:500;font-size:.88rem;color:var(--grey);transition:.25s}
 .upcard .ulink svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .3s var(--ease)}
 .upcard:hover .ulink{color:var(--orange)}
 .upcard:hover .ulink svg{transform:translateX(5px)}
@@ -1041,7 +1047,6 @@ html,body{overflow-x:clip}
       <div class="clinks">
         <a href="tel:+492089706727"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.25a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></span>+49 208 970 67-27</a>
         <a href="mailto:rehbein@cubion.de"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>rehbein@cubion.de</a>
-        <a href="https://www.linkedin.com/in/lars-rehbein-043a41261/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>Zum Profil</a>
       </div>
     </div>
   </div>
@@ -1309,7 +1314,7 @@ const cropStyle=c=>`--cw:${(COVER_W/c.w*100).toFixed(2)}%;--cx:${(-c.x/COVER_W*1
 pubTrack.innerHTML=BER.map((b,i)=>{
  const yr=`${b.y}/${b.y2.slice(2)}`,lab=b.label||'PDF herunterladen',pdf=b.href.startsWith('http');
  return `
- <article class="pubcard rv${b.cur?' cur':''}" data-y="${yr}">
+ <article class="pubcard${b.cur?' cur':''}" data-y="${yr}" style="--pd:${(Math.min(i,4)*.08).toFixed(2)}s">
   <div class="pc-img"><div class="pc-zoom"><img src="${COVER}" alt="" loading="lazy" decoding="async" style="${cropStyle(CROPS[i%CROPS.length])}"></div>${b.cur?'<span class="pc-chip"><i></i>Aktuelle Ausgabe</span>':''}</div>
   <div class="pc-meta">
    <span class="pc-yr">${yr}</span>
@@ -1317,7 +1322,7 @@ pubTrack.innerHTML=BER.map((b,i)=>{
    <a class="pc-dl${b.label==='Auf Anfrage'?' req':''}" href="${b.href}"${pdf?' target="_blank" rel="noopener"':''} aria-label="Büromarktbericht Ruhrgebiet ${yr}: ${lab}">${pdf?DLSVG:ARRSVG}${lab}</a>
   </div>
  </article>`;}).join('');
-pubTrack.querySelectorAll('.rv').forEach(el=>io.observe(el));
+io.observe(pubTrack);
 const pubSync=initSlider(pubTrack,'.pubcard:not(.hide)',
  document.getElementById('pubPrev'),document.getElementById('pubNext'),
  document.getElementById('pubProg'),document.getElementById('pubThumb'));
