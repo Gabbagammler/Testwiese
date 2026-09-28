@@ -556,74 +556,89 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 @media(prefers-reduced-motion:reduce){.city.hq i::after{animation:none;opacity:0}.lmap .ab,.shield{transition:none}}
 
 /* ===== WAS WIR BEGLEITEN: Nutzungslexikon =====
-   Sechs Nutzungsarten als Reiter mit Piktogramm. Darunter eine Ansichtszeichnung,
-   deren Beschriftung genau die Kriterien zeigt, auf die es bei dieser Nutzung ankommt.
-   Kein Autoplay, kein Scroll-Jacking. Alle Inhalte stehen im HTML. */
-.arts{background:var(--bg2);color:#fff;padding:var(--sec-y) 0}
+   Aufbau wie das Assetklassen-Modul der Investmentseite, im dunklen Theme dieser Seite:
+   links ein ruhiger Index der sechs Nutzungsarten, rechts eine feste Buehne mit Ansichtszeichnung.
+   Klick, Pfeiltasten oder kurzes Verweilen mit der Maus wechseln die Nutzung. Kein Autoplay.
+   Alle Tafeln liegen im selben Rasterfeld: Buehne behaelt Position und Hoehe, kein Springen. */
+.arts{background:var(--bg2);color:#fff;padding:var(--sec-y) 0;--lx-line:rgba(255,255,255,.12);--lx-fill:#1d1a17}
 .arts .mhead h2{color:#fff}
 .arts .mhead .note{color:var(--grey-d)}
-/* Reiter: eine gemeinsame Schiene, aktiver Reiter in Bone wie die Zeichnungstafel darunter */
-.lex-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:6px;border-radius:22px;
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}
-.lex-tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:18px 16px 20px;border-radius:16px;background:transparent;border:0;cursor:pointer;text-align:left;
-  font-family:var(--sans-b);font-weight:700;font-size:.98rem;line-height:1.3;letter-spacing:-.01em;color:rgba(255,255,255,.58);min-width:0;
-  transition:background .35s var(--ease),color .35s var(--ease),box-shadow .35s var(--ease)}
-.lex-tab::after{content:"";position:absolute;left:16px;bottom:10px;width:24px;height:2px;border-radius:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease2)}
-.lex-tab svg{width:58px;height:34px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-.lex-tab:hover{background:rgba(255,255,255,.07);color:#fff}
-.lex-tab.on{background:var(--bone);color:var(--ink);box-shadow:0 18px 34px -22px rgba(0,0,0,.8)}
-.lex-tab.on::after{transform:scaleX(1)}
-.lex-tab:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-.lex-stage{display:grid;margin-top:clamp(34px,4vw,54px)}
-.lex-panel{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(30px,4.4vw,72px);align-items:center;
-  opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .45s var(--ease2),transform .45s var(--ease2),visibility .45s}
-.lex-panel.on{opacity:1;visibility:visible;transform:none}
-.lex-fig{margin:0;background:var(--bone);box-shadow:0 40px 80px -50px rgba(0,0,0,.9);border-radius:var(--r);padding:clamp(18px,2.4vw,34px) clamp(14px,2vw,28px) clamp(12px,1.6vw,20px)}
-.lex-fig svg{display:block;width:100%;height:auto;overflow:visible}
-.lex-fig .b{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.lex-fig .t{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
-.lex-fig .f{fill:#fff;stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round}
-.lex-fig .g{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 5;opacity:.5}
-.lex-fig .gr{stroke:var(--ink);stroke-width:1.7;stroke-linecap:round}
-.lex-fig .an line,.lex-fig .an path{stroke:var(--orange);stroke-width:1.2;fill:none}
+.lex{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(30px,4vw,64px);align-items:stretch}
+/* Index links: nur Begriffe, keine Piktogramme */
+.lex-tabs{position:relative;display:flex;flex-direction:column;border-top:1px solid var(--lx-line)}
+.lex-ind{position:absolute;left:0;top:0;width:3px;height:0;background:var(--orange);border-radius:2px;
+  transition:transform .55s var(--ease2),height .55s var(--ease2);pointer-events:none}
+.lex-tab{position:relative;display:block;width:100%;text-align:left;
+  padding:clamp(13px,1.35vw,17px) 6px clamp(13px,1.35vw,17px) 26px;border:0;border-bottom:1px solid var(--lx-line);background:none;cursor:pointer;
+  font-family:'Inter',system-ui,sans-serif;font-weight:500;font-size:clamp(1rem,1.15vw,1.1rem);letter-spacing:-.01em;line-height:1.3;color:rgba(255,255,255,.46);
+  transition:color .35s var(--ease),padding-left .45s var(--ease2)}
+.lex-tab .ls{display:none}
+.lex-tab:hover{color:#fff}
+.lex-tab.on{color:#fff;font-weight:600;padding-left:34px}
+.lex-tab:focus-visible{outline:2px solid var(--orange);outline-offset:-2px;border-radius:6px}
+/* Buehne rechts */
+.lex-stage{display:grid;align-content:start;border-left:1px solid var(--lx-line);padding-left:clamp(30px,4vw,64px)}
+.lex-panel{grid-area:1/1;align-self:start;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s var(--ease2),visibility .3s}
+.lex-panel.on{opacity:1;visibility:visible;transition:opacity .45s var(--ease2),visibility .45s}
+.lex-fig{margin:0;flex:none;padding:clamp(10px,1.4vw,20px) 0 0}
+.lex-fig svg{display:block;width:100%;max-width:640px;height:auto;aspect-ratio:640/234;overflow:visible}
+.lex-fig .b,.lex-fig .gr{fill:none;stroke:rgba(255,255,255,.92);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lex-fig .t{fill:none;stroke:#fff;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+.lex-fig .f{fill:var(--lx-fill);stroke:rgba(255,255,255,.92);stroke-width:1.3;stroke-linejoin:round}
+.lex-fig .g{fill:none;stroke:#fff;stroke-width:1.2;stroke-dasharray:4 5;opacity:.4}
+.lex-fig .gb{fill:rgba(255,255,255,.035)}
+.lex-fig .an path{fill:none;stroke:var(--orange);stroke-width:1.2}
 .lex-fig .an circle{fill:var(--orange)}
-.lex-fig .an text{font:600 15px 'Inter',sans-serif;fill:var(--ink);letter-spacing:-.01em}
-.lex-panel.on .an{animation:anIn .6s var(--ease2) both}
-@keyframes anIn{from{opacity:0}to{opacity:1}}
-.lex-txt h3{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.4rem,2.1vw,1.85rem);line-height:1.2;letter-spacing:-.02em}
-.lex-txt h3{color:#fff}
-.lex-txt p{color:var(--grey-d);font-size:1.02rem;line-height:1.7;margin-top:14px;max-width:44ch}
-.lex-txt h4{font-size:.95rem;font-weight:600;margin-top:clamp(24px,2.6vw,32px)}
-.lex-crit{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin-top:10px}
-.lex-crit li{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:.95rem;font-weight:500;color:#fff}
+.lex-fig .an text{font:500 15px 'Inter',sans-serif;fill:rgba(255,255,255,.86);letter-spacing:-.005em}
+/* Zeichnen beim Wechsel: Konturen laufen nacheinander ein, Beschriftung folgt zuletzt.
+   Nicht aktive Tafeln stehen sofort wieder auf Anfang, damit jede Auswahl neu zeichnet. */
+.lex-fig .dr{stroke-dasharray:1 1;stroke-dashoffset:1}
+.lex-fig .f.dr{fill-opacity:0}
+.lex-fig .fd,.lex-fig .gb,.lex-fig .an circle,.lex-fig .an text{opacity:0}
+.lex.live .lex-panel.on .dr{stroke-dashoffset:0;transition:stroke-dashoffset var(--du,1s) var(--ease2) var(--d,0s)}
+.lex.live .lex-panel.on .f.dr{fill-opacity:1;transition:stroke-dashoffset var(--du,1s) var(--ease2) var(--d,0s),fill-opacity .5s var(--ease2) calc(var(--d,0s) + .35s)}
+.lex.live .lex-panel.on .fd{opacity:.4;transition:opacity .8s var(--ease2) var(--d,0s)}
+.lex.live .lex-panel.on .gb{opacity:1;transition:opacity .9s var(--ease2) .2s}
+.lex.live .lex-panel.on .an .dr{transition:stroke-dashoffset .55s var(--ease2) calc(var(--d) + .12s)}
+.lex.live .lex-panel.on .an circle{opacity:1;transition:opacity .3s var(--ease2) var(--d)}
+.lex.live .lex-panel.on .an text{opacity:1;transition:opacity .5s var(--ease2) calc(var(--d) + .4s)}
+/* Text unter der Zeichnung: links Einordnung, rechts Kriterien */
+.lex-txt{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"h h4" "p ul";gap:0 clamp(24px,3vw,48px);align-items:start;
+  margin-top:clamp(22px,2.4vw,30px);padding-top:clamp(20px,2.2vw,26px);border-top:1px solid var(--lx-line)}
+.lex-txt h3{grid-area:h;font-family:var(--sans-b);font-weight:700;font-size:clamp(1.1rem,1.3vw,1.24rem);line-height:1.3;letter-spacing:-.01em;color:#fff}
+.lex-txt p{grid-area:p;color:var(--grey-d);font-size:.98rem;line-height:1.65;margin-top:8px;max-width:50ch}
+.lex-txt h4{grid-area:h4;font-size:.86rem;font-weight:500;color:var(--grey-d);line-height:1.3;padding-top:.2em}
+.lex-crit{grid-area:ul;list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.lex-crit li{display:flex;align-items:center;gap:10px;font-size:.92rem;font-weight:500;color:#fff;white-space:nowrap}
 .lex-crit li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);flex:0 0 auto}
-.lex-foot{display:flex;justify-content:space-between;align-items:center;gap:18px 32px;flex-wrap:wrap;margin-top:clamp(40px,4.4vw,60px);padding-top:clamp(24px,2.6vw,32px);border-top:1px solid rgba(255,255,255,.12)}
+.lex-foot{display:flex;justify-content:space-between;align-items:center;gap:18px 32px;flex-wrap:wrap;margin-top:clamp(40px,4.4vw,60px);padding-top:clamp(24px,2.6vw,32px);border-top:1px solid var(--lx-line)}
 .lex-foot p{color:var(--grey-d);max-width:52ch}
 /* Konturbutton auf dunklem Grund */
 .arts .btn-line{border-color:rgba(255,255,255,.7);color:#fff}
 .arts .btn-line::before{background:#fff}
 .arts .btn-line:hover,.arts .btn-line:focus-visible{color:var(--ink);border-color:#fff}
-@media(max-width:1440px){.lex-tab{font-size:.92rem}}
-@media(max-width:1180px){.lex-tab{font-size:.9rem}.lex-tab svg{width:48px;height:28px}}
-@media(max-width:980px){
- /* Mobil/Tablet: alle sechs Nutzungen sichtbar als kompaktes Raster, kein Seitwaertsscrollen */
- .lex-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:5px;border-radius:18px}
- .lex-tab{flex-direction:row;align-items:center;gap:10px;padding:12px 12px 14px;border-radius:13px;font-size:.84rem;line-height:1.25}
- .lex-tab svg{width:36px;height:22px;flex:0 0 auto}
- .lex-tab::after{left:12px;bottom:6px;width:18px}
- .lex-stage{margin-top:22px}
- .lex-panel{grid-template-columns:1fr;gap:22px}
- .lex-fig{padding:12px 14px 8px}
- .lex-fig svg{max-width:420px;margin:0 auto}
+@media(max-width:1180px){.lex-txt{grid-template-columns:1fr;grid-template-areas:"h" "p" "h4" "ul"}.lex-txt h4{margin-top:20px}
+ .lex-crit{flex-direction:row;flex-wrap:wrap;gap:8px 20px;margin-top:10px}}
+@media(max-width:900px){
+ /* Mobil/Tablet: alle sechs Nutzungen als kompaktes Raster, Buehne darunter */
+ .lex{grid-template-columns:1fr;gap:22px}
+ .lex-stage{border-left:0;padding-left:0;border-top:1px solid var(--lx-line);padding-top:8px}
+ .lex-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-top:0}
+ .lex-ind{display:none}
+ .lex-tab{padding:13px 12px;border:0;border-radius:12px;background:rgba(255,255,255,.06);font-size:.9rem;color:rgba(255,255,255,.66)}
+ .lex-tab.on{padding-left:12px;font-weight:500;background:var(--bone);color:var(--ink)}
+ .lex-fig svg{max-width:520px}
 }
-.lex-tab .ls{display:none}
-@media(max-width:640px){.lex-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
- .lex-tab{padding:12px 10px 14px;gap:9px}.lex-tab svg{width:32px;height:19px}
- .lex-tab .lf{display:none}.lex-tab .ls{display:inline}}
-@media(max-width:560px){.lex-crit{grid-template-columns:1fr}.lex-foot .btn{width:100%}.lex-fig .an{display:none}
- .lex-fig{padding:8px 10px 4px;border-radius:14px}.lex-fig svg{max-width:280px}
- .lex-txt p{margin-top:10px}.lex-txt h4{margin-top:18px}}
-@media(prefers-reduced-motion:reduce){.lex-panel,.lex-tab::before{transition:none}.lex-panel.on .an{animation:none}}
+@media(max-width:640px){.lex-tab .lf{display:none}.lex-tab .ls{display:inline}}
+@media(max-width:560px){.lex-foot .btn{width:100%}.lex-fig .an{display:none}.lex-fig svg{max-width:340px;margin:0 auto}
+ .lex-txt p{margin-top:8px}.lex-txt h4{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){
+ .lex-fig .dr{stroke-dashoffset:0!important;transition:none!important}
+ .lex-fig .f.dr{fill-opacity:1!important}
+ .lex-fig .fd{opacity:.4!important;transition:none!important}
+ .lex-fig .gb,.lex-fig .an circle,.lex-fig .an text{opacity:1!important;transition:none!important}
+ .lex-panel,.lex-ind,.lex-tab{transition:none}
+}
 
 /* ===== VERMITTLUNGEN: heller Grund =====
    Karten wie auf der Buerovermietungsseite. Bone-Grund trennt vom dunklen Kontaktbereich. */
@@ -635,14 +650,19 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 .deals-foot p{color:var(--grey);max-width:56ch;font-size:.98rem}
 @media(max-width:560px){.deals-foot .btn{width:100%}}
 
-/* ===== KONTAKT: zwei gleichwertige Ansprechpartner ===== */
-.cta-grid.two{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}
-.cta-people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.4vw,20px)}
-.cta-people .cta-person .pht{gap:18px}
-.cta-people .cta-person .pht img{width:clamp(80px,6.2vw,96px);height:clamp(80px,6.2vw,96px)}
+/* ===== KONTAKT: zwei gleichwertige Ansprechpartner =====
+   Die Kachelspalte richtet sich nach dem laengsten Namen, damit jeder Name in einer Zeile steht.
+   Unter 1240px stehen Headline und Kacheln untereinander, unter 760px eine Kachel pro Zeile. */
+.cta-grid.two{grid-template-columns:minmax(0,1fr) auto;gap:clamp(32px,3.4vw,52px)}
+.cta-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.2vw,18px)}
+.cta-people .cta-person{padding:clamp(26px,2.6vw,38px) clamp(22px,2vw,30px)}
+.cta-people .cta-person .pht{gap:14px}
+.cta-people .cta-person .pht img{width:clamp(68px,5.2vw,80px);height:clamp(68px,5.2vw,80px)}
+.cta-people .cta-person .cn{font-size:clamp(1.14rem,1.4vw,1.3rem)}
 .cta-people .clinks a{font-size:.94rem;word-break:break-word}
-@media(max-width:1080px){.cta-grid.two{grid-template-columns:1fr}}
-@media(max-width:640px){.cta-people{grid-template-columns:1fr}}
+@media(min-width:361px){.cta-people .cta-person .cn{white-space:nowrap}}
+@media(max-width:1240px){.cta-grid.two{grid-template-columns:1fr}}
+@media(max-width:760px){.cta-people{grid-template-columns:1fr}}
 
 /* ===== FEINSCHLIFF DESKTOP =====
    Grosse Headlines ab 561px um 12 % kleiner (Maximalwert und vw-Anteil jeweils x 0,88).
@@ -975,27 +995,34 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
       <div><span class="lead">Flächen und Nutzungen</span><h2>Was wir begleiten</h2></div>
     </div>
     <div class="lex rv d1">
-      <div class="lex-tabs" role="tablist" aria-label="Nutzungsarten">
-        <button type="button" class="lex-tab on" role="tab" id="lxt-logistik" aria-controls="lx-logistik" aria-selected="true" data-k="logistik"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54M5 32V13l24-3 24 3v19"/><path d="M12 32v-9h6v9M24 32v-9h6v9M36 32v-9h6v9"/></svg><span class="lf">Logistikhallen</span><span class="ls">Logistik</span></button><button type="button" class="lex-tab" role="tab" id="lxt-lager" aria-controls="lx-lager" aria-selected="false" tabindex="-1" data-k="lager"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54M4 32V14l15-3 15 3v18"/><path d="M9 30V17M16 30V17M9 21.5h7M9 26h7M22 30V17M29 30V17M22 21.5h7M22 26h7"/><path d="M38 32v-7h8v7M47 32v-7h8v7M42.5 25v-7h8v7"/></svg><span class="lf">Lager- und Umschlag&shy;flächen</span><span class="ls">Lager &amp; Umschlag</span></button><button type="button" class="lex-tab" role="tab" id="lxt-produktion" aria-controls="lx-produktion" aria-selected="false" tabindex="-1" data-k="produktion"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54"/><path d="M4 32V9l8 5V9l8 5V9l8 5V9l8 5V9l8 5V9l8 5v18"/><path d="M8 19h40M28 19v6"/></svg><span class="lf">Produktions&shy;flächen</span><span class="ls">Produktion</span></button><button type="button" class="lex-tab" role="tab" id="lxt-gewerbe" aria-controls="lx-gewerbe" aria-selected="false" tabindex="-1" data-k="gewerbe"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54M4 32V12h50v20M20.5 12v20M37.5 12v20"/><path d="M7 32v-11h8v11M24 32v-11h8v11M41 32v-11h8v11"/></svg><span class="lf">Gewerbe- und Werkstatt&shy;hallen</span><span class="ls">Gewerbe &amp; Werkstatt</span></button><button type="button" class="lex-tab" role="tab" id="lxt-light" aria-controls="lx-light" aria-selected="false" tabindex="-1" data-k="light"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54M4 32V6h14v26M18 32V15h36v17"/><path d="M8 11h6M8 16h6M8 21h6"/><path d="M30 15v17M42 15v17" stroke-dasharray="2 2.4"/></svg><span class="lf">Light Industrial</span><span class="ls">Light Industrial</span></button><button type="button" class="lex-tab" role="tab" id="lxt-grund" aria-controls="lx-grund" aria-selected="false" tabindex="-1" data-k="grund"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M2 32h54"/><path d="M8 32V19l6 2.5-6 2.5M50 32V19l6 2.5-6 2.5"/><path d="M17 32V17l12-2 12 2v15" stroke-dasharray="2.2 2.6"/></svg><span class="lf">Grundstücke und Entwicklungs&shy;flächen</span><span class="ls">Grundstücke</span></button>
+      <div class="lex-tabs" role="tablist" aria-label="Nutzungsarten" aria-orientation="vertical">
+        <span class="lex-ind" aria-hidden="true"></span>
+        
+        <button type="button" class="lex-tab on" role="tab" id="lxt-logistik" aria-controls="lx-logistik" aria-selected="true" data-k="logistik"><span class="lf">Logistikhallen</span><span class="ls">Logistik</span></button>
+        <button type="button" class="lex-tab" role="tab" id="lxt-lager" aria-controls="lx-lager" aria-selected="false" tabindex="-1" data-k="lager"><span class="lf">Lager- und Umschlag&shy;flächen</span><span class="ls">Lager &amp; Umschlag</span></button>
+        <button type="button" class="lex-tab" role="tab" id="lxt-produktion" aria-controls="lx-produktion" aria-selected="false" tabindex="-1" data-k="produktion"><span class="lf">Produktions&shy;flächen</span><span class="ls">Produktion</span></button>
+        <button type="button" class="lex-tab" role="tab" id="lxt-gewerbe" aria-controls="lx-gewerbe" aria-selected="false" tabindex="-1" data-k="gewerbe"><span class="lf">Gewerbe- und Werkstatt&shy;hallen</span><span class="ls">Gewerbe &amp; Werkstatt</span></button>
+        <button type="button" class="lex-tab" role="tab" id="lxt-light" aria-controls="lx-light" aria-selected="false" tabindex="-1" data-k="light"><span class="lf">Light Industrial</span><span class="ls">Light Industrial</span></button>
+        <button type="button" class="lex-tab" role="tab" id="lxt-grund" aria-controls="lx-grund" aria-selected="false" tabindex="-1" data-k="grund"><span class="lf">Grundstücke und Entwicklungs&shy;flächen</span><span class="ls">Grundstücke</span></button>
       </div>
       <div class="lex-stage">
       <div class="lex-panel on" id="lx-logistik" role="tabpanel" aria-labelledby="lxt-logistik" data-k="logistik">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Logistikhalle mit sieben Rampentoren, einem angedockten Auflieger und Hoffläche"><rect x="20" y="230" width="470" height="22" fill="#E6E2DB"/><path class="b" d="M40 230V112L255 98L470 112V230"/><path class="t" d="M40 132H470"/><rect class="f" x="58" y="158" width="40" height="44"/><path class="t" d="M58 169h40M58 180h40M58 191h40"/><path class="t" d="M54 202h48"/><rect class="f" x="116" y="158" width="40" height="44"/><path class="t" d="M116 169h40M116 180h40M116 191h40"/><path class="t" d="M112 202h48"/><rect class="f" x="174" y="158" width="40" height="44"/><path class="t" d="M174 169h40M174 180h40M174 191h40"/><path class="t" d="M170 202h48"/><rect class="f" x="232" y="158" width="40" height="44"/><path class="t" d="M232 169h40M232 180h40M232 191h40"/><path class="t" d="M228 202h48"/><rect class="f" x="290" y="158" width="40" height="44"/><path class="t" d="M290 169h40M290 180h40M290 191h40"/><path class="t" d="M286 202h48"/><rect class="f" x="348" y="158" width="40" height="44"/><path class="t" d="M348 169h40M348 180h40M348 191h40"/><path class="t" d="M344 202h48"/><rect class="f" x="406" y="158" width="40" height="44"/><path class="t" d="M406 169h40M406 180h40M406 191h40"/><path class="t" d="M402 202h48"/><rect class="f" x="284" y="150" width="52" height="68" rx="2"/><path class="t" d="M310 150v68M288 212h44"/><circle class="f" cx="297" cy="222" r="7"/><circle class="f" cx="323" cy="222" r="7"/><path class="t" d="M486 112V230M481 112h10M481 230h10"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="426" cy="180" r="3.5"/><path d="M426 180L446 146H502"/><text x="508" y="150">Rampen und Tore</text></g><g class="an" style="animation-delay:0.08s"><circle cx="486" cy="171" r="3.5"/><path d="M486 171H502"/><text x="508" y="175.5">Hallenhöhe</text></g><g class="an" style="animation-delay:0.16s"><circle cx="440" cy="241" r="3.5"/><path d="M440 241H502"/><text x="508" y="245.5">Hof und Rangierfläche</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Logistikhalle mit sieben Rampentoren, einem angedockten Auflieger und Hoffläche"><rect class="gb" x="20" y="230" width="470" height="22"/><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M40 230V112L255 98L470 112V230"/><path class="t dr" pathLength="1" style="--d:0.46s;--du:0.75s" d="M40 132H470"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M58 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.49s;--du:0.75s" d="M58 169h40M58 180h40M58 191h40"/><path class="t dr" pathLength="1" style="--d:0.51s;--du:0.75s" d="M54 202h48"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M116 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.54s;--du:0.75s" d="M116 169h40M116 180h40M116 191h40"/><path class="t dr" pathLength="1" style="--d:0.56s;--du:0.75s" d="M112 202h48"/><path class="f dr" pathLength="1" style="--d:0.40s;--du:0.8s" d="M174 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.58s;--du:0.75s" d="M174 169h40M174 180h40M174 191h40"/><path class="t dr" pathLength="1" style="--d:0.61s;--du:0.75s" d="M170 202h48"/><path class="f dr" pathLength="1" style="--d:0.43s;--du:0.8s" d="M232 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.64s;--du:0.75s" d="M232 169h40M232 180h40M232 191h40"/><path class="t dr" pathLength="1" style="--d:0.66s;--du:0.75s" d="M228 202h48"/><path class="f dr" pathLength="1" style="--d:0.46s;--du:0.8s" d="M290 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.69s;--du:0.75s" d="M290 169h40M290 180h40M290 191h40"/><path class="t dr" pathLength="1" style="--d:0.71s;--du:0.75s" d="M286 202h48"/><path class="f dr" pathLength="1" style="--d:0.49s;--du:0.8s" d="M348 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.74s;--du:0.75s" d="M348 169h40M348 180h40M348 191h40"/><path class="t dr" pathLength="1" style="--d:0.76s;--du:0.75s" d="M344 202h48"/><path class="f dr" pathLength="1" style="--d:0.52s;--du:0.8s" d="M406 158h40v44h-40Z"/><path class="t dr" pathLength="1" style="--d:0.79s;--du:0.75s" d="M406 169h40M406 180h40M406 191h40"/><path class="t dr" pathLength="1" style="--d:0.81s;--du:0.75s" d="M402 202h48"/><path class="f dr" pathLength="1" style="--d:0.55s;--du:0.8s" d="M284 150h52v68h-52Z"/><path class="t dr" pathLength="1" style="--d:0.83s;--du:0.75s" d="M310 150v68M288 212h44"/><path class="f dr" pathLength="1" style="--d:0.58s;--du:0.8s" d="M290 222a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path class="f dr" pathLength="1" style="--d:0.61s;--du:0.8s" d="M316 222a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path class="t dr" pathLength="1" style="--d:0.86s;--du:0.75s" d="M486 112V230M481 112h10M481 230h10"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="426" cy="180" r="3.5"/><path class="dr" pathLength="1" d="M426 180L446 146H502"/><text x="508" y="150">Rampen und Tore</text></g><g class="an" style="--d:1.19s"><circle cx="486" cy="171" r="3.5"/><path class="dr" pathLength="1" d="M486 171H502"/><text x="508" y="175.5">Hallenhöhe</text></g><g class="an" style="--d:1.33s"><circle cx="440" cy="241" r="3.5"/><path class="dr" pathLength="1" d="M440 241H502"/><text x="508" y="245.5">Hof und Rangierfläche</text></g></svg></figure>
         <div class="lex-txt"><h3>Andienung entscheidet</h3><p>Umschlag, Distribution und Fulfillment. Über die Eignung entscheiden Rampen und Tore, die Manövrierfläche im Hof und die Anbindung an die Autobahn, nicht die Hallenfläche allein.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Rampenandienung</li><li>Hallenhöhe</li><li>LKW-Verkehr</li><li>Betriebszeiten</li></ul></div>
       </div><div class="lex-panel" id="lx-lager" role="tabpanel" aria-labelledby="lxt-lager" data-k="lager">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Lagerhalle mit Regalen im Schnitt, abgeteilter Teilfläche und Containern auf dem Freilager"><path class="b" d="M40 230V120L180 106L320 120V230"/><path class="t" d="M58 228V136M110 228V136"/><path class="t" d="M58 156H110"/><rect class="f" x="62" y="142" width="20" height="12"/><rect class="f" x="86" y="142" width="20" height="12"/><path class="t" d="M58 182H110"/><rect class="f" x="62" y="168" width="20" height="12"/><rect class="f" x="86" y="168" width="20" height="12"/><path class="t" d="M58 208H110"/><rect class="f" x="62" y="194" width="20" height="12"/><rect class="f" x="86" y="194" width="20" height="12"/><path class="t" d="M126 228V136M178 228V136"/><path class="t" d="M126 156H178"/><rect class="f" x="130" y="142" width="20" height="12"/><rect class="f" x="154" y="142" width="20" height="12"/><path class="t" d="M126 182H178"/><rect class="f" x="130" y="168" width="20" height="12"/><rect class="f" x="154" y="168" width="20" height="12"/><path class="t" d="M126 208H178"/><rect class="f" x="130" y="194" width="20" height="12"/><rect class="f" x="154" y="194" width="20" height="12"/><path class="t" d="M194 228V136M246 228V136"/><path class="t" d="M194 156H246"/><rect class="f" x="198" y="142" width="20" height="12"/><rect class="f" x="222" y="142" width="20" height="12"/><path class="t" d="M194 182H246"/><rect class="f" x="198" y="168" width="20" height="12"/><rect class="f" x="222" y="168" width="20" height="12"/><path class="t" d="M194 208H246"/><rect class="f" x="198" y="194" width="20" height="12"/><rect class="f" x="222" y="194" width="20" height="12"/><path class="t" d="M270 228V136M304 228V136"/><path class="t" d="M270 156H304"/><rect class="f" x="274" y="142" width="26" height="12"/><path class="t" d="M270 182H304"/><rect class="f" x="274" y="168" width="26" height="12"/><path class="t" d="M270 208H304"/><rect class="f" x="274" y="194" width="26" height="12"/><path class="g" d="M256 124V230"/><rect class="f" x="346" y="196" width="58" height="34"/><path class="t" d="M358 200v26M370 200v26M382 200v26M394 200v26"/><rect class="f" x="408" y="196" width="58" height="34"/><path class="t" d="M420 200v26M432 200v26M444 200v26M456 200v26"/><rect class="f" x="377" y="162" width="58" height="34"/><path class="t" d="M389 166v26M401 166v26M413 166v26M425 166v26"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="100" cy="168" r="3.5"/><path d="M100 168V64"/><text x="106" y="58">Lager in der Halle</text></g><g class="an" style="animation-delay:0.08s"><circle cx="256" cy="150" r="3.5"/><path d="M256 150V64"/><text x="262" y="58">Teilflächen</text></g><g class="an" style="animation-delay:0.16s"><circle cx="466" cy="213" r="3.5"/><path d="M466 213H502"/><text x="508" y="217.5">Freilager</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Lagerhalle mit Regalen im Schnitt, abgeteilter Teilfläche und Containern auf dem Freilager"><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M40 230V120L180 106L320 120V230"/><path class="t dr" pathLength="1" style="--d:0.46s;--du:0.75s" d="M58 228V136M110 228V136"/><path class="t dr" pathLength="1" style="--d:0.49s;--du:0.75s" d="M58 156H110"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M62 142h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M86 142h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.51s;--du:0.75s" d="M58 182H110"/><path class="f dr" pathLength="1" style="--d:0.40s;--du:0.8s" d="M62 168h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.43s;--du:0.8s" d="M86 168h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.54s;--du:0.75s" d="M58 208H110"/><path class="f dr" pathLength="1" style="--d:0.46s;--du:0.8s" d="M62 194h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.49s;--du:0.8s" d="M86 194h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.56s;--du:0.75s" d="M126 228V136M178 228V136"/><path class="t dr" pathLength="1" style="--d:0.58s;--du:0.75s" d="M126 156H178"/><path class="f dr" pathLength="1" style="--d:0.52s;--du:0.8s" d="M130 142h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.55s;--du:0.8s" d="M154 142h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.61s;--du:0.75s" d="M126 182H178"/><path class="f dr" pathLength="1" style="--d:0.58s;--du:0.8s" d="M130 168h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.61s;--du:0.8s" d="M154 168h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.64s;--du:0.75s" d="M126 208H178"/><path class="f dr" pathLength="1" style="--d:0.64s;--du:0.8s" d="M130 194h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.67s;--du:0.8s" d="M154 194h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.66s;--du:0.75s" d="M194 228V136M246 228V136"/><path class="t dr" pathLength="1" style="--d:0.69s;--du:0.75s" d="M194 156H246"/><path class="f dr" pathLength="1" style="--d:0.70s;--du:0.8s" d="M198 142h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.73s;--du:0.8s" d="M222 142h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.71s;--du:0.75s" d="M194 182H246"/><path class="f dr" pathLength="1" style="--d:0.76s;--du:0.8s" d="M198 168h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.79s;--du:0.8s" d="M222 168h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.74s;--du:0.75s" d="M194 208H246"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M198 194h20v12h-20Z"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M222 194h20v12h-20Z"/><path class="t dr" pathLength="1" style="--d:0.76s;--du:0.75s" d="M270 228V136M304 228V136"/><path class="t dr" pathLength="1" style="--d:0.79s;--du:0.75s" d="M270 156H304"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M274 142h26v12h-26Z"/><path class="t dr" pathLength="1" style="--d:0.81s;--du:0.75s" d="M270 182H304"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M274 168h26v12h-26Z"/><path class="t dr" pathLength="1" style="--d:0.83s;--du:0.75s" d="M270 208H304"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M274 194h26v12h-26Z"/><path class="g fd" style="--d:1.06s" d="M256 124V230"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M346 196h58v34h-58Z"/><path class="t dr" pathLength="1" style="--d:0.89s;--du:0.75s" d="M358 200v26M370 200v26M382 200v26M394 200v26"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M408 196h58v34h-58Z"/><path class="t dr" pathLength="1" style="--d:0.91s;--du:0.75s" d="M420 200v26M432 200v26M444 200v26M456 200v26"/><path class="f dr" pathLength="1" style="--d:0.82s;--du:0.8s" d="M377 162h58v34h-58Z"/><path class="t dr" pathLength="1" style="--d:0.91s;--du:0.75s" d="M389 166v26M401 166v26M413 166v26M425 166v26"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="100" cy="168" r="3.5"/><path class="dr" pathLength="1" d="M100 168V64"/><text x="106" y="58">Lager in der Halle</text></g><g class="an" style="--d:1.19s"><circle cx="256" cy="150" r="3.5"/><path class="dr" pathLength="1" d="M256 150V64"/><text x="262" y="58">Teilflächen</text></g><g class="an" style="--d:1.33s"><circle cx="466" cy="213" r="3.5"/><path class="dr" pathLength="1" d="M466 213H502"/><text x="508" y="217.5">Freilager</text></g></svg></figure>
         <div class="lex-txt"><h3>Fläche auf Zeit</h3><p>Saisonale Spitzen, Zwischenlagerung oder dauerhafte Bevorratung. Häufig geht es um kurze Vorlaufzeiten und flexible Laufzeiten, in der Halle ebenso wie auf befestigter Freilagerfläche.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Freilager</li><li>Zwischenlager</li><li>Kurze Laufzeiten</li><li>Teilflächen</li></ul></div>
       </div><div class="lex-panel" id="lx-produktion" role="tabpanel" aria-labelledby="lxt-produktion" data-k="produktion">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Produktionshalle mit Sheddach, Kranbahn mit Laufkatze, Abluftkamin und belastbarem Hallenboden"><path class="b" d="M40 230V98L93.7 124V98L147.3 124V98L201.0 124V98L254.7 124V98L308.3 124V98L362.0 124H470V230"/><path class="t" d="M362 124V230"/><rect class="f" x="412" y="64" width="18" height="60"/><path class="t" d="M408 64h26M412 84h18"/><rect class="f" x="386" y="150" width="60" height="40"/><path class="t" d="M396 160h40M396 170h40M396 180h40"/><path class="b" d="M52 142H350"/><rect class="f" x="196" y="136" width="30" height="12"/><path class="t" d="M211 148V182"/><path class="b" d="M211 182v4a5 5 0 1 0 5 5"/><rect class="f" x="190" y="198" width="42" height="24"/><path class="t" d="M46 230l8-8M56 230l8-8M66 230l8-8M76 230l8-8M86 230l8-8M96 230l8-8M106 230l8-8M116 230l8-8M126 230l8-8M136 230l8-8M146 230l8-8M156 230l8-8M166 230l8-8M176 230l8-8M186 230l8-8M196 230l8-8M206 230l8-8M216 230l8-8M226 230l8-8M236 230l8-8M246 230l8-8M256 230l8-8M266 230l8-8M276 230l8-8M286 230l8-8M296 230l8-8M306 230l8-8M316 230l8-8M326 230l8-8M336 230l8-8M346 230l8-8"/><path class="t" d="M86 222v-30h40v30M94 200h24"/><path class="t" d="M270 222v-40h60v40M278 190h44M278 200h44"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="350" cy="142" r="3.5"/><path d="M350 142L380 110H502"/><text x="508" y="114.5">Kranbahn</text></g><g class="an" style="animation-delay:0.08s"><circle cx="430" cy="74" r="3.5"/><path d="M430 74H502"/><text x="508" y="78.5">Abluft</text></g><g class="an" style="animation-delay:0.16s"><circle cx="300" cy="226" r="3.5"/><path d="M300 226L330 244H502"/><text x="508" y="248.5">Bodentraglast</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Produktionshalle mit Sheddach, Kranbahn mit Laufkatze, Abluftkamin und belastbarem Hallenboden"><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M40 230V98L93.7 124V98L147.3 124V98L201.0 124V98L254.7 124V98L308.3 124V98L362.0 124H470V230"/><path class="t dr" pathLength="1" style="--d:0.46s;--du:0.75s" d="M362 124V230"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M412 64h18v60h-18Z"/><path class="t dr" pathLength="1" style="--d:0.49s;--du:0.75s" d="M408 64h26M412 84h18"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M386 150h60v40h-60Z"/><path class="t dr" pathLength="1" style="--d:0.51s;--du:0.75s" d="M396 160h40M396 170h40M396 180h40"/><path class="b dr" pathLength="1" style="--d:0.17s;--du:1.15s" d="M52 142H350"/><path class="f dr" pathLength="1" style="--d:0.40s;--du:0.8s" d="M196 136h30v12h-30Z"/><path class="t dr" pathLength="1" style="--d:0.54s;--du:0.75s" d="M211 148V182"/><path class="b dr" pathLength="1" style="--d:0.26s;--du:1.15s" d="M211 182v4a5 5 0 1 0 5 5"/><path class="f dr" pathLength="1" style="--d:0.43s;--du:0.8s" d="M190 198h42v24h-42Z"/><path class="t dr" pathLength="1" style="--d:0.56s;--du:0.75s" d="M46 230l8-8M56 230l8-8M66 230l8-8M76 230l8-8M86 230l8-8M96 230l8-8M106 230l8-8M116 230l8-8M126 230l8-8M136 230l8-8M146 230l8-8M156 230l8-8M166 230l8-8M176 230l8-8M186 230l8-8M196 230l8-8M206 230l8-8M216 230l8-8M226 230l8-8M236 230l8-8M246 230l8-8M256 230l8-8M266 230l8-8M276 230l8-8M286 230l8-8M296 230l8-8M306 230l8-8M316 230l8-8M326 230l8-8M336 230l8-8M346 230l8-8"/><path class="t dr" pathLength="1" style="--d:0.58s;--du:0.75s" d="M86 222v-30h40v30M94 200h24"/><path class="t dr" pathLength="1" style="--d:0.61s;--du:0.75s" d="M270 222v-40h60v40M278 190h44M278 200h44"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="350" cy="142" r="3.5"/><path class="dr" pathLength="1" d="M350 142L380 110H502"/><text x="508" y="114.5">Kranbahn</text></g><g class="an" style="--d:1.19s"><circle cx="430" cy="74" r="3.5"/><path class="dr" pathLength="1" d="M430 74H502"/><text x="508" y="78.5">Abluft</text></g><g class="an" style="--d:1.33s"><circle cx="300" cy="226" r="3.5"/><path class="dr" pathLength="1" d="M300 226L330 244H502"/><text x="508" y="248.5">Bodentraglast</text></g></svg></figure>
         <div class="lex-txt"><h3>Technik vor Quadratmeter</h3><p>Fertigung stellt Anforderungen, die vor der Fläche kommen: Bodentraglast, Kranbahn, Energieversorgung, Abluft und die immissionsschutzrechtliche Zulässigkeit am jeweiligen Standort.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Kranbahn</li><li>Bodentraglast</li><li>Starkstrom</li><li>Genehmigungslage</li></ul></div>
       </div><div class="lex-panel" id="lx-gewerbe" role="tabpanel" aria-labelledby="lxt-gewerbe" data-k="gewerbe">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Drei Werkstatteinheiten nebeneinander, jeweils mit Sektionaltor, Bürofenster und Eingang, davor Stellplätze"><rect x="20" y="230" width="470" height="22" fill="#E6E2DB"/><path class="b" d="M40 230V122H470V230"/><path class="t" d="M40 132H470"/><path class="b" d="M183 122V230M326 122V230"/><rect class="f" x="56" y="162" width="70" height="68"/><path class="t" d="M56 176h70M56 190h70M56 204h70M56 218h70"/><rect class="f" x="138" y="146" width="30" height="22"/><rect class="f" x="140" y="188" width="26" height="42"/><rect class="f" x="199" y="162" width="70" height="68"/><path class="t" d="M199 176h70M199 190h70M199 204h70M199 218h70"/><rect class="f" x="281" y="146" width="30" height="22"/><rect class="f" x="283" y="188" width="26" height="42"/><rect class="f" x="342" y="162" width="70" height="68"/><path class="t" d="M342 176h70M342 190h70M342 204h70M342 218h70"/><rect class="f" x="424" y="146" width="30" height="22"/><rect class="f" x="426" y="188" width="26" height="42"/><path class="t" d="M200 252l12-22M224 252l12-22M248 252l12-22M272 252l12-22M296 252l12-22M320 252l12-22M344 252l12-22M368 252l12-22M392 252l12-22M416 252l12-22M440 252l12-22M464 252l12-22"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="91" cy="162" r="3.5"/><path d="M91 162V64"/><text x="97" y="58">Sektionaltor</text></g><g class="an" style="animation-delay:0.08s"><circle cx="296" cy="146" r="3.5"/><path d="M296 146V64"/><text x="302" y="58">Büroanteil</text></g><g class="an" style="animation-delay:0.16s"><circle cx="476" cy="241" r="3.5"/><path d="M476 241H502"/><text x="508" y="245.5">Hof und Stellplätze</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Drei Werkstatteinheiten nebeneinander, jeweils mit Sektionaltor, Bürofenster und Eingang, davor Stellplätze"><rect class="gb" x="20" y="230" width="470" height="22"/><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M40 230V122H470V230"/><path class="t dr" pathLength="1" style="--d:0.46s;--du:0.75s" d="M40 132H470"/><path class="b dr" pathLength="1" style="--d:0.17s;--du:1.15s" d="M183 122V230M326 122V230"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M56 162h70v68h-70Z"/><path class="t dr" pathLength="1" style="--d:0.49s;--du:0.75s" d="M56 176h70M56 190h70M56 204h70M56 218h70"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M138 146h30v22h-30Z"/><path class="f dr" pathLength="1" style="--d:0.40s;--du:0.8s" d="M140 188h26v42h-26Z"/><path class="f dr" pathLength="1" style="--d:0.43s;--du:0.8s" d="M199 162h70v68h-70Z"/><path class="t dr" pathLength="1" style="--d:0.51s;--du:0.75s" d="M199 176h70M199 190h70M199 204h70M199 218h70"/><path class="f dr" pathLength="1" style="--d:0.46s;--du:0.8s" d="M281 146h30v22h-30Z"/><path class="f dr" pathLength="1" style="--d:0.49s;--du:0.8s" d="M283 188h26v42h-26Z"/><path class="f dr" pathLength="1" style="--d:0.52s;--du:0.8s" d="M342 162h70v68h-70Z"/><path class="t dr" pathLength="1" style="--d:0.54s;--du:0.75s" d="M342 176h70M342 190h70M342 204h70M342 218h70"/><path class="f dr" pathLength="1" style="--d:0.55s;--du:0.8s" d="M424 146h30v22h-30Z"/><path class="f dr" pathLength="1" style="--d:0.58s;--du:0.8s" d="M426 188h26v42h-26Z"/><path class="t dr" pathLength="1" style="--d:0.56s;--du:0.75s" d="M200 252l12-22M224 252l12-22M248 252l12-22M272 252l12-22M296 252l12-22M320 252l12-22M344 252l12-22M368 252l12-22M392 252l12-22M416 252l12-22M440 252l12-22M464 252l12-22"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="91" cy="162" r="3.5"/><path class="dr" pathLength="1" d="M91 162V64"/><text x="97" y="58">Sektionaltor</text></g><g class="an" style="--d:1.19s"><circle cx="296" cy="146" r="3.5"/><path class="dr" pathLength="1" d="M296 146V64"/><text x="302" y="58">Büroanteil</text></g><g class="an" style="--d:1.33s"><circle cx="476" cy="241" r="3.5"/><path class="dr" pathLength="1" d="M476 241H502"/><text x="508" y="245.5">Hof und Stellplätze</text></g></svg></figure>
         <div class="lex-txt"><h3>Kleinteilig, nicht einfach</h3><p>Handwerk, Service und Kleingewerbe suchen kompakte Einheiten mit Büroanteil, ebenerdigem Tor und eigener Hoffläche. Das Angebot ist klein und selten öffentlich ausgeschrieben.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Sektionaltore</li><li>Büroanteil</li><li>Hoffläche</li><li>Stellplätze</li></ul></div>
       </div><div class="lex-panel" id="lx-light" role="tabpanel" aria-labelledby="lxt-light" data-k="light">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Bürokopfbau mit angeschlossener Halle, die in drei Einheiten teilbar ist"><path class="b" d="M40 230V88H160V230"/><rect class="f" x="54" y="104" width="22" height="20"/><rect class="f" x="90" y="104" width="22" height="20"/><rect class="f" x="126" y="104" width="22" height="20"/><rect class="f" x="54" y="138" width="22" height="20"/><rect class="f" x="90" y="138" width="22" height="20"/><rect class="f" x="126" y="138" width="22" height="20"/><rect class="f" x="54" y="172" width="22" height="20"/><rect class="f" x="90" y="172" width="22" height="20"/><rect class="f" x="126" y="172" width="22" height="20"/><rect class="f" x="84" y="200" width="32" height="30"/><path class="b" d="M160 230V128H470V230"/><path class="g" d="M263 128V230M366 128V230"/><rect class="f" x="187" y="174" width="50" height="56"/><path class="t" d="M187 188h50M187 202h50M187 216h50"/><rect class="f" x="290" y="174" width="50" height="56"/><path class="t" d="M290 188h50M290 202h50M290 216h50"/><rect class="f" x="393" y="174" width="50" height="56"/><path class="t" d="M393 188h50M393 202h50M393 216h50"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="100" cy="88" r="3.5"/><path d="M100 88V64"/><text x="106" y="58">Büro</text></g><g class="an" style="animation-delay:0.08s"><circle cx="214" cy="128" r="3.5"/><path d="M214 128V64"/><text x="220" y="58">Lager und Produktion</text></g><g class="an" style="animation-delay:0.16s"><circle cx="366" cy="150" r="3.5"/><path d="M366 150H502"/><text x="508" y="154.5">Teilbare Einheiten</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Bürokopfbau mit angeschlossener Halle, die in drei Einheiten teilbar ist"><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M40 230V88H160V230"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M54 104h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M90 104h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.40s;--du:0.8s" d="M126 104h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.43s;--du:0.8s" d="M54 138h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.46s;--du:0.8s" d="M90 138h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.49s;--du:0.8s" d="M126 138h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.52s;--du:0.8s" d="M54 172h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.55s;--du:0.8s" d="M90 172h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.58s;--du:0.8s" d="M126 172h22v20h-22Z"/><path class="f dr" pathLength="1" style="--d:0.61s;--du:0.8s" d="M84 200h32v30h-32Z"/><path class="b dr" pathLength="1" style="--d:0.17s;--du:1.15s" d="M160 230V128H470V230"/><path class="g fd" style="--d:0.66s" d="M263 128V230M366 128V230"/><path class="f dr" pathLength="1" style="--d:0.64s;--du:0.8s" d="M187 174h50v56h-50Z"/><path class="t dr" pathLength="1" style="--d:0.49s;--du:0.75s" d="M187 188h50M187 202h50M187 216h50"/><path class="f dr" pathLength="1" style="--d:0.67s;--du:0.8s" d="M290 174h50v56h-50Z"/><path class="t dr" pathLength="1" style="--d:0.51s;--du:0.75s" d="M290 188h50M290 202h50M290 216h50"/><path class="f dr" pathLength="1" style="--d:0.70s;--du:0.8s" d="M393 174h50v56h-50Z"/><path class="t dr" pathLength="1" style="--d:0.54s;--du:0.75s" d="M393 188h50M393 202h50M393 216h50"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="100" cy="88" r="3.5"/><path class="dr" pathLength="1" d="M100 88V64"/><text x="106" y="58">Büro</text></g><g class="an" style="--d:1.19s"><circle cx="214" cy="128" r="3.5"/><path class="dr" pathLength="1" d="M214 128V64"/><text x="220" y="58">Lager und Produktion</text></g><g class="an" style="--d:1.33s"><circle cx="366" cy="150" r="3.5"/><path class="dr" pathLength="1" d="M366 150H502"/><text x="508" y="154.5">Teilbare Einheiten</text></g></svg></figure>
         <div class="lex-txt"><h3>Lager, Produktion und Büro in einer Einheit</h3><p>Gemischt genutzte Flächen, häufig in Gewerbeparks mit mehreren Mietern. Entscheidend sind teilbare Einheiten, ein tragfähiger Büro-Lager-Schlüssel und eine gemeinsame Erschließung.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Multi-Tenant</li><li>Teilbare Einheiten</li><li>Büro-Lager-Mix</li></ul></div>
       </div><div class="lex-panel" id="lx-grund" role="tabpanel" aria-labelledby="lxt-grund" data-k="grund">
-        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Unbebautes Grundstück mit Grenzmarkierungen, gestricheltem Baufenster, Leitungstrasse und Bodenschichten"><path class="t" d="M20 246H480M20 262H480" stroke-dasharray="2 6"/><path class="g" d="M110 230V128L255 114L400 128V230"/><path class="b" d="M60 230V192"/><path class="f" d="M60 192h18l-5 6 5 6H60z"/><path class="b" d="M440 230V192"/><path class="f" d="M440 192h18l-5 6 5 6H440z"/><path class="b" d="M20 240H466" stroke-dasharray="1 5" stroke-width="2.4"/><path class="gr" d="M14 230H490"/><g class="an" style="animation-delay:0.00s"><circle cx="255" cy="114" r="3.5"/><path d="M255 114V64"/><text x="261" y="58">Baufenster</text></g><g class="an" style="animation-delay:0.08s"><circle cx="466" cy="240" r="3.5"/><path d="M466 240H502"/><text x="508" y="244.5">Erschließung</text></g><g class="an" style="animation-delay:0.16s"><circle cx="446" cy="262" r="3.5"/><path d="M446 262H502"/><text x="508" y="266.5">Boden und Altlasten</text></g></svg></figure>
+        <figure class="lex-fig"><svg viewBox="0 36 640 234" role="img" aria-label="Unbebautes Grundstück mit Grenzmarkierungen, gestricheltem Baufenster, Leitungstrasse und Bodenschichten"><path class="t fd" style="--d:0.66s" d="M20 246H480M20 262H480" stroke-dasharray="2 6"/><path class="g fd" style="--d:0.69s" d="M110 230V128L255 114L400 128V230"/><path class="b dr" pathLength="1" style="--d:0.08s;--du:1.15s" d="M60 230V192"/><path class="f dr" pathLength="1" style="--d:0.34s;--du:0.8s" d="M60 192h18l-5 6 5 6H60z"/><path class="b dr" pathLength="1" style="--d:0.17s;--du:1.15s" d="M440 230V192"/><path class="f dr" pathLength="1" style="--d:0.37s;--du:0.8s" d="M440 192h18l-5 6 5 6H440z"/><path class="b fd" style="--d:0.46s" d="M20 240H466" stroke-dasharray="1 5" stroke-width="2.4"/><path class="gr dr" pathLength="1" style="--d:0.00s;--du:1.0s" d="M14 230H490"/><g class="an" style="--d:1.05s"><circle cx="255" cy="114" r="3.5"/><path class="dr" pathLength="1" d="M255 114V64"/><text x="261" y="58">Baufenster</text></g><g class="an" style="--d:1.19s"><circle cx="466" cy="240" r="3.5"/><path class="dr" pathLength="1" d="M466 240H502"/><text x="508" y="244.5">Erschließung</text></g><g class="an" style="--d:1.33s"><circle cx="446" cy="262" r="3.5"/><path class="dr" pathLength="1" d="M446 262H502"/><text x="508" y="266.5">Boden und Altlasten</text></g></svg></figure>
         <div class="lex-txt"><h3>Bevor die Halle steht</h3><p>Flächen für Neubau, Erweiterung oder Umnutzung, einschließlich Bestandsarealen mit Entwicklungspotenzial. Baurecht, Altlastensituation und Erschließung bestimmen, was realistisch ist.</p><h4>Worauf es ankommt</h4><ul class="lex-crit"><li>Baurecht</li><li>Altlasten</li><li>Erschließung</li><li>Erweiterungsoption</li></ul></div>
       </div>
       </div>
@@ -1596,33 +1623,48 @@ const RVR=[[6.303,51.6427],[6.3339,51.6401],[6.3633,51.6485],[6.3619,51.6634],[6
 
 /* ===== WAS WIR BEGLEITEN: Nutzungslexikon =====
    Reiter steuern die Tafeln ueber data-k. Klick, Pfeiltasten, Pos1/Ende.
-   Mit Maus: kurzes Verweilen (180 ms) wechselt ebenfalls, damit beim Ueberfahren nichts springt. */
+   Mit Maus: kurzes Verweilen (180 ms) wechselt ebenfalls, damit beim Ueberfahren nichts springt.
+   Die Zeichnungen laufen erst ein, wenn das Modul im Bild ist, danach bei jedem Wechsel neu. */
 (function(){
+ const box=document.querySelector('.lex');
  const tabs=[...document.querySelectorAll('.lex-tab')];
  const panels=[...document.querySelectorAll('.lex-panel')];
- if(!tabs.length)return;
+ const ind=document.querySelector('.lex-ind');
+ if(!box||!tabs.length)return;
+ let cur=tabs[0].dataset.k;
+ function place(){
+  const t=tabs.find(x=>x.dataset.k===cur);
+  if(!t||!ind)return;
+  ind.style.transform=`translateY(${t.offsetTop}px)`;
+  ind.style.height=t.offsetHeight+'px';
+ }
  function show(k,focus){
+  cur=k;
   tabs.forEach(t=>{const on=t.dataset.k===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;if(on&&focus)t.focus();});
-  panels.forEach(p=>{const on=p.dataset.k===k;p.classList.toggle('on',on);p.setAttribute('aria-hidden',!on);});
+  panels.forEach(p=>{const on=p.dataset.k===k;p.classList.toggle('on',on);if(on)p.removeAttribute('aria-hidden');else p.setAttribute('aria-hidden','true');});
+  place();
  }
  const hover=matchMedia('(hover:hover) and (pointer:fine)').matches;
  let ht;
  tabs.forEach((t,i)=>{
   t.addEventListener('click',()=>show(t.dataset.k));
   if(hover){
-   t.addEventListener('mouseenter',()=>{clearTimeout(ht);ht=setTimeout(()=>show(t.dataset.k),180);});
+   t.addEventListener('mouseenter',()=>{clearTimeout(ht);ht=setTimeout(()=>{if(t.dataset.k!==cur)show(t.dataset.k);},180);});
    t.addEventListener('mouseleave',()=>clearTimeout(ht));
   }
   t.addEventListener('keydown',e=>{
    let n=null;
-   if(e.key==='ArrowRight')n=(i+1)%tabs.length;
-   else if(e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;
+   if(e.key==='ArrowDown'||e.key==='ArrowRight')n=(i+1)%tabs.length;
+   else if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;
    else if(e.key==='Home')n=0;else if(e.key==='End')n=tabs.length-1;
    if(n===null)return;e.preventDefault();show(tabs[n].dataset.k,true);
-   tabs[n].scrollIntoView({block:'nearest',inline:'nearest',behavior:reduce?'auto':'smooth'});
   });
  });
- show(tabs[0].dataset.k);
+ show(cur);
+ requestAnimationFrame(place);
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
+ let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(place,120);});
+ new IntersectionObserver((es,ob)=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('live');ob.disconnect();}}),{threshold:.3}).observe(box.querySelector('.lex-stage'));
 })();
 
 /* ===== reveal ===== */
