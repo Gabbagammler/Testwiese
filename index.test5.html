@@ -300,10 +300,10 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .svc-txt{position:absolute;left:clamp(16px,1.4vw,22px);right:clamp(16px,1.4vw,22px);bottom:clamp(16px,1.4vw,22px);z-index:3}
 .svc-txt h3{font-size:clamp(1.1rem,1.5vw,1.44rem);color:#fff}
 /* Retail & Gastronomie: Concept Stories erscheint im Hover mit, leicht verzoegert */
-.svc-sub{max-height:0;opacity:0;overflow:hidden;transform:translateY(6px);padding-top:12px;border-top:1px solid rgba(255,255,255,.2);
-      transition:max-height .55s var(--ease2),opacity .45s var(--ease) .08s,transform .55s var(--ease2) .08s,margin-top .55s var(--ease2)}
-.svc-sub img{display:block;height:clamp(11px,.95vw,14px);width:auto;max-width:100%;opacity:.95}
-.svc-sub span{display:block;margin-top:8px;font-size:.78rem;line-height:1.45;color:rgba(255,255,255,.7)}
+/* Retail & Gastronomie: im Hover gleitet das Concept-Stories-Logo von oben ueber die Headline */
+.svc-logo{max-height:0;opacity:0;overflow:hidden;transform:translateY(-12px);
+      transition:max-height .55s var(--ease2),opacity .45s var(--ease),transform .6s var(--ease2),margin-bottom .55s var(--ease2)}
+.svc-logo img{display:block;height:clamp(12px,1vw,15px);width:auto;max-width:100%}
 .svc-txt p{max-height:0;opacity:0;overflow:hidden;color:rgba(255,255,255,.84);
       font-size:.9rem;line-height:1.5;
       transition:max-height .55s var(--ease2),opacity .4s var(--ease),margin-top .55s var(--ease2)}
@@ -314,16 +314,16 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
   .svc-card:hover .svc-go{background:var(--orange);border-color:var(--orange);transform:scale(1.06)}
   .svc-card:hover .svc-go svg{stroke:#fff}
   .svc-card:hover .svc-txt p{max-height:9em;opacity:1;margin-top:12px}
-  .svc-card:hover .svc-sub{max-height:8em;opacity:1;transform:none;margin-top:14px}
+  .svc-card:hover .svc-logo{max-height:40px;opacity:1;transform:none;margin-bottom:clamp(14px,1.3vw,18px)}
 }
 .svc-card:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
 .svc-card:focus-visible .svc-go{background:var(--orange);border-color:var(--orange)}
 .svc-card:focus-visible .svc-txt p{max-height:9em;opacity:1;margin-top:12px}
-.svc-card:focus-visible .svc-sub{max-height:8em;opacity:1;transform:none;margin-top:14px}
+.svc-card:focus-visible .svc-logo{max-height:40px;opacity:1;transform:none;margin-bottom:clamp(14px,1.3vw,18px)}
 /* Touch: die Beschreibung steht dauerhaft, weil es keinen Hover gibt */
 @media(hover:none){
   .svc-txt p{max-height:9em;opacity:1;margin-top:11px}
-  .svc-sub{max-height:8em;opacity:1;transform:none;margin-top:12px}
+  .svc-logo{max-height:40px;opacity:1;transform:none;margin-bottom:14px}
   .svc-card .ph::after{background:linear-gradient(180deg,rgba(14,12,11,.2) 0%,rgba(14,12,11,.4) 40%,rgba(14,12,11,.92) 100%)}
   .svc-go{background:var(--orange);border-color:var(--orange)}
 }
@@ -377,7 +377,6 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .ocard:hover .open i,.ocard:focus-visible .open i{transform:none}
 .ocard:focus-visible .oc-media{outline:2px solid var(--orange);outline-offset:3px}
 @media(hover:none){.ocard .open{grid-template-rows:1fr;opacity:1;transform:none}.ocard .open i{transform:none}}
-.deals-progress{display:none}
 /* Desktop-Szene */
 .deals-pin .deals-sticky{position:sticky;top:var(--dtop,76px);overflow:hidden;padding:var(--sec) 0}
 .deals-pin .deals-track{flex-direction:row;align-items:center;width:max-content;
@@ -386,9 +385,6 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .deals-pin .deals-list{overflow:visible;padding:0 calc(var(--gut) + clamp(70px,8vw,140px)) 0 0;scroll-snap-type:none;align-items:flex-start;gap:clamp(20px,2vw,32px)}
 .deals-pin .ocard{flex:0 0 clamp(300px,25vw,420px);will-change:transform,opacity}
 .deals-pin .oc-media{aspect-ratio:auto;height:max(200px,min(calc(clamp(300px,25vw,420px) * .72),calc(100vh - 300px)))}
-.deals-pin .deals-progress{display:block;position:absolute;left:calc(max(0px,(100% - var(--maxw)) / 2) + var(--gut));right:calc(max(0px,(100% - var(--maxw)) / 2) + var(--gut));
-      bottom:calc(var(--sec) * .45);height:2px;border-radius:2px;background:rgba(27,23,20,.09);overflow:hidden}
-.deals-pin .deals-progress i{position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;border-radius:2px}
 
 /* ===== KUNDENSTIMMEN (Uebernahme aus referenzen2.html) ===== */
 .voices{background:var(--bone);padding:var(--sec) 0 clamp(32px,3.4vw,48px)}
@@ -552,14 +548,15 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .mkpanel .pk .l{display:block;font-size:.82rem;font-weight:500;color:rgba(255,255,255,.66);margin-top:6px;line-height:1.3;
       text-shadow:0 1px 12px rgba(14,12,11,.8)}
 .mkpanel .pgo{display:inline-flex;align-items:center;gap:9px;margin-top:clamp(18px,1.8vw,24px);
-      font-size:.9rem;font-weight:600;color:#fff;transition:color .25s}
+      font-size:.9rem;font-weight:600;color:#fff;transition:color .25s,opacity .28s var(--ease),transform .45s var(--ease2)}
 .mkpanel .pgo:hover{color:var(--orange)}
 .mkpanel .pgo svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:2;transition:transform .3s var(--ease)}
 .mkpanel .pgo:hover svg{transform:translateX(4px)}
 .mkpanel .pgt{display:inline-block}
 /* Stadtwechsel: Name und kompletter Link blenden, die Zahlen rollen (Zaehlwerk) */
-.mkpanel .pn b,.mkpanel .pgt{transition:opacity .28s var(--ease),transform .45s var(--ease2)}
-.mkp-fade .pn b,.mkp-fade .pgt{opacity:0;transform:translateY(5px)}
+.mkpanel .pn b{transition:opacity .28s var(--ease),transform .45s var(--ease2)}
+/* Link-Text und orangener Pfeil wechseln als eine Einheit */
+.mkp-fade .pn b,.mkp-fade .pgo{opacity:0;transform:translateY(5px)}
 .mkpanel .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .mkpanel .odo{display:inline-flex;vertical-align:top}
 .mkpanel .odo .dg{display:inline-block;width:var(--dw,.78em);height:1.1em;overflow:hidden;text-align:center}
@@ -1340,7 +1337,6 @@ html,body{overflow-x:clip}
           <div class="deals-list" id="oTrack"></div>
         </div>
       </div>
-      <div class="deals-progress" aria-hidden="true"><i id="dealsBar"></i></div>
     </div>
   </div>
 </section>
@@ -1692,7 +1688,7 @@ const DEALS=[
    F = horizontale Strecke pro Scroll-Pixel; > 1 haelt die Section nur kurz fest. */
 (function(){
  const list=document.getElementById('oTrack'),track=document.getElementById('oTrackWrap'),
-       scene=document.getElementById('dealsScene'),bar=document.getElementById('dealsBar'),
+       scene=document.getElementById('dealsScene'),
        sticky=scene.querySelector('.deals-sticky'),root=document.documentElement;
  const ARR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
  list.innerHTML=DEALS.map(d=>`
@@ -1708,14 +1704,15 @@ const DEALS=[
  list.addEventListener('dragstart',e=>e.preventDefault());
  const cards=[...list.querySelectorAll('.ocard')],imgs=cards.map(c=>c.querySelector('img'));
  const mq=matchMedia('(min-width:1024px) and (min-height:560px)');
- const F=2;
- let on=false,dist=0,top0=0,len=1,cur=0,tgt=0,raf=0;
+ const F=2.3;
+ /* R = Radius der weichen Uebergaenge beim Andocken/Abloesen der Buehne (px Scrollweg) */
+ const R=170;
+ let on=false,dist=0,top0=0,len=1,cur=0,tgt=0,raf=0,sceneTop=0,sceneH=0,stageH=0,dtop=76;
  let baseX=[],cw=0,vw=0;
  const outCubic=t=>1-Math.pow(1-t,3);
  function paint(){
   const tx=-cur*dist;
   track.style.transform=`translate3d(${tx.toFixed(1)}px,0,0)`;
-  bar.style.transform=`scaleX(${cur.toFixed(4)})`;
   cards.forEach((c,i)=>{
    const left=baseX[i]+tx;
    const t=Math.max(-1,Math.min(1,((left+cw/2)/vw-.5)*2));
@@ -1733,27 +1730,43 @@ const DEALS=[
   raf=cur!==tgt?requestAnimationFrame(tick):0;
  }
  function readScroll(){tgt=Math.min(1,Math.max(0,(scrollY-top0)/len));}
- function onScroll(){if(!on)return;readScroll();if(!raf)raf=requestAnimationFrame(tick);}
+ /* Weiches Andocken: statt des harten Sticky-Stopps bremst die Buehne ueber R px ab
+    bzw. loest sich ueber R px wieder (C1-stetige Uebergaenge an beiden Ecken). */
+ const softMax=(x,m)=>{const d=x-m;return d>=R?x:d<=-R?m:m+(d+R)*(d+R)/(4*R);};
+ const softMin=(x,m)=>{const d=m-x;return d>=R?x:d<=-R?m:m-(d+R)*(d+R)/(4*R);};
+ function dock(){
+  const top=sceneTop-scrollY,exit=top+sceneH-stageH;
+  const hard=Math.min(Math.max(top,dtop),exit);
+  const soft=softMin(softMax(top,dtop),exit);
+  sticky.style.transform=`translate3d(0,${(soft-hard).toFixed(2)}px,0)`;
+ }
+ function onScroll(){if(!on)return;dock();readScroll();if(!raf)raf=requestAnimationFrame(tick);}
  function measure(){
   if(!on)return;
   vw=sticky.clientWidth;
   baseX=cards.map(c=>c.offsetLeft);cw=cards[0]?cards[0].offsetWidth:0;
   dist=Math.max(0,track.offsetWidth-vw);
   /* Buehne so hoch wie Inhalt + Section-Abstand, mittig unter der Navigation gehalten */
-  const nav=76,stageH=sticky.offsetHeight;
+  const nav=76;stageH=sticky.offsetHeight;
   const topPx=Math.round(nav+Math.max(0,(innerHeight-nav-stageH)/2));
   root.style.setProperty('--dtop',topPx+'px');
-  scene.style.height=Math.round(stageH+dist/F)+'px';
-  top0=scene.getBoundingClientRect().top+scrollY-topPx;
+  /* Ablauf am Ende gestaffelt: erst ist der letzte Deal ganz im Bild (plus kurze Ruhe),
+     erst danach schiebt sich die folgende Section herein und die Buehne loest sich. */
   len=Math.max(1,dist/F);
-  readScroll();cur=tgt;paint();
+  const hold=Math.round(Math.min(90,innerHeight*.08));
+  const tail=Math.max(innerHeight-topPx-stageH,R)+hold;
+  sticky.style.transform='';
+  scene.style.height=Math.round(stageH+len+tail)+'px';
+  sceneTop=scene.getBoundingClientRect().top+scrollY;sceneH=scene.offsetHeight;dtop=topPx;
+  top0=sceneTop-topPx;
+  readScroll();cur=tgt;paint();dock();
  }
  function setMode(){
   const want=mq.matches&&!reduce;
   if(want===on){measure();return;}
   on=want;root.classList.toggle('deals-pin',on);
   if(!on){
-   scene.style.height='';track.style.transform='';bar.style.transform='';root.style.removeProperty('--dtop');
+   scene.style.height='';track.style.transform='';sticky.style.transform='';root.style.removeProperty('--dtop');
    cards.forEach((c,i)=>{c.style.opacity='';c.style.transform='';imgs[i].style.transform='';});
   }
   measure();
@@ -1790,15 +1803,15 @@ const SERVICES=[
   src:IMG_SVC_INVEST,href:'investment.html'},
  {t:'Light Industrial',d:'Hallen-, Lager- und Serviceflächen für Produktion, Handwerk und Distribution.',
   src:IMG_SVC_HALLE,href:'industrial-logistics.html'},
- {t:'Retail & Gastronomie',d:'Einzelhandels- und Gastronomieflächen in den Lagen, die zu Ihrem Konzept passen.',
+ {t:'Retail & Gastronomie',d:'Die spezialisierte Tochter der CUBION Immobilien AG für Einzelhandel und Gastronomieflächen.',
   src:IMG_SVC_RETAIL,href:'retail-gastronomie.html',
-  sub:{logo:IMG_CONCEPT_STORIES,alt:'Concept Stories',t:'Die spezialisierte Tochter der CUBION Immobilien AG für Retail &amp; Gastronomie.'}}
+  logo:{src:IMG_CONCEPT_STORIES,alt:'Concept Stories'}}
 ];
 document.getElementById('svcGrid').innerHTML=SERVICES.map(s=>`
  <a class="svc-card" href="${s.href}">
    <div class="ph"><img src="${s.src||U+s.img}" alt="" loading="lazy"></div>
    <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-   <div class="svc-txt"><h3 class="bsans">${s.t}</h3><p>${s.d}</p>${s.sub?`<div class="svc-sub"><img src="${s.sub.logo}" alt="${s.sub.alt}" loading="lazy"><span>${s.sub.t}</span></div>`:''}</div>
+   <div class="svc-txt">${s.logo?`<div class="svc-logo"><img src="${s.logo.src}" alt="${s.logo.alt}" loading="lazy"></div>`:''}<h3 class="bsans">${s.t}</h3><p>${s.d}</p></div>
  </a>`).join('');
 
 /* ============================================================
