@@ -428,28 +428,26 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .ins:hover h3{color:var(--orange)}
 
 /* ===== CTA ===== */
-.cta{background:var(--bg);color:#fff;padding:clamp(64px,7.4vw,100px) 0 clamp(48px,5.4vw,72px);position:relative;overflow:hidden}
+.cta{--sec-h:clamp(64px,7.6vw,108px);background:var(--bg);color:#fff;padding:var(--sec-h) 0 clamp(54px,6vw,80px);position:relative;overflow:hidden}
 .cta .glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(620px circle at var(--gx,60%) var(--gy,40%),rgba(255,111,32,.16),transparent 68%)}
 .cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,5vw,80px);align-items:center}
-.cta .big-q{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:.95;letter-spacing:-.005em;color:#fff}
+.cta .big-q{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:-.005em;color:#fff}
 .cta p{color:var(--grey-d);max-width:46ch;margin:22px 0 0}
-.cta .acts{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
-.cta-person{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:clamp(20px,2.2vw,30px);align-items:center;justify-self:start}
-/* .pht loest sich ins Raster auf: Bild links ueber beide Zeilen, Name/Position und Kontaktdaten rechts */
-.cta-person .pht{display:contents}
-.cta-person .pht img{grid-column:1;grid-row:1 / span 2;width:clamp(96px,8vw,120px);height:clamp(96px,8vw,120px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange)}
-.cta-person .pht>div{grid-column:2;grid-row:1;align-self:end}
+/* Kontakt direkt auf dem Section-Hintergrund, ohne eigene Kachel (Layout wie leistungen-buero.html) */
+.cta-person{position:relative;display:flex;flex-direction:column}
+.cta-person .pht{display:flex;align-items:center;gap:20px;margin-bottom:20px}
+.cta-person .pht img{width:clamp(88px,7vw,106px);height:clamp(88px,7vw,106px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--orange);flex:0 0 auto}
 .cta-person .cn{font-family:var(--sans-b);font-weight:700;text-transform:none;font-size:clamp(1.24rem,1.6vw,1.44rem);letter-spacing:-.015em;line-height:1.15}
-.cta-person .cr{font-size:.86rem;color:var(--grey-d);margin-top:6px}
-.cta-person .clinks{grid-column:2;grid-row:2;align-self:start;display:flex;flex-direction:column;gap:8px;margin-top:16px}
-.cta-person .clinks a{display:flex;align-items:center;gap:13px;color:#fff;font-size:.96rem;font-weight:500;transition:.25s}
+.cta-person .cr{font-size:.86rem;color:var(--grey-d);margin-top:7px}
+.cta-person .clinks{display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px}
+.cta-person .clinks a{display:flex;align-items:center;gap:15px;color:#fff;font-size:.96rem;font-weight:500;transition:.25s}
 .cta-person .clinks a:hover{color:var(--orange)}
-.cta-person .clinks a .ic{width:36px;height:36px;border-radius:50%;background:rgba(255,111,32,.14);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
+.cta-person .clinks a .ic{width:40px;height:40px;border-radius:50%;background:rgba(255,111,32,.14);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
 .cta-person .clinks a:hover .ic{background:var(--orange)}
 .cta-person .clinks a:hover .ic svg{stroke:#fff}
-.cta-person .clinks a svg{width:16px;height:16px;fill:none;stroke:var(--orange);stroke-width:1.7;transition:.25s}
-@media(max-width:860px){.cta-grid{grid-template-columns:1fr;gap:clamp(30px,6vw,40px)}}
-@media(max-width:420px){.cta-person{column-gap:16px}.cta-person .pht img{width:84px;height:84px}.cta-person .clinks a{font-size:.9rem}}
+.cta-person .clinks a svg{width:17px;height:17px;fill:none;stroke:var(--orange);stroke-width:1.7;transition:.25s}
+.cta-person .clinks a:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+@media(max-width:860px){.cta-grid{grid-template-columns:1fr}}
 
 /* ===== FOOTER ===== */
 footer{background:var(--bg);color:#fff;padding-bottom:30px}
@@ -470,8 +468,7 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 /* ===== RESEARCH PAGE =====
    Hintergrund-Rhythmus nach neuer Modulreihenfolge (Dreiklang statt Hell-Dunkel-Wechsel):
    Hero dunkel -> Buromarktbericht Ruhrgebiet weiss -> Marktupdates bone
-   -> Lagen & Mieten dunkel (Kartenanwendung) -> Vier Staedte weiss (Bildpanels)
-   -> Deutschland bone -> Kontakt dunkel. Getrennt wird ueber Flaeche, Weissraum und Bild, nicht ueber Rahmen. */
+   -> Lagen & Mieten dunkel (Kartenanwendung) -> Deutschland weiss -> Kontakt dunkel. Getrennt wird ueber Flaeche, Weissraum und Bild, nicht ueber Rahmen. */
 
 /* ----- Hero: Komposition, Typografie und Orientierungsschrift wie kontakt.html ----- */
 .rhero{position:relative;z-index:5;min-height:clamp(560px,72svh,760px);color:#fff;display:flex;align-items:stretch;
@@ -671,64 +668,18 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
  .lk-tab{flex:1 1 0;min-width:0;padding:10px 4px;font-size:.86rem}.lk-stage{height:440px}.lk-dl-l{width:100%}.lk-pdf{flex:1 1 calc(50% - 4px);justify-content:center}}
 
 /* ----- Buromarktberichte Deutschland ----- */
-.de{background:var(--bone);padding:clamp(84px,10vw,140px) 0 clamp(76px,9vw,124px)}
+.de{background:var(--paper);padding:clamp(64px,7.6vw,108px) 0 clamp(60px,7vw,96px)}
+.de .r-head{margin-bottom:clamp(26px,3.2vw,42px)}
 .delist{border-top:1px solid var(--line)}
-.derow{display:flex;align-items:center;justify-content:space-between;gap:20px 30px;padding:clamp(26px,3.2vw,42px) 4px;border-bottom:1px solid var(--line);flex-wrap:wrap;transition:padding-left .35s var(--ease)}
+.derow{display:flex;align-items:center;justify-content:space-between;gap:16px 30px;padding:clamp(20px,2.3vw,30px) 4px;border-bottom:1px solid var(--line);flex-wrap:wrap;transition:padding-left .35s var(--ease)}
 .derow:hover{padding-left:14px}
 .derow .y{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.12rem,1.7vw,1.4rem);letter-spacing:-.02em;line-height:1.2}
-.derow .src{font-size:.88rem;color:var(--grey);margin-top:9px}
+.derow .src{font-size:.88rem;color:var(--grey);margin-top:6px}
 .debtns{display:flex;gap:10px;flex-wrap:wrap}
 .debtn{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:100px;border:1px solid var(--line);color:var(--ink);font-size:.87rem;font-weight:600;transition:.25s}
 .debtn svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:1.8;transition:.25s}
 .debtn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
 .debtn:hover svg{stroke:#fff}
-
-/* ----- Vier Staedte im Fokus: kartenloser Teaser. Bild und Name im Ruhezustand,
-        Kennzahlen und CTA erst bei Hover (Desktop), Tap (Touch) oder Tastaturfokus ----- */
-.staedte{background:var(--paper);padding:clamp(88px,11vw,150px) 0 clamp(84px,10vw,140px)}
-.cty-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,.9vw,14px)}
-/* kompaktere Proportion: breiter durch engeren Spalt, deutlich weniger hoch (ca. 3:4 statt ca. 1:2) */
-.cty{position:relative;height:clamp(380px,30vw,430px);border-radius:20px;overflow:hidden;isolation:isolate;cursor:pointer;color:#fff;
-  background:linear-gradient(165deg,#2b2622 0%,#0e0c0b 100%);-webkit-tap-highlight-color:transparent}
-.cty-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.5s var(--ease2)}
-.cty-img{filter:saturate(1.04) contrast(1.03)}
-/* Bild praesenter: oben kein Schleier mehr, Verlauf nur noch im unteren Drittel hinter dem Namen */
-.cty::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(14,12,11,0) 0%,rgba(14,12,11,0) 56%,rgba(14,12,11,.34) 78%,rgba(14,12,11,.66) 100%)}
-.cty::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(14,12,11,.58);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity .6s var(--ease)}
-.cty-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,1.8vw,28px)}
-.cty-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.cty-name{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.5rem,2vw,2rem);letter-spacing:-.02em;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-.cty-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s var(--ease2)}
-.cty-in{min-height:0;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .3s var(--ease),transform .5s var(--ease)}
-.cty-yr{display:block;font-family:'IBM Plex Mono';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:22px 0 8px}
-.cty-kpi div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.16)}
-.cty-kpi dt{flex:1 1 auto;min-width:0;font-size:.8rem;color:rgba(255,255,255,.72)}
-.cty-kpi dd{flex:0 0 auto;font-family:var(--sans-b);font-weight:700;font-size:.96rem;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.cty-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-weight:600;font-size:clamp(.8rem,1.05vw,.9rem);white-space:nowrap;letter-spacing:-.01em;color:#fff;padding-right:8px;transition:color .25s}
-.cty-cta .ar{width:28px;height:28px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .35s var(--ease)}
-.cty-cta .ar svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2}
-.cty-cta:hover{color:var(--orange)}
-.cty-cta:hover .ar{transform:translateX(3px)}
-.cty-cta:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:6px}
-/* aktiver Zustand: Aussenmasse bleiben, nur der Inhalt im Panel wechselt */
-.cty.on::after{opacity:1}
-.cty.on .cty-img{transform:scale(1.06)}
-.cty.on .cty-more{grid-template-rows:1fr}
-.cty.on .cty-in{opacity:1;transform:none;transition-delay:.12s,.12s}
-.cty.on .cty-cta::after{content:"";position:absolute;inset:0;z-index:2}
-.cty-bar{display:none}
-@media(max-width:1180px){
- .cty-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;scrollbar-width:none;
-   margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut);scroll-padding-inline:var(--gut)}
- .cty-grid::-webkit-scrollbar{display:none}
- .cty{flex:0 0 clamp(290px,44vw,380px);height:clamp(390px,50vw,450px);scroll-snap-align:start}
- .cty-bar{display:flex}
- .cty-cta{font-size:.9rem}
-}
-@media(max-width:600px){.cty{flex-basis:82vw;height:min(440px,114vw)}}
-@media(prefers-reduced-motion:reduce){.cty-img,.cty-more,.cty-in,.cty::after{transition:none}}
 
 /* nav current page */
 .nl>a.cur{color:var(--orange)}
@@ -803,7 +754,6 @@ html,body{overflow-x:clip}
   <a href="#marktbericht" data-s="marktbericht"><span class="lab">Büromarktbericht</span><span class="tick"></span></a>
   <a href="#updates" data-s="updates"><span class="lab">Marktupdates</span><span class="tick"></span></a>
   <a href="#lagen" data-s="lagen"><span class="lab">Lagen &amp; Mieten</span><span class="tick"></span></a>
-  <a href="#staedte" data-s="staedte"><span class="lab">Analyse Märkte</span><span class="tick"></span></a>
   <a href="#kontakt" data-s="kontakt"><span class="lab">Kontakt</span><span class="tick"></span></a>
 </nav>
 
@@ -1005,29 +955,6 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
-<!-- ===== VIER STÄDTE IM FOKUS =====
-     Kartenloser Teaser (die Karte steht bereits in Lagen & Mieten). Inhalte kommen aus STAEDTE im Skript:
-     Bild, Kennzahlen und Ziel der Stadtanalyse je Stadt. Ab 1100 px vier Panels, darunter horizontaler Slider. -->
-<section class="staedte" id="staedte">
-  <div class="wrap">
-    <div class="r-head">
-      <div>
-        <span class="lead">Analyse Märkte</span>
-        <h2>Vier Städte<br>im Fokus</h2>
-      </div>
-      <div class="note">Die zentralen Kennzahlen je Stadt auf einen Blick und der direkte Einstieg in die ausführliche Stadtanalyse.</div>
-    </div>
-    <div class="cty-grid rv" id="ctyGrid"></div>
-    <div class="slbar cty-bar">
-      <div class="slprog" id="ctyProg" role="scrollbar" tabindex="0" aria-controls="ctyGrid" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-label="Position im Slider"><span class="slthumb" id="ctyThumb"></span></div>
-      <div class="slnav">
-        <button class="rarw" id="ctyPrev" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-        <button class="rarw" id="ctyNext" aria-label="Weiter"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== BÜROMARKTBERICHTE DEUTSCHLAND ===== -->
 <section class="de" id="deutschland">
   <div class="wrap">
@@ -1133,7 +1060,7 @@ document.querySelectorAll('.rv,[data-count],.mk').forEach(el=>io.observe(el));
 document.querySelectorAll('.r-head').forEach(el=>{el.classList.add('rv');io.observe(el);});
 
 /* ===== rail + progress + top button ===== */
-const SECIDS=['marktbericht','updates','lagen','staedte','kontakt'];
+const SECIDS=['marktbericht','updates','lagen','kontakt'];
 const secMap=SECIDS.map(id=>({id,el:document.getElementById(id)}));
 const railLinks=document.querySelectorAll('#rail a');
 railLinks.forEach(a=>a.addEventListener('click',e=>{
@@ -1468,62 +1395,6 @@ document.getElementById('deList').innerHTML=DE.slice(0,3).map(d=>`
   </div>
  </div>`).join('');
 document.querySelectorAll('.derow.rv').forEach(el=>io.observe(el));
-
-/* ===== RESEARCH: Vier Staedte im Fokus =====
-   Kennzahlen Jahresende 2025 (realisierte Spitzenmiete, gewichtete Durchschnittsmiete inkl. Neubau,
-   Leerstandsquote, Vermietungsleistung). Bilder: Buromarkt-Motive von cubion.de. */
-const STAEDTE=[
- {k:'duisburg',n:'Duisburg',href:'analyse-duisburg.html',img:U+'2024/09/Bueromarkt-Duisburg_web.jpg',pos:'50% 50%',jahr:'2025',
-  kpi:[['Spitzenmiete','18,50 €/m²'],['Durchschnittsmiete','14,59 €/m²'],['Leerstand','4,6 %'],['Vermietungsleistung','37.000 m²']]},
- {k:'essen',n:'Essen',href:'analyse-essen.html',img:U+'2024/09/Bueromarkt-Essen_web.jpg',pos:'50% 50%',jahr:'2025',
-  kpi:[['Spitzenmiete','19,50 €/m²'],['Durchschnittsmiete','13,91 €/m²'],['Leerstand','7,0 %'],['Vermietungsleistung','54.000 m²']]},
- {k:'bochum',n:'Bochum',href:'analyse-bochum.html',img:U+'2024/09/Bueromarkt-Bochum_web.jpg',pos:'50% 50%',jahr:'2025',
-  kpi:[['Spitzenmiete','16,50 €/m²'],['Durchschnittsmiete','12,34 €/m²'],['Leerstand','6,0 %'],['Vermietungsleistung','34.000 m²']]},
- {k:'dortmund',n:'Dortmund',href:'analyse-dortmund.html',img:U+'2024/09/Bueromarkt-Dortmund_web.jpg',pos:'50% 50%',jahr:'2025',
-  kpi:[['Spitzenmiete','19,65 €/m²'],['Durchschnittsmiete','13,67 €/m²'],['Leerstand','4,2 %'],['Vermietungsleistung','125.000 m²']]}
-];
-(function(){
- const grid=document.getElementById('ctyGrid');if(!grid)return;
-  grid.innerHTML=STAEDTE.map(c=>`
- <article class="cty" data-k="${c.k}">
-  <img class="cty-img" src="${c.img}" alt="Büromarkt ${c.n}" loading="lazy" decoding="async" style="object-position:${c.pos}" onerror="this.remove()">
-  <div class="cty-body">
-   <div class="cty-head">
-    <h3 class="cty-name">${c.n}</h3>
-   </div>
-   <div class="cty-more" id="cty-${c.k}">
-    <div class="cty-in">
-     <span class="cty-yr">Marktdaten ${c.jahr}</span>
-     <dl class="cty-kpi">${c.kpi.map(([l,v])=>`<div><dt>${l}</dt><dd>${v}</dd></div>`).join('')}</dl>
-     <a class="cty-cta" href="${c.href}">Stadtanalyse ${c.n}<span class="ar">${ARRSVG}</span></a>
-    </div>
-   </div>
-  </div>
- </article>`).join('');
- const cards=[...grid.querySelectorAll('.cty')];
- /* Maus: Hover oeffnet. Touch/Stift: erster Tap oeffnet, zweiter Tap fuehrt zur Stadtanalyse.
-    Unterschieden wird ueber pointerType, nicht ueber Media Queries (Hybridgeraete). */
- let lastType='mouse';
- grid.addEventListener('pointerdown',e=>{lastType=e.pointerType||'mouse';},true);
- function set(card){
-  cards.forEach(c=>{
-   c.classList.toggle('on',c===card);
-  });
- }
- cards.forEach(c=>{
-  c.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')set(c);});
-  c.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!c.contains(document.activeElement))set(null);});
-  c.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible'))set(c);});
-  c.addEventListener('focusout',e=>{if(!c.contains(e.relatedTarget)&&!(lastType==='mouse'&&c.matches(':hover')))c.classList.contains('on')&&set(null);});
-  c.addEventListener('click',e=>{
-   if(!c.classList.contains('on')){e.preventDefault();set(c);}
-  });
- });
- document.addEventListener('click',e=>{if(!grid.contains(e.target))set(null);});
- document.addEventListener('keydown',e=>{if(e.key==='Escape')set(null);});
- initSlider(grid,'.cty',document.getElementById('ctyPrev'),document.getElementById('ctyNext'),
-  document.getElementById('ctyProg'),document.getElementById('ctyThumb'),{hideIfStatic:true});
-})();
 
 /* ===== RAIL VISIBILITY (after statement) ===== */
 const railEl=document.getElementById('rail'),stmtRef=document.getElementById('marktbericht');
