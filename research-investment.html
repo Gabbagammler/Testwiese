@@ -518,15 +518,20 @@ html,body{overflow-x:clip}
 .cta-duo .cta-person .clinks a svg{width:15px;height:15px}
 /* Ohne Kacheln: beide Personen direkt auf dem Section-Hintergrund, getrennt durch eine feine vertikale Linie */
 #kontakt.cta{padding:clamp(72px,8vw,112px) 0 clamp(68px,7.4vw,104px)}
-.cta-duo{position:relative;column-gap:clamp(44px,5vw,80px)}
-.cta-duo::before{content:"";position:absolute;top:4px;bottom:4px;left:50%;width:1px;transform:translateX(-50%);
+/* Spalten nach Inhalt, Trennlinie als eigene Mittelspalte: gleicher Abstand zu beiden Personen */
+.cta-duo{grid-template-columns:minmax(0,max-content) 1px minmax(0,max-content);justify-content:space-between;column-gap:clamp(44px,5vw,80px)}
+.cta-duo .cta-person{grid-row:1}
+.cta-duo .cta-person:first-child{grid-column:1}
+.cta-duo .cta-person:last-child{grid-column:3}
+.cta-duo::before{content:"";grid-column:2;grid-row:1;align-self:stretch;width:1px;margin:4px 0;
       background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.16) 18%,rgba(255,255,255,.16) 82%,rgba(255,255,255,0));pointer-events:none}
 .cta-duo .cta-person{background:none;border:0;border-radius:0;padding:0;-webkit-backdrop-filter:none;backdrop-filter:none}
 .cta-duo .cta-person::before{content:none}
 .cta-duo .cta-person .av{margin-left:5px}
 .cta-duo .cta-person .topic{padding-bottom:0;border-bottom:0;margin-bottom:clamp(18px,1.8vw,22px)}
-@media(max-width:1280px){.cta-grid.duo{grid-template-columns:1fr}.cta .big-q.two .l{display:inline}.cta .big-q.two .l+.l::before{content:" "}}
+@media(max-width:1280px){.cta-grid.duo{grid-template-columns:1fr}.cta-duo{justify-content:start}.cta .big-q.two .l{display:inline}.cta .big-q.two .l+.l::before{content:" "}}
 @media(max-width:600px){.cta-duo{grid-template-columns:1fr;row-gap:0}
+ .cta-duo .cta-person,.cta-duo .cta-person:first-child,.cta-duo .cta-person:last-child{grid-column:auto;grid-row:auto}
  .cta-duo::before{content:none}
  .cta-duo .cta-person+.cta-person{margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14)}}
 @media(max-width:480px){.cta .big-q.two .l{white-space:normal}}
