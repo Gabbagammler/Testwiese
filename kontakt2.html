@@ -193,6 +193,9 @@ html,body{overflow-x:clip}
 /* ===== HERO (Aufbau wie karriere4, jetzt inkl. Kontakt + Anfrage-Menue) ===== */
 .hero{position:relative;z-index:5;color:#fff;display:flex;align-items:stretch;
       padding:clamp(100px,12.4vh,136px) var(--gut) clamp(40px,5.4vh,68px);overflow:hidden;background:var(--bg)}
+/* Desktop: Inhalte tiefer gesetzt. Obergrenze = Viewport minus reservierte Modulhoehe (--askH, per JS aus allen
+   Formularzustaenden gemessen) minus unterer Abstand. So bleibt auch der laengste Schritt immer vollstaendig sichtbar. */
+@media(min-width:1025px){.hero{padding-top:clamp(104px,18.5vh,100vh - var(--askH,500px) - clamp(40px,5.4vh,68px) - 28px)}}
 .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.9) contrast(1.05);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
 .loaded .hero-media img{transform:scale(1)}
@@ -255,6 +258,7 @@ html,body{overflow-x:clip}
 /* Zustand: ab Schritt 2 wird die Ueberschrift zur ruhigen Einordnung, die Frage uebernimmt */
 .hero-ask:not([data-step="anliegen"]) .ask-title{font-size:clamp(1rem,1.1vw,1.08rem);color:rgba(255,255,255,.66)}
 .hero-ask:not([data-step="anliegen"]) .ask-sub{display:none}
+.hero-ask:not([data-step="anliegen"]) .ask-prog{margin-top:16px}
 .hero-ask[data-step="done"] .ask-prog{visibility:hidden}
 
 .scrollcue{position:absolute;left:max(var(--gut),calc((100% - var(--maxw)) / 2 + var(--gut)));bottom:clamp(14px,2vh,24px);z-index:3;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0}
@@ -264,8 +268,7 @@ html,body{overflow-x:clip}
 @keyframes cue{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
 @media(max-width:1180px){.hero-inner{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);--hcol:clamp(24px,3vw,40px)}}
 /* Desktop: Hoehe fuer den laengsten Schritt reservieren, damit Hero und Seite beim Durchklicken nicht springen */
-@media(min-width:1025px){.hero-ask{min-height:calc(456px + 2.6vw + 2.4vh)}.hero-ask:not([data-step="anliegen"]) .cform-body{padding-bottom:clamp(18px,2.4vh,24px)}.hero-ask:not([data-step="anliegen"]) .cform-foot{margin-top:auto}}
-@media(min-width:1600px){.hero-ask{min-height:548px}}
+@media(min-width:1025px){.hero-ask{min-height:var(--askH,calc(456px + 2.6vw + 2.4vh))}.hero-ask:not([data-step="anliegen"]) .cform-body{padding-bottom:clamp(18px,2.4vh,24px)}.hero-ask:not([data-step="anliegen"]) .cform-foot{margin-top:auto}}
 @media(max-width:1024px){
  .hero{padding:clamp(104px,15vh,140px) var(--gut) clamp(48px,7vh,72px)}
  .hero-inner{grid-template-columns:minmax(0,1fr);gap:clamp(34px,6vw,48px);align-items:start}
@@ -412,9 +415,38 @@ section.pad{padding:clamp(84px,10vw,140px) 0}
 .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .err{display:flex;align-items:center;gap:8px;color:#FF9C85;font-size:.82rem;font-weight:500;margin-top:10px;opacity:0;transform:translateY(-4px);transition:.3s var(--ease)}
 .err.show{opacity:1;transform:none}
+.fm-step .err{max-height:0;margin-top:0;overflow:hidden;transition:opacity .3s var(--ease),transform .3s var(--ease),max-height .3s var(--ease),margin-top .3s var(--ease)}
+.fm-step .err.show{max-height:48px;margin-top:10px}
 .err svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;flex:0 0 auto}
 .freitext{max-height:0;overflow:hidden;opacity:0;transform:translateY(-6px);transition:max-height .45s var(--ease),opacity .35s,transform .45s var(--ease);margin-top:0}
 .freitext.show{max-height:120px;opacity:1;transform:none;margin-top:12px}
+/* Gruppen innerhalb eines Schritts (Flaechenart, Standort, Groesse) */
+.fgrp+.fgrp{margin-top:clamp(12px,1.7vh,16px)}
+.fgrp-lab{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.8);margin-bottom:7px}
+.fgrp-lab span{font-weight:400;color:rgba(255,255,255,.5);margin-left:6px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.opt.pill{min-height:0;padding:9px 16px;border-radius:100px;font-size:.9rem;font-weight:500;justify-content:center}
+.opt.pill:hover{transform:translateY(-1px)}
+.fgrp.fgrp-fold{max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height .45s var(--ease),opacity .35s,margin-top .45s var(--ease)}
+.fgrp.fgrp-fold.show{max-height:150px;opacity:1;margin-top:clamp(12px,1.7vh,16px)}
+.fgrp-fold .pills{padding:3px;margin:-3px}
+.fm-step .fgrp .err.show{margin-top:8px}
+/* Kontaktdaten in einem Schritt */
+.kgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.kgrid>.fld{grid-column:span 3}
+.kgrid>.fld[data-f="unternehmen"]{grid-column:span 6}
+@media(min-width:1181px){.kgrid>.fld[data-f="vorname"],.kgrid>.fld[data-f="nachname"],.kgrid>.fld[data-f="unternehmen"]{grid-column:span 2}}
+@media(max-width:640px){.kgrid>.fld,.kgrid>.fld[data-f="unternehmen"]{grid-column:span 6}}
+.kgrid .fld,.fgrp .fld,.msgfold .fld{padding:9px 14px 7px}
+.kgrid .fld label,.fgrp .fld label,.msgfold .fld label{margin-bottom:3px}
+.addmsg{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:4px 0;background:none;border:0;cursor:pointer;color:rgba(255,255,255,.82);font-family:'Inter',system-ui,sans-serif;font-size:.88rem;font-weight:500;transition:color .2s}
+.addmsg span{font-weight:400;color:rgba(255,255,255,.5)}
+.addmsg::before{content:"+";display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.32);font-size:.95rem;line-height:1;transition:transform .3s var(--ease),border-color .2s,background .2s}
+.addmsg:hover{color:#fff}.addmsg:hover::before{border-color:var(--orange)}
+.addmsg.on::before{transform:rotate(45deg)}
+.addmsg:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+.freitext.msgfold.show{max-height:140px;margin-top:8px}
+.msgfold .fld textarea{min-height:58px}
 
 /* Erfolgsmeldung */
 .fm-done{text-align:left}
@@ -922,22 +954,20 @@ const state={
  email:'',telefon:''
 };
 let idx=0,dir=1,done=false;
+let msgOpen=false;      // nur Darstellung: Nachrichtenfeld im Kontaktschritt aufgeklappt
 
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ERRSVG='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 15.5v.5"/></svg>';
 const errEl=msg=>`<div class="err" data-err>${ERRSVG}<span>${msg}</span></div>`;
 const CHK='<span class="chk"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>';
 
-/* Ablauf dynamisch aus den bisherigen Antworten */
+/* Ablauf dynamisch aus den bisherigen Antworten.
+   Kompakt: drei Schritte je Pfad. Alle bisherigen Angaben bleiben erhalten, sie sind nur gebuendelt.
+   Vermietung: Bereich -> Flaeche (Art, Standort, bei Buero Groesse) -> Kontaktdaten (+ optionale Nachricht)
+   Investment: Bereich -> Nachricht -> Kontaktdaten */
 function flow(){
- if(state.anliegen==='investment')return['anliegen','nachricht','name','unternehmen','kontakt'];
- if(state.anliegen==='vermietung'){
-  const f=['anliegen','flaechenart'];
-  if(state.flaechenart==='buero')f.push('groesse');
-  f.push('standort','nachricht','name','unternehmen','kontakt');
-  return f;
- }
- return['anliegen','nachricht','name','unternehmen','kontakt'];
+ if(state.anliegen==='vermietung')return['anliegen','flaeche','kontakt'];
+ return['anliegen','nachricht','kontakt'];
 }
 
 const STEPS={
@@ -952,43 +982,32 @@ const STEPS={
    ${errEl('Bitte wählen Sie einen Bereich aus.')}`,
   valid:()=>state.anliegen?null:'set'
  },
- flaechenart:{
-  render:()=>`
-   <h3 class="q">Um welche Flächen geht es?</h3>
-   <div class="qs">Bitte wählen Sie eine Flächenart aus.</div>
-   <div class="opt-grid">
-    <button type="button" class="opt${state.flaechenart==='buero'?' sel':''}" data-set="flaechenart" data-val="buero"><span>Büroflächen</span>${CHK}</button>
-    <button type="button" class="opt${state.flaechenart==='halle'?' sel':''}" data-set="flaechenart" data-val="halle"><span>Hallen- und Lagerflächen</span>${CHK}</button>
-   </div>
-   ${errEl('Bitte wählen Sie eine Flächenart aus.')}`,
-  valid:()=>state.flaechenart?null:'set'
- },
- groesse:{
+ flaeche:{
   render:()=>{
-   const opts=[['s','250 bis 1.000 m²'],['m','1.000 bis 2.500 m²'],['l','mehr als 2.500 m²'],['offen','Noch nicht festgelegt']];
-   return `
-   <h3 class="q">Wie viel Fläche suchen Sie?</h3>
-   <div class="qs">Optional. Eine grobe Einschätzung genügt.</div>
-   <div class="opt-grid">
-    ${opts.map(o=>`<button type="button" class="opt${state.groesse===o[0]?' sel':''}" data-set="groesse" data-val="${o[0]}" data-toggle="1"><span>${o[1]}</span>${CHK}</button>`).join('')}
-   </div>`;
-  },
-  valid:()=>null
- },
- standort:{
-  render:()=>{
+   const arten=[['buero','Büroflächen'],['halle','Hallen- und Lagerflächen']];
    const cities=['Bochum','Dortmund','Duisburg','Essen','Andere'];
+   const sizes=[['s','250–1.000 m²'],['m','1.000–2.500 m²'],['l','über 2.500 m²'],['offen','Noch offen']];
    return `
-   <h3 class="q">Wo suchen Sie?</h3>
-   <div class="qs">Optional. Mehrfachauswahl möglich.</div>
-   <div class="opt-grid cols3">
-    ${cities.map(c=>`<button type="button" class="opt${state.standorte.includes(c)?' sel':''}" data-multi="standorte" data-val="${c}"><span>${c}</span>${CHK}</button>`).join('')}
+   <h3 class="q">Welche Fläche suchen Sie?</h3>
+   <div class="qs">Standort und Größe sind optional.</div>
+   <div class="fgrp">
+    <div class="fgrp-lab">Flächenart</div>
+    <div class="pills">${arten.map(o=>`<button type="button" class="opt pill${state.flaechenart===o[0]?' sel':''}" data-set="flaechenart" data-val="${o[0]}">${o[1]}</button>`).join('')}</div>
+    ${errEl('Bitte wählen Sie eine Flächenart aus.')}
    </div>
-   <div class="freitext${state.standorte.includes('Andere')?' show':''}" id="ftAndere">
-    <div class="fld"><label>Gewünschter Ort oder Region</label><input type="text" id="inAndere" value="${esc(state.standortAndere)}" placeholder="Bitte geben Sie den gewünschten Ort oder die gewünschte Region an."></div>
+   <div class="fgrp">
+    <div class="fgrp-lab">Standort<span>Mehrfachauswahl möglich</span></div>
+    <div class="pills">${cities.map(c=>`<button type="button" class="opt pill${state.standorte.includes(c)?' sel':''}" data-multi="standorte" data-val="${c}">${c}</button>`).join('')}</div>
+    <div class="freitext${state.standorte.includes('Andere')?' show':''}" id="ftAndere">
+     <div class="fld"><label>Gewünschter Ort oder Region</label><input type="text" id="inAndere" value="${esc(state.standortAndere)}" placeholder="Bitte geben Sie den gewünschten Ort oder die gewünschte Region an."></div>
+    </div>
+   </div>
+   <div class="fgrp fgrp-fold${state.flaechenart==='buero'?' show':''}" id="grpGroesse">
+    <div class="fgrp-lab">Flächengröße</div>
+    <div class="pills">${sizes.map(o=>`<button type="button" class="opt pill${state.groesse===o[0]?' sel':''}" data-set="groesse" data-val="${o[0]}" data-toggle="1">${o[1]}</button>`).join('')}</div>
    </div>`;
   },
-  valid:()=>null
+  valid:()=>state.flaechenart?null:'set'
  },
  nachricht:{
   render:()=>`
@@ -997,45 +1016,31 @@ const STEPS={
    <div class="fld"><label>Ihre Nachricht</label><textarea id="inMsg" placeholder="Beschreiben Sie uns kurz Ihr Anliegen ...">${esc(state.nachricht)}</textarea></div>`,
   valid:()=>null
  },
- name:{
-  render:()=>`
-   <h3 class="q">Wie heißen Sie?</h3>
-   <div class="qs">Damit wir Sie persönlich ansprechen können.</div>
-   <div class="fld-row">
+ kontakt:{
+  render:()=>{
+   const withMsg=state.anliegen!=='investment';   // bei Investment gibt es den eigenen Nachrichtenschritt
+   const open=msgOpen||!!state.nachricht;
+   return `
+   <h3 class="q">Ihre Kontaktdaten</h3>
+   <div class="qs">Damit wir uns persönlich bei Ihnen melden können. E-Mail oder Telefon genügt.</div>
+   <div class="kgrid">
     <div class="fld" data-f="vorname"><label>Vorname</label><input type="text" id="inVor" autocomplete="given-name" value="${esc(state.vorname)}"></div>
     <div class="fld" data-f="nachname"><label>Nachname</label><input type="text" id="inNach" autocomplete="family-name" value="${esc(state.nachname)}"></div>
-   </div>
-   ${errEl('')}`,
-  valid:()=>{
-   state.vorname=val('inVor');state.nachname=val('inNach');
-   if(!state.vorname)return{msg:'Bitte geben Sie Ihren Vornamen ein.',f:'vorname'};
-   if(!state.nachname)return{msg:'Bitte geben Sie Ihren Nachnamen ein.',f:'nachname'};
-   return null;
-  }
- },
- unternehmen:{
-  render:()=>`
-   <h3 class="q">Wie heißt Ihr Unternehmen?</h3>
-   <div class="qs">Für die richtige Zuordnung Ihrer Anfrage.</div>
-   <div class="fld" data-f="unternehmen"><label>Unternehmensname</label><input type="text" id="inFirma" autocomplete="organization" value="${esc(state.unternehmen)}"></div>
-   ${errEl('Bitte geben Sie den Namen Ihres Unternehmens ein.')}`,
-  valid:()=>{
-   state.unternehmen=val('inFirma');
-   return state.unternehmen?null:{msg:'Bitte geben Sie den Namen Ihres Unternehmens ein.',f:'unternehmen'};
-  }
- },
- kontakt:{
-  render:()=>`
-   <h3 class="q">Wie können wir Sie erreichen?</h3>
-   <div class="qs">Bitte geben Sie mindestens eine Kontaktmöglichkeit an.</div>
-   <div class="fld-row">
+    <div class="fld" data-f="unternehmen"><label>Unternehmen</label><input type="text" id="inFirma" autocomplete="organization" value="${esc(state.unternehmen)}"></div>
     <div class="fld" data-f="email"><label>E-Mail-Adresse</label><input type="email" id="inMail" autocomplete="email" inputmode="email" value="${esc(state.email)}"></div>
     <div class="fld" data-f="telefon"><label>Telefonnummer</label><input type="tel" id="inTel" autocomplete="tel" inputmode="tel" value="${esc(state.telefon)}"></div>
    </div>
-   ${errEl('')}`,
+   ${errEl('')}
+   ${withMsg?`<button type="button" class="addmsg${open?' on':''}" id="btnMsg" aria-expanded="${open}" aria-controls="ftMsg">Nachricht hinzufügen<span>optional</span></button>
+   <div class="freitext msgfold${open?' show':''}" id="ftMsg"><div class="fld"><label>Ihre Nachricht</label><textarea id="inMsg" placeholder="Beschreiben Sie uns kurz Ihr Anliegen ...">${esc(state.nachricht)}</textarea></div></div>`:''}`;
+  },
   valid:()=>{
+   state.vorname=val('inVor');state.nachname=val('inNach');state.unternehmen=val('inFirma');
    state.email=val('inMail');state.telefon=val('inTel');
-   if(!state.email&&!state.telefon)return{msg:'Bitte geben Sie mindestens eine Kontaktmöglichkeit an.',f:null};
+   if(!state.vorname)return{msg:'Bitte geben Sie Ihren Vornamen ein.',f:'vorname'};
+   if(!state.nachname)return{msg:'Bitte geben Sie Ihren Nachnamen ein.',f:'nachname'};
+   if(!state.unternehmen)return{msg:'Bitte geben Sie den Namen Ihres Unternehmens ein.',f:'unternehmen'};
+   if(!state.email&&!state.telefon)return{msg:'Bitte geben Sie mindestens eine Kontaktmöglichkeit an.',f:'email'};
    if(state.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(state.email))return{msg:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',f:'email'};
    if(state.telefon&&!(/^[+0-9()\/\s.-]{6,}$/.test(state.telefon)&&(state.telefon.match(/\d/g)||[]).length>=6))return{msg:'Bitte geben Sie eine gültige Telefonnummer ein.',f:'telefon'};
    return null;
@@ -1078,11 +1083,17 @@ function bindStep(key){
    if(k==='anliegen'&&v==='investment'){state.flaechenart=null;state.groesse=null;state.standorte=[];state.standortAndere='';}
    if(k==='flaechenart'&&v==='halle'&&prev!=='halle'){state.groesse=null;}
   }
+  /* Groesse gibt es nur bei Bueroflaechen: Gruppe weich ein- bzw. ausblenden */
+  if(k==='flaechenart'){
+   const g=document.getElementById('grpGroesse');
+   if(g)g.classList.toggle('show',state.flaechenart==='buero');
+   fmStepEl.querySelectorAll('[data-set="groesse"]').forEach(x=>x.classList.toggle('sel',state.groesse===x.dataset.val));
+  }
   fmStepEl.querySelectorAll(`[data-set="${k}"]`).forEach(x=>x.classList.toggle('sel',state[k]===x.dataset.val));
   hideErr();
   renderProgress();
   /* Auto-Weiter bei Pflicht-Einfachauswahl */
-  if((key==='anliegen'||key==='flaechenart')&&state[k])setTimeout(next,320);
+  if(key==='anliegen'&&state[k])setTimeout(next,320);
  }));
  /* Mehrfachauswahl */
  fmStepEl.querySelectorAll('[data-multi]').forEach(b=>b.addEventListener('click',()=>{
@@ -1102,6 +1113,18 @@ function bindStep(key){
  if(inAndere)inAndere.addEventListener('input',()=>state.standortAndere=inAndere.value.trim());
  const inMsg=document.getElementById('inMsg');
  if(inMsg)inMsg.addEventListener('input',()=>state.nachricht=inMsg.value.trim());
+ /* optionale Nachricht im Kontaktschritt */
+ const btnMsg=document.getElementById('btnMsg');
+ if(btnMsg)btnMsg.addEventListener('click',()=>{
+  const ft=document.getElementById('ftMsg');
+  msgOpen=!ft.classList.contains('show');
+  ft.classList.toggle('show',msgOpen);btnMsg.classList.toggle('on',msgOpen);btnMsg.setAttribute('aria-expanded',msgOpen);
+  if(msgOpen)setTimeout(()=>{const t=document.getElementById('inMsg');if(t)t.focus({preventScroll:true});},220);
+ });
+ /* Eingaben laufend sichern, damit beim Zurueckgehen nichts verloren geht */
+ [['inVor','vorname'],['inNach','nachname'],['inFirma','unternehmen'],['inMail','email'],['inTel','telefon']].forEach(([id,k])=>{
+  const el=document.getElementById(id);if(el)el.addEventListener('input',()=>state[k]=el.value.trim());
+ });
  /* Enter springt weiter */
  fmStepEl.querySelectorAll('input').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();next();}}));
  fmStepEl.querySelectorAll('input,textarea').forEach(i=>i.addEventListener('input',hideErr));
@@ -1145,6 +1168,13 @@ function payload(){
  }
  return p;
 }
+function doneMarkup(name){return `  <div class="fm-done">
+   <div class="ok"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></div>
+   <h3>Vielen Dank${name?', '+esc(name):''}.</h3>
+   <p>Ihre Anfrage ist bei uns eingegangen. Wir melden uns werktags in der Regel innerhalb von 24 Stunden bei Ihnen.</p>
+   <div class="note">Demo · Im Echtbetrieb wird die Anfrage an das CUBION-Postfach übermittelt.</div>
+   <button class="btn btn-gh" type="button" id="fmRestart">Neue Anfrage stellen</button>
+  </div>`;}
 function submit(){
  const p=payload();
  try{console.log('CUBION Kontaktanfrage:',p);}catch(e){}
@@ -1152,23 +1182,59 @@ function submit(){
  fmWrap.dataset.step='done';
  fmFoot.style.display='none';
  fmStepEl.classList.remove('anim-next','anim-prev');
- fmStepEl.innerHTML=`
-  <div class="fm-done">
-   <div class="ok"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></div>
-   <h3>Vielen Dank${p.vorname?', '+esc(p.vorname):''}.</h3>
-   <p>Ihre Anfrage ist bei uns eingegangen. Wir melden uns werktags in der Regel innerhalb von 24 Stunden bei Ihnen.</p>
-   <div class="note">Demo · Im Echtbetrieb wird die Anfrage an das CUBION-Postfach übermittelt.</div>
-   <button class="btn btn-gh" type="button" id="fmRestart">Neue Anfrage stellen</button>
-  </div>`;
+ fmStepEl.innerHTML=doneMarkup(p.vorname);
  if(!reduce){void fmStepEl.offsetWidth;fmStepEl.classList.add('anim-next');}
  fmStepEl.querySelector('#fmRestart').addEventListener('click',()=>{resetForm();renderStep(false);});
 }
 function resetForm(){
+ msgOpen=false;
  Object.assign(state,{anliegen:null,flaechenart:null,groesse:null,standorte:[],standortAndere:'',nachricht:'',vorname:'',nachname:'',unternehmen:'',email:'',telefon:''});
  idx=0;dir=1;done=false;fmFoot.style.display='';
 }
 /* Formular ist direkt auf der Seite sichtbar: initial rendern */
 renderStep(false);
+
+/* Desktop: hoechsten Formularzustand messen und als --askH reservieren.
+   Gemessen wird in einer unsichtbaren Kopie mit identischer Breite und Schrift, jeweils im vollsten Zustand
+   (Buero + Andere-Feld offen, Kontaktdaten mit Nachricht, Erfolgsmeldung). Der echte Formularstand bleibt unberuehrt.
+   Ergebnis: kein Springen beim Durchklicken, und die Hero-Position (CSS) haelt den laengsten Schritt im Bild. */
+function measureAsk(){
+ const hero=document.getElementById('start');
+ if(!matchMedia('(min-width:1025px)').matches){hero.style.removeProperty('--askH');return;}
+ const saved=JSON.parse(JSON.stringify(state)),savedOpen=msgOpen;
+ const probe=fmWrap.cloneNode(true);
+ probe.removeAttribute('id');probe.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+ probe.classList.remove('rv');probe.setAttribute('aria-hidden','true');
+ probe.style.cssText='position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;min-height:0;width:'+fmWrap.getBoundingClientRect().width+'px';
+ fmWrap.parentNode.appendChild(probe);
+ const stepEl=probe.querySelector('.fm-step'),foot=probe.querySelector('.cform-foot');
+ const cfgs=[
+  ['anliegen',{},false],
+  ['flaeche',{anliegen:'vermietung',flaechenart:'buero',standorte:['Andere']},false],
+  ['nachricht',{anliegen:'investment'},false],
+  ['kontakt',{anliegen:'vermietung'},true],
+  ['kontakt',{anliegen:'investment'},false],
+  ['done',{},false]
+ ];
+ let max=0;
+ try{
+  cfgs.forEach(([key,s,open])=>{
+   Object.assign(state,JSON.parse(JSON.stringify(saved)),s);msgOpen=open;
+   probe.dataset.step=key;
+   stepEl.innerHTML=key==='done'?doneMarkup('Maximilian'):STEPS[key].render();
+   stepEl.querySelectorAll('.err').forEach(e=>e.classList.add('show'));
+   foot.style.display=key==='done'?'none':'';
+   max=Math.max(max,probe.offsetHeight);
+  });
+ }finally{
+  Object.assign(state,saved);msgOpen=savedOpen;probe.remove();
+ }
+ hero.style.setProperty('--askH',Math.ceil(max)+'px');
+}
+measureAsk();
+let askT;addEventListener('resize',()=>{clearTimeout(askT);askT=setTimeout(measureAsk,120);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measureAsk);
+addEventListener('load',measureAsk);
 /* Action-Stack-Button scrollt zum Formular */
 document.getElementById('contactBtn').addEventListener('click',()=>{
  const el=document.getElementById('kontakt');
