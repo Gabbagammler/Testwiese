@@ -328,7 +328,7 @@ html,body{overflow-x:clip}
 }
 @media(max-width:640px){.hero{padding-top:calc(64px + 38px);padding-bottom:36px}}
 @media(max-width:560px){.hero h1 .ln{white-space:normal}.hero h1{font-size:clamp(1.85rem,8.6vw,2.6rem)}}
-@media(prefers-reduced-motion:reduce){.zoomhint,.zoomhint.on{transform:none}.hero-media img{transform:none}.hero h1 .ln i{transform:none}}
+@media(prefers-reduced-motion:reduce){.hero-media img{transform:none}.hero h1 .ln i{transform:none}}
 
 /* ===== SUCH- UND FILTER-CONTROL (sticky, Dark Mode) ===== */
 .toolbar{position:sticky;top:var(--navh);z-index:80;background:var(--bg);border-top:1px solid rgba(255,255,255,.06);color-scheme:dark;transition:box-shadow .3s}
@@ -574,20 +574,33 @@ html,body{overflow-x:clip}
 .zbtns button:hover{background:var(--bone);color:var(--orange)}
 .zbtns svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
 .mctl button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-/* Zoom-Hinweis: schwarzes Overlay oben mittig, erscheint nur beim Scrollen über der Karte.
-   Erstes Mal: größer, neutral, mit leichter Abdunklung der Karte. Danach: kompakter, mit orangem Akzent links. */
-.zoomdim{position:absolute;inset:0;background:rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
-.mui.zh-dim .zoomdim{opacity:1}
-.zoomhint{position:absolute;top:16px;left:16px;right:270px;width:fit-content;margin-inline:auto;z-index:3;display:flex;align-items:center;gap:0;padding:11px 16px;border-radius:10px;background:rgba(0,0,0,.84);color:#fff;font:500 .8125rem/1.2 'Inter',system-ui,sans-serif;white-space:nowrap;pointer-events:none;box-shadow:0 16px 34px -16px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s var(--ease),transform .35s var(--ease),visibility 0s linear .35s}
-.zoomhint.on{opacity:1;visibility:visible;transform:none;transition:opacity .2s var(--ease),transform .35s var(--ease),visibility 0s}
-.zoomhint kbd{font:600 .74rem/1 'Inter',system-ui,sans-serif;padding:5px 8px;border-radius:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;margin-right:3px}
-/* erstes Auftreten: präsenter */
-.zoomhint.first{padding:15px 22px;border-radius:12px;background:#000;font-size:.9375rem}
-.zoomhint.first kbd{font-size:.8rem;padding:6px 9px}
-/* erneutes Auftreten: dezenter, orangener Akzent links */
-.zoomhint.again{padding:9px 14px 9px 17px;background:rgba(0,0,0,.82);font-size:.78rem;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
-.zoomhint.again::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:0 3px 3px 0;background:var(--orange)}
-.zoomhint.again kbd{font-size:.7rem;padding:4px 7px}
+/* Zoom-Hinweis im Stil der Objektdetailseite (dunkles, transluzentes Overlay), oben links im sichtbaren Kartenbereich.
+   Erster Scrollversuch: großer Hinweis + leichte Abdunklung der Karte. Spätere Versuche: kompakter Reminder. */
+.zoomdim{position:absolute;inset:0;background:rgba(14,12,11,.3);-webkit-backdrop-filter:blur(2px) saturate(.85);backdrop-filter:blur(2px) saturate(.85);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s var(--ease),visibility 0s linear .45s}
+.mui.zh-dim .zoomdim{opacity:1;visibility:visible;transition:opacity .22s var(--ease),visibility 0s}
+.zoomhint{position:absolute;top:var(--zh-top,16px);left:16px;z-index:3;color:#fff;pointer-events:none;background:rgba(14,12,11,.84);-webkit-backdrop-filter:blur(3px) saturate(.8);backdrop-filter:blur(3px) saturate(.8);box-shadow:0 22px 44px -22px rgba(0,0,0,.7);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s linear .45s}
+.zoomhint.on{opacity:1;visibility:visible;transition:opacity .22s var(--ease),visibility 0s}
+.zoomhint .zh-big,.zoomhint .zh-mini{display:none}
+.zoomhint kbd{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:#2a2724;border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 -3px 0 rgba(255,255,255,.08);font:600 1rem/1 'Inter',system-ui,sans-serif;color:#fff}
+.zoomhint .gm{flex:0 0 auto;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round}
+.zoomhint .gm .wh{stroke:var(--orange);stroke-width:2.4;animation:gwheel 1.3s var(--ease) infinite}
+@keyframes gwheel{0%{transform:translateY(-2px);opacity:0}30%{opacity:1}100%{transform:translateY(5px);opacity:0}}
+/* großer Hinweis (erster Scrollversuch) */
+.zoomhint.first{max-width:min(320px,calc(100% - 290px));padding:22px 24px 20px;border-radius:18px}
+.zoomhint.first .zh-big{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.zoomhint .gk{display:flex;align-items:center;gap:12px}
+.zoomhint .gk kbd{min-width:58px;height:46px;padding:0 14px}
+.zoomhint .gp{font:400 1.2rem/1 'Inter',system-ui,sans-serif;color:rgba(255,255,255,.6)}
+.zoomhint .gk .gm{width:32px;height:46px}
+.zoomhint .gt{font:600 clamp(.98rem,1.3vw,1.1rem)/1.35 'Inter',system-ui,sans-serif;letter-spacing:-.01em;text-wrap:balance}
+/* kompakter Reminder (spätere Scrollversuche) */
+.zoomhint.again{padding:7px 14px 7px 7px;border-radius:12px;background:rgba(14,12,11,.78)}
+.zoomhint.again .zh-mini{display:flex;align-items:center;gap:8px;font:500 .8rem/1 'Inter',system-ui,sans-serif;white-space:nowrap;color:rgba(255,255,255,.92)}
+.zoomhint.again kbd{min-width:38px;height:28px;padding:0 9px;border-radius:8px;font-size:.78rem;box-shadow:inset 0 -2px 0 rgba(255,255,255,.08)}
+.zoomhint.again .gp{font-size:.9rem}
+.zoomhint.again .gm{width:16px;height:24px;stroke-width:1.5}
+.zoomhint.again .gm .wh{stroke-width:2.2}
+@media(prefers-reduced-motion:reduce){.zoomhint .gm .wh{animation:none}}
 .drawing .zoomhint,.drawing .zoomdim{opacity:0}
 @media(hover:none){.zoomhint,.zoomdim{display:none}}
 #mapSheet .zoomhint,#mapSheet .zoomdim{display:none}
@@ -601,8 +614,7 @@ html,body{overflow-x:clip}
   .mtype button{flex:0 0 auto;width:36px}
   .mtype button span{display:none}
   .mtype button svg{display:block}
-  .zoomhint .zt{display:none}
-  .zoomhint{right:190px}
+  .zoomhint.first{max-width:calc(100% - 210px)}
 }
 /* Status-Hinweis (Zeichnen, Kartensuche) */
 .maphint{position:absolute;left:50%;bottom:30px;transform:translate(-50%,6px);background:rgba(27,23,20,.92);color:#fff;font-size:.8rem;font-weight:500;padding:9px 15px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
@@ -1757,7 +1769,7 @@ function createMap(mount,opt){
 }
 function buildUI(M){
   const ui=document.createElement('div');ui.className='mui';
-  ui.innerHTML=`<div class="zoomdim" aria-hidden="true"></div><div class="zoomhint" aria-hidden="true"><span><kbd>${IS_MAC?'⌘':'Strg'}</kbd> + Mausrad<span class="zt"> zum Zoomen</span></span></div>
+  ui.innerHTML=`<div class="zoomdim" aria-hidden="true"></div><div class="zoomhint" aria-hidden="true"><div class="zh-big"><div class="gk"><kbd>${IS_MAC?'⌘':'Strg'}</kbd><span class="gp">+</span><svg class="gm" viewBox="0 0 32 46"><rect x="2" y="2" width="28" height="42" rx="14"/><path class="wh" d="M16 10v6"/></svg></div><p class="gt">Zum Zoomen ${IS_MAC?'⌘':'Strg'} gedrückt halten und scrollen</p></div><div class="zh-mini"><kbd>${IS_MAC?'⌘':'Strg'}</kbd><span class="gp">+</span><svg class="gm" viewBox="0 0 32 46"><rect x="2" y="2" width="28" height="42" rx="14"/><path class="wh" d="M16 10v6"/></svg><span>zum Zoomen</span></div></div>
   <div class="mctl" role="group" aria-label="Kartensteuerung">
     <button type="button" class="dbtn"></button>
     <button type="button" class="sbtn" aria-pressed="false"></button>
@@ -1827,24 +1839,34 @@ function paintSyncOne(M){
 function setMapType(t){MTYPE=t;[MD,MM].forEach(M=>{if(M&&M.eng)M.eng.setType(t)});paintType()}
 function paintType(){[MD,MM].forEach(paintTypeOne)}
 function paintTypeOne(M){if(M&&M.ui)M.ui.types.forEach(b=>{const on=b.dataset.t===MTYPE;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on))})}
-/* Zoom-Hinweis: erscheint beim Scrollen über der Karte (ohne Strg/⌘), blendet nach kurzer Pause aus.
-   Erstes Auftreten präsent (+ leichte Abdunklung), danach dezenter. Gilt seitenweit für alle Karten. */
+/* Zoom-Hinweis: erscheint beim Scrollen über der Karte (ohne Strg/⌘) und blendet danach weich aus.
+   1. Scrollversuch: großer Hinweis (+ leichte Abdunklung), länger sichtbar. Danach: nur kompakter Reminder.
+   Position: oben links im aktuell sichtbaren Teil der Karte (unter Navigation/Filterleiste). Gilt seitenweit. */
 let ZH_SEEN=false;
+const ZH_T={first:{min:4200,tail:1600},again:{min:1700,tail:900}};
+function zoomPlace(M){
+  const z=M.ui.zh,r=M.host.getBoundingClientRect();let occ=0;
+  document.querySelectorAll('header.nav,#toolbar').forEach(el=>{const b=el.getBoundingClientRect();if(b.height&&b.top<=occ+1&&b.bottom>occ)occ=b.bottom});
+  const max=Math.max(16,Math.min(r.height,innerHeight-r.top)-z.offsetHeight-16);
+  z.style.setProperty('--zh-top',Math.round(Math.min(max,Math.max(16,occ-r.top+16)))+'px');
+}
 function zoomHide(M){const z=M.ui.zh;clearTimeout(M._zt);clearTimeout(M._zd);z.classList.remove('on');M.ui.root.classList.remove('zh-dim')}
 function zoomNudge(M){
   const z=M.ui.zh;
+  if(!M._zhb){M._zhb=1;M.host.addEventListener('mouseleave',()=>zoomHide(M));M.host.addEventListener('mousedown',()=>zoomHide(M));
+    let raf=0;addEventListener('scroll',()=>{if(raf||!z.classList.contains('on'))return;raf=requestAnimationFrame(()=>{raf=0;zoomPlace(M)})},{passive:true})}
   if(!z.classList.contains('on')){
     const first=!ZH_SEEN;ZH_SEEN=true;
     z.classList.toggle('first',first);z.classList.toggle('again',!first);
-    void z.offsetWidth;z.classList.add('on');
+    M._zh={first,until:Date.now()+ZH_T[first?'first':'again'].min};
+    zoomPlace(M);z.classList.add('on');
     M.ui.root.classList.toggle('zh-dim',first);
-    M._zh={first,until:Date.now()+(first?2600:1500)};
-  }
-  /* weiteres Scrollen hält den Hinweis offen; Ausblenden kurz nach dem letzten Scrollen */
+  }else zoomPlace(M);
+  /* weiteres Scrollen hält den Hinweis offen; Ausblenden erst kurz nach dem letzten Scrollen */
   clearTimeout(M._zt);clearTimeout(M._zd);
-  const rest=Math.max(M._zh.until-Date.now(),M._zh.first?1100:800);
+  const T=ZH_T[M._zh.first?'first':'again'],rest=Math.max(M._zh.until-Date.now(),T.tail);
   M._zt=setTimeout(()=>zoomHide(M),rest);
-  if(M._zh.first)M._zd=setTimeout(()=>M.ui.root.classList.remove('zh-dim'),Math.min(rest,1400));
+  if(M._zh.first)M._zd=setTimeout(()=>M.ui.root.classList.remove('zh-dim'),Math.max(rest-1200,600));
 }
 function zoomLearned(M){zoomHide(M)}
 function mapHint(M,txt,ms){
