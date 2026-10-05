@@ -105,12 +105,16 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 #rail{position:fixed;right:max(22px,2vw);top:50%;transform:translateY(-50%) translateX(10px);z-index:90;display:flex;flex-direction:column;gap:19px;mix-blend-mode:difference;align-items:flex-end;opacity:0;visibility:hidden;transition:opacity .55s var(--ease),transform .55s var(--ease),visibility .55s}
 #rail.show{opacity:1;visibility:visible;transform:translateY(-50%)}
 #rail a{display:flex;align-items:center;gap:14px;justify-content:flex-end;color:#fff;height:18px}
-#rail .lab{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.48;transition:.35s var(--ease);white-space:nowrap}
-#rail a:hover .lab{opacity:.9}
-#rail a.act .lab{opacity:1;font-size:.86rem;letter-spacing:.14em}
-#rail .tick{width:20px;height:2px;background:#fff;opacity:.5;transition:.35s var(--ease);flex:0 0 auto}
-#rail a:hover .tick{opacity:.9;width:28px}
-#rail a.act .tick{width:46px;height:3px;opacity:1;background:var(--orange)}
+/* Reduziert (Standard): nur die aktive Section ist benannt, die uebrigen Namen erscheinen beim Hover */
+#rail .lab{font-family:'Inter',system-ui,sans-serif;font-weight:400;font-size:.82rem;line-height:1;letter-spacing:0;text-transform:none;white-space:nowrap;
+      opacity:0;transform:translateX(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+#rail:hover .lab,#rail:focus-within .lab{opacity:.55;transform:none}
+#rail a:hover .lab,#rail a:focus-visible .lab{opacity:.95}
+#rail a.act .lab{opacity:1;transform:none}
+#rail .tick{width:16px;height:1.5px;background:#fff;opacity:.42;transition:.4s var(--ease);flex:0 0 auto}
+#rail a:hover .tick{opacity:.9;width:24px}
+#rail a.act .tick{width:40px;height:2px;opacity:1;background:var(--orange)}
+@media(prefers-reduced-motion:reduce){#rail .lab{transform:none}}
 @media(max-width:1180px){#rail{display:none}}
 
 /* ===== ACTION STACK (bottom right) ===== */
@@ -449,14 +453,14 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
   linear-gradient(180deg,rgba(14,12,11,.66) 0%,rgba(14,12,11,0) 34%,rgba(14,12,11,.48) 100%)}
 .rhero-wash{position:absolute;inset:0;z-index:1;pointer-events:none;background:
   radial-gradient(88% 104% at 100% 116%,rgba(255,111,32,1) 0%,rgba(255,111,32,.95) 22%,rgba(255,111,32,.74) 39%,rgba(255,111,32,.38) 56%,rgba(255,111,32,.1) 72%,rgba(255,111,32,0) 84%)}
-.rhero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;
+.rhero-inner{position:relative;z-index:2;width:100%;max-width:calc(var(--maxw) - 2*var(--gut));margin:0 auto;
   display:grid;grid-template-columns:minmax(0,1fr);align-items:start;padding-right:clamp(0px,4.6vw,86px)}
 .rhero h1{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(1.9rem,4.6vw,4.2rem);line-height:.88;letter-spacing:-.015em;margin-top:clamp(8px,1.2vw,16px)}
 .rhero h1 .ln{display:block;overflow:hidden;white-space:nowrap;padding-top:.1em;margin-top:-.1em}
 .rhero h1 .ln i{display:block;font-style:normal;transform:translateY(112%)}
 .loaded .rhero h1 .ln i{transform:none;transition:transform 1.05s var(--ease2) .1s}
 .loaded .rhero h1 .ln:nth-child(2) i{transition-delay:.2s}
-.rhero .sub{max-width:48ch;margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.85);font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.72}
+.rhero .sub{max-width:64ch;margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.85);font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.72}
 .rhero .scrollcue{bottom:clamp(18px,2.4vh,28px)}
 @media(max-width:1024px){
  .rhero{min-height:auto;padding-top:clamp(112px,16vh,150px);padding-bottom:clamp(72px,11vh,110px)}
@@ -664,14 +668,14 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .tmlinks a:hover .ic svg{stroke:var(--orange)}
 
 /* ===== KONTAKT MODUL ===== */
-.kmod{background:var(--bg);color:#fff;position:relative;overflow:hidden;padding:clamp(90px,11vw,160px) 0}
+.kmod{background:var(--bg);color:#fff;position:relative;overflow:hidden;padding:clamp(60px,6.6vw,100px) 0}
 .kmod .glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(640px circle at var(--gx,72%) var(--gy,40%),rgba(255,111,32,.13),transparent 68%)}
 .kmod-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,110px);align-items:center}
 .kmod .big-q{font-family:'Benton Wide';font-weight:900;text-transform:uppercase;font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:.95;letter-spacing:-.005em;color:#fff}
 .kmod .big-q em{font-style:normal;color:inherit}
 .kmod-x{color:rgba(255,255,255,.72);max-width:46ch;margin-top:22px;line-height:1.75}
 .krow{display:flex;align-items:center;gap:clamp(18px,2vw,26px);padding:clamp(22px,2.6vw,30px) 4px;border-top:1px solid rgba(255,255,255,.14);color:#fff;transition:padding .35s var(--ease)}
-.krow:last-of-type{border-bottom:1px solid rgba(255,255,255,.14)}
+.krow:first-of-type{border-top:0}
 .krow:hover{padding-left:14px}
 .kic{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.35s var(--ease)}
 .kic svg{width:19px;height:19px;fill:none;stroke:rgba(255,255,255,.85);stroke-width:1.6;transition:.35s}
@@ -684,10 +688,11 @@ footer{background:var(--bg);color:#fff;padding-bottom:30px}
 .kgo{margin-left:auto;flex:0 0 auto;width:18px;height:18px;opacity:0;transform:translateX(-8px);transition:.35s var(--ease)}
 .kgo svg{width:18px;height:18px;fill:none;stroke:var(--orange);stroke-width:2}
 .krow:hover .kgo{opacity:1;transform:none}
-.kacts{display:flex;margin-top:clamp(26px,3vw,36px);padding-left:4px}
-.kacts a{display:inline-flex;align-items:center;gap:10px;font-size:.84rem;font-weight:500;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:11px 22px;transition:.3s}
-.kacts a svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
-.kacts a:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+.kacts{display:flex;margin-top:clamp(10px,1.4vw,18px);padding-left:4px}
+.kacts a{display:inline-flex;align-items:center;gap:10px;font-size:.84rem;font-weight:500;color:#fff;background:var(--orange);border:1px solid var(--orange);border-radius:100px;padding:11px 22px;transition:background .3s,border-color .3s,color .3s}
+.kacts a svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .35s var(--ease)}
+.kacts a:hover{background:var(--orange2);border-color:var(--orange2);color:#fff}
+.kacts a:hover svg{transform:translateX(3px)}
 @media(max-width:900px){.kmod-grid{grid-template-columns:1fr;gap:44px}}
 
 html,body{overflow-x:clip}
@@ -1025,7 +1030,6 @@ const PEOPLE=[
  {n:'Stewart Darman',r:'Senior Director Leasing',ext:'18',m:'darman@cubion.de',li:'stewart-darman-164723228',a:'2023/11/stewart-darman.jpg',c:'2023/11/stewart-darman-jung.jpg',d:['office']},
  {n:'Marvin Prochowski',r:'Senior Consultant',ext:'13',m:'prochowski@cubion.de',li:'marvin-prochowski-2ab6b2212',a:'2023/11/marvin-prochowski.jpg',c:'2023/11/marvin-prochowski-jung.jpg',d:['office','logistics']},
  {n:'Tiziano Sanna',r:'Consultant',ext:'41',m:'sanna@cubion.de',li:'tiziano-sanna-26147a268',a:'2024/07/Tiziano-Sanner-CUBION-scaled.jpg',c:'2024/10/TS_Kind-2.jpg',d:['office','logistics']},
- {n:'Niklas Thye',r:'Akquisition & Research',ext:'33',m:'thye@cubion.de',li:'niklas-thye-850ab723a',a:'2024/10/Niklas-Thye-CUBION-1.jpg',c:'2024/10/NT_Kind-2.jpg',d:['office','research']},
  {n:'Radu-George Moldovan',r:'Geschäftsleitung',ext:'',m:'moldovan@conceptstories.de',li:'',a:'2024/10/Radu_conceptstories_neu_CUBION_web.jpg',c:'',d:['retail']},
  {n:'Marleen Biermann',r:'Leitung Backoffice & HR',ext:'',m:'biermann@conceptstories.de',li:'',a:'2024/10/Marleen_conceptstories_web.jpg',c:'',d:['retail']},
  {n:'Arian Moldovan',r:'Ladenvermietung',ext:'',m:'a.moldovan@conceptstories.de',li:'',a:'2024/10/Arian_Moldovan_conceptstories.jpg',c:'',d:['retail']},
