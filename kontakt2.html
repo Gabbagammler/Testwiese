@@ -197,13 +197,16 @@ html,body{overflow-x:clip}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.9) contrast(1.05);transform:scale(1.07);transition:transform 2.6s var(--ease2)}
 .loaded .hero-media img{transform:scale(1)}
 .hero-media::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(78deg,rgba(14,12,11,.95) 0%,rgba(14,12,11,.85) 34%,rgba(14,12,11,.54) 64%,rgba(14,12,11,.3) 100%),
-  linear-gradient(180deg,rgba(14,12,11,.68) 0%,rgba(14,12,11,.06) 36%,rgba(14,12,11,.5) 100%)}
+  linear-gradient(78deg,rgba(14,12,11,.95) 0%,rgba(14,12,11,.86) 34%,rgba(14,12,11,.7) 62%,rgba(14,12,11,.58) 100%),
+  linear-gradient(180deg,rgba(14,12,11,.68) 0%,rgba(14,12,11,.1) 36%,rgba(14,12,11,.5) 100%)}
 .hero-wash{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  radial-gradient(76% 92% at 104% 116%,rgba(255,111,32,1) 0%,rgba(255,111,32,.9) 22%,rgba(255,111,32,.62) 40%,rgba(255,111,32,.28) 58%,rgba(255,111,32,0) 78%)}
+  radial-gradient(64% 80% at 106% 124%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.7) 22%,rgba(255,111,32,.4) 42%,rgba(255,111,32,.14) 60%,rgba(255,111,32,0) 76%)}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:calc(var(--maxw) - 2 * var(--gut));margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:clamp(26px,3.4vw,60px);align-items:center}
-.hero-copy{min-width:0}
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:0;align-items:start;
+  --hcol:clamp(28px,3.6vw,64px);
+  /* Hoehe von Lead + H1-Abstand: rechte Ueberschrift startet auf Hoehe der H1 */
+  --leadH:calc(clamp(.92rem,1.15vw,1.12rem) * 1.6 + clamp(12px,1.3vw,18px) + clamp(4px,.8vw,10px))}
+.hero-copy{min-width:0;padding-right:var(--hcol)}
 .hero h1{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(1.85rem,3.4vw,3.1rem);line-height:.9;letter-spacing:-.015em;margin-top:clamp(4px,.8vw,10px);color:#fff}
 .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap;padding-top:.1em;margin-top:-.1em}
 .hero h1 .ln i{display:block;font-style:normal;transform:translateY(112%)}
@@ -225,32 +228,50 @@ html,body{overflow-x:clip}
 .hp-links a:hover{color:var(--orange)}
 .hp-links a svg{width:16px;height:16px;fill:none;stroke:var(--orange);stroke-width:1.7;flex:0 0 auto}
 
-/* Anfrage-Menue: Liquid Glass. Eine durchgehende Glasflaeche statt weisser Karte im Rahmen,
-   damit das Modul mit Bild und Orange-Wash des Hero verschmilzt. Aufbau, Inhalte und Animationen unveraendert. */
-.hero-form{position:relative;padding:0;border-radius:clamp(22px,1.9vw,30px);isolation:isolate;
-  background:
-    radial-gradient(120% 70% at 0% 0%,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 60%),
-    linear-gradient(160deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.04) 48%,rgba(255,255,255,.07) 100%),
-    rgba(18,15,13,.30);
-  backdrop-filter:blur(26px) saturate(1.55) brightness(1.04);-webkit-backdrop-filter:blur(26px) saturate(1.55) brightness(1.04);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.05),0 50px 100px -60px rgba(0,0,0,.7)}
-/* lichtbrechende Kontur: oben links heller, unten rechts dezent */
-.hero-form::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;z-index:2;
-  background:linear-gradient(140deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 28%,rgba(255,255,255,.03) 58%,rgba(255,255,255,.24) 100%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
-  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hero-form{background:rgba(24,20,18,.82)}}
+/* Anliegen in wenigen Klicks: keine Karte mehr. Die Inhalte stehen direkt auf dem Hero-Hintergrund,
+   eine feine Linie trennt sie vom persoenlichen Kontakt. Glas nur noch auf den einzelnen Auswahl- und Eingabefeldern.
+   Mehrstufige Logik, IDs und Schritte unveraendert. */
+.hero-ask{position:relative;min-width:0;color:#fff;display:flex;flex-direction:column;
+  padding-left:var(--hcol);padding-top:var(--leadH)}
+/* feine Trennlinie, laeuft nach unten aus */
+.hero-ask::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,.12) 55%,rgba(255,255,255,0) 100%)}
+.ask-title{font-family:var(--sans-b);font-weight:700;font-size:clamp(1.42rem,2.05vw,1.95rem);line-height:1.12;letter-spacing:-.025em;color:#fff;
+  transition:font-size .45s var(--ease),color .45s var(--ease)}
+.ask-sub{margin-top:10px;max-width:52ch;color:rgba(255,255,255,.74);font-size:clamp(.95rem,1.02vw,1.04rem);line-height:1.6}
+.ask-prog{display:flex;align-items:center;gap:16px;margin-top:clamp(22px,3vh,30px);margin-bottom:clamp(14px,1.9vh,18px)}
+.ask-prog .plab{flex:0 0 auto;font-family:'Inter',system-ui,sans-serif;font-size:.8rem;font-weight:400;letter-spacing:0;color:rgba(255,255,255,.6);white-space:nowrap;font-variant-numeric:tabular-nums}
+/* Zustand: Einstieg (Schritt 1) */
+.hero-ask[data-step="anliegen"] .fm-step>.q,.hero-ask[data-step="anliegen"] .fm-step>.qs{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero-ask[data-step="anliegen"] .cform-btns{display:none}
+.hero-ask[data-step="anliegen"] .cform-foot{border-top:0;padding-top:0;margin-top:14px}
+.hero-ask[data-step="anliegen"] .opt{min-height:clamp(74px,9vh,84px);padding:16px 16px 16px 20px}
+.hero-ask[data-step="anliegen"] .opt>span:first-child{font-size:1.02rem}
+/* Pfeil statt Haken: die Auswahl startet den Ablauf */
+.hero-ask[data-step="anliegen"] .opt .chk{width:34px;height:34px;border-color:rgba(255,255,255,.28)}
+.hero-ask[data-step="anliegen"] .opt .chk::before{content:"";width:7px;height:7px;border-top:1.6px solid #fff;border-right:1.6px solid #fff;transform:translateX(-1.5px) rotate(45deg);transition:opacity .2s}
+.hero-ask[data-step="anliegen"] .opt:hover .chk,.hero-ask[data-step="anliegen"] .opt:focus-visible .chk{background:var(--orange);border-color:var(--orange)}
+.hero-ask[data-step="anliegen"] .opt.sel .chk::before{opacity:0}
+/* Zustand: ab Schritt 2 wird die Ueberschrift zur ruhigen Einordnung, die Frage uebernimmt */
+.hero-ask:not([data-step="anliegen"]) .ask-title{font-size:clamp(1rem,1.1vw,1.08rem);color:rgba(255,255,255,.66)}
+.hero-ask:not([data-step="anliegen"]) .ask-sub{display:none}
+.hero-ask[data-step="done"] .ask-prog{visibility:hidden}
 
 .scrollcue{position:absolute;left:max(var(--gut),calc((100% - var(--maxw)) / 2 + var(--gut)));bottom:clamp(14px,2vh,24px);z-index:3;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0}
 .loaded .scrollcue{opacity:1;transition:opacity 1s .9s}
 .scrollcue .ln{width:46px;height:1px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
 .scrollcue .ln i{position:absolute;inset:0;background:var(--orange);animation:cue 2s var(--ease) infinite}
 @keyframes cue{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
-@media(max-width:1180px){.hero-inner{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(24px,3vw,40px)}}
+@media(max-width:1180px){.hero-inner{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);--hcol:clamp(24px,3vw,40px)}}
+/* Desktop: Hoehe fuer den laengsten Schritt reservieren, damit Hero und Seite beim Durchklicken nicht springen */
+@media(min-width:1025px){.hero-ask{min-height:calc(456px + 2.6vw + 2.4vh)}.hero-ask:not([data-step="anliegen"]) .cform-body{padding-bottom:clamp(18px,2.4vh,24px)}.hero-ask:not([data-step="anliegen"]) .cform-foot{margin-top:auto}}
+@media(min-width:1600px){.hero-ask{min-height:548px}}
 @media(max-width:1024px){
  .hero{padding:clamp(104px,15vh,140px) var(--gut) clamp(48px,7vh,72px)}
- .hero-inner{grid-template-columns:minmax(0,1fr);gap:clamp(28px,4.6vw,40px);align-items:start}
+ .hero-inner{grid-template-columns:minmax(0,1fr);gap:clamp(34px,6vw,48px);align-items:start}
+ .hero-copy{padding-right:0}
+ .hero-ask{padding-left:0;padding-top:clamp(30px,5.4vw,42px)}
+ .hero-ask::before{left:0;right:0;top:0;bottom:auto;width:auto;height:1px;background:rgba(255,255,255,.13)}
  .hero h1{font-size:clamp(1.85rem,5.4vw,3rem)}
  .hero .sub{max-width:52ch}
  .hero-wash{background:radial-gradient(120% 66% at 50% 126%,rgba(255,111,32,.92) 0%,rgba(255,111,32,.55) 34%,rgba(255,111,32,0) 66%)}
@@ -269,26 +290,21 @@ html,body{overflow-x:clip}
 .mhead .note{max-width:38ch;color:var(--grey);font-size:1rem;line-height:1.7;padding-bottom:6px}
 section.pad{padding:clamp(84px,10vw,140px) 0}
 
-/* ===== ANFRAGE-MENUE (Formularrahmen, sitzt jetzt im Hero) ===== */
-.cform{display:flex;flex-direction:column;min-width:0;background:transparent;color:#fff;
-       border-radius:inherit;overflow:hidden}
-.cform-head{display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:clamp(16px,1.9vw,24px) clamp(18px,2.2vw,32px) 0}
-.cform-head .plab{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58)}
-.cform-segs{display:flex;gap:5px;margin:12px clamp(18px,2.2vw,32px) 0}
-.cform-segs i{flex:1;height:3px;border-radius:100px;background:rgba(255,255,255,.16);transition:background .45s var(--ease),transform .45s var(--ease)}
+/* ===== ANFRAGE-MENUE (Schritte, offen im Hero) ===== */
+.cform-segs{flex:1;min-width:0;display:flex;gap:4px}
+.cform-segs i{flex:1;height:2px;border-radius:100px;background:rgba(255,255,255,.18);transition:background .45s var(--ease),transform .45s var(--ease)}
 .cform-segs i.done{background:var(--orange)}
-.cform-segs i.cur{background:#fff;transform:scaleY(1.7)}
-.cform-body{flex:1;padding:clamp(18px,2.6vh,28px) clamp(18px,2.2vw,32px);display:flex;flex-direction:column;justify-content:center;min-height:clamp(288px,33vh,330px)}
-.cform-foot{border-top:1px solid rgba(255,255,255,.12);padding:clamp(12px,1.7vh,17px) clamp(18px,2.2vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px}
-.cform-foot .fnote{font-size:.88rem;font-weight:500;letter-spacing:-.005em;color:rgba(255,255,255,.6)}
-/* Ghost-Button im Glasmodul (Zurueck / Neue Anfrage) */
+.cform-segs i.cur{background:#fff;transform:scaleY(1.5)}
+.cform-body{display:flex;flex-direction:column}
+.cform-foot{margin-top:clamp(20px,2.6vh,28px);border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(14px,1.8vh,18px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cform-foot .fnote{font-size:.86rem;font-weight:400;letter-spacing:0;color:rgba(255,255,255,.58)}
+/* Ghost-Button (Zurueck / Neue Anfrage) */
 .cform .btn-gh{border-color:rgba(255,255,255,.24);color:#fff;background:rgba(255,255,255,.04)}
 .cform .btn-gh:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.1)}
 .cform-btns{display:flex;gap:10px;margin-left:auto}
 .cform-btns .btn{padding:12px 22px}
 #fmBack.hide{opacity:0;pointer-events:none}
 @media(max-width:940px){
-  .cform-body{min-height:0;justify-content:flex-start;padding-top:22px}
   .cform-foot{flex-wrap:wrap}
   .cform-foot .fnote{flex:1 1 100%;order:2}
   .cform-btns{order:1;width:100%;justify-content:space-between;margin-left:0}
@@ -310,8 +326,8 @@ section.pad{padding:clamp(84px,10vw,140px) 0}
 .fcard .fimg{position:relative;aspect-ratio:4/4.4;overflow:hidden;background:var(--bone2)}
 .fcard .fimg img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 1s var(--ease2)}
 .fcard:hover .fimg img{transform:scale(1.07)}
-.fcard .ftag{position:absolute;left:14px;top:14px;background:rgba(23,20,18,.82);backdrop-filter:blur(8px);color:#fff;font-family:'Inter',system-ui,sans-serif;font-weight:400;font-size:.78rem;line-height:1.2;letter-spacing:0;text-transform:none;padding:7px 12px;border-radius:100px}
-.fcard.hot .ftag{background:var(--orange)}
+.fcard .ftag{position:absolute;left:16px;top:clamp(24px,2.2vw,30px);background:rgba(0,0,0,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-family:'Inter',system-ui,sans-serif;font-weight:500;font-size:.7rem;line-height:1.2;letter-spacing:.005em;text-transform:none;padding:5px 10px;border-radius:100px}
+.fcard.hot .ftag{background:#000}
 .fbody{padding:20px 22px 22px}
 .fbody .fn{font-family:var(--sans-b);font-weight:700;font-size:1.24rem;letter-spacing:-.015em;line-height:1.15}
 .fbody .fr{font-size:.82rem;color:var(--grey);margin-top:5px;margin-bottom:14px}
@@ -373,20 +389,22 @@ section.pad{padding:clamp(84px,10vw,140px) 0}
 .fm-step .qs{color:rgba(255,255,255,.64);font-size:.92rem;margin-bottom:clamp(18px,2.4vh,26px)}
 .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .opt-grid.cols3{grid-template-columns:repeat(3,1fr)}
-.opt{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:clamp(15px,1.9vh,21px) 18px;min-height:60px;font-family:'Inter';font-size:.98rem;font-weight:600;color:#fff;cursor:pointer;transition:border-color .25s,background .25s,transform .3s var(--ease),box-shadow .3s var(--ease)}
+.opt{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:clamp(15px,1.9vh,21px) 18px;min-height:60px;
+  backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);font-family:'Inter',system-ui,sans-serif;font-size:.98rem;font-weight:600;color:#fff;cursor:pointer;transition:border-color .25s,background .25s,transform .3s var(--ease),box-shadow .3s var(--ease)}
 .opt:hover{border-color:rgba(255,255,255,.62);background:rgba(255,255,255,.1);transform:translateY(-2px);box-shadow:0 14px 28px -22px rgba(0,0,0,.45)}
 .opt:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-.opt .chk{width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
-.opt .chk svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.6;opacity:0;transform:scale(.4);transition:.25s var(--ease)}
+.opt .chk{position:relative;width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.25s}
+.opt .chk svg{position:absolute;inset:0;margin:auto;width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.6;opacity:0;transform:scale(.4);transition:.25s var(--ease)}
 .opt.sel{border-color:var(--orange);background:rgba(255,111,32,.16)}
 .opt.sel .chk{background:var(--orange);border-color:var(--orange)}
 .opt.sel .chk svg{opacity:1;transform:none}
 .opt .osub{display:block;font-weight:400;font-size:.78rem;color:rgba(255,255,255,.6);margin-top:4px}
-.fld{border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:13px 16px 11px;transition:border-color .25s,background .25s;background:rgba(255,255,255,.06)}
+.fld{border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:13px 16px 11px;transition:border-color .25s,background .25s;background:rgba(255,255,255,.07);
+  backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35)}
 .fld:focus-within{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.09)}
 .fld.bad{border-color:#FF8F76}
 .fld label{display:block;font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px}
-.fld input,.fld textarea{width:100%;border:0;outline:0;background:none;font-family:'Inter';font-size:.98rem;font-weight:500;color:#fff;caret-color:var(--orange);resize:none;padding:2px 0}
+.fld input,.fld textarea{width:100%;border:0;outline:0;background:none;font-family:'Inter',system-ui,sans-serif;font-size:.98rem;font-weight:500;color:#fff;caret-color:var(--orange);resize:none;padding:2px 0}
 .fld input::placeholder,.fld textarea::placeholder{color:rgba(255,255,255,.38)}
 /* Browser-Autofill nicht als weisse Flaeche auf dem Glas */
 .fld input:-webkit-autofill{-webkit-text-fill-color:#fff;-webkit-box-shadow:0 0 0 40px rgba(40,34,30,.9) inset;transition:background-color 9999s}
@@ -559,20 +577,20 @@ section.pad{padding:clamp(84px,10vw,140px) 0}
       </div>
     </div>
 
-    <!-- rechts: bestehendes Anfrage-Menue, unveraendert in der Logik -->
-    <div class="hero-form rv d2" id="kontakt">
-      <div class="cform">
-        <div class="cform-head">
-          <span class="plab" id="fmProgLab">Schritt 1 von 5</span>
-        </div>
-        <div class="cform-segs" id="fmSegs"></div>
-        <div class="cform-body"><div class="fm-step" id="fmStep"></div></div>
-        <div class="cform-foot" id="fmFoot">
-          <span class="fnote">Unverbindlich &middot; ca. 1 Minute</span>
-          <div class="cform-btns">
-            <button class="btn btn-gh" type="button" id="fmBack">Zur&uuml;ck</button>
-            <button class="btn btn-o" type="button" id="fmNext">Weiter <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
+    <!-- rechts: Anliegen in wenigen Klicks. Bestehende mehrstufige Logik, nur leichter eingebunden -->
+    <div class="hero-ask cform rv d2" id="kontakt" data-step="anliegen" aria-labelledby="askTitle">
+      <h2 class="ask-title" id="askTitle">Ihr Anliegen in wenigen Klicks.</h2>
+      <p class="ask-sub">W&auml;hlen Sie den passenden Bereich &ndash; wir f&uuml;hren Sie direkt weiter.</p>
+      <div class="ask-prog">
+        <span class="plab" id="fmProgLab" aria-live="polite">Schritt 1 von 5</span>
+        <div class="cform-segs" id="fmSegs" aria-hidden="true"></div>
+      </div>
+      <div class="cform-body"><div class="fm-step" id="fmStep"></div></div>
+      <div class="cform-foot" id="fmFoot">
+        <span class="fnote">Unverbindlich &middot; ca. 1 Minute</span>
+        <div class="cform-btns">
+          <button class="btn btn-gh" type="button" id="fmBack">Zur&uuml;ck</button>
+          <button class="btn btn-w" type="button" id="fmNext">Weiter <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
       </div>
     </div>
@@ -748,7 +766,8 @@ const PERSONS={
  marvin:{n:'Marvin Prochowski',r:'Senior Consultant',ext:'13',mail:'prochowski@cubion.de',img:'2023/11/marvin-prochowski.jpg'},
  radu:{n:'Radu-George Moldovan',r:'Retail · conceptstories',ext:'',mail:'moldovan@conceptstories.de',img:'2024/10/Radu_conceptstories_neu_CUBION_web.jpg'},
  rosslan:{n:'Jörg Roßlan',r:'Property Management',ext:'31',mail:'rosslan@cubion.de',img:'2023/11/joerg-rosslan.jpg'},
- buechte:{n:'Markus Büchte',r:'Vorstand (MRICS)',ext:'0',mail:'buechte@cubion.de',img:'2023/11/markus-buechte.jpg'}
+ buechte:{n:'Markus Büchte',r:'Vorstand (MRICS)',ext:'0',mail:'buechte@cubion.de',img:'2023/11/markus-buechte.jpg'},
+ lichtenheld:{n:'Julius Lichtenheld',r:'Marketing',ext:'35',mail:'j.lichtenheld@cubion.de',img:'2024/02/Julius-Lichtenheld-CUBION-Immobilien-scaled.jpg'}
 };
 const tel=ext=>ext===''?'':'+4920897067'+ext;
 const telT=ext=>ext===''?'':(ext==='0'?'+49 208 970 670':'+49 208 970 67-'+ext);
@@ -760,7 +779,8 @@ const FINDER=[
  {chip:'Industrial & Logistics',topic:'Industrial & Logistics',sub:'Hallen, Lager, Logistik',c:'marvin'},
  {chip:'Retail',topic:'Retail & Gastronomie',sub:'Laden- & Gastroflächen',c:'radu'},
  {chip:'Property',topic:'Property Management',sub:'Bewirtschaftung',c:'rosslan'},
- {chip:'Presse',topic:'Presse & Marketing',sub:'Medienanfragen',c:'buechte'}
+ {chip:'Presse',topic:'Presse & Marketing',sub:'Medienanfragen',c:'buechte'},
+ {chip:'Marketing',topic:'Marketing',sub:'Kommunikation & Marke',c:'lichtenheld'}
 ];
 const ICON_PHONE='<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 const ICON_MAIL='<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
@@ -887,6 +907,8 @@ const fmBack=document.getElementById('fmBack');
 const fmNext=document.getElementById('fmNext');
 const fmSegs=document.getElementById('fmSegs');
 const fmProgLab=document.getElementById('fmProgLab');
+/* nur Darstellung: aktueller Schritt als Attribut fuer das Styling im Hero */
+const fmWrap=document.getElementById('kontakt');
 
 const state={
  anliegen:null,        // 'vermietung' | 'investment'
@@ -1031,6 +1053,7 @@ function renderStep(animate){
  const f=flow(),key=f[idx];
  fmStepEl.classList.remove('anim-next','anim-prev');
  fmStepEl.innerHTML=STEPS[key].render();
+ fmWrap.dataset.step=key;
  if(animate&&!reduce){void fmStepEl.offsetWidth;fmStepEl.classList.add(dir>0?'anim-next':'anim-prev');}
  renderProgress();
  fmBack.classList.toggle('hide',idx===0);
@@ -1126,6 +1149,7 @@ function submit(){
  const p=payload();
  try{console.log('CUBION Kontaktanfrage:',p);}catch(e){}
  done=true;
+ fmWrap.dataset.step='done';
  fmFoot.style.display='none';
  fmStepEl.classList.remove('anim-next','anim-prev');
  fmStepEl.innerHTML=`
