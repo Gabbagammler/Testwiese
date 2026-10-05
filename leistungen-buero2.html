@@ -314,18 +314,15 @@ h1,h2{font-family:'Benton Wide',sans-serif;font-weight:900;text-transform:upperc
 @media(min-width:1181px){.wrap.railsafe{padding-right:clamp(90px,12vw,180px)}}
 
 /* ===== FLAECHENRECHNER =====
-   Links Orientierung (Headline, Text, Handlungen), rechts Bedienung mit weisser Ergebnisflaeche darunter.
-   Direkt auf dem Grund, nur die Ergebnisflaeche ist eine eigene Flaeche.
+   Links Eingabe (Headline, Text, drei Regler), rechts Ergebnis, Einsparung und Handlungen.
+   Alles direkt auf dem Grund, gegliedert nur durch Haarlinien und Weissraum.
    Orange nur beim empfohlenen Flaechenwert und beim primaeren Button. Rechenlogik unveraendert (RC_* im Skript). */
 .rechner{background:var(--bone);color:var(--ink);padding:var(--sec-y) 0}
-.rc-layout{display:grid;grid-template-columns:minmax(0,5.5fr) minmax(0,6.5fr);grid-template-rows:auto 1fr;
-  grid-template-areas:"intro calc" "cta calc";column-gap:clamp(40px,5vw,80px);align-items:start}
-.rc-intro{grid-area:intro;min-width:0}
-.rc-intro h2{font-size:clamp(1.7rem,2.6vw,2.35rem);line-height:1.12}
-.rc-intro p{margin-top:clamp(16px,1.6vw,22px);color:var(--grey);font-size:1rem;line-height:1.7;max-width:38ch}
-.rc-cta{grid-area:cta;display:flex;flex-direction:column;gap:10px;margin-top:clamp(28px,3vw,40px);max-width:440px}
-.rc-cta .btn{width:100%;justify-content:space-between;white-space:normal;text-align:left}
-.rc-calc{grid-area:calc;min-width:0}
+.rc-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(48px,6vw,96px);align-items:start}
+.rc-in,.rc-out{min-width:0}
+.rc-in h2{font-size:clamp(1.7rem,2.6vw,2.35rem);line-height:1.12}
+.rc-intro{margin-top:clamp(14px,1.4vw,18px);color:var(--grey);font-size:1rem;line-height:1.7;max-width:40ch}
+.rc-fields{margin-top:clamp(28px,3vw,40px)}
 
 /* Eingaben */
 .rc-field+.rc-field{margin-top:clamp(18px,2vw,26px)}
@@ -346,48 +343,49 @@ input[type=range].rc-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 
 input[type=range].rc-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 6px rgba(27,23,20,.16)}
 
 /* Ergebnisflaeche */
-.rc-out{margin-top:clamp(28px,3vw,40px);background:#fff;border-radius:28px;padding:clamp(24px,2.8vw,38px)}
 .rc-lab-out{font-size:1rem;font-weight:500;color:var(--ink)}
 .rc-big{font-family:'Benton Wide',sans-serif;font-weight:900;color:var(--orange);font-size:clamp(2.5rem,4vw,3.4rem);line-height:.95;letter-spacing:-.01em;
   margin-top:12px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .rc-big .u{font-size:.46em;margin-left:.14em}
 .rc-sub{font-size:.95rem;color:#6B6761;margin-top:10px}
 /* Vergleich: reine Grafik, kein Bedienelement. Bezeichnung und Wert in festen Spalten, damit die Balkenlaengen vergleichbar bleiben. */
-.rc-bars{display:flex;flex-direction:column;gap:12px;margin-top:clamp(22px,2.4vw,30px)}
+.rc-bars{display:flex;flex-direction:column;gap:12px;margin-top:clamp(20px,2.2vw,26px)}
 .rc-bar{display:grid;grid-template-columns:6.5rem minmax(0,1fr) 5.5rem;column-gap:16px;align-items:center}
 .rc-bar .bl{grid-row:1;grid-column:1;font-size:.92rem;color:#6B6761}
 .rc-bar .bv{grid-row:1;grid-column:3;text-align:right;font-weight:600;font-size:.95rem;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .rc-bar .tr{grid-row:1;grid-column:2;display:block;height:12px}
-.rc-bar .tr i{display:block;height:100%;border-radius:12px;background:#D6D1C9;transition:width .7s var(--ease2)}
+.rc-bar .tr i{display:block;height:100%;border-radius:12px;background:#CFC9C0;transition:width .7s var(--ease2)}
 .rc-bar.rec .tr i{background:var(--ink)}
-.rc-mets{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:clamp(22px,2.4vw,28px);padding-top:clamp(16px,1.8vw,22px);border-top:1px solid var(--line)}
+.rc-save,.rc-cta{margin-top:clamp(22px,2.4vw,30px);padding-top:clamp(20px,2.2vw,26px);border-top:1px solid rgba(27,23,20,.12)}
+.rc-mets{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
 .rc-met .ml{font-size:.92rem;color:#6B6761;line-height:1.4}
 .rc-met .mv{margin-top:4px;font-size:1.3rem}
-.rc-note{margin-top:clamp(18px,2vw,24px);font-size:.84rem;line-height:1.6;color:#6B6761;max-width:62ch}
+.rc-note{margin-top:clamp(12px,1.3vw,16px);font-size:.84rem;line-height:1.6;color:#6B6761;max-width:62ch}
+/* Handlungen: nebeneinander, wenn Platz ist, sonst gleich breit untereinander */
+.rc-cta{display:flex;flex-wrap:wrap;gap:10px}
+.rc-cta .btn{flex:1 1 auto;min-width:0;justify-content:space-between;white-space:normal;text-align:left;font-size:.88rem;padding:13px 20px}
 @media(prefers-reduced-motion:reduce){.rc-bar .tr i{transition:none}}
 @media(max-width:900px){
  .rechner{padding:clamp(60px,12vw,88px) 0}
- .rc-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"intro" "calc" "cta"}
- .rc-intro h2{font-size:clamp(1.6rem,4.4vw,2.2rem)}
- .rc-intro p{max-width:52ch}
- .rc-calc{margin-top:clamp(28px,6vw,40px)}
- .rc-cta{max-width:none;display:grid;grid-template-columns:1fr 1fr;margin-top:26px}
+ .rc-layout{grid-template-columns:minmax(0,1fr)}
+ .rc-in h2{font-size:clamp(1.6rem,4.4vw,2.2rem)}
+ .rc-intro{max-width:52ch}
+ .rc-out{margin-top:clamp(36px,7vw,48px);padding-top:clamp(28px,5vw,36px);border-top:1px solid rgba(27,23,20,.12)}
 }
 @media(max-width:560px){
- .rc-intro h2{font-size:clamp(1.35rem,6.2vw,1.9rem)}
- .rc-cta{grid-template-columns:1fr}
+ .rc-in h2{font-size:clamp(1.35rem,6.2vw,1.9rem)}
+ .rc-fields{margin-top:24px}
  .rc-field+.rc-field{margin-top:14px}
  .rc-lab{margin-bottom:2px}
- .rc-out{border-radius:22px;padding:22px 20px;margin-top:24px}
  .rc-big{font-size:clamp(2.3rem,12vw,2.9rem);margin-top:6px}
  .rc-sub{margin-top:6px}
  .rc-bars{gap:12px;margin-top:18px}
  .rc-bar{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
  .rc-bar .bv{grid-column:2}
  .rc-bar .tr{grid-row:2;grid-column:1/-1;height:10px}
- .rc-mets{gap:12px 16px;margin-top:18px;padding-top:14px;align-items:end}
+ .rc-mets{gap:12px 16px;align-items:end}
  .rc-met .mv{font-size:1.15rem}
- .rc-note{margin-top:16px}
+ .rc-save,.rc-cta{margin-top:20px;padding-top:18px}
 }
 
 /* ===== LEISTUNGEN: MIETER / VERMIETER =====
@@ -805,20 +803,17 @@ input[type=range].rc-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 6px 
 </section>
 
 <!-- ===== FLÄCHENRECHNER =====
-     Links Orientierung und Handlungen, rechts drei Regler und die Ergebnisflaeche.
-     Rechenlogik unveraendert (RC_* im Skript), alle IDs wie bisher. -->
+     Links Eingabe (Headline + drei Regler), rechts Ergebnis, Einsparung und Handlungen.
+     Direkt auf dem Grund, gegliedert nur durch Haarlinien. Rechenlogik unveraendert (RC_* im Skript), alle IDs wie bisher. -->
 <section class="rechner" id="rechner">
   <div class="wrap railsafe">
     <div class="rc-layout">
-      <div class="rc-intro rv">
+      <div class="rc-in rv">
         <span class="lead">Flächenbedarf</span>
         <h2>Wie viel Büro brauchen Sie wirklich?</h2>
-        <p>Homeoffice und Desk-Sharing verändern den Bedarf. Drei Angaben genügen für eine erste Orientierung.</p>
-      </div>
-
-      <div class="rc-calc rv d1">
-        <div class="rc-in">
-          <h3 class="sr-only">Ihre Ausgangslage</h3>
+        <p class="rc-intro">Homeoffice und Desk-Sharing verändern den Bedarf. Drei Angaben genügen für eine erste Orientierung.</p>
+        <h3 class="sr-only">Ihre Ausgangslage</h3>
+        <div class="rc-fields">
           <div class="rc-field">
             <div class="rc-lab"><label for="rcCur">Aktuelle Bürofläche</label><output class="rc-num" id="rcCurVal" for="rcCur">600<span class="u">m²</span></output></div>
             <input type="range" class="rc-range" id="rcCur" min="100" max="3000" step="25" value="600">
@@ -832,9 +827,11 @@ input[type=range].rc-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 6px 
             <input type="range" class="rc-range" id="rcHo" min="0" max="5" step="1" value="2">
           </div>
         </div>
+      </div>
 
-        <div class="rc-out" aria-live="polite">
-          <h3 class="sr-only">Unsere Empfehlung</h3>
+      <div class="rc-out rv d1" aria-live="polite">
+        <h3 class="sr-only">Unsere Empfehlung</h3>
+        <div class="rc-res">
           <div class="rc-lab-out">Empfohlene Fläche</div>
           <div class="rc-big"><span id="rcArea">0</span><span class="u">m²</span></div>
           <p class="rc-sub" id="rcSub">statt heute 600 m²</p>
@@ -842,17 +839,18 @@ input[type=range].rc-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 6px 
             <div class="rc-bar"><span class="bl">Heute</span><b class="bv" id="rcBarCurVal">600 m²</b><span class="tr"><i id="rcBarCur" style="width:100%"></i></span></div>
             <div class="rc-bar rec"><span class="bl">Empfehlung</span><b class="bv" id="rcBarRecVal">0 m²</b><span class="tr"><i id="rcBarRec" style="width:100%"></i></span></div>
           </div>
+        </div>
+        <div class="rc-save">
           <div class="rc-mets">
             <div class="rc-met"><div class="ml" id="rcPctLab">Weniger Fläche</div><div class="mv rc-num" id="rcPct">0 %</div></div>
             <div class="rc-met"><div class="ml" id="rcEurLab">Miete pro Monat</div><div class="mv rc-num" id="rcEur">0 €</div></div>
           </div>
           <p class="rc-note">Orientierungswert auf Basis von 13 m² je Arbeitsplatz inklusive Nebenflächen und 14,50 €/m² Miete.</p>
         </div>
-      </div>
-
-      <div class="rc-cta rv d2">
-        <a href="https://flaechenrechner.cubion.de/public/naw/4e334cd1-b539-4303-887c-538290b516d0/anon" target="_blank" rel="noopener" class="btn btn-line pri ext">Flächenersparnis detailliert berechnen <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-        <a href="#kontakt" class="btn btn-line">Lieber direkt beraten lassen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="rc-cta">
+          <a href="https://flaechenrechner.cubion.de/public/naw/4e334cd1-b539-4303-887c-538290b516d0/anon" target="_blank" rel="noopener" class="btn btn-line pri ext">Flächenersparnis detailliert berechnen <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="#kontakt" class="btn btn-line">Lieber direkt beraten lassen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
     </div>
   </div>
